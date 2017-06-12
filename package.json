@@ -2,6 +2,7 @@
   "name": "tempestdesigns.co.uk",
   "version": "0.0.1",
   "devDependencies": {
-    "@shopify/slate-tools": "0.3.1"
+    "@shopify/slate-tools": "0.3.1",
+    "bower": "^1.8.0"
   }
 }

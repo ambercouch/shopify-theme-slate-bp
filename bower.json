@@ -1,0 +1,23 @@
+{
+  "name": "ac_shopify",
+  "version": "0.0.0",
+  "authors": [
+    "Richiearnold <richard@ambercouch.co.uk>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "inuitcss": "^6.0.0-beta.4",
+    "fitvids": "^1.2.0",
+    "sass-mq": "^3.3.2",
+    "animate.css": "^3.5.2",
+    "flickity": "^2.0.5"
+  }
+}
