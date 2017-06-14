@@ -31,7 +31,8 @@
   {% endif %}
 
   {% include 'social-meta-tags' %}
-
+  <!-- CSS FILES -->
+  {{ 'ac_main.css' | asset_url | stylesheet_tag }}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
 
   <script>
