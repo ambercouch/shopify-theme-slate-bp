@@ -1,3 +1,63 @@
-body{
-  background: black;
-}
+/*
+ SETTINGS
+ */
+@import "var/settings.container";
+@import "var/settings.article";
+@import "var/settings.fonts";
+@import "var/settings.colours";
+@import "var/settings.defaults";
+@import "var/settings.shadows";
+@import "var/settings.headings";
+@import "var/settings.widths";
+
+/*
+ INUIT FRAME WORK
+ */
+
+@import "inuit";
+
+/*
+  UTILITIES
+  */
+
+@import "mixins";
+@import "helpers";
+
+/*
+  VENDOR
+  */
+
+//@import "vendor/animate";
+//@import "vendor/flickity";
+//@import "vendor/remodal";
+//@import "vendor/remodal-default-theme";
+
+/*
+  BASE - Styles for HTML elements eg body ul etc
+ */
+@import "base";
+
+/*
+  TYPOGRAPHY - Styles for HTML elements eg body ul etc
+ */
+@import "typography";
+
+
+/*
+  OTHER
+ */
+@import "accessibility";
+@import "placeholders/off-page";
+
+
+/*
+  BEM - BLOCK MODULES
+ */
+
+
+
+@import "modules/site";
+@import "modules/masthead";
+@import "modules/site-logo";
+@import "modules/site-control";
+@import "modules/nav-main";

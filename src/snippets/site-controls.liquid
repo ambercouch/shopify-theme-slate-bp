@@ -1,0 +1,53 @@
+<div class="site-control">
+
+  <ul class="site-control__list">
+    <li class="site-control__item">
+      <a class="site-control__link">Search</a>
+    </li>
+{% if shop.customer_accounts_enabled %}
+
+    {% if customer %}
+      <li class="site-control__item">
+        {% if customer.first_name != blank %}
+          {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
+          {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+        {% else %}
+          <a href="/account">{{ 'layout.customer.account' | t }}</a>
+        {% endif %}
+      </li>
+      <li class="site-control__item">
+        {{ 'layout.customer.log_out' | t | customer_logout_link }}
+      </li>
+    {% else %}
+      <li class="site-control__item">
+        {{ 'layout.customer.log_in' | t | customer_login_link }}
+      </li>
+    {% endif %}
+{% endif %}
+    <li class="site-control__item" >
+      <a class="site-control__link" href="/cart" class="site-control__cart-link" >
+        {{ 'layout.cart.title' | t }}
+        {% include 'icon-cart' %}
+        ({{ cart.item_count }})
+      </a>
+    </li>
+  </ul><!-- /.site-control__list -->
+
+  <div class="site-control__search" data-state="off">
+<form action="/search" method="get" role="search" data-state="off">
+  <label for="Search" class="label-hidden">
+    {{ 'general.search.placeholder' | t }}
+  </label>
+  <input type="search"
+         name="q"
+         id="Search"
+         value="{{ search.terms | escape }}"
+         placeholder="{{ 'general.search.placeholder' | t }}">
+  <button type="submit" class="btn">
+    {% include 'icon-search' %}
+    <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+  </button>
+</form>
+</div><!-- site-controls__search -->
+
+</div><!-- site-controls -->

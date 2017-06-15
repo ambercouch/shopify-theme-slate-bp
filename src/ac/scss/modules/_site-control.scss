@@ -1,0 +1,36 @@
+/*
+  BLOCK .site-control
+ */
+.site-control{
+
+}
+/*
+  BLOCK .site-control__
+ */
+.site-control__{
+  &list{
+    @extend .o-list-bare;
+    @extend .o-list-inline;
+  }
+  &item{
+    @extend .o-list-inline__item;
+  }
+  &link{
+    text-decoration: none;
+  }
+  &search{
+    &[data-state=off]{
+      display: none;
+    }
+  }
+}
+
+
+/*
+  BEM FREE ELEMENTS .site-control
+ */
+.site-control{
+  a{
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,23 @@
+/*
+  BLOCK .site
+   wrapper for the site that contain element such as:-
+   __masthead
+   __hero
+   __main
+   __subsidiary
+   __before-footer
+   __footer
+ */
+.site{
+    display: block;
+}
+
+/*
+  ELEMENTS .site__
+ */
+
+.site__{
+    &masthead{
+        
+    }
+}

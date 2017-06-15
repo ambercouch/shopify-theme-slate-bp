@@ -1,0 +1,12 @@
+.nav-main{
+  @extend .o-wrapper;
+}
+
+.nav-main__{
+  &list{
+    @extend .o-list-bare;
+  }
+  &item{
+    @extend .o-list-inline__item;
+  }
+}

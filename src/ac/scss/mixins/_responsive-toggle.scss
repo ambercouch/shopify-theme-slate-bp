@@ -1,0 +1,62 @@
+@mixin menu--icon($pos : right, $border : true){
+  position:relative;
+  @if $border == true {
+    padding: 0.5em;
+  }
+
+  @if $pos == right {
+    padding-right: 2.75em;
+  }
+  @if $pos == left {
+    padding-left: 2.75em;
+  }
+  display: inline-block;
+  @if $border == true{
+    border: solid 1px #ccc;
+  }
+  border-radius: 3px;
+  margin: 0.5em;
+  height: 2em;
+  width: 2em;
+  &:after{
+    box-sizing: border-box;
+    content: "";
+    width: 1.5em;
+    border-top: solid (.0625 * 3) *1em  #000;
+    border-bottom: solid (.0625 * 3) *1em #000;
+    position: absolute;
+    @if $pos == right {
+      right: 0.5em;
+    }
+    @if $pos == left{
+      left: 0.5em;
+    }
+    height: (.0625 * 15) *1em;
+  }
+  &:before{
+    box-sizing: border-box;
+    content: "";
+    width: 1.5em;
+    border-top: solid (.0625 * 3) *1em #000;
+    border-bottom: solid (.0625 * 3) *1em #000;
+    position: absolute;
+    @if $pos == right {
+      right: 0.5em;
+    }
+    @if $pos == left{
+      left: 0.5em;
+    }
+    height: (.0625 * 15) *1em;
+    margin-top: (.0625 * 6) *1em;
+  }
+}
+
+.icon--menu{
+  @include menu--icon(left);
+}
+.icon--menu--right{
+  @include menu--icon(right);
+}
+.icon--menu--blank{
+  @include menu--icon(false, false);
+}

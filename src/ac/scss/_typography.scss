@@ -1,0 +1,16 @@
+/*
+ *
+ */
+html{
+  font-family: $global-font-family;
+}
+
+@include headings(1,6){
+  font-family: $global-font-family-heading;
+  margin-top: 0;
+}
+
+p{
+  margin-top: 0;
+}
+

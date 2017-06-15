@@ -1,0 +1,19 @@
+/*
+ * Default settings for Inuit
+ */
+// High-level base settings.
+$inuit-global-font-size:   18px;
+$inuit-global-line-height: $inuit-global-font-size * 1.6;
+$inuit-base-text-color:         $brand-col-1;
+$inuit-base-background-color:   #fff;
+
+$milli-size: 16px;
+
+$inuit-wrapper-width: 1400px;
+
+$inuit-enable-btn--small:   true;
+$inuit-enable-btn--large:   true;
+$inuit-enable-btn--full:    true;
+
+$inuit-widths-delimiter: '-';
+

@@ -1,0 +1,23 @@
+/*
+  BLOCK .masthead
+ */
+.masthead{
+  @extend .o-wrapper;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+/*
+  BLOCK .masthead__
+ */
+.masthead__{
+  &site-logo{
+
+  }
+  &site-control{
+    position: absolute;
+    right: 0;
+    top:0;
+  }
+}

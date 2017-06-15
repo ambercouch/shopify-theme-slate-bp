@@ -1,0 +1,16 @@
+/*
+  BLOCK .site-logo
+ */
+.site-logo{
+  width: 300px;
+}
+
+/*
+  ELEMENTS .site-logo__
+ */
+
+.site-logo__{
+  &img{
+    max-width:100%;
+  }
+}
