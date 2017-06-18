@@ -8,6 +8,12 @@
  */
 // =require vendor/jquery-2.2.3.min.js
 
+/*!
+ * jquery-2.2.3.min.js
+ */
+// =require vendor/flickity.pkgd.min.js
+
+
 // Attempts to preserve comments that likely contain licensing information,
 // even if the comment does not have directives such as `@license` or `/*!`.
 //

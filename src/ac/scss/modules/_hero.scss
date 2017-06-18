@@ -1,0 +1,13 @@
+.hero{
+  @extend .o-wrapper;
+}
+
+.hero__{
+  &carousel{
+
+  }
+  &cell{
+    width: 100%;
+    text-align: center;
+  }
+}
