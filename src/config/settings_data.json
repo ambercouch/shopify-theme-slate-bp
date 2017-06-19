@@ -10,19 +10,15 @@
           "type": "collection-list",
           "blocks": {
             "collection-list-0": {
-              "type": "collection"
+              "type": "collection",
             },
             "collection-list-1": {
               "type": "collection"
             },
-            "collection-list-2": {
-              "type": "collection"
-            }
           },
           "block_order": [
             "collection-list-0",
-            "collection-list-1",
-            "collection-list-2"
+            "collection-list-1"
           ]
         },
         "featured-collection": {
@@ -37,8 +33,8 @@
       },
       "content_for_index": [
         "hero",
-        "collection-list",
         "featured-collection",
+        "collection-list",
         "featured-product"
       ]
     }
