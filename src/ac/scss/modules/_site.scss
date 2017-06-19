@@ -17,7 +17,15 @@
  */
 
 .site__{
+    &band{
+        margin-bottom:$inuit-global-spacing-unit-large;
+        @include mq($from : desktop){
+            margin-bottom:$inuit-global-spacing-unit-huge;
+        }
+    }
     &masthead{
-        
+    }
+    &hero{
+       @extend .site__band;
     }
 }
