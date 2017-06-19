@@ -1,0 +1,54 @@
+.collection-thumb{
+  text-align: center;
+  padding: 0 $inuit-global-spacing-unit $inuit-global-spacing-unit;
+  margin-bottom: $inuit-global-spacing-unit;
+}
+
+.collection-thumb__{
+  &link{
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    position: relative;
+  }
+  &img{
+    display: block;
+    width:100%;
+    height: auto;
+
+  }
+  &heading{
+    font-weight: 500;
+    margin-bottom: 0;
+    @include inuit-font-size($inuit-font-size-h1, 1);
+    padding:$inuit-global-spacing-unit-tiny ;
+    padding-right: $inuit-global-spacing-unit ;
+    padding-left: $inuit-global-spacing-unit-small ;
+    text-align: left;
+    color: #fff;
+    background: $brand-col-1;
+    position: absolute;
+    top: 25%;
+  }
+}
+
+
+.collection-thumb__heading{
+  .collection-list__item:nth-child(even) &{
+    right: 0;
+    top:75%;
+    text-align: right;
+    padding:$inuit-global-spacing-unit-tiny ;
+    padding-right: $inuit-global-spacing-unit-small;
+    padding-left: $inuit-global-spacing-unit;
+  }
+}
+
+.collection-thumb{
+  .collection-list__item:nth-child(odd) &{
+    padding-left:0;
+  }
+  .collection-list__item:nth-child(even) &{
+    padding-right:0;
+  }
+}

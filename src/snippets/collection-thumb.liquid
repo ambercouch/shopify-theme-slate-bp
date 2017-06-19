@@ -1,0 +1,24 @@
+<div class="collection-thumb" {{ block.shopify_attributes }}>
+  {%- assign collection = collections[block.settings.collection] -%}
+
+  <a class="collection-thumb__link" href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}">
+    {% if collection.image != blank %}
+      <img class="collection-thumb__img" src="{{ collection | img_url: '600x600' }}" >
+      {% elsif collection.products.first != blank %}
+      <img class="collection-thumb__img" src="{{ collection.products.first | img_url: '600x600' }}" >
+      {% elsif collection.empty? %}
+      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+      {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+    {% endif %}
+
+    <h5 class="collection-thumb__heading">
+      {% if collection.empty? %}
+        {{ 'homepage.onboarding.collection_title' | t }}
+      {% elsif block.settings.collection_title == '' %}
+        {{ collection.title }}
+      {% else %}
+        {{ block.settings.collection_title }}
+      {% endif %}
+    </h5>
+  </a>
+</div>
