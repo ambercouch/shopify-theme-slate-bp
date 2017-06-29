@@ -1,0 +1,18 @@
+.address{
+
+}
+
+.address__{
+  &heading{
+    border-bottom: solid 1px $brand-col-1;
+    font-weight: 500;
+    margin-bottom: $inuit-global-spacing-unit-small;
+  }
+  &postal{
+    margin-bottom: $inuit-global-spacing-unit;
+  }
+  &link{
+    display: block;
+    padding: $inuit-global-spacing-unit-tiny;
+  }
+}

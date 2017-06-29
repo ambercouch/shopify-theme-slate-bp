@@ -1,0 +1,8 @@
+{%- assign footer_linklist = section.settings.footer_linklist -%}
+  {% if linklists[footer_linklist].links.size > 0 %}
+    <ul class="info-links__list">
+      {% for link in linklists[footer_linklist].links %}
+        <li class="info-links__item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}

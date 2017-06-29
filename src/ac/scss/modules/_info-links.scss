@@ -1,0 +1,14 @@
+.info-links{
+
+}
+
+.info-links__{
+  &heading{
+    border-bottom: solid 1px $brand-col-1;
+    font-weight: 500;
+    margin-bottom: $inuit-global-spacing-unit-small;
+  }
+  &list{
+    @extend .o-list-bare;
+  }
+}

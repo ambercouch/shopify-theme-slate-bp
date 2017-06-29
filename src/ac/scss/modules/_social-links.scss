@@ -1,0 +1,26 @@
+.social-links{
+
+}
+
+.social-links__{
+  &heading{
+    border-bottom: solid 1px $brand-col-1;
+    font-weight: 500;
+    margin-bottom: $inuit-global-spacing-unit-small;
+  }
+  &list{
+    @extend .o-list-inline;
+  }
+  &item{
+    @extend .o-list-inline__item;
+    margin-left: $inuit-global-spacing-unit-tiny;
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+  &link{
+    display: block;
+    padding: $inuit-global-spacing-unit-tiny;
+
+  }
+}
