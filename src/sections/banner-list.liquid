@@ -1,0 +1,67 @@
+<div class="banner-list">
+  {% if section.settings.title != blank %}
+  <div class="banner-list__header">
+      <h2 class="banner-list__heading">{{ section.settings.title | escape }}</h2>
+  </div>
+  {% endif %}
+
+  <ul class="banner-list__list">
+    {% for block in section.blocks limit: section.blocks.size %}
+      <li class="banner-list__item">
+        {% include "banner" %}
+      </li>
+    {% endfor %}
+  </ul>
+
+
+{% if section.blocks.size == 0 %}
+  {% include 'no-blocks' %}
+{% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Banner list",
+    "class": "site__banner-list",
+    "max_blocks": 5,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "label": "Banner Image",
+            "id": "banner_image",
+            "type": "image_picker"
+          },
+          {
+            "label": "Banner Url",
+            "id": "banner_url",
+            "type": "text",
+            "info": "Link to a url eg. http://google.com"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner List",
+        "category": "Content",
+        "blocks": [
+          {
+            "type": "banner",
+            "type": "banner",
+            "type": "banner"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

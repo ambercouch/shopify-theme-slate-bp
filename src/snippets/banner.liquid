@@ -1,0 +1,13 @@
+<div class="banner" {{ block.shopify_attributes }}>
+  {% if block.settings.banner_url == '' %}
+    {% if block.settings.banner_image != blank %}
+      <img class="banner__img" src="{{ block.settings.banner_image | img_url: '1000x175' }}" >
+    {% endif %}
+  {% else %}
+    <a class="banner__link" href="{{ block.settings.banner_url }}">
+      {% if block.settings.banner_image != blank %}
+        <img class="banner__img" src="{{ block.settings.banner_image | img_url: '1000x175' }}" >
+      {% endif %}
+    </a>
+  {% endif %}
+</div>
