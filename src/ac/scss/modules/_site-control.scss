@@ -2,7 +2,7 @@
   BLOCK .site-control
  */
 .site-control{
-
+  @include inuit-font-size($inuit-font-size-h5, 1)
 }
 /*
   BLOCK .site-control__
@@ -14,9 +14,11 @@
   }
   &item{
     @extend .o-list-inline__item;
+    margin-left: $inuit-global-spacing-unit-small;
   }
   &link{
     text-decoration: none;
+
   }
   &search{
     &[data-state=off]{

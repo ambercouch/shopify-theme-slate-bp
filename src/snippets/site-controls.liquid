@@ -3,6 +3,7 @@
   <ul class="site-control__list">
     <li class="site-control__item">
       <a class="site-control__link">Search</a>
+      {% include 'icon-search' %}
     </li>
 {% if shop.customer_accounts_enabled %}
 
@@ -12,15 +13,15 @@
           {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
           {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
         {% else %}
-          <a href="/account">{{ 'layout.customer.account' | t }}</a>
+          <a href="/account">{{ 'layout.customer.account' | t }} {% include 'icon-user' %} </a>
         {% endif %}
       </li>
       <li class="site-control__item">
-        {{ 'layout.customer.log_out' | t | customer_logout_link }}
+        {{ 'layout.customer.log_out' | t | customer_logout_link }} {% include 'icon-user' %}
       </li>
     {% else %}
       <li class="site-control__item">
-        {{ 'layout.customer.log_in' | t | customer_login_link }}
+        {{ 'layout.customer.log_in' | t | customer_login_link }} {% include 'icon-user' %}
       </li>
     {% endif %}
 {% endif %}

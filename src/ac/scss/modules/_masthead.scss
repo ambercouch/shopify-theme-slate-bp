@@ -17,7 +17,7 @@
   }
   &site-control{
     position: absolute;
-    right: 0;
-    top:0;
+    right: $inuit-global-spacing-unit;
+    top:$inuit-global-spacing-unit;
   }
 }
