@@ -1,0 +1,92 @@
+<div class="content-list">
+  {% if section.settings.title != blank %}
+  <div class="content-list__header">
+      <h2 class="content-list__heading">{{ section.settings.title | escape }}</h2>
+  </div>
+  {% endif %}
+
+  <ul class="content-list__list">
+    {% for block in section.blocks limit: section.blocks.size %}
+      <li class="content-list__item">
+        {% if block.type == 'collection' %}
+        {% include "collection-thumb" %}
+        {% elsif block.type == 'page' %}
+        {%  include "page-thumb" %}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+
+{% if section.blocks.size == 0 %}
+  {% include 'no-blocks' %}
+{% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Mixed list",
+    "class": "site__content-list",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Feature Content"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          },
+          {
+            "label": "Collection Title",
+            "id": "collection_title",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "type": "page",
+        "name": "Page",
+        "settings": [
+          {
+            "label": "Page",
+            "id": "page",
+            "type": "page"
+          },
+          {
+              "label": "Page Title",
+              "id": "page_title",
+              "type": "text"
+          },
+          {
+            "type": "image_picker",
+            "id": "page_image",
+            "label": "Feature image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Mixed list",
+        "category": "Content",
+        "blocks": [
+          {
+            "type": "collection",
+            "type": "page",
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

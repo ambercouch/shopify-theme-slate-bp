@@ -1,0 +1,19 @@
+<div class="page-thumb" {{ block.shopify_attributes }}>
+  {%- assign page = pages[block.settings.page] -%}
+
+  <a class="page-thumb__link" href="{% if page.empty? %}#{% else %}{{ page.url }}{% endif %}">
+    {% if block.settings.page_image != blank %}
+      <img class="page-thumb__img" src="{{ block.settings.page_image | img_url: '600x600' }}" >
+    {% endif %}
+
+    <h5 class="page-thumb__heading">
+      {% if page.empty? %}
+        {{ 'homepage.onboarding.page_title' | t }}
+      {% elsif block.settings.page_title == '' %}
+        {{ page.title }}
+      {% else %}
+        {{ block.settings.page_title }}
+      {% endif %}
+    </h5>
+  </a>
+</div>

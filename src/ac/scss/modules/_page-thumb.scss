@@ -1,0 +1,74 @@
+.page-thumb{
+  text-align: center;
+  padding: 0 $inuit-global-spacing-unit $inuit-global-spacing-unit;
+  margin-bottom: $inuit-global-spacing-unit;
+}
+
+.page-thumb__{
+  &link{
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    position: relative;
+  }
+  &img{
+    display: block;
+    width:100%;
+    height: auto;
+
+  }
+  &heading{
+    font-weight: 500;
+    margin-bottom: 0;
+    @include inuit-font-size($font-size-kilo, 1);
+    padding:$inuit-global-spacing-unit-tiny ;
+    padding-right: $inuit-global-spacing-unit ;
+    padding-left: $inuit-global-spacing-unit-small ;
+    text-align: left;
+    color: #fff;
+    background: $brand-col-1;
+    position: absolute;
+    top: 25%;
+  }
+}
+
+
+
+.page-thumb{
+  .content-list__item:nth-child(1) &{
+    padding-left:0;
+  }
+  .content-list__item:nth-child(2) &{
+    padding-left: $inuit-global-spacing-unit-small;
+    padding-right: $inuit-global-spacing-unit-small;
+  }
+  .content-list__item:nth-child(3) &{
+    padding-right:0;
+  }
+  .content-list &{
+    padding-top: $inuit-global-spacing-unit;
+    margin-top:$inuit-global-spacing-unit;
+  }
+}
+
+.page-thumb__heading{
+
+  .collection-list__item:nth-child(even) &{
+    right: 0;
+    top:75%;
+    text-align: right;
+    padding:$inuit-global-spacing-unit-tiny ;
+    padding-right: $inuit-global-spacing-unit-small;
+    padding-left: $inuit-global-spacing-unit;
+  }
+
+  .content-list__item &{
+    right: 0;
+    top:75%;
+    text-align: center;
+    padding:$inuit-global-spacing-unit-tiny ;
+    padding-right: $inuit-global-spacing-unit-tiny;
+    padding-left: $inuit-global-spacing-unit-tiny;
+    width: 100%;
+  }
+}
