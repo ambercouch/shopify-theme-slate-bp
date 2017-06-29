@@ -18,8 +18,20 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 0;
   }
   &item{
+    width: 25%;
+
+  }
+}
+
+
+.featured-collection__item--{
+  &layout2{
     width: 50%;
+  }
+  &layout4{
+    width: 25%;
   }
 }

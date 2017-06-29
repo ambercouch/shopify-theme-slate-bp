@@ -8,11 +8,12 @@
   <div class="featured-collection__content">
     <ul class="featured-collection__list">
       {% for product in collection.products limit: 6 %}
-      <li class="featured-collection__item">
+      <li class="featured-collection__item--layout{{ section.settings.col_layout }}  ">
         {% include 'product-thumb' %}
       </li>
       {% endfor %}
     </ul>
+
   </div>
 
 </div>
@@ -31,6 +32,22 @@
         "id": "collection",
         "type": "collection",
         "label": "Collection"
+      },
+      {
+        "type": "select",
+        "id": "col_layout",
+        "label": "Layout",
+        "default": "4",
+        "options": [
+        {
+        "value": "4",
+        "label": "4  Columns"
+        },
+        {
+        "value": "2",
+        "label": "2  Columns"
+        }
+        ]
       }
     ],
     "presets": [
