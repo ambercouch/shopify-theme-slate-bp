@@ -19,8 +19,12 @@
 
   {% section 'header' %}
 
-  <main role="main" id="MainContent">
+  <main role="main" id="MainContent" class="site__main">
+    <div class="main">
+      <div class="main__content">
     {{ content_for_layout }}
+      </div>
+    </div>
   </main>
        {% section 'footer' %}
   </div>
