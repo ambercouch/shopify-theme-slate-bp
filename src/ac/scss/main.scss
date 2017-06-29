@@ -1,4 +1,9 @@
 /*
+ FUCTIONS
+ */
+
+@import "functions";
+/*
  SETTINGS
  */
 @import "var/settings.container";
@@ -64,7 +69,16 @@
 @import "modules/hero";
 @import "modules/featured-collection";
 @import "modules/collection-list";
+@import "modules/content-list";
+@import "modules/banner-list";
 @import "modules/product-thumb";
 @import "modules/collection-thumb";
+@import "modules/page-thumb";
+@import "modules/banner";
+@import "modules/footer";
+@import "modules/info-links";
+@import "modules/social-links";
+@import "modules/address";
+@import "modules/icon";
 
 

@@ -18,14 +18,41 @@
 
 .site__{
     &band{
-        margin-bottom:$inuit-global-spacing-unit-large;
-        @include mq($from : desktop){
-            margin-bottom:$inuit-global-spacing-unit-huge;
+        margin-bottom:$inuit-global-spacing-unit;
+        padding-top:$inuit-global-spacing-unit;
+        @include mq($from : wide){
+            margin-bottom:$inuit-global-spacing-unit-large;
+            padding-top:$inuit-global-spacing-unit-large;
         }
     }
     &masthead{
     }
     &hero{
        @extend .site__band;
+        padding-top: 0;
+    }
+    &featured-collection{
+        @extend .site__band;
+    }
+    &content-list{
+        @extend .site__band;
+        background: $brand-col-2;
+        padding-top: 0;
+        margin-bottom: 0;
+    }
+    &banner-list{
+        @extend .site__band;
+        background: $brand-col-3;
+    }
+    &footer{
+        @extend .site__band;
+        background: $brand-col-2;
+        margin-bottom: 0;
+    }
+}
+
+[class*=site__]:last-child{
+    .main &{
+        margin-bottom: 0 !important;
     }
 }

@@ -1,12 +1,64 @@
 .nav-main{
   @extend .o-wrapper;
+  margin-bottom: $inuit-global-spacing-unit-small;
 }
 
 .nav-main__{
   &list{
     @extend .o-list-bare;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
   }
   &item{
-    @extend .o-list-inline__item;
+    margin: 0 $inuit-global-spacing-unit-tiny / 2;
+    &:hover{
+      position: relative;
+    }
+    &:hover:before{
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: $brand-col-1;
+      position: absolute;
+      top: 0;
+      left:0;
+      transform: skew(10deg);
+    }
+  }
+  &link{
+    @include inuit-font-size($inuit-font-size-h5, 1);
+    padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
+    display: block;
+    text-decoration: none;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    .nav-main__item:hover &{
+      color: #fff;
+      position: relative;
+    }
+  }
+}
+
+.is-current{
+  &.nav-main__item{
+    position: relative;
+  }
+  &.nav-main__item:before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: $brand-col-1;
+    position: absolute;
+    top: 0;
+    left:0;
+    transform: skew(10deg);
+  }
+  .nav-main__link{
+    color: #fff;
+    position: relative;
   }
 }
