@@ -1,0 +1,13 @@
+<li class="nav-main__item nav-main__item--has-submenu{% if link.active %}  is-current{% endif %}">
+  <a href="{{ link.url }}" class="nav-main__link">
+    {{ link.title }}
+    {% include 'icon-arrow-down' %}
+  </a>
+  <ul class="nav-main__submenu">
+    {% for childlink in menus[child_list_handle].links %}
+      <li class="nav-main__item--sub {% if childlink.active %}nav-main__item--active{% endif %} ">
+        <a href="{{ childlink.url }}" class="nav-main__link--sub">{{ childlink.title | escape }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</li>

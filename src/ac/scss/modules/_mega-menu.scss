@@ -1,0 +1,87 @@
+.mega-menu{
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mega-menu__{
+  &menu{
+    margin-right: $inuit-global-spacing-unit;
+  }
+  &list{
+    @extend .o-list-bare;
+  }
+  &item{
+    margin-bottom: $inuit-global-spacing-unit-tiny;
+  }
+  &link{
+    color: white;
+    text-decoration: none;
+    padding: 0 $inuit-global-spacing-unit-tiny;
+    display: block;
+    .mega-menu__item:hover &{
+      color: $brand-col-1;
+      position: relative;
+    }
+    &:before{
+      .mega-menu__item:hover &{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background:  #fff;
+        position: absolute;
+        top: 0;
+        left:0;
+        transform: skew(10deg);
+      }
+    }
+  }
+  &link-label{
+    .mega-menu__item:hover &, .mega-menu__all-link:hover &{
+      color: $brand-col-1;
+      position: relative;
+    }
+  }
+  &all-link{
+    width: 100%;
+    margin-bottom: $inuit-global-spacing-unit-small;
+  }
+  &menu-title{
+    margin-bottom: $inuit-global-spacing-unit-small;
+    border-bottom: solid 1px;
+    font-weight:500;
+    @include inuit-font-size($inuit-font-size-h5  )
+  }
+}
+
+.mega-menu__link--{
+  &all{
+    @include inuit-font-size($inuit-font-size-h3);
+    display: inline-block !important;
+    .mega-menu__all-link:hover &{
+      color: $brand-col-1;
+      position: relative;
+    }
+    &:before{
+      .mega-menu__all-link:hover &{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background:  #fff;
+        position: absolute;
+        top: 0;
+        left:0;
+        transform: skew(10deg);
+      }
+    }
+  }
+}
+
+[class*=mega-menu__menu--]{
+  @extend .mega-menu__menu;
+}
+[class*=mega-menu__link--]{
+  @extend .mega-menu__link;
+}

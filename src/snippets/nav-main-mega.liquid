@@ -1,0 +1,32 @@
+{% assign menus = 'style,plating,colour,decoration' | split: ',' %}
+<li class="nav-main__item nav-main__item--has-submenu{% if link.active %}  is-current{% endif %}">
+  <a href="{{ link.url }}" class="nav-main__link">
+    <span class="nav-main__link-label">{{ link.title }}</span>
+    <span class="nav-main__arrow" {% include 'icon-arrow-down' %}</span>
+  </a>
+  <div class="nav-main__mega">
+    <div class="mega-menu">
+      <div class="mega-menu__all-link">
+        <a class="mega-menu__link--all" href="{{ link.url }}"><span class="mega-menu__link-label">All {{ link.title }}</span></a>
+      </div>
+    {% for list in menus %}
+      {%  assign megaListHandle = child_list_handle | append : '-' | append : list %}
+      {%  assign linksHandle = linklists[megaListHandle].handle   %}
+      <!-- mega list handle {{ megaListHandle }}   -->
+      <!-- link {{ links }}   -->
+      {% if linksHandle != '' %}
+      <div class="mega-menu__menu--{{ list }}">
+        <h6 class="mega-menu__menu-title">{{ list | append : "s" | upcase }}</h6>
+        <ul class="mega-menu__list">
+        {%  for link in linklists[megaListHandle].links %}
+          <li class="mega-menu__item">
+            <a class="mega-menu__link" href="{{ link.url }}"><span class="mega-menu__link-label">{{ link.title }}</span></a>
+          </li>
+        {% endfor %}
+        </ul>
+      </div><!-- /.mega-menu -->
+      {% endif %}
+    {% endfor %}
+    </div><!-- /.nav-main__mega -->
+  </div>
+</li>

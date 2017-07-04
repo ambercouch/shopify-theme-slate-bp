@@ -2,24 +2,25 @@
   <ul class="nav-main__list">
     {% for link in linklists[section.settings.main_linklist].links %}
       {%- assign child_list_handle = link.title | handleize -%}
-      {% if menus[child_list_handle].links != blank %}
-        <li class="nav-main__item nav-main__item--has-submenu{% if link.active %}  is-current{% endif %}">
-          <a href="{{ link.url }}" class="nav-main__link">
-            {{ link.title }}
-            {% include 'icon-arrow-down' %}
-          </a>
-          <ul class="nav-main__submenu">
-            {% for childlink in menus[child_list_handle].links %}
-              <li class="nav-main__item--sub {% if childlink.active %}nav-main__item--active{% endif %} ">
-                <a href="{{ childlink.url }}" class="nav-main__link--sub">{{ childlink.title | escape }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </li>
+      {%- assign mega = '' -%}
+      {%- capture  megaLinks -%}
+      {%- for list in linklists -%}
+        {%- if list.handle contains child_list_handle -%}
+         {{ list.handle }},
+        {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- assign megaLinks = megaLinks | split: ','  | size -%}
+      <!-- megaLinks {{megaLinks | size }} -->
+      {% if megaLinks  > 0 %}
+        <!-- inc megaLinks -->
+        {% include "nav-main-mega" %}
+        {%  elsif menus[child_list_handle].links != blank %}
+        <!-- inc drop -->
+        {% include "nav-main-dropdown" %}
       {% else %}
-        <li class="nav-main__item {% if link.active %} is-current{% endif %}">
-          <a href="{{ link.url }}" class="nav-main__link">{{ link.title }}</a>
-        </li>
+        <!-- inc  -->
+        {% include "nav-main-single" %}
       {% endif %}
     {% endfor %}
   </ul>
