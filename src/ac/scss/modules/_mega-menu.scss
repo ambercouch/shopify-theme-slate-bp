@@ -66,6 +66,9 @@
     }
     &.is-size-2{
       width: 40%;
+      @include mq($until : desktop){
+        display: none;
+      }
     }
   }
 }

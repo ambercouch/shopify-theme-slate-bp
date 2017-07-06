@@ -1,6 +1,9 @@
 .nav-main{
   @extend .o-wrapper;
   margin-bottom: $inuit-global-spacing-unit-small;
+  @include mq($until : tablet){
+    display: none;
+  }
 }
 
 .nav-main__{
