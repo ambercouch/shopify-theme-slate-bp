@@ -1,0 +1,35 @@
+{%-  assign featureListHandle = child_list_handle | append : '-' | append : 'feature' -%}
+{%-  assign featureLinks = linklists[featureListHandle]   -%}
+{%-  assign featureHandle = featureLinks.handle -%}
+{%-  assign featureSize = featureLinks.links | size -%}
+<!-- feature list handle {{ featureHandle }}   -->
+<!-- link {{ links }}   -->
+<!-- size {{ featureSize }}   -->
+{% if featureHandle != '' %}
+  <div class="mega-menu__menu-feature is-size-{{ featureSize }}">
+  {% for link in linklists[featureListHandle].links %}
+    {%   assign feature = link.object %}
+    {%   assign featureType = link.type %}
+    {% case featureType %}
+    {% when 'page_link' %}
+    <div class="menu-feature">
+      <h5 class="menu-feature__heading">{{ feature.title }}</h5>
+      <div class="menu-feature__content" >
+        {{ feature.content }}
+      </div>
+    </div>
+    {% when 'collection_link' %}
+    <div class="menu-feature">
+      <h5 class="menu-feature__heading">{{ feature.title }}</h5>
+      <div class="menu-feature__content" >
+        <a class="{{ feature.url }}">
+          <img src="{{ feature.image | img_url: 'large' }}" alt="{{ feature.title }}" />
+        </a>
+      </div>
+    </div>
+    {% else %}
+
+    {% endcase %}
+  {% endfor %}
+  </div> <!-- /.mega-menu__menu-feature -->
+{% endif %}

@@ -1,9 +1,15 @@
 <div class="site-control">
 
   <ul class="site-control__list">
+    <li class="site-control__item--menu">
+      <a href="#" class="site-control__link">Menu
+      {% include 'icon-hamburger' %}
+      </a>
+    </li>
     <li class="site-control__item">
-      <a class="site-control__link">Search</a>
+      <a href="#" class="site-control__link">Search
       {% include 'icon-search' %}
+      </a>
     </li>
 {% if shop.customer_accounts_enabled %}
 

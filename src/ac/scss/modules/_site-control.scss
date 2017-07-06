@@ -36,3 +36,19 @@
     text-decoration: none;
   }
 }
+
+/*
+  BEM [class*=] @extends
+ */
+
+[class*='site-control__item--']{
+  @extend .site-control__item;
+}
+
+.site-control__item--{
+  &menu{
+    @include mq($from : desktop ){
+      display: none;
+    }
+  }
+}

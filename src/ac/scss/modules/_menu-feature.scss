@@ -1,0 +1,20 @@
+.menu-feature{
+  color: #fff;
+}
+
+.menu-feature__{
+
+  &heading{
+    text-align: center;
+    margin-bottom: 0;
+    font-weight:500;
+    text-transform: uppercase;
+  }
+}
+
+.menu-feature{
+  .is-size-2 &{
+    padding: $inuit-global-spacing-unit-tiny;
+    width: 50%;
+  }
+}

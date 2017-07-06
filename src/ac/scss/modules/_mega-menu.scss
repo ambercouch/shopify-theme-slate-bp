@@ -10,9 +10,13 @@
   }
   &list{
     @extend .o-list-bare;
+    margin-bottom: 0;
   }
   &item{
     margin-bottom: $inuit-global-spacing-unit-tiny;
+    &:last-child{
+      margin-bottom:0;
+    }
   }
   &link{
     color: white;
@@ -52,6 +56,17 @@
     border-bottom: solid 1px;
     font-weight:500;
     @include inuit-font-size($inuit-font-size-h5  )
+  }
+  &menu-feature{
+   margin-left: auto;
+    display: flex;
+    justify-content: center;N
+    &.is-size-1{
+      width: 20%;
+    }
+    &.is-size-2{
+      width: 40%;
+    }
   }
 }
 
