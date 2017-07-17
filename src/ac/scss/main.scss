@@ -53,6 +53,8 @@
  */
 @import "accessibility";
 @import "placeholders/off-page";
+@import "placeholders/h";
+
 
 
 /*
@@ -67,6 +69,7 @@
 @import "modules/mega-menu";
 @import "modules/menu-feature";
 @import "modules/hero";
+@import "modules/collection";
 @import "modules/featured-collection";
 @import "modules/collection-list";
 @import "modules/content-list";
@@ -80,5 +83,6 @@
 @import "modules/social-links";
 @import "modules/address";
 @import "modules/icon";
+@import "modules/pagination";
 
 

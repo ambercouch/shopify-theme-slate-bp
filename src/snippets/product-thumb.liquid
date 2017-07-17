@@ -8,6 +8,7 @@
     <a class="product-thumb__link--heading" href="{{ product.url | within: collection }}">
       <h5 class="product-thumb__heading">{{ product.title }}</h5>
     </a>
+    {% if customer %}
     {% if product.compare_at_price > product.price %}
 
       {% if product.price_varies %}
@@ -28,6 +29,9 @@
       {% endif %}
 
     {% endif %}
+
+    {% endif %}
+
   </div>
 
 </div>

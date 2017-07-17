@@ -1,0 +1,22 @@
+.pagination{
+  display: flex;
+  justify-content: center;
+  padding: $inuit-global-spacing-unit 0;
+}
+
+.pagination{
+  > * {
+    padding: $inuit-global-spacing-unit-tiny;
+
+  }
+  .next{
+    margin-left: $inuit-global-spacing-unit-tiny;
+
+  }
+  .prev{
+    margin-right: $inuit-global-spacing-unit-tiny;
+  }
+
+
+}
+

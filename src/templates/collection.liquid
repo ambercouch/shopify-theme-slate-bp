@@ -1,6 +1,13 @@
-{% paginate collection.products by 12 %}
-  <header role="banner">
-    <h1>{{ collection.title }}</h1>
+{% paginate collection.products by 8 %}
+<div class="collection">
+  <div class="collection__sidebar">
+    <div class="collection__filters">
+      {% include 'filter-menu' %}
+    </div>
+  </div>
+  <div class="collection__main">
+  <header class="collection__header" role="banner">
+    <h1 class="collection__heading">{{ collection.title }}</h1>
     {% if collection.description != blank %}
       <div class="rte">
         {{ collection.description }}
@@ -8,7 +15,7 @@
     {% endif %}
 
     {% if collection.all_tags.size > 0 %}
-      <ul>
+      <ul >
         {% for tag in collection.all_tags %}
           {% if current_tags contains tag %}
             <li class="active">
@@ -24,48 +31,12 @@
     {% endif %}
   </header>
 
-  <div>
+  <div class="collection__content">
+    <ul class="collection__list">
     {% for product in collection.products %}
-      <div>
-        <a href="{{ product.url | within: collection }}">
-          <img src="{{ product.featured_image.src | img_url: '480x480' }}" alt="{{ product.featured_image.alt | escape }}">
-        </a>
-
-        <p>
-          <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-        </p>
-        <p>
-          {% if product.compare_at_price > product.price %}
-
-            {% if product.price_varies %}
-              {%- assign sale_price = product.price | money -%}
-              {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-            {% else %}
-              {{ 'products.product.on_sale' | t }}
-              {{ product.price | money }}
-            {% endif %}
-
-          {% else %}
-
-            {% if product.price_varies %}
-              {%- assign price = product.price | money -%}
-              {{ 'products.product.from_text_html' | t: price: price }}
-            {% else %}
-              {{ product.price | money }}
-            {% endif %}
-
-          {% endif %}
-
-          {% if product.compare_at_price > product.price %}
-            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-            <s>{{ product.compare_at_price | money }}</s>
-          {% endif %}
-
-          {% unless product.available %}
-            {{ 'products.product.sold_out' | t }}
-          {% endunless %}
-        </p>
-      </div>
+      <li class="collection__item--layout4">
+        {% include 'product-thumb' %}
+      </li>
 
     {% else %}
       {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
@@ -88,9 +59,14 @@
       {% endif %}
 
     {% endfor %}
+    </ul>
   </div>
 
+  <div class="collection__footer">
   {% if paginate.pages > 1 %}
     {% include 'pagination' %}
   {% endif %}
+  </div>
+  </div>
+</div>
 {% endpaginate %}
