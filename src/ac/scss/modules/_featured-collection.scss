@@ -28,10 +28,19 @@
 
 
 .featured-collection__item--{
-  &layout2{
-    width: 50%;
+  &layout2 {
+    @include mq($from: tablet) {
+      width: 50%;
+    }
   }
   &layout4{
-    width: 25%;
+    @include mq($from : desktop){
+      width: 25%;
+    }
+
+    @include mq($from : tablet, $until : desktop){
+      width: 50%;
+    }
+
   }
 }

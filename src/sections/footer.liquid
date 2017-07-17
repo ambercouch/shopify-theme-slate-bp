@@ -1,38 +1,41 @@
 <footer class="site__footer">
   <div class="footer">
-<div class="footer__footer-content">
+    <div class="footer__footer-content">
 
-    <div class="footer__block">
-      <div class="address">
-      <h4 class="address__heading">Contact Us</h4>
-      {% include "address" %}
-      </div>
-    </div>
-
-    <div class="footer__block">
-      <div class="info-links">
-        <h4 class="info-links__heading">Info</h4>
-        <div class="info-links__content">
-        {% include "info-link-list" %}
+      <div class="footer__block">
+        <div class="address">
+        <h4 class="address__heading">Contact Us</h4>
+        {% include "address" %}
         </div>
       </div>
-    </div>
-    <div class="footer__block">
-      <div class="social-links">
-        <h4 class="social-links__heading">Follow Us</h4>
-        <div class="social-links__content">
-          {% include "social-links" %}
-          {% include "payment-icon-list" %}
+
+      <div class="footer__block">
+        <div class="info-links">
+          <h4 class="info-links__heading">Info</h4>
+          <div class="info-links__content">
+          {% include "info-link-list" %}
+          </div>
         </div>
       </div>
+
+      <div class="footer__block">
+        <div class="social-links">
+          <h4 class="social-links__heading">Follow Us</h4>
+          <div class="social-links__content">
+            {% include "social-links" %}
+            {% include "payment-icon-list" %}
+          </div>
+        </div>
+      </div>
+
     </div>
 
-</div>
-  <div class="footer__site-info">
-    <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}</small><br>
-    <small>{{ shop.address.company }}</small><br>
-    <small>Website design and development <a href="//ambercouch.co.uk">AmberCouch</a></small>
-  </div>
+    <div class="footer__site-info">
+      <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}</small><br>
+      <small>{{ shop.address.company }}</small><br>
+      <small>Website design and development <a href="//ambercouch.co.uk">AmberCouch</a></small>
+    </div>
+
   </div>
 </footer>
 

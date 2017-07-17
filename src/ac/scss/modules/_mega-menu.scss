@@ -2,6 +2,9 @@
   color: white;
   display: flex;
   flex-wrap: wrap;
+  @include mq($until : desktop){
+    display: none;
+  }
 }
 
 .mega-menu__{

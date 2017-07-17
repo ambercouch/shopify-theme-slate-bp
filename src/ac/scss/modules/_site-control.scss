@@ -15,13 +15,28 @@
   &item{
     @extend .o-list-inline__item;
     margin-left: $inuit-global-spacing-unit-small;
+    &:first-child{
+      margin-left:0;
+    }
+
+
   }
   &link{
     text-decoration: none;
 
+    @include mq($until : tablet){
+      flex-direction: column-reverse;
+      align-items: center;
+      display: flex;
+    }
   }
   &search{
     &[data-state=off]{
+      display: none;
+    }
+  }
+  &cart-count{
+    @include mq($until : tablet){
       display: none;
     }
   }
@@ -47,8 +62,16 @@
 
 .site-control__item--{
   &menu{
-    @include mq($from : desktop ){
-      display: none;
+     @include mq($from : desktop ){
+       display: none;
+     }
+   }
+  &customer{
+    @extend .site-control__item;
+    @include mq($until : tablet ){
+      display: inline-flex;
+      flex-direction: column-reverse;
+      align-items: center;
     }
   }
 }

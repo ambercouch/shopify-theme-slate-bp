@@ -12,6 +12,10 @@
     color: #fff;
     display: flex;
     justify-content: space-between;
+    &:after{
+      display: none !important;
+
+    }
   }
   &block{
     @extend .u-1-4;

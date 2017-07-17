@@ -29,7 +29,7 @@
   {% include 'social-meta-tags' %}
 <!-- CSS FILES LAYOUT -->
 {{ 'ac_main.css' | asset_url | stylesheet_tag }}
-  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+{{ 'theme.scss.css' | asset_url | stylesheet_tag }}
 
 <script>
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
@@ -54,3 +54,9 @@
 
 <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
 <!--[if lt IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+
+<!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'ac.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+<!--[if lt IE 9]><script src="{{ 'ac.js' | asset_url }}" ></script><![endif]-->
+
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>

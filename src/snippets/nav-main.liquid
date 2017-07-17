@@ -1,4 +1,10 @@
-<nav role="navigation" class="nav-main">
+<nav id="primaryNavigation" role="navigation" class="nav-main" data-state="off">
+  <div  class="nav-main__header">
+    <span id="menuButtonClose" class="nav-main__close" data-state="off">
+    {% include 'icon-close' %}
+  </span>
+  </div>
+
   <ul class="nav-main__list">
     {% for link in linklists[section.settings.main_linklist].links %}
       {%- assign child_list_handle = link.title | handleize -%}

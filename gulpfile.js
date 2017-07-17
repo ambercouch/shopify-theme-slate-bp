@@ -20,10 +20,10 @@ var watch = require('gulp-watch');
  SOURCE FILES
  */
 var jsScripts;
-var jsPath = 'assets/js/'
+var jsPath = 'src/ac/js/'
 var jsVendorPath = 'assets/vendor/'
 var jsCustomScripts = [
-    'ac_craft.js',
+    'ac_shopify.js',
     // 'custom.js',
 ];
 var jsVendorScripts = [
@@ -61,10 +61,10 @@ gulp.task('log', function () {
 gulp.task('scripts', function (cb) {
     pump([
             gulp.src(jsScripts),
-            concat('main.js'),
+            concat('ac.js'),
             // browserify(),
             // uglify(),
-            gulp.dest('assets/js/')
+            gulp.dest('src/assets/')
         ],
         cb
     );
@@ -120,6 +120,7 @@ gulp.task('svgstore', function () {
 gulp.task('stream', function () {
     // Endless stream mode
     gulp.watch('src/ac/scss/**/*.scss', ['sass']);
+    gulp.watch('src/ac/js/**/*.js', ['scripts']);
 });
 
 gulp.task('callback', function () {
