@@ -30,8 +30,6 @@ ACSHOPIFY = {
             //     // Check https://github.com/flesler/jquery.scrollTo for more customizability
             //     $(window).stop(true).scrollTo(this.hash, {duration:1000, interrupt:true});
             // });
-
-
             //add js class
             $('body').addClass('js');
 
@@ -39,6 +37,17 @@ ACSHOPIFY = {
             var showButton = $('#menuButtonOpen, #menuButtonClose');
             var container = document.getElementById('primaryNavigation');
             ACSHOPIFY.ac_fn.open(container, showButton);
+
+            $(function(){
+                $('.filter-menu h4').on('click', function(e){
+                    $(this).closest('.filter-group').not('.has_group_selected, .refine-header').toggleClass('expanded').find('ul,.filter-clear').toggle('fast');
+                    e.preventDefault();
+                });
+
+                /* Expand first non-selected group on page load */
+                $('.filter-group').not('.has_group_selected, .refine-header').first().addClass('expanded').find('ul,.filter-clear').slideDown('fast');
+            });
+
 
 
 

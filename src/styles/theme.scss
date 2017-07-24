@@ -32,8 +32,8 @@
 @import url('modules/gift-card-template.scss');
 
 .filter-group .selected a {
-  font-weight: bold;
-}
+   font-weight: bold;
+ }
 
 .filter-group {
   position: relative;
@@ -68,7 +68,7 @@
 }
 
 .filter-group h4 {
-  margin-top: 20px;
+  margin-top: 0;
   margin-bottom: 10px;
   font-size: 14px;
   border-bottom: 1px solid #DDD;
@@ -136,4 +136,40 @@ i.check-icon {
 
 .filter-menu {
   margin-bottom: 20px;
+}
+
+//Filter menu Accordination Headers
+
+.filter-menu .filter-group ul, .filter-menu .filter-group .filter-clear {
+  display:none;
+}
+
+.filter-menu .has_group_selected ul  {
+  display:block;
+}
+
+.filter-menu .has_group_selected .filter-clear, .filter-menu .refine-header .filter-clear {
+  display: inline;
+}
+
+.filter-group h4 {
+  cursor: pointer;
+}
+
+.filter-group h4:after {
+  content: "\002B ";
+  font-weight: 900;
+  margin-right: 20px;
+  font-size: 22px;
+  right: 0;
+  top: -5px;
+  position: absolute;
+}
+
+.filter-group.expanded h4:after {
+  content: "\2212 ";
+}
+
+.has_group_selected h4:after, .refine-header h4:after {
+  content: none;
 }
