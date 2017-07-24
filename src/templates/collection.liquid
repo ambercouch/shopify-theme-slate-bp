@@ -1,5 +1,6 @@
 {% paginate collection.products by 8 %}
 <div class="collection">
+  <div class="collection__flex">
   <div class="collection__sidebar">
     <div class="collection__filters">
       {% include 'filter-menu' %}
@@ -12,22 +13,6 @@
       <div class="rte">
         {{ collection.description }}
       </div>
-    {% endif %}
-
-    {% if collection.all_tags.size > 0 %}
-      <ul >
-        {% for tag in collection.all_tags %}
-          {% if current_tags contains tag %}
-            <li class="active">
-              {{ tag | link_to_remove_tag: tag }}
-            </li>
-          {% else %}
-            <li>
-              {{ tag | link_to_tag: tag }}
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
     {% endif %}
   </header>
 
@@ -68,5 +53,6 @@
   {% endif %}
   </div>
   </div>
+</div>
 </div>
 {% endpaginate %}

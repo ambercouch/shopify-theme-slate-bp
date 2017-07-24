@@ -30,3 +30,110 @@
 /*================ MODULES ================*/
 @import url('modules/site-header.scss');
 @import url('modules/gift-card-template.scss');
+
+.filter-group .selected a {
+  font-weight: bold;
+}
+
+.filter-group {
+  position: relative;
+}
+
+.filter-group .filter-clear {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  border-radius: 10px;
+  padding: 0 5px;
+  background-color: #EEE;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.filter-group .filter-clear:hover {
+  background-color: #DDD;
+}
+
+.filter-group .collection-container
+{
+  overflow: hidden;
+  position: relative;
+}
+
+.filter-group .collection-count
+{
+  position: absolute;
+  right: 0px;
+}
+
+.filter-group h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 5px;
+  padding-right: 45px;
+}
+
+.filter-group ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.filter-group ul li {
+  display: block;
+}
+
+.filter-group li a {
+  display: inline-block;
+  margin-left: 6px;
+  text-decoration: none;
+  padding: 0;
+  font-size: 13px;
+  margin-right: 20px;
+}
+
+.sort-selector {
+  margin: 0 10px;
+}
+
+i.check-icon {
+  background-image: url({{ 'checkbox-black-retina.png' | asset_url }});
+  background-position: 0px -176px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  line-height: 16px;
+  margin-top: 0px;
+  vertical-align: text-top;
+  width: 16px;
+}
+
+.selected i.check-icon {
+  background-position: 0px -144px;
+}
+
+
+@media
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {
+  i.check-icon {
+    /* Translate the @2x sprite's dimensions back to 1x */
+    background-size: 16px 96px;
+    background-position: 0px -30px;
+  }
+
+  .selected i.check-icon {
+    background-position: 0px 0px;
+  }
+}
+
+.filter-menu .has_group_selected {
+  display: inherit;
+}
+
+.filter-menu {
+  margin-bottom: 20px;
+}
