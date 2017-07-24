@@ -5,13 +5,20 @@
 .featured-collection__{
   &header{
     text-align: center;
-    width: 50%;
     border-bottom: solid 2px;
     margin:0 auto $inuit-global-spacing-unit;
+    @include mq($from: desktop){
+      width: 50%;
+    }
+
   }
   &heading{
     text-transform: uppercase;
     font-weight: 500;
+    @include mq($until: tablet){
+      @include inuit-font-size($inuit-font-size-h5)
+      margin-bottom: 0;
+    }
   }
   &list{
     @extend .o-list-bare;

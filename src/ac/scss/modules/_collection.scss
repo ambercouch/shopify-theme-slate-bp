@@ -15,9 +15,18 @@
   }
   &flex{
     display: flex;
+    flex-wrap: wrap;
+    @include mq($from : desktop){
+      flex-wrap: nowrap;
+    }
   }
   &sidebar{
-    width: 20%;
+    width: 100%;
+
+    @include mq($from : desktop){
+      width: 20%;
+      padding-top: $inuit-global-spacing-unit-large ;
+    }
   }
   &main{
     flex-grow:1;
@@ -52,4 +61,14 @@
     }
 
   }
+}
+
+//Hide single filter Groups
+
+.filter-group.has_single_item {
+  display: none !important;
+}
+
+.filter-group.has_group_selected.has_single_item {
+  display: inherit !important;
 }

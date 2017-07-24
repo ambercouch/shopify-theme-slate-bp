@@ -1,7 +1,15 @@
 .collection-thumb{
   text-align: center;
-  padding: 0 $inuit-global-spacing-unit $inuit-global-spacing-unit;
-  margin-bottom: $inuit-global-spacing-unit;
+  padding: 0 $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
+  margin-bottom: 0;
+
+  @include mq($from : tablet){
+    padding: 0 $inuit-global-spacing-unit $inuit-global-spacing-unit;
+    margin-bottom: $inuit-global-spacing-unit;
+  }
+  @include mq($until : mobile){
+    padding: 0 !important;
+  }
 }
 
 .collection-thumb__{
@@ -20,15 +28,41 @@
   &heading{
     font-weight: 500;
     margin-bottom: 0;
-    @include inuit-font-size($font-size-kilo, 1);
+    text-transform: uppercase;
     padding:$inuit-global-spacing-unit-tiny ;
-    padding-right: $inuit-global-spacing-unit ;
+    padding-right: $inuit-global-spacing-unit-small ;
     padding-left: $inuit-global-spacing-unit-small ;
     text-align: left;
     color: #fff;
     background: $brand-col-1;
-    position: absolute;
-    top: 25%;
+    @include inuit-font-size($inuit-font-size-h6, 1);
+
+
+
+    @include mq($from : desktop){
+       @include inuit-font-size($font-size-kilo, 1);
+       padding-right: $inuit-global-spacing-unit ;
+      padding-left: $inuit-global-spacing-unit ;
+      top: 25%;
+      position: absolute;
+     }
+
+    @include mq($from : tablet, $until : desktop){
+      @include inuit-font-size($inuit-font-size-h2, 1);
+    }
+
+    @include mq($until : mobile){
+      padding: $inuit-global-spacing-unit-tiny 0 !important;
+      text-align: center;
+
+    }
+    @include mq($from : mobile, $until : tablet){
+      padding-right: $inuit-global-spacing-unit-tiny ;
+      padding-left: $inuit-global-spacing-unit-tiny ;
+      @include inuit-font-size($inuit-font-size-h5, 1);
+      white-space: nowrap;
+    }
+
   }
 }
 
@@ -58,29 +92,38 @@
   }
 
   .content-list &{
-    padding-top: $inuit-global-spacing-unit;
-    margin-top:$inuit-global-spacing-unit;
+    @include mq($from : desktop){
+      padding-top: $inuit-global-spacing-unit;
+      margin-top:$inuit-global-spacing-unit;
+    }
+
   }
 }
 
 .collection-thumb__heading{
 
   .collection-list__item:nth-child(even) &{
-    right: 0;
-    top:75%;
-    text-align: right;
-    padding:$inuit-global-spacing-unit-tiny ;
-    padding-right: $inuit-global-spacing-unit-small;
-    padding-left: $inuit-global-spacing-unit;
+
+
+    @include mq($from : tablet){
+      top:75%;
+      right: 0;
+      text-align: right;
+      padding:$inuit-global-spacing-unit-tiny ;
+      padding-right: $inuit-global-spacing-unit-small;
+      padding-left: $inuit-global-spacing-unit;
+    }
   }
 
-  .content-list__item &{
-    right: 0;
-    top:75%;
-    text-align: center;
-    padding:$inuit-global-spacing-unit-tiny ;
-    padding-right: $inuit-global-spacing-unit-tiny;
-    padding-left: $inuit-global-spacing-unit-tiny;
-    width: 100%;
-  }
+  //.content-list__item &{
+  //  right: 0;
+  //  text-align: center;
+  //  padding:$inuit-global-spacing-unit-tiny ;
+  //  padding-right: $inuit-global-spacing-unit-tiny;
+  //  padding-left: $inuit-global-spacing-unit-tiny;
+  //  width: 100%;
+  //  @include media-query($from : tablet){
+  //    top:75%;
+  //  }
+  //}
 }
