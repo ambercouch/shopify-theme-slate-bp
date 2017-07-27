@@ -38,6 +38,11 @@ ACSHOPIFY = {
             var container = document.getElementById('primaryNavigation');
             ACSHOPIFY.ac_fn.open(container, showButton);
 
+            //filter button
+            var showButton = $('#filterButtonOpen, #filterButtonClose');
+            var container = document.getElementById('filterContainer');
+            ACSHOPIFY.ac_fn.open(container, showButton);
+
             $(function(){
                 $('.filter-menu h4').on('click', function(e){
                     $(this).closest('.filter-group').not('.has_group_selected, .refine-header').toggleClass('expanded').find('ul,.filter-clear').toggle('fast');

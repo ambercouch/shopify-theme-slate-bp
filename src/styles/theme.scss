@@ -37,6 +37,7 @@
 
 .filter-group {
   position: relative;
+  padding-bottom: 24px;
 }
 
 .filter-group .filter-clear {
@@ -154,6 +155,9 @@ i.check-icon {
 
 .filter-group h4 {
   cursor: pointer;
+}
+.filter-menu__title--remove {
+  cursor: default !important;
 }
 
 .filter-group h4:after {

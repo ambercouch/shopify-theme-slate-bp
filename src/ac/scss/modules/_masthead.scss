@@ -8,7 +8,7 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  padding-top:$inuit-global-spacing-unit;
+  margin-top:$inuit-global-spacing-unit;
 
   @include mq($from : desktop){
     flex-direction: row;
@@ -30,6 +30,7 @@
     @include mq($from : desktop){
       position: absolute;
       right: $inuit-global-spacing-unit;
+      top: 0;
 
     }
   }

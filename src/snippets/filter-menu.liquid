@@ -10,7 +10,8 @@
 </style>
 <div class="filter-menu filter-selected-{{ collection.handle }}{% for tag in current_tags %} filter-selected-{{ tag | handleize }}{% endfor %}">
   <div class="filter-group refine-header">
-    <h4>{{ pt_refine_text }}</h4>
+    {% comment %}<h4>{{ pt_refine_text }}</h4>{% endcomment %}
+    <h4 class="filter-menu__title--remove">Remove Filters</h4>
     {%- unless collection.handle == 'all' or collection.handle == nil and current_tags == nil -%}
     <a class="filter-clear" href="/collections/all">{{ pt_view_all_text }}</a>
     {%- endunless -%}

@@ -1,0 +1,46 @@
+.filter-menu{
+
+
+}
+
+.filter-menu__{
+  &title{
+    position: relative;
+    cursor: pointer;
+  }
+  &container{
+    @include mq($until : desktop) {
+      display: none;
+      &[data-state=on]{
+        display: block;
+      }
+    }
+  }
+
+
+}
+
+.filter-menu__title{
+  &:after {
+    cursor: pointer;
+    font-weight: 900;
+    margin-right: 20px;
+    font-size: 44px;
+    right: 0;
+    top: 50%;
+    position: absolute;
+    line-height: 0;
+    @include mq($from: desktop){
+      display: none;
+    }
+  }
+    &[data-state=on]:after{
+      content: "\2212 ";
+    }
+  &[data-state=off]:after{
+    content: "\002B ";
+  }
+}
+
+
+

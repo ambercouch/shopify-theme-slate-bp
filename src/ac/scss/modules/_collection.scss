@@ -5,13 +5,20 @@
 .collection__{
   &header{
     text-align: center;
-    width: 50%;
     border-bottom: solid 2px;
     margin:0 auto $inuit-global-spacing-unit;
+    @include mq($from : tablet){
+      width: 50%;
+    }
   }
   &heading{
     text-transform: uppercase;
     font-weight: 500;
+    @include mq($until : tablet){
+      @include inuit-font-size($inuit-font-size-h3)
+
+    }
+
   }
   &flex{
     display: flex;
@@ -26,6 +33,7 @@
     @include mq($from : desktop){
       width: 20%;
       padding-top: $inuit-global-spacing-unit-large ;
+      margin-right:$inuit-global-spacing-unit;
     }
   }
   &main{
