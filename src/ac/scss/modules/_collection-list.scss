@@ -29,6 +29,9 @@
     flex-wrap: wrap;
   }
   &item{
-    width: 50%;
+    @include mq($from : mobile){
+      width: 50%;
+
+    }
   }
 }

@@ -2,7 +2,6 @@
   text-align: center;
   padding: 0 $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
   margin-bottom: 0;
-
   @include mq($from : tablet){
     padding: 0 $inuit-global-spacing-unit $inuit-global-spacing-unit;
     margin-bottom: $inuit-global-spacing-unit;
@@ -74,21 +73,31 @@
 .collection-thumb{
 
   .collection-list__item:nth-child(odd) &{
-    padding-left:0;
+    @include mq($from : tablet){
+      padding-left:0;
+    }
   }
   .collection-list__item:nth-child(even) &{
-    padding-right:0;
+    @include mq($from : tablet){
+      padding-right:0;
+    }
   }
 
   .content-list__item:nth-child(1) &{
-    padding-left:0;
+    @include mq($from : tablet){
+      padding-left:0;
+    }
   }
   .content-list__item:nth-child(2) &{
-    padding-left: $inuit-global-spacing-unit-small;
-    padding-right: $inuit-global-spacing-unit-small;
+    @include mq($from : tablet){
+      padding-left: $inuit-global-spacing-unit-small;
+      padding-right: $inuit-global-spacing-unit-small;
+    }
   }
   .content-list__item:nth-child(3) &{
-    padding-right:0;
+    @include mq($from : tablet){
+      padding-right:0;
+    }
   }
 
   .content-list &{

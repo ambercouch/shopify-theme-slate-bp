@@ -10,6 +10,9 @@
   }
   &list{
     @extend .o-list-inline;
+    @include mq($until : tablet){
+      text-align: center;
+    }
   }
   &item{
     @extend .o-list-inline__item;

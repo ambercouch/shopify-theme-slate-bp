@@ -10,15 +10,20 @@
   &footer-content{
     @extend .o-wrapper;
     color: #fff;
-    display: flex;
-    justify-content: space-between;
+
+    @include mq($from: tablet){
+      display: flex;
+      justify-content: space-between;
+    }
     &:after{
       display: none !important;
-
     }
   }
   &block{
-    @extend .u-1-4;
+    @extend .u-1-4---tablet;
+    @include mq($until: tablet){
+      margin-bottom: $inuit-global-spacing-unit;
+    }
   }
   &site-info{
     margin-top:$inuit-global-spacing-unit-large;
