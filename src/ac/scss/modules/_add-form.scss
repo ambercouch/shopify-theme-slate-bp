@@ -1,0 +1,87 @@
+.add-form{}
+
+.add-form__{
+  &form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+  }
+  &submit{
+    width: 100%;
+  }
+  &qty{
+    width: 100%;
+    padding: $inuit-global-spacing-unit-small;
+    background: $brand-col-2;
+    text-align: center;
+    line-height: 1;
+    @include mq($from : mobile){
+      width: 50%;
+    }
+    @include mq($from : desktop){
+      width: 25%;
+    }
+
+  }
+  &price-wrapper{
+    width: 100%;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    @include mq($from : mobile){
+       width: 50%;
+      padding: $inuit-global-spacing-unit-small;
+     }
+    @include mq($from : desktop){
+      width: 75%;
+    }
+
+  }
+  &price{
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 100%;
+    padding: $inuit-global-spacing-unit-small 0;
+
+    @include inuit-font-size($inuit-font-size-h1, 1);
+    background: $brand-col-3;
+    font-weight: bold;
+    @include mq($until : tablet){
+      @include inuit-font-size($inuit-font-size-h2, 1);
+    }
+    @include mq($from : mobile){
+      position: absolute;
+      transform: translate(0,-50%);
+      padding: $inuit-global-spacing-unit 0;
+    }
+
+
+  }
+  &qty-input{
+    border: solid 1px #000;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    text-align: center;
+  }
+  &submit-wrapper{
+    text-align: center;
+    padding: $inuit-global-spacing-unit-small 0;
+    width: 100%;
+  }
+  &submit-btn{
+    transition: background 0.3s ease;
+    width: 100%;
+    background:$brand-col-1;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    @include inuit-font-size($inuit-font-size-h2,1)
+    padding: $inuit-global-spacing-unit-small 0;
+    border: none;
+    &:hover{
+      background:$brand-col-4;
+    }
+  }
+
+}

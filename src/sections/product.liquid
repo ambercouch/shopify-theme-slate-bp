@@ -13,21 +13,20 @@
     <div class="product__flex">
       <div class="product__header">
         <h1 class="product__heading" >{{ product.title }}</h1>
-        <p>{{ product.variants[0].sku }}</p>
+        <span class="product__sku">{{ product.variants[0].sku }}</span>
       </div>
       <div class="product__product-gallery">
         {% include 'product-gallery' %}
       </div>
       <div class="product__product-info">
         <div class="product__add-form">
-          <div class="add-form">
               {% include 'add-form' %}
-          </div>
         </div>
         <div class="product__sales-description">
-          <div class="sales-description">
           {% include 'sales-description'%}
-          </div>
+        </div>
+        <div class="product__share-links">
+          {% include 'share-links'%}
         </div>
       </div>
     </div>

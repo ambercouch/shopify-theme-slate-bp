@@ -1,5 +1,5 @@
 <div class="product_gallery">
-  <img class="product_gallery_featured" src="{{ featured_image | img_url: '480x480' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+  <img class="product_gallery_featured" src="{{ featured_image | img_url: '700x700' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
   {% if product.images.size > 1 %}
     <ul class="product_gallery__list">
       {% for image in product.images %}
