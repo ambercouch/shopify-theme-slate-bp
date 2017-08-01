@@ -1,13 +1,13 @@
 {% unless product.variants.size == 1 and product.options.size == 1 and product.options.first == 'Title' and product.variants.first.title == 'Default Title' %}
     {% for option in product.options_with_values %}
-      <div class="selector-wrapper js">
+      <div class="selector-wrapper js variant">
         <label
-            {% if option.name == 'default' %}class="label-hidden"{% endif %}
+            class="{% if option.name == 'default' %}label-hidden{% endif %} variant__name"
             for="SingleOptionSelector-{{ forloop.index0 }}">
           {{ option.name }}
         </label>
 
-        <select
+        <select class="variant__input"
             id="SingleOptionSelector-{{ forloop.index0 }}"
             data-single-option-selector
             data-index="option{{ option.position }}">

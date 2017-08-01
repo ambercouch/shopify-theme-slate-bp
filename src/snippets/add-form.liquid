@@ -4,20 +4,7 @@
   <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
 
   <form class="add-form__form" action="/cart/add" method="post" enctype="multipart/form-data">
-    <div class="add-form__variants">
-      {% include 'add-form-variants' %}
 
-      <select name="id" class="no-js" data-product-select>
-        {% for variant in product.variants %}
-          <option
-              {% if variant == current_variant %}selected="selected"{% endif %}
-              {% unless variant.available %}disabled="disabled"{% endunless %}
-              value="{{ variant.id }}">
-            {{ variant.title }}
-          </option>
-        {% endfor %}
-      </select>
-    </div>
     <div class="add-form__qty">
       <label class="add-form__label" for="Quantity">{{ 'products.product.quantity' | t }}</label>
       <input class="add-form__qty-input" type="number" id="Quantity" name="quantity" value="1" min="1">
@@ -38,6 +25,22 @@
         {% endif %}
       </div>
     </div>
+
+    <div class="add-form__variants">
+      {% include 'add-form-variants' %}
+
+      <select name="id" class="no-js" data-product-select>
+        {% for variant in product.variants %}
+          <option
+              {% if variant == current_variant %}selected="selected"{% endif %}
+              {% unless variant.available %}disabled="disabled"{% endunless %}
+              value="{{ variant.id }}">
+            {{ variant.title }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
     <div class="add-form__submit-wrapper">
       <button class="add-form__submit-btn"
           type="submit"

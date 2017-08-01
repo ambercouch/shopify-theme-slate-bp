@@ -1,0 +1,16 @@
+.product-gallery{
+
+}
+
+.product-gallery__{
+  &featured{
+    margin-bottom:$inuit-global-spacing-unit-small;
+  }
+
+  &list{
+    @extend .o-list-bare;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom:0;
+  }
+}

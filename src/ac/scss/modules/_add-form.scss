@@ -5,6 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
+    justify-content: flex-end;
   }
   &submit{
     width: 100%;
@@ -22,6 +23,11 @@
       width: 25%;
     }
 
+  }
+  &variants{
+    //display: flex;
+    width: 50%;
+    padding-top: $inuit-global-spacing-unit-tiny;
   }
   &price-wrapper{
     width: 100%;
@@ -59,14 +65,14 @@
 
   }
   &qty-input{
-    border: solid 1px #000;
+    border: solid 1px $brand-col-1;
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     text-align: center;
   }
   &submit-wrapper{
     text-align: center;
-    padding: $inuit-global-spacing-unit-small 0;
+    padding: $inuit-global-spacing-unit-tiny 0;
     width: 100%;
   }
   &submit-btn{

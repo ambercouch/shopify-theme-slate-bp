@@ -27,6 +27,7 @@
   &link{
     text-decoration: none;
 
+
     @include mq($until : tablet){
       flex-direction: column-reverse;
       align-items: center;
