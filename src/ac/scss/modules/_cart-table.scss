@@ -1,0 +1,95 @@
+.cart-table{
+
+}
+.cart-table__{
+  &image{
+    vertical-align: top;
+    max-width: 150px;
+    padding-top: $inuit-global-spacing-unit-small;
+    @include mq($from : desktop){
+      padding: $inuit-global-spacing-unit-tiny;
+      padding-left: $inuit-global-spacing-unit-small;
+      padding-top: $inuit-global-spacing-unit-small;
+    }
+  }
+  &link-image{
+    display: block;
+  }
+  &table-heading{
+    font-weight: 500;
+    background: $brand-col-1;
+    color: #fff;
+    border-right: solid 1px #fff;
+    padding: 0 $inuit-global-spacing-unit;
+  }
+  &info{
+    padding: $inuit-global-spacing-unit-tiny;
+    padding-top: $inuit-global-spacing-unit-small;
+    line-height: 1;
+  }
+
+  &product-title{
+    margin-bottom:$inuit-global-spacing-unit-small;
+  }
+
+  &link-product-title{
+    display: block;
+    @include mq($until : desktop){
+      @include inuit-font-size($inuit-font-size-h5,1);
+    }
+  }
+
+  &product-type{
+    @include inuit-font-size($inuit-font-size-h6,1);
+  }
+  &remove{
+    transition: background 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background: $brand-col-1;
+    line-height: 1;
+    padding: $inuit-global-spacing-unit-tiny / 2;
+    &:hover{
+      background: $red;
+    }
+  }
+  &remove-label{
+    display: block;
+  }
+  &product-price{
+    text-align: right;
+    vertical-align: top;
+    padding-top: $inuit-global-spacing-unit-small;
+    @include mq($from : desktop){
+      padding: $inuit-global-spacing-unit-tiny;
+      padding-top: $inuit-global-spacing-unit-small;
+    }
+  }
+  &qty{
+    vertical-align: top;
+    padding-top: $inuit-global-spacing-unit-small;
+    text-align: center;
+    @include mq($from : desktop){
+      padding: $inuit-global-spacing-unit-tiny;
+      padding-top: $inuit-global-spacing-unit-small;
+    }
+  }
+  &qty-input{
+    border: solid 1px $brand-col-1;
+    display: inline-block;
+    width: 3em;
+    -moz-appearance: textfield;
+    text-align: center;
+  }
+  &line-price{
+    vertical-align: top;
+    padding-top: $inuit-global-spacing-unit-small;
+    text-align: right;
+    @include mq($from : desktop){
+      padding: $inuit-global-spacing-unit-tiny;
+      padding-right: $inuit-global-spacing-unit-small;
+      padding-top: $inuit-global-spacing-unit-small;
+    }
+  }
+}

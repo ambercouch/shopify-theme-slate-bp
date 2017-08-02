@@ -1,0 +1,27 @@
+.shopping-cart{
+  @extend .o-wrapper;
+}
+
+.shopping-cart__{
+  &header{
+    text-align: center;
+    border-bottom: solid 2px;
+    margin:0 auto $inuit-global-spacing-unit;
+    @include mq($from : tablet){
+      width: 50%;
+    }
+  }
+  &heading{
+    text-transform: uppercase;
+    font-weight: 500;
+    @include mq($until : tablet){
+      @include inuit-font-size($inuit-font-size-h3)
+    }
+  }
+  &image{
+    vertical-align: top;
+  }
+  &link-image{
+    display: block;
+  }
+}
