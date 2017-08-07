@@ -1,0 +1,22 @@
+<div class="cart-checkout">
+  <div class="cart-checkout__subtotal">
+    <p>{{ 'cart.general.subtotal' | t }}</p>
+    <p>{{ cart.total_price | money }}</p>
+    {% if cart.total_discounts > 0 %}
+      <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
+    {% endif %}
+    <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
+  </div>
+
+  {% if settings.cart_notes_enable %}
+    <div class="cart-checkout__notes">
+      <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+      <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+    </div>
+  {% endif %}
+
+  <div class="cart-checkout__buttons">
+    <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
+  </div>
+
+</div>
