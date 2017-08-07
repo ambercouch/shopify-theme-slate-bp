@@ -1,0 +1,91 @@
+<div class="cart-table">
+  <table class="cart-table__table responsive-table">
+    <thead class="cart-table__table-head small--hide">
+    <tr>
+      <th colspan="2" class="cart-table__table-heading" >{{ 'cart.label.product' | t }}</th>
+      <th class="cart-table__table-heading">{{ 'cart.label.price' | t }}</th>
+      <th class="cart-table__table-heading">{{ 'cart.label.quantity' | t }}</th>
+      <th class="cart-table__table-heading">{{ 'cart.label.total' | t }}</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for item in cart.items %}
+
+    {% comment %}
+
+    Cart Item Template
+    =====================
+    The data-label attributes on <td> elements are mobile-friendly
+      helpers used for responsive-table labels
+      {% endcomment %}
+
+      <tr class="cart-table__table-row responsive-table-row">
+        <td class="cart-table__image" data-label="{{ 'customer.order.product' | t }}">
+          <a class="cart-table__link-image" href="{{ item.url | within: collections.all }}">
+            <img class="cart-table__link-img" src="{{ item | img_url: '150x150' }}" alt="{{ item.title | escape }}">
+          </a>
+        </td>
+        <td class="cart-table__info" >
+          <div class="cart-table__product-title">
+            <a class="cart-table__link-product-title" href="{{ item.url }}">{{ item.product.title }}</a>
+
+            {% unless item.variant.title contains 'Default' %}
+            <small class="cart-table__product-type" >{{ item.variant.title }}</small>
+            {% endunless %}
+          </div>
+
+          {%- assign property_size = item.properties | size -%}
+
+          {% if property_size > 0 %}
+            <small>
+              {% for p in item.properties %}
+                {% unless p.last == blank %}
+                {{ p.first }}:
+
+                {% if p.last contains '/uploads/' %}
+                  <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                {% else %}
+                  {{ p.last }}
+                {% endif %}
+
+                {% endunless %}
+              {% endfor %}
+            </small>
+          {% endif %}
+
+          <a class="cart-table__remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+            <small class="cart-table__remove-label">{{ 'cart.general.remove' | t }}</small>
+          </a>
+
+        </td>
+        <td class="cart-table__product-price" data-label="{{ 'cart.label.price' | t }}">
+          {% if item.original_line_price != item.line_price %}
+            <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
+            <span class="cart-table__product-price-text" >{{ item.price | money }}</span>
+            <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
+            <s class="cart-table__product-price-text--original"  >{{ item.original_price | money }}</s>
+          {% else %}
+            <span class="cart-table__product-price-text" >{{ item.price | money }}</span>
+          {% endif %}
+        </td>
+        <td class="cart-table__qty" data-label="{{ 'cart.label.quantity' | t }}">
+          <input class="cart-table__qty-input"
+                 type="number"
+                 name="updates[]"
+                 id="updates_{{ item.key }}"
+                 value="{{ item.quantity }}"
+                 min="0"
+                 size="4"
+                 aria-label="{{ 'cart.general.item_quantity' | t }}">
+          <input class="cart-table__qty-input-submit" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
+        </td>
+        <td class="cart-table__line-price" data-label="{{ 'cart.label.total' | t }}">
+          <span class="cart-table__line-price-text">{{ item.line_price | money }}</span>
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

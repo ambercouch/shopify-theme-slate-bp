@@ -14,12 +14,12 @@
     display: block;
     width:100%;
     height: auto;
-
+    margin-bottom:$inuit-global-spacing-unit-small;
   }
   &heading{
     font-weight: 500;
     margin-bottom: 0;
-    @include inuit-font-size($inuit-font-size-h4)
+    @include inuit-font-size($inuit-font-size-h5, 1)
   }
 }
 

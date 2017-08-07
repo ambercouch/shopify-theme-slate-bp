@@ -16,7 +16,6 @@
     font-weight: 500;
     @include mq($until : tablet){
       @include inuit-font-size($inuit-font-size-h3)
-
     }
   }
   &flex{
@@ -38,6 +37,7 @@
 
   &main{
     flex-grow:1;
+    width: 80%;
   }
   &list{
     @extend .o-list-bare;

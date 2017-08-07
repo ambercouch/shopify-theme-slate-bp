@@ -1,0 +1,62 @@
+.cart-checkout{
+  background: $brand-col-3;
+  margin-bottom:$inuit-global-spacing-unit;
+}
+
+.cart-checkout__{
+  &heading{
+    font-weight: 500;
+    background: $brand-col-1;
+    color: #fff;
+    display: block;
+    padding: 0 $inuit-global-spacing-unit;
+    text-align: right;
+  }
+  &subtotal-content{
+    vertical-align: top;
+    padding-top: $inuit-global-spacing-unit-small;
+    text-align: right;
+    border-bottom:solid 1px $brand-col-1;
+
+    @include mq($from : desktop){
+      padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-tiny;
+      padding-right: $inuit-global-spacing-unit-small;
+    }
+
+  }
+  &subtotal-text{
+    font-weight: 800;
+    display: block;
+    @include inuit-font-size($inuit-font-size-h1)
+  }
+  &shipping-text{
+    display: block;
+    text-align: center;
+    @include inuit-font-size($inuit-font-size-h6,1);
+  }
+  &notes{
+    padding: $inuit-global-spacing-unit-small;
+  }
+  &notes-label{
+    text-align: right;
+    @include inuit-font-size($inuit-font-size-h6,1);
+    display: block;
+    margin-bottom: $inuit-global-spacing-unit-tiny;
+  }
+  &notes-text{
+    width: 100%;
+  }
+  &buttons{
+    padding: $inuit-global-spacing-unit-small;
+
+  }
+  &submit{
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: #fff;
+    background: $brand-col-4;
+    border: none;
+    padding: $inuit-global-spacing-unit-tiny;
+  }
+}

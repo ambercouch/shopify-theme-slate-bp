@@ -18,10 +18,10 @@
       @include inuit-font-size($inuit-font-size-h3)
     }
   }
-  &image{
-    vertical-align: top;
+  &form{
+    display: flex;
   }
-  &link-image{
-    display: block;
+  &cart-checkout{
+    margin-left:$inuit-global-spacing-unit;
   }
 }

@@ -2,14 +2,16 @@
 
 }
 .cart-table__{
+  &table-row{
+    border-bottom: solid 1px $brand-col-3;
+  }
   &image{
     vertical-align: top;
     max-width: 150px;
     padding-top: $inuit-global-spacing-unit-small;
     @include mq($from : desktop){
-      padding: $inuit-global-spacing-unit-tiny;
+      padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-tiny;
       padding-left: $inuit-global-spacing-unit-small;
-      padding-top: $inuit-global-spacing-unit-small;
     }
   }
   &link-image{
@@ -76,12 +78,25 @@
     }
   }
   &qty-input{
+
     border: solid 1px $brand-col-1;
     display: inline-block;
     width: 3em;
     -moz-appearance: textfield;
     text-align: center;
   }
+
+  &qty-input-submit{
+    transition: background 0.3s ease;
+    background: $brand-col-1;
+    color: #fff;
+    @include inuit-font-size($inuit-font-size-h6,1);
+    padding: $inuit-global-spacing-unit-tiny / 2;
+    &:hover{
+      background: $green;
+    }
+  }
+
   &line-price{
     vertical-align: top;
     padding-top: $inuit-global-spacing-unit-small;
