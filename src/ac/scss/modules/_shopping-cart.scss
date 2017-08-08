@@ -20,8 +20,19 @@
   }
   &form{
     display: flex;
+    flex-direction: column;
+    @include mq($from : desktop){
+      flex-direction: row;
+    }
   }
   &cart-checkout{
-    margin-left:$inuit-global-spacing-unit;
+    @include mq($from : desktop){
+      margin-left:$inuit-global-spacing-unit;
+
+    }
+
+  }
+  &cart-table{
+    flex-grow:1;
   }
 }

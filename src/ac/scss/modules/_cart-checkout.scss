@@ -17,12 +17,8 @@
     padding-top: $inuit-global-spacing-unit-small;
     text-align: right;
     border-bottom:solid 1px $brand-col-1;
-
-    @include mq($from : desktop){
-      padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-tiny;
-      padding-right: $inuit-global-spacing-unit-small;
-    }
-
+    padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-small;
+    line-height: 1;
   }
   &subtotal-text{
     font-weight: 800;
