@@ -2,50 +2,63 @@
 <div class="form-success hide" id="ResetSuccess">
   {{ 'customer.recover_password.success' | t }}
 </div>
-
+  <div class="customer-login__header">
+    <h1 class="customer-login__heading">{{ 'customer.login.title' | t }}</h1>
+  </div>
 <div id="CustomerLoginForm" class="customer-login__form">
   {% form 'customer_login' %}
-    <h1>{{ 'customer.login.title' | t }}</h1>
+  {{ form.errors | default_errors }}
+  <div class="customer-login__form-content">
 
-    {{ form.errors | default_errors }}
 
-    <label for="CustomerEmail" class="label-hidden">
+    <div class="customer-login__form-control">
+    <label for="CustomerEmail" class="label-hidden customer-login__label">
       {{ 'customer.login.email' | t }}
     </label>
     <input type="email"
            name="customer[email]"
            id="CustomerEmail"
-           class="{% if form.errors contains 'email' %}input-error{% endif %}"
+           class="{% if form.errors contains 'email' %}input-error{% endif %} customer-login__input"
            placeholder="{{ 'customer.login.email' | t }}"
            spellcheck="false"
            autocomplete="off"
            autocapitalize="off"
            autofocus>
+    </div>
 
     {% if form.password_needed %}
-      <label for="CustomerPassword" class="label-hidden">
+    <div class="customer-login__form-control">
+      <label for="CustomerPassword" class="label-hidden customer-login__label">
         {{ 'customer.login.password' | t }}
       </label>
       <input type="password"
              name="customer[password]"
              id="CustomerPassword"
-             class="{% if form.errors contains 'password' %}input-error{% endif %}"
+             class="{% if form.errors contains 'password' %}input-error{% endif %} customer-login__input"
              placeholder="{{ 'customer.login.password' | t }}">
+    </div>
     {% endif %}
 
-    <input type="submit" class="btn" value="{{ 'customer.login.sign_in' | t }}">
+    <input type="submit" class="btn customer-login__submit" value="{{ 'customer.login.sign_in' | t }}">
 
-    <a href="/">{{ 'customer.login.cancel' | t }}</a>
+<div class="customer-login__control-links">
+    <a class="customer-login__link" href="/">
+      {{ 'customer.login.cancel' | t }}
+    </a>
 
-    <a href="/account/register">
+    <a class="customer-login__link" href="/account/register">
       {{ 'layout.customer.create_account' | t }}
     </a>
 
     {% if form.password_needed %}
-      <a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
+      <a class="customer-login__link" href="#recover" id="RecoverPassword">
+        {{ 'customer.login.forgot_password' | t }}
+      </a>
     {% endif %}
+</div>
+  </div>
   {% endform %}
-
+</div>
 </div>
 
 <div id="RecoverPasswordForm" class="hide">
@@ -86,4 +99,5 @@
     <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
   {% endform %}
 {% endif %}
-</div>
+
+
