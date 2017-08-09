@@ -1,8 +1,9 @@
+<div class="customer-login">
 <div class="form-success hide" id="ResetSuccess">
   {{ 'customer.recover_password.success' | t }}
 </div>
 
-<div id="CustomerLoginForm">
+<div id="CustomerLoginForm" class="customer-login__form">
   {% form 'customer_login' %}
     <h1>{{ 'customer.login.title' | t }}</h1>
 
@@ -85,3 +86,4 @@
     <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | t }}">
   {% endform %}
 {% endif %}
+</div>
