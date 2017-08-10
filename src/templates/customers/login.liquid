@@ -7,7 +7,7 @@
   </div>
 <div id="CustomerLoginForm" class="customer-login__form">
   {% form 'customer_login' %}
-  {{ form.errors | default_errors }}
+
   <div class="customer-login__form-content">
 
 
@@ -59,7 +59,7 @@
   </div>
   {% endform %}
 </div>
-</div>
+
 
 <div id="RecoverPasswordForm" class="hide">
   <h2>{{ 'customer.recover_password.title' | t }}</h2>
@@ -100,4 +100,4 @@
   {% endform %}
 {% endif %}
 
-
+</div>
