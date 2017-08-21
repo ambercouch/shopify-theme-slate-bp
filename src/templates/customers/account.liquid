@@ -46,11 +46,17 @@
   </div>
   <div class="customer-account__section">
     <div class="customer-address">
-<h2>{{ 'customer.account.details' | t }}</h2>
-
-{{ customer.default_address | format_address }}
-
-<a href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
-    </div>
+      <div class="customer-address__header">
+        <h2 class="customer-address__heading">{{ 'customer.account.details' | t }}</h2>
+      </div>
+      <div class="customer-address__default-address">
+        <div class="default-address">
+          {{ customer.default_address | format_address }}
+        </div>
+      </div>
+      <div class="customer-address__footer">
+      <a class="customer-address__address-link" href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
+      </div>
+     </div>
   </div>
 </div>
