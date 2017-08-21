@@ -3,16 +3,21 @@
 }
 
 .order-table__{
-  &heading{
+  &th{
     text-align: left;
     text-transform: uppercase;
-    padding-bottom:$inuit-global-spacing-unit-small;
+    padding:$inuit-global-spacing-unit-tiny;
+    background: $brand-col-1;
+    color: #fff;
   }
   &row{
     border-bottom:solid 1px $brand-col-2;
   }
   &data{
-    padding-bottom:$inuit-global-spacing-unit-small;
+    padding:$inuit-global-spacing-unit-tiny;
     padding-top:$inuit-global-spacing-unit-small;
+  }
+  &table{
+    margin-bottom: 0;
   }
 }

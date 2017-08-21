@@ -4,19 +4,20 @@
   </div>
   <div class="customer-account__section" >
     <div class="customer-history">
+     <div class="customer-history__header">
 <h2 class="customer-history__heading" >{{ 'customer.orders.title' | t }}</h2>
-
+     </div>
 {% paginate customer.orders by 20 %}
   {% if customer.orders.size != 0 %}
     <div class="customer-history__order-table">
     <table class="responsive-table order-table__table" >
       <thead>
         <tr>
-          <th class="order-table__heading">{{ 'customer.orders.order_number' | t }}</th>
-          <th class="order-table__heading">{{ 'customer.orders.date' | t }}</th>
-          <th class="order-table__heading">{{ 'customer.orders.payment_status' | t }}</th>
-          <th class="order-table__heading">{{ 'customer.orders.fulfillment_status' | t }}</th>
-          <th class="order-table__heading">{{ 'customer.orders.total' | t }}</th>
+          <th class="order-table__th">{{ 'customer.orders.order_number' | t }}</th>
+          <th class="order-table__th">{{ 'customer.orders.date' | t }}</th>
+          <th class="order-table__th">{{ 'customer.orders.payment_status' | t }}</th>
+          <th class="order-table__th">{{ 'customer.orders.fulfillment_status' | t }}</th>
+          <th class="order-table__th">{{ 'customer.orders.total' | t }}</th>
         </tr>
       </thead>
       <tbody>

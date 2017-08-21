@@ -19,13 +19,14 @@
   &heading{
     text-transform: uppercase;
     font-weight: 500;
+
     @include mq($until : tablet){
       @include inuit-font-size($inuit-font-size-h3)
     }
   }
   &section{
     background: $brand-col-3;
-    padding: $inuit-global-spacing-unit-small;
+
     display: flex;
     flex-direction: column;
     margin-bottom:$inuit-global-spacing-unit;
