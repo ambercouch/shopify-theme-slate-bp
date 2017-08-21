@@ -87,6 +87,14 @@
       margin-bottom: 0;
     }
   }
+  &recover-success{
+    display: inline-block;
+    padding: $inuit-global-spacing-unit-tiny  $inuit-global-spacing-unit-tiny;
+    background: $amber;
+    @include inuit-font-size($inuit-font-size-h6, 1);
+    color: #fff;
+    margin-bottom:$inuit-global-spacing-unit-tiny;
+  }
 
 }
 

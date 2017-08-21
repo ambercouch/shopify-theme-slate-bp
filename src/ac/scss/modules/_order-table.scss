@@ -1,0 +1,18 @@
+.order-table{
+
+}
+
+.order-table__{
+  &heading{
+    text-align: left;
+    text-transform: uppercase;
+    padding-bottom:$inuit-global-spacing-unit-small;
+  }
+  &row{
+    border-bottom:solid 1px $brand-col-2;
+  }
+  &data{
+    padding-bottom:$inuit-global-spacing-unit-small;
+    padding-top:$inuit-global-spacing-unit-small;
+  }
+}

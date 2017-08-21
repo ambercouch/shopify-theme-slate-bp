@@ -1,31 +1,37 @@
-<h1>{{ 'customer.account.title' | t }}</h1>
-
-<h2>{{ 'customer.orders.title' | t }}</h2>
+<div class="customer-account">
+  <div class="customer-account__header">
+    <h1 class="customer-account__heading" >{{ 'customer.account.title' | t }}</h1>
+  </div>
+  <div class="customer-account__section" >
+    <div class="customer-history">
+<h2 class="customer-history__heading" >{{ 'customer.orders.title' | t }}</h2>
 
 {% paginate customer.orders by 20 %}
   {% if customer.orders.size != 0 %}
-    <table class="responsive-table">
+    <div class="customer-history__order-table">
+    <table class="responsive-table order-table__table" >
       <thead>
         <tr>
-          <th>{{ 'customer.orders.order_number' | t }}</th>
-          <th>{{ 'customer.orders.date' | t }}</th>
-          <th>{{ 'customer.orders.payment_status' | t }}</th>
-          <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
-          <th>{{ 'customer.orders.total' | t }}</th>
+          <th class="order-table__heading">{{ 'customer.orders.order_number' | t }}</th>
+          <th class="order-table__heading">{{ 'customer.orders.date' | t }}</th>
+          <th class="order-table__heading">{{ 'customer.orders.payment_status' | t }}</th>
+          <th class="order-table__heading">{{ 'customer.orders.fulfillment_status' | t }}</th>
+          <th class="order-table__heading">{{ 'customer.orders.total' | t }}</th>
         </tr>
       </thead>
       <tbody>
         {% for order in customer.orders %}
-          <tr class="responsive-table-row">
-            <td data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
-            <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
-            <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
-            <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
-            <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+          <tr class="responsive-table-row order-table__row">
+            <td class="order-table__data" data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+            <td  class="order-table__data" data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+            <td  class="order-table__data" data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+            <td  class="order-table__data" data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+            <td  class="order-table__data" data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
+    </div>
   {% else %}
     <p>{{ 'customer.orders.none' | t }}</p>
   {% endif %}
@@ -35,9 +41,15 @@
   {% endif %}
 
 {% endpaginate %}
-
+    </div>
+  </div>
+  <div class="customer-account__section">
+    <div class="customer-address">
 <h2>{{ 'customer.account.details' | t }}</h2>
 
 {{ customer.default_address | format_address }}
 
 <a href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
+    </div>
+  </div>
+</div>
