@@ -1,0 +1,54 @@
+.edit-address-form{
+
+}
+
+.edit-address-form__{
+  &form-label{
+    transition: opacity 0.3s ease;
+    display: block;
+    line-height:1.4em;
+   opacity: 0;
+    order: 1;
+    background: $brand-col-1;
+    color: white;
+    padding: 0 $inuit-global-spacing-unit-tiny;
+
+  }
+  &form-input{
+    width: 50%;
+    padding: 0 $inuit-global-spacing-unit-tiny;
+  }
+  &form-select{
+    width: 50%;
+  }
+  &form-control{
+    display: flex;
+  }
+  &checkbox-wrapper{
+
+    width: 50%;
+    display: flex;
+    padding: $inuit-global-spacing-unit-tiny 0 0 $inuit-global-spacing-unit-tiny;
+    & > :first-child{
+      width: 10px;
+    }
+    & > :last-child{
+      flex-grow: 1;
+      margin-left:$inuit-global-spacing-unit-tiny;
+      background: $brand-col-1;
+      color: white;
+      padding: 0 $inuit-global-spacing-unit-tiny;
+    }
+  }
+}
+
+.edit-address-form__form-label{
+  .edit-address-form__form-control:hover &{
+    opacity: 1;
+  }
+
+}
+
+.edit-address-form__form-input:focus + .edit-address-form__form-label{
+  opacity: 1;
+}

@@ -1,83 +1,87 @@
-<div class=address-edit__form">
-  {% form 'customer_address', address %}
+<div class=edit-address-form__form">
 
-  <div class="address-edit__form-control">
-  <label for="AddressFirstName_{{ form.id }}" class="new-address-form__form-label">
-    {{ 'customer.addresses.first_name' | t }}
-  </label>
+
+  <div class="edit-address-form__form-control">
+
   <input type="text"
-         class="new-address-form__form-input"
+         class="edit-address-form__form-input"
          name="address[first_name]"
          id="AddressFirstName_{{ form.id }}"
          value="{{ form.first_name }}"
          autocapitalize="words">
+    <label for="AddressFirstName_{{ form.id }}" class="edit-address-form__form-label">
+      {{ 'customer.addresses.first_name' | t }}
+    </label>
   </div>
 
-  <div class="address-edit__form-control">
-  <label for="AddressLastName_{{ form.id }}" class="new-address-form__form-label">
-    {{ 'customer.addresses.last_name' | t }}
-  </label>
+  <div class="edit-address-form__form-control">
+
   <input type="text"
-         class="new-address-form__form-input"
+         class="edit-address-form__form-input"
          name="address[last_name]"
          id="AddressLastName_{{ form.id }}"
          value="{{ form.last_name }}"
          autocapitalize="words">
+    <label for="AddressLastName_{{ form.id }}" class="edit-address-form__form-label">
+      {{ 'customer.addresses.last_name' | t }}
+    </label>
   </div>
 
-  <div class="address-edit__form-control">
-  <label for="AddressCompany_{{ form.id }}" class="new-address-form__form-label">
-    {{ 'customer.addresses.company' | t }}
-  </label>
+  <div class="edit-address-form__form-control">
+
   <input type="text"
-         class="new-address-form__form-input"
+         class="edit-address-form__form-input"
          name="address[company]"
          id="AddressCompany_{{ form.id }}"
          value="{{ form.company }}"
          autocapitalize="words">
+    <label for="AddressCompany_{{ form.id }}" class="edit-address-form__form-label">
+      {{ 'customer.addresses.company' | t }}
+    </label>
   </div>
 
-  <div class="address-edit__form-control">
-  <label for="AddressAddress1_{{ form.id }}" class="new-address-form__form-label">
-    {{ 'customer.addresses.address1' | t }}
-  </label>
+  <div class="edit-address-form__form-control">
+
   <input type="text"
-         class="new-address-form__form-input"
+         class="edit-address-form__form-input"
          name="address[address1]"
          id="AddressAddress1_{{ form.id }}"
          value="{{ form.address1 }}"
          autocapitalize="words">
+    <label for="AddressAddress1_{{ form.id }}" class="edit-address-form__form-label">
+      {{ 'customer.addresses.address1' | t }}
+    </label>
   </div>
-  <div class="address-edit__form-control">
-  <label for="AddressAddress2_{{ form.id }}" class="new-address-form__form-label">
-    {{ 'customer.addresses.address2' | t }}
-  </label>
+  <div class="edit-address-form__form-control">
+
   <input type="text"
-         class="new-address-form__form-input"
+         class="edit-address-form__form-input"
          name="address[address2]"
          id="AddressAddress2_{{ form.id }}"
          value="{{ form.address2 }}"
          autocapitalize="words">
+    <label for="AddressAddress2_{{ form.id }}" class="edit-address-form__form-label">
+      {{ 'customer.addresses.address2' | t }}
+    </label>
   </div>
 
-  <div class="address-edit__form-control">
-  <label for="AddressCity_{{ form.id }}" class="new-address-form__form-label">
-    {{ 'customer.addresses.city' | t }}
-  </label>
+  <div class="edit-address-form__form-control">
+
   <input type="text"
-         class="new-address-form__form-input"
+         class="edit-address-form__form-input"
          name="address[city]"
          id="AddressCity_{{ form.id }}"
          value="{{ form.city }}"
          autocapitalize="words">
+    <label for="AddressCity_{{ form.id }}" class="edit-address-form__form-label">
+      {{ 'customer.addresses.city' | t }}
+    </label>
   </div>
 
-  <div class="address-edit__form-control">
-  <label for="AddressCountry_{{ form.id }}" class="new-address-form__form-label">
-    {{ 'customer.addresses.country' | t }}
-  </label>
+  <div class="edit-address-form__form-control">
+
   <select
-      class="new-address-form__form-select"
+      class="edit-address-form__form-select"
       name="address[country]"
       id="AddressCountry_{{ form.id }}"
       class="address-country-option"
@@ -85,55 +89,57 @@
       data-default="{{ form.country }}">
     {{ country_option_tags }}
   </select>
+    <label for="AddressCountry_{{ form.id }}" class="edit-address-form__form-label">
+      {{ 'customer.addresses.country' | t }}
+    </label>
   </div>
 
 
   <div id="AddressProvinceContainer_{{ form.id }}" style="display: none">
-    <div class="address-edit__form-control">
-    <label for="AddressProvince_{{ form.id }}" class="new-address-form__form-label">
-      {{ 'customer.addresses.province' | t }}
-    </label>
+    <div class="edit-address-form__form-control">
+
     <select
         name="address[province]"
         id="AddressProvince_{{ form.id }}"
         data-default="{{ form.province }}">
     </select>
+      <label for="AddressProvince_{{ form.id }}" class="edit-address-form__form-label">
+        {{ 'customer.addresses.province' | t }}
+      </label>
     </div>
   </div>
 
-<div class="address-edit__form-control">
-  <label for="AddressZip_{{ form.id }}">
-    {{ 'customer.addresses.zip' | t }}
-  </label>
+<div class="edit-address-form__form-control">
+
   <input type="text"
+         class="edit-address-form__form-input"
          name="address[zip]"
          id="AddressZip_{{ form.id }}"
          value="{{ form.zip }}"
          autocapitalize="characters">
-</div>
-    <div class="address-edit__form-control">
-  <label for="AddressPhone_{{ form.id }}" class="new-address-form__form-label">
-    {{ 'customer.addresses.phone' | t }}
+  <label for="AddressZip_{{ form.id }}" class="edit-address-form__form-label">
+    {{ 'customer.addresses.zip' | t }}
   </label>
+</div>
+    <div class="edit-address-form__form-control">
+
   <input type="tel"
-         class="new-address-form__form-input"
+         class="edit-address-form__form-input"
          name="address[phone]"
          id="AddressPhone_{{ form.id }}"
          value="{{ form.phone }}"
          pattern="[0-9\-]*">
+      <label for="AddressPhone_{{ form.id }}" class="edit-address-form__form-label">
+        {{ 'customer.addresses.phone' | t }}
+      </label>
     </div>
 
-    <div class="address-edit__form-control">
+    <div class="edit-address-form__form-control">
+    <div class="edit-address-form__checkbox-wrapper">
   {{ form.set_as_default_checkbox }}
   <label for="address_default_address_{{ form.id }}">
     {{ 'customer.addresses.set_default' | t }}
   </label>
     </div>
-
-  <input type="submit" class="btn" value="{{ 'customer.addresses.update' | t }}">
-  <button type="button" class="address-edit-toggle" data-form-id="{{ form.id }}">
-    {{ 'customer.addresses.cancel' | t }}
-  </button>
-
-  {% endform %}
+    </div>
 </div>

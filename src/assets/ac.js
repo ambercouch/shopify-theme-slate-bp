@@ -52,12 +52,12 @@ ACSHOPIFY = {
             //     console.log('clicked')
             // });
 
-            $('.address-edit-toggle').each(function () {
+            $('.customer-address__address-card').each(function () {
                 var formId = $(this).data('form-id');
                 console.log('formId' + formId);
                 //address button
-                var showButton = $(this);
-                var container = document.getElementById('addressCard' + formId);
+                var showButton = $('.address-edit-toggle', this);
+                var container = $(this);
                 ACSHOPIFY.ac_fn.open(container, showButton);
             })
 
