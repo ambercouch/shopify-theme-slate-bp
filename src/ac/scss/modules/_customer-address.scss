@@ -39,23 +39,18 @@
   &controls{
      padding: $inuit-global-spacing-unit-small;
      background: $brand-col-2;
-    display: flex;
-    justify-content: space-around;
+
     @include mq($from : tablet){
       display: block;
+    }
 
-    }
-    @include mq($until : mobile){
-      flex-wrap: wrap;
-      padding-bottom: 0;
-    }
    }
   &control-wrapper{
     display: none;
   }
   &control{
     transition: background 0.3s ease;
-    padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+    padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
     width: 44%;
     margin-bottom: 0;
     display: block;
@@ -85,14 +80,28 @@
 .customer-address__control-wrapper--{
   &edit{
     @extend .customer-address__control-wrapper;
+
+    @include mq($until : tablet){
+      justify-content: space-around;
+    }
+    @include mq($until : mobile){
+      flex-wrap: wrap;
+      padding-bottom: 0;
+    }
     [data-state=off] &{
       display: block;
+      @include mq($until : tablet) {
+        display: flex;
+      }
     }
   }
   &submit{
     @extend .customer-address__control-wrapper;
     [data-state=on] &{
       display: block;
+      @include mq($until : tablet) {
+        display: flex;
+      }
     }
   }
 

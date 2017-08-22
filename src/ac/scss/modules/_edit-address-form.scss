@@ -7,19 +7,22 @@
     transition: opacity 0.3s ease;
     display: block;
     line-height:1.4em;
-   opacity: 0;
+    opacity: 0;
     order: 1;
     background: $brand-col-1;
     color: white;
     padding: 0 $inuit-global-spacing-unit-tiny;
-
+    margin-left: $inuit-global-spacing-unit-tiny;
+    @include inuit-font-size($inuit-font-size-h6);
+    flex-grow: 1;
+    white-space: nowrap;
   }
   &form-input{
-    width: 50%;
+    width: 75%;
     padding: 0 $inuit-global-spacing-unit-tiny;
   }
   &form-select{
-    width: 50%;
+    width: 75%;
   }
   &form-control{
     display: flex;
@@ -30,7 +33,7 @@
     display: flex;
     padding: $inuit-global-spacing-unit-tiny 0 0 $inuit-global-spacing-unit-tiny;
     & > :first-child{
-      width: 10px;
+      width: 12px;
     }
     & > :last-child{
       flex-grow: 1;
@@ -38,6 +41,7 @@
       background: $brand-col-1;
       color: white;
       padding: 0 $inuit-global-spacing-unit-tiny;
+      @include inuit-font-size($inuit-font-size-h6)
     }
   }
 }
