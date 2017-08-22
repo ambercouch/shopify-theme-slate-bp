@@ -1,6 +1,6 @@
 <div class="customer-address">
 
-  <div class="customer-address__address-card">
+  <div id="addressCard{{ address.id }}" class="customer-address__address-card" data-state="off">
 
     {% if address == customer.default_address %}
       <span class="customer-address__default-label" ><strong>{{ 'customer.addresses.default' | t }}</strong></span>
@@ -9,11 +9,12 @@
       <div class="customer-address__address">
         {{ address | format_address }}
       </div>
-
-    {% include 'customer-address-form-edit' %}
+      <div class="customer-address__address-edit">
+        {% include 'customer-address-form-edit' %}
+      </div>
 
       <div class="customer-address__controls">
-        <button  type="button" class="address-edit-toggle customer-address__control" data-form-id="{{ address.id }}">
+        <button  data-state="off" type="button" class="address-edit-toggle customer-address__control" data-form-id="{{ address.id }}">
           {{ 'customer.addresses.edit' | t }}
         </button>
         <button  type="button" class="address-delete customer-address__control" data-form-id="{{ address.id }}" data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">

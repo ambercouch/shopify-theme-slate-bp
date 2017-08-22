@@ -1,8 +1,7 @@
-<div id="EditAddress_{{ address.id }}" class="hide customer-address__address--edit">
+<div class=address-edit__form">
   {% form 'customer_address', address %}
 
-  <h4>{{ 'customer.addresses.edit_address' | t }}</h4>
-
+  <div class="address-edit__form-control">
   <label for="AddressFirstName_{{ form.id }}" class="new-address-form__form-label">
     {{ 'customer.addresses.first_name' | t }}
   </label>
@@ -12,7 +11,9 @@
          id="AddressFirstName_{{ form.id }}"
          value="{{ form.first_name }}"
          autocapitalize="words">
+  </div>
 
+  <div class="address-edit__form-control">
   <label for="AddressLastName_{{ form.id }}" class="new-address-form__form-label">
     {{ 'customer.addresses.last_name' | t }}
   </label>
@@ -22,7 +23,9 @@
          id="AddressLastName_{{ form.id }}"
          value="{{ form.last_name }}"
          autocapitalize="words">
+  </div>
 
+  <div class="address-edit__form-control">
   <label for="AddressCompany_{{ form.id }}" class="new-address-form__form-label">
     {{ 'customer.addresses.company' | t }}
   </label>
@@ -32,7 +35,9 @@
          id="AddressCompany_{{ form.id }}"
          value="{{ form.company }}"
          autocapitalize="words">
+  </div>
 
+  <div class="address-edit__form-control">
   <label for="AddressAddress1_{{ form.id }}" class="new-address-form__form-label">
     {{ 'customer.addresses.address1' | t }}
   </label>
@@ -42,7 +47,8 @@
          id="AddressAddress1_{{ form.id }}"
          value="{{ form.address1 }}"
          autocapitalize="words">
-
+  </div>
+  <div class="address-edit__form-control">
   <label for="AddressAddress2_{{ form.id }}" class="new-address-form__form-label">
     {{ 'customer.addresses.address2' | t }}
   </label>
@@ -52,7 +58,9 @@
          id="AddressAddress2_{{ form.id }}"
          value="{{ form.address2 }}"
          autocapitalize="words">
+  </div>
 
+  <div class="address-edit__form-control">
   <label for="AddressCity_{{ form.id }}" class="new-address-form__form-label">
     {{ 'customer.addresses.city' | t }}
   </label>
@@ -62,7 +70,9 @@
          id="AddressCity_{{ form.id }}"
          value="{{ form.city }}"
          autocapitalize="words">
+  </div>
 
+  <div class="address-edit__form-control">
   <label for="AddressCountry_{{ form.id }}" class="new-address-form__form-label">
     {{ 'customer.addresses.country' | t }}
   </label>
@@ -75,8 +85,11 @@
       data-default="{{ form.country }}">
     {{ country_option_tags }}
   </select>
+  </div>
+
 
   <div id="AddressProvinceContainer_{{ form.id }}" style="display: none">
+    <div class="address-edit__form-control">
     <label for="AddressProvince_{{ form.id }}" class="new-address-form__form-label">
       {{ 'customer.addresses.province' | t }}
     </label>
@@ -85,8 +98,10 @@
         id="AddressProvince_{{ form.id }}"
         data-default="{{ form.province }}">
     </select>
+    </div>
   </div>
 
+<div class="address-edit__form-control">
   <label for="AddressZip_{{ form.id }}">
     {{ 'customer.addresses.zip' | t }}
   </label>
@@ -95,7 +110,8 @@
          id="AddressZip_{{ form.id }}"
          value="{{ form.zip }}"
          autocapitalize="characters">
-
+</div>
+    <div class="address-edit__form-control">
   <label for="AddressPhone_{{ form.id }}" class="new-address-form__form-label">
     {{ 'customer.addresses.phone' | t }}
   </label>
@@ -105,11 +121,14 @@
          id="AddressPhone_{{ form.id }}"
          value="{{ form.phone }}"
          pattern="[0-9\-]*">
+    </div>
 
+    <div class="address-edit__form-control">
   {{ form.set_as_default_checkbox }}
   <label for="address_default_address_{{ form.id }}">
     {{ 'customer.addresses.set_default' | t }}
   </label>
+    </div>
 
   <input type="submit" class="btn" value="{{ 'customer.addresses.update' | t }}">
   <button type="button" class="address-edit-toggle" data-form-id="{{ form.id }}">

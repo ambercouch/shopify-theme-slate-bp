@@ -23,6 +23,17 @@
     p{
       margin-bottom: 0;
     }
+    [data-state=on] &{
+      display: none;
+    }
+  }
+  &address-edit{
+    display: none;
+    margin-bottom: auto;
+    padding: $inuit-global-spacing-unit-small;
+    [data-state=on] &{
+      display: block;
+    }
   }
   &controls{
      padding: $inuit-global-spacing-unit-small;

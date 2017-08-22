@@ -45,15 +45,24 @@ ACSHOPIFY = {
             var container = document.getElementById('filterContainer');
             ACSHOPIFY.ac_fn.open(container, showButton);
 
-            //filter button
-            var showButton = $('.address-edit-toggle');
-            var container = document.getElementById('filterContainer');
-            ACSHOPIFY.ac_fn.open(container, showButton);
 
             // $('.address-edit-toggle').on('click', function() {
             //     var formId = $(this).data('form-id');
-            //     $('#EditAddress_' + formId).toggleClass('hide');
+            //     //$('#EditAddress_' + formId).toggleClass('hide');
+            //     console.log('clicked')
             // });
+
+            $('.address-edit-toggle').each(function () {
+                var formId = $(this).data('form-id');
+                console.log('formId' + formId);
+                //address button
+                var showButton = $(this);
+                var container = document.getElementById('addressCard' + formId);
+                ACSHOPIFY.ac_fn.open(container, showButton);
+            })
+
+
+
 
             $(function(){
                 $('.filter-menu h4').on('click', function(e){
