@@ -38,10 +38,10 @@ theme.customerAddresses = (function() {
     $newAddressForm.toggleClass('hide');
   });
 
-  $('.address-edit-toggle').on('click', function() {
-    var formId = $(this).data('form-id');
-    $('#EditAddress_' + formId).toggleClass('hide');
-  });
+  // $('.address-edit-toggle').on('click', function() {
+  //   var formId = $(this).data('form-id');
+  //   $('#EditAddress_' + formId).toggleClass('hide');
+  // });
 
   $('.address-delete').on('click', function() {
     var $el = $(this);

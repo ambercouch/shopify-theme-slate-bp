@@ -18,6 +18,8 @@ ACSHOPIFY = {
             //uncomment to debug
             console.log('common');
 
+
+
             //ACSHOPIFY.ac_fn.locale($('body').attr('data-locale'));
 
             //console.log('ACSHOPIFY.ac_fn.locale()');
@@ -42,6 +44,16 @@ ACSHOPIFY = {
             var showButton = $('#filterButtonOpen, #filterButtonClose');
             var container = document.getElementById('filterContainer');
             ACSHOPIFY.ac_fn.open(container, showButton);
+
+            //filter button
+            var showButton = $('.address-edit-toggle');
+            var container = document.getElementById('filterContainer');
+            ACSHOPIFY.ac_fn.open(container, showButton);
+
+            // $('.address-edit-toggle').on('click', function() {
+            //     var formId = $(this).data('form-id');
+            //     $('#EditAddress_' + formId).toggleClass('hide');
+            // });
 
             $(function(){
                 $('.filter-menu h4').on('click', function(e){
