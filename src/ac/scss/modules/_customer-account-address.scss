@@ -1,0 +1,40 @@
+.customer-account-address{
+
+}
+
+.customer-account-address__{
+  &header{
+    background: $brand-col-4;
+    padding: $inuit-global-spacing-unit-small;
+    //margin-bottom:$inuit-global-spacing-unit-small;
+
+  }
+  &heading{
+    color: #fff;
+    margin-bottom: 0;
+  }
+  &default-address{
+    padding: $inuit-global-spacing-unit-small;
+  }
+  &footer{
+    text-align: left;
+    padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-small 0;
+    background: $brand-col-2;
+  }
+  &address-link{
+    transition: background 0.3s ease;
+    padding: $inuit-global-spacing-unit-tiny 0;
+    margin-bottom: $inuit-global-spacing-unit-small;
+    display: block;
+    background: $brand-col-1 ;
+    color: $brand-col-3;
+    text-align: center;
+    &:hover{
+      background: darken($brand-col-1, 10%);
+    }
+    @include mq($from : tablet){
+      display: inline-block;
+      padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+    }
+  }
+}

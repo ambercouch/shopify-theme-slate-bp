@@ -1,0 +1,55 @@
+.customer-addresses{
+
+  @extend .o-wrapper;
+
+  @include mq($until: tablet){
+    padding-right: $inuit-global-spacing-unit-tiny;
+    padding-left:  $inuit-global-spacing-unit-tiny;
+  }
+
+}
+
+.customer-addresses__{
+
+  &header{
+    text-align: center;
+    border-bottom: solid 2px;
+    margin:0 auto $inuit-global-spacing-unit;
+    @include mq($from : tablet){
+      width: 50%;
+    }
+  }
+  &heading{
+    text-transform: uppercase;
+    font-weight: 500;
+
+    @include mq($until : tablet){
+      @include inuit-font-size($inuit-font-size-h3)
+    }
+  }
+  &section{
+    background: $brand-col-3;
+    display: flex;
+    flex-direction: column;
+    margin-bottom:$inuit-global-spacing-unit;
+  }
+  &controls{
+    text-align: right;
+  }
+  &control{
+    transition: background 0.3s ease;
+    padding: $inuit-global-spacing-unit-tiny 0;
+    margin-bottom: $inuit-global-spacing-unit-small;
+    display: block;
+    background: $brand-col-1 ;
+    color: $brand-col-3;
+    text-align: center;
+    &:hover{
+      background: darken($brand-col-1, 10%);
+    }
+    @include mq($from : tablet){
+      display: inline-block;
+      padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.customer-address-list{
+
+}
+
+.customer-address-list__{
+  &header{
+    background: $brand-col-4;
+    padding: $inuit-global-spacing-unit-small;
+  }
+  &heading{
+    color: #fff;
+    margin-bottom: 0;
+  }
+  &content{
+    padding: $inuit-global-spacing-unit-small;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

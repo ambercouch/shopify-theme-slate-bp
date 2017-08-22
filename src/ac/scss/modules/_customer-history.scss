@@ -1,0 +1,18 @@
+.customer-history{
+
+}
+
+.customer-history__{
+  &header{
+    background: $brand-col-4;
+    padding: $inuit-global-spacing-unit-small;
+    //margin-bottom:$inuit-global-spacing-unit-small;
+  }
+  &heading{
+    color: #fff;
+    margin-bottom: 0;
+  }
+  &order-table{
+    //padding: $inuit-global-spacing-unit-small;
+  }
+}

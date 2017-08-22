@@ -1,0 +1,68 @@
+.customer-address{
+  padding: $inuit-global-spacing-unit-small;
+  width: 100%;
+  @include mq($from : tablet){
+    width: 50%;
+  }
+}
+
+.customer-address__{
+  &address-card{
+    background: lighten($brand-col-3, 10%);
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+
+    @include mq($from : tablet){
+      height: 18em;
+    }
+  }
+  &address{
+    margin-bottom: auto;
+    padding: $inuit-global-spacing-unit-small;
+    p{
+      margin-bottom: 0;
+    }
+  }
+  &controls{
+     padding: $inuit-global-spacing-unit-small;
+     background: $brand-col-2;
+    display: flex;
+    justify-content: space-around;
+    @include mq($from : tablet){
+      display: block;
+
+    }
+    @include mq($until : mobile){
+      flex-wrap: wrap;
+      padding-bottom: 0;
+    }
+   }
+  &control{
+    transition: background 0.3s ease;
+    padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+    width: 44%;
+    margin-bottom: 0;
+    display: block;
+    background: $brand-col-1 ;
+    color: $brand-col-3;
+    text-align: center;
+    border: none;
+    &:hover{
+      background: darken($brand-col-1, 10%);
+    }
+    @include mq($from : tablet){
+      display: inline-block;
+      padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+      margin-bottom: 0;
+      width: auto;
+    }
+    @include mq($until : mobile){
+      width: 100%;
+      margin-bottom: $inuit-global-spacing-unit-small;
+    }
+  }
+  &default-label{
+    display: none;
+  }
+}
