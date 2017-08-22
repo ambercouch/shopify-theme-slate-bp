@@ -4,7 +4,7 @@
   <div id="addressCard{{ address.id }}" class="customer-address__address-card" data-state="off">
 
     {% if address == customer.default_address %}
-      <span class="customer-address__default-label" ><strong>{{ 'customer.addresses.default' | t }}</strong></span>
+      <span class="customer-address__default-label" >{{ 'customer.addresses.default' | t }}</span>
     {% endif %}
 
       <div class="customer-address__address">

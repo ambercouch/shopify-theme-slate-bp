@@ -8,6 +8,7 @@
 
 .customer-address__{
   &address-card{
+    position: relative;
     background: lighten($brand-col-3, 10%);
     min-height: 20em;
     display: flex;
@@ -73,7 +74,15 @@
     }
   }
   &default-label{
-    display: none;
+    display: block;
+    position: absolute;
+    padding: $inuit-global-spacing-unit-tiny;
+    background: $green;
+    @include inuit-font-size($inuit-font-size-h6,1);
+    right: 0;
+    top:0;
+    font-weight: 100;
+    color: #fff;
   }
 }
 
