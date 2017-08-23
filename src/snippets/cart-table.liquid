@@ -62,11 +62,11 @@
         <td class="cart-table__product-price" data-label="{{ 'cart.label.price' | t }}">
           {% if item.original_line_price != item.line_price %}
             <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
-            <span class="cart-table__product-price-text" >{{ item.price | money }}</span>
+            <span class="cart-table__product-price-text" >{{ bold_price | money }}</span>
             <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
             <s class="cart-table__product-price-text--original"  >{{ item.original_price | money }}</s>
           {% else %}
-            <span class="cart-table__product-price-text" >{{ item.price | money }}</span>
+            <span class="cart-table__product-price-text" >{{ bold_price | money }}</span>
           {% endif %}
         </td>
         <td class="cart-table__qty" data-label="{{ 'cart.label.quantity' | t }}">

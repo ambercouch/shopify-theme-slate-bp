@@ -7,7 +7,7 @@
 
 
 {% unless product.empty? %}
-<script type="application/json" data-product-json>
-{{ product | json }}
+<script type="application/json" data-product-json >
+  {% include 'bold-product', output: 'json' %}
 </script>
 {% endunless %}

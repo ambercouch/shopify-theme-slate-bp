@@ -1,5 +1,5 @@
 {%- assign product = all_products[section.settings.product] -%}
-{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign current_variant = bold_selected_or_first_available_variant -%}
 
 {% if product.empty? %}
   {%- assign section_onboarding = true -%}
@@ -37,11 +37,11 @@
 
   <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
     <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-    <meta itemprop="price" content="{{ product.price | divided_by: 100.00 }}">
+    <meta itemprop="price" content="{{ bold_price | divided_by: 100.00 }}">
     <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
     <form action="/cart/add" method="post" enctype="multipart/form-data">
-      {% unless product.variants.size == 1 and product.options.size == 1 and product.options.first == 'Title' and product.variants.first.title == 'Default Title' %}
+      {% unless product.variants.size == 1 and product.options.size == 1 and product.options.first == 'Title' and bold_selected_or_first_available_variant.title == 'Default Title' %}
         {% for option in product.options_with_values %}
           <div class="selector-wrapper js">
             <label
@@ -69,7 +69,7 @@
       <select name="id" class="no-js" data-product-select>
         {% for variant in product.variants %}
           <option
-            {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+            {% if variant == bold_selected_or_first_available_variant %}selected="selected"{% endif %}
             {% unless variant.available %}disabled="disabled"{% endunless %}
             value="{{ variant.id }}">
               {{ variant.title }}
@@ -85,7 +85,7 @@
           {{ current_variant.price | default: '1999' | money }}
         </span>
 
-        {% if product.compare_at_price_max > product.price %}
+        {% if bold_compare_at_price_max > bold_price %}
           <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
           <s data-compare-price>
             {% if current_variant.compare_at_price > current_variant.price %}

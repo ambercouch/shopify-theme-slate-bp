@@ -1,4 +1,4 @@
-{% unless product.variants.size == 1 and product.options.size == 1 and product.options.first == 'Title' and product.variants.first.title == 'Default Title' %}
+{% unless bold_variants_size == 1 and product.options.size == 1 and product.options.first == 'Title' and product.variants.first.title == 'Default Title' %}
     {% for option in product.options_with_values %}
       <div class="selector-wrapper js variant">
         <label

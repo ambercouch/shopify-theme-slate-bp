@@ -3,7 +3,7 @@
   <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
   <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
 
-  <form class="add-form__form" action="/cart/add" method="post" enctype="multipart/form-data">
+  <form class="add-form__form shapp_qb_prod" action="/cart/add" method="post" enctype="multipart/form-data">
 
     <div class="add-form__qty">
       <label class="add-form__label" for="Quantity">{{ 'products.product.quantity' | t }}</label>
@@ -15,7 +15,7 @@
           {{ current_variant.price | money }}
         </span>
 
-        {% if product.compare_at_price_max > product.price %}
+        {% if bold_compare_at_price_max > bold_price %}
           <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
           <s data-compare-price>
             {% if current_variant.compare_at_price > current_variant.price %}
@@ -28,7 +28,7 @@
 
     <div class="add-form__variants">
       {% include 'add-form-variants' %}
-
+      {% include 'bold-variant' with variant, hide_action: 'skip' %}
       <select name="id" class="no-js" data-product-select>
         {% for variant in product.variants %}
           <option
@@ -56,6 +56,11 @@
           </span>
       </button>
     </div>
+
+    {% unless qb_loaded == 'true' %}
+    <div class="shappify-qty-msg">{{bold_selected_or_first_available_variant.metafields.shappify_qb.pricing_html}}</div>{% assign qb_loaded = 'true' %}
+    {% endunless %}
+
   </form>
 
 </div>

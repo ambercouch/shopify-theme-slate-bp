@@ -1,6 +1,6 @@
 <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
 
-  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign current_variant = bold_selected_or_first_available_variant -%}
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
 
   <meta itemprop="name" content="{{ product.title }}{% unless current_variant.title == 'Default Title' %} - {{ current_variant.title }}{% endunless %}">
@@ -13,7 +13,7 @@
     <div class="product__flex">
       <div class="product__header">
         <h1 class="product__heading" >{{ product.title }}</h1>
-        <span class="product__sku">{{ product.variants[0].sku }}</span>
+        <span class="product__sku">{{ bold_selected_or_first_available_variant.sku }}</span>
       </div>
       <div class="product__product-gallery">
         {% include 'product-gallery' %}

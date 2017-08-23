@@ -8,6 +8,7 @@
   <div class="featured-collection__content">
     <ul class="featured-collection__list">
       {% for product in collection.products limit: 6 %}
+        {% include 'bold-product' with product, hide_action: 'skip' %}
       <li class="featured-collection__item--layout{{ section.settings.col_layout }}  ">
         {% include 'product-thumb' %}
       </li>

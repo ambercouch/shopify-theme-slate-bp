@@ -41,7 +41,7 @@
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:description" content="{{ og_description }}">
 {%- if template.name == 'product' -%}
-  <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
+  <meta property="og:price:amount" content="{{ bold_price | money_without_currency | strip_html }}">
   <meta property="og:price:currency" content="{{ shop.currency }}">
 {%- endif -%}
 {{ og_image_tags }}
