@@ -24,6 +24,7 @@
   <div class="collection__content">
     <ul class="collection__list">
     {% for product in collection.products %}
+      {% include 'bold-product' with product, hide_action: 'skip' %}
       <li class="collection__item--layout4">
         {% include 'product-thumb' %}
       </li>
