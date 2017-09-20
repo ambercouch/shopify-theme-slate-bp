@@ -1,80 +1,36 @@
-{% paginate search.results by 10 %}
-
-  <h1>
-    {% if search.performed %}
-      {% if search.results_count == 0 %}
-        {{ 'general.search.no_results_html' | t: terms: search.terms }}
+{% paginate search.results by 8 %}
+<div class="search-results">
+  <header class="search-results__header" role="banner">
+    <h1 class="search-results__heading">
+      {% if search.performed %}
+        {% if search.results_count == 0 %}
+          {{ 'general.search.no_results_html' | t: terms: search.terms }}
+        {% else %}
+          {{ 'general.search.results_for_html' | t: terms: search.terms }}
+        {% endif %}
       {% else %}
-        {{ 'general.search.results_for_html' | t: terms: search.terms }}
+        {{ 'general.search.title' | t }}
       {% endif %}
-    {% else %}
-      {{ 'general.search.title' | t }}
-    {% endif %}
-  </h1>
-
-  <form action="/search" method="get" role="search">
-    <label for="Search" class="label-hidden">
-      {{ 'general.search.placeholder' | t }}
-    </label>
-    <input type="search"
-           name="q"
-           id="Search"
-           value="{{ search.terms | escape }}"
-           placeholder="{{ 'general.search.placeholder' | t }}">
-    <button type="submit" class="btn">
-      {% include 'icon-search' %}
-      <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
-    </button>
-  </form>
-
+    </h1>
+  </header>
+<div class="search-results__search-site">
+  {% include "search-site" %}
+</div>
 
 {% if search.performed %}
-    <ul>
-      {% for item in search.results %}
-        <li>
-          {% if item.featured_image %}
-            <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
-              {{ item.featured_image.src | img_url: '240x240' | img_tag: item.featured_image.alt }}
-            </a>
-          {% endif %}
+  <ul class="collection__list">
+    {% for product in search.results %}
+    <li class="collection__item--layout4">
+      {% include 'product-thumb' %}
+    </li>
+    {%  endfor %}
+  </ul>
 
-          <h5>{{ item.title | link_to: item.url }}</h5>
 
-          {% if item.object_type == 'product' %}
-            <p>
-              {% if bold_compare_at_price > bold_price %}
-                {% if bold_price_varies %}
-                  {% assign sale_price = bold_price | money %}
-                  {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-                {% else %}
-                  {{ 'products.product.on_sale' | t }}
-                  <span itemprop="price">{{ bold_price | money }}</span>
-                {% endif %}
-                <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-                <s>{{ bold_compare_at_price | money }}</s>
-              {% else %}
-                {% if bold_price_varies %}
-                  {% assign price = bold_price | money %}
-                  <span itemprop="price">{{ 'products.product.from_text_html' | t: price: price }}</span>
-                {% else %}
-                  <span itemprop="price">{{ bold_price | money }}</span>
-                {% endif %}
-              {% endif %}
-              {% unless item.available %}
-              {{ 'products.product.sold_out' | t }}
-              {% endunless %}
-            </p>
-          {% else %}
-            <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
-          {% endif %}
-
-        </li>
-      {% endfor %}
-    </ul>
 
     {% if paginate.pages > 1 %}
       {% include 'pagination' %}
     {% endif %}
   {% endif %}
-
+</div>
 {% endpaginate %}

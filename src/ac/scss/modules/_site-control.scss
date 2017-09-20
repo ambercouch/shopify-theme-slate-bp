@@ -34,11 +34,24 @@
       display: flex;
     }
   }
-  &search{
+  &search-site{
+    transition: opacity .3s ease;
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    left: 0;
     &[data-state=off]{
-      display: none;
+      left: -100%;
+      display: block;
+      opacity: 0;
+    }
+    
+    &[data-state=on]{
+      opacity: 1;
+      display: block;
     }
   }
+
   &cart-count{
     @include mq($until : tablet){
       display: none;

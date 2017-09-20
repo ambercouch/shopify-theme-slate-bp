@@ -30,6 +30,7 @@
     &hero{
        @extend .site__band;
         padding-top: 0;
+        margin-bottom: $inuit-global-spacing-unit-large;
     }
     &featured-collection{
         @extend .site__band;

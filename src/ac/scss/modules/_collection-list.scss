@@ -1,6 +1,6 @@
 .collection-list{
   @extend .o-wrapper;
-  @include mq($until : mobile){
+  @include mq($until : tablet){
     padding: 0 !important;
   }
 }
@@ -18,7 +18,7 @@
     text-transform: uppercase;
     font-weight: 500;
     @include mq($until: tablet){
-      @include inuit-font-size($inuit-font-size-h5)
+      @include inuit-font-size($inuit-font-size-h5);
       margin-bottom: 0;
     }
   }
@@ -27,11 +27,23 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 0;
   }
   &item{
     @include mq($from : mobile){
       width: 50%;
-
     }
   }
+}
+
+.collection-list__item{
+  .is-25-50-25 &{
+  &:first-child {
+    width: 25%;
+  }
+    &:last-child {
+      width: 25%;
+    }
+  }
+
 }

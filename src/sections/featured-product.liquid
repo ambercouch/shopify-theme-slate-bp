@@ -41,7 +41,7 @@
     <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
     <form action="/cart/add" method="post" enctype="multipart/form-data">
-      {% unless product.variants.size == 1 and product.options.size == 1 and product.options.first == 'Title' and bold_selected_or_first_available_variant.title == 'Default Title' %}
+      {% unless bold_variants_size == 1 and product.options.size == 1 and product.options.first == 'Title' and bold_selected_or_first_available_variant.title == 'Default Title' %}
         {% for option in product.options_with_values %}
           <div class="selector-wrapper js">
             <label
@@ -123,7 +123,7 @@
 
   {% unless product.empty? %}
     <script type="application/json" data-product-json>
-      {{ product | json }}
+{% include 'bold-product', output:'json' %}
     </script>
   {% endunless %}
 </div>

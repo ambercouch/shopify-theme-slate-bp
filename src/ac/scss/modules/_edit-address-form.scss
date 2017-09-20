@@ -21,7 +21,6 @@
     width: 75%;
     padding: 0 $inuit-global-spacing-unit-tiny;
     @include inuit-font-size($inuit-font-size-h6,1)
-
   }
   &form-select{
     width: 75%;
@@ -32,7 +31,6 @@
     display: flex;
   }
   &checkbox-wrapper{
-
     width: 75%;
     display: flex;
     padding: $inuit-global-spacing-unit-tiny 0 0 $inuit-global-spacing-unit-tiny;

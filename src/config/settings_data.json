@@ -43,15 +43,21 @@
           "collection-list-0": {
             "type": "collection",
             "settings": {
-              "collection": "new-necklaces",
-              "collection_title": ""
+              "collection": "recently-added",
+              "collection_title": "",
+              "collection_title_position": "centre-centre",
+              "hide_collection_title": false,
+              "collection_button": "Shop now"
             }
           },
           "collection-list-1": {
             "type": "collection",
             "settings": {
-              "collection": "belts",
-              "collection_title": "Cool belts"
+              "collection": "spinning-rings",
+              "collection_title": "",
+              "collection_title_position": "top-left",
+              "hide_collection_title": false,
+              "collection_button": ""
             }
           }
         },
@@ -60,15 +66,7 @@
           "collection-list-1"
         ],
         "settings": {
-          "title": "Featured"
-        }
-      },
-      "featured-collection": {
-        "type": "featured-collection",
-        "settings": {
-          "title": "Pick of the week",
-          "collection": "frontpage",
-          "col_layout": "4"
+          "title": ""
         }
       },
       "featured-product": {
@@ -91,41 +89,6 @@
         "settings": {
           "footer_linklist": "footer",
           "show_payment_icons": false
-        }
-      },
-      "1498656851089": {
-        "type": "mixed-content-list",
-        "blocks": {
-          "1498656851089-0": {
-            "type": "collection",
-            "settings": {
-              "collection": "new-necklaces",
-              "collection_title": "Necklaces"
-            }
-          },
-          "1498656963066": {
-            "type": "page",
-            "settings": {
-              "page": "lookbook",
-              "page_title": "",
-              "page_image": "shopify:\/\/shop_images\/lookbook.jpg"
-            }
-          },
-          "1498657121947": {
-            "type": "collection",
-            "settings": {
-              "collection": "",
-              "collection_title": ""
-            }
-          }
-        },
-        "block_order": [
-          "1498656851089-0",
-          "1498656963066",
-          "1498657121947"
-        ],
-        "settings": {
-          "title": ""
         }
       },
       "1498657188359": {
@@ -177,22 +140,11 @@
         "settings": {
           "title": ""
         }
-      },
-      "1498722821149": {
-        "type": "featured-collection",
-        "settings": {
-          "title": "Featured collection (2 col example)",
-          "collection": "pick-2",
-          "col_layout": "2"
-        }
       }
     },
     "content_for_index": [
       "hero",
-      "featured-collection",
-      "1498722821149",
       "collection-list",
-      "1498656851089",
       "1498657188359"
     ]
   },

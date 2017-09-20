@@ -11,14 +11,23 @@
       {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
     {% endif %}
 
-    <h5 class="collection-thumb__heading">
-      {% if collection.empty? %}
-        {{ 'homepage.onboarding.collection_title' | t }}
-      {% elsif block.settings.collection_title == '' %}
-        {{ collection.title }}
-      {% else %}
-        {{ block.settings.collection_title }}
+    <div class="collection-thumb__heading is-{{ block.settings.collection_title_position }}">
+      <h5 class="collection-thumb__title " {% if block.settings.hide_collection_title == true %}style="display:none !important" {% endif %}>
+        {% if collection.empty? %}
+          {{ 'homepage.onboarding.collection_title' | t }}
+        {% elsif block.settings.collection_title == '' %}
+          {{ collection.title }}
+        {% else %}
+          {{ block.settings.collection_title }}
+        {% endif %}
+      </h5>
+      {% if block.settings.collection_button != '' %}
+      <div class="collection-thumb__shop-btn">
+        <span class="shop-btn">
+          <span class="shop-button__text">{{ block.settings.collection_button }}</span>
+        </span>
+      </div>
       {% endif %}
-    </h5>
+    </div>
   </a>
 </div>

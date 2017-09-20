@@ -3,8 +3,7 @@
   padding: 0 $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
   margin-bottom: 0;
   @include mq($from : tablet){
-    padding: 0 $inuit-global-spacing-unit $inuit-global-spacing-unit;
-    margin-bottom: $inuit-global-spacing-unit;
+    padding: 0 $inuit-global-spacing-unit-tiny / 2 ;
   }
   @include mq($until : mobile){
     padding: 0 !important;
@@ -25,41 +24,54 @@
 
   }
   &heading{
-    font-weight: 500;
-    margin-bottom: 0;
-    text-transform: uppercase;
+
     padding:$inuit-global-spacing-unit-tiny ;
-    padding-right: $inuit-global-spacing-unit-small ;
-    padding-left: $inuit-global-spacing-unit-small ;
-    text-align: left;
-    color: #fff;
-    background: $brand-col-1;
-    @include inuit-font-size($inuit-font-size-h6, 1);
-
-
+    padding-right: 0 ;
+    padding-left: 0 ;
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
 
     @include mq($from : desktop){
-       @include inuit-font-size($font-size-kilo, 1);
-       padding-right: $inuit-global-spacing-unit ;
+      padding-right: $inuit-global-spacing-unit ;
       padding-left: $inuit-global-spacing-unit ;
-      top: 25%;
-      position: absolute;
      }
 
-    @include mq($from : tablet, $until : desktop){
-      @include inuit-font-size($inuit-font-size-h2, 1);
-    }
-
-    @include mq($until : mobile){
+    @include mq($until : tablet){
       padding: $inuit-global-spacing-unit-tiny 0 !important;
       text-align: center;
-
     }
+
     @include mq($from : mobile, $until : tablet){
       padding-right: $inuit-global-spacing-unit-tiny ;
       padding-left: $inuit-global-spacing-unit-tiny ;
+    }
+
+  }
+
+  &title{
+
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 0;
+
+    @include inuit-font-size($inuit-font-size-h6, 1);
+    
+    @include mq($from : desktop){
+      @include inuit-font-size($font-size-kilo, 1);
+    }
+
+    @include mq( $until : tablet){
       @include inuit-font-size($inuit-font-size-h5, 1);
       white-space: nowrap;
+    }
+
+    @include mq($from : tablet, $until : desktop){
+      @include inuit-font-size($inuit-font-size-h2, 1);
     }
 
   }
@@ -76,10 +88,16 @@
     @include mq($from : tablet){
       padding-left:0;
     }
+    @include mq($until : tablet){
+      padding-right:$inuit-global-spacing-unit-tiny /2;
+    }
   }
   .collection-list__item:nth-child(even) &{
     @include mq($from : tablet){
       padding-right:0;
+    }
+    @include mq($until : tablet){
+      padding-left:$inuit-global-spacing-unit-tiny / 2;
     }
   }
 
@@ -115,24 +133,28 @@
 
 
     @include mq($from : tablet){
-      top:75%;
-      right: 0;
-      text-align: right;
-      padding:$inuit-global-spacing-unit-tiny ;
-      padding-right: $inuit-global-spacing-unit-small;
-      padding-left: $inuit-global-spacing-unit;
+      //top:75%;
+      //right: 0;
+      //text-align: right;
+      //padding:$inuit-global-spacing-unit-tiny ;
+      //padding-right: $inuit-global-spacing-unit-small;
+      //padding-left: $inuit-global-spacing-unit;
     }
   }
+}
 
-  //.content-list__item &{
-  //  right: 0;
-  //  text-align: center;
-  //  padding:$inuit-global-spacing-unit-tiny ;
-  //  padding-right: $inuit-global-spacing-unit-tiny;
-  //  padding-left: $inuit-global-spacing-unit-tiny;
-  //  width: 100%;
-  //  @include media-query($from : tablet){
-  //    top:75%;
-  //  }
-  //}
+.collection-thumb__heading.is-top-left{
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  text-align: left;
+  transform: translate(0);
+  padding: $inuit-global-spacing-unit-tiny !important;
+  @include mq($from: tablet){
+    padding: $inuit-global-spacing-unit !important;
+  }
+  .collection-thumb__title{
+
+  }
 }

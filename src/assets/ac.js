@@ -45,13 +45,12 @@ ACSHOPIFY = {
             var container = document.getElementById('filterContainer');
             ACSHOPIFY.ac_fn.open(container, showButton);
 
+            //Search Button
+            var showButton = $('#searchControl, #searchControlClose');
+            var container = document.getElementById('searchFormMain');
+            ACSHOPIFY.ac_fn.open(container, showButton);
 
-            // $('.address-edit-toggle').on('click', function() {
-            //     var formId = $(this).data('form-id');
-            //     //$('#EditAddress_' + formId).toggleClass('hide');
-            //     console.log('clicked')
-            // });
-
+            //Edit Address Cards
             $('.customer-address__address-card').each(function () {
                 var formId = $(this).data('form-id');
                 console.log('formId' + formId);

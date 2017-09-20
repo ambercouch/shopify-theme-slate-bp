@@ -8,7 +8,7 @@
       </a>
     </li>
     <li class="site-control__item">
-      <a href="#" class="site-control__link">
+      <a id="searchControl" href="#" class="site-control__link" data-state="off">
         <span class="site-control__lable">Search</span>
       {% include 'icon-search' %}
       </a>
@@ -34,7 +34,7 @@
     {% endif %}
 {% endif %}
     <li class="site-control__item" >
-      <a class="site-control__link" href="/cart" class="site-control__cart-link" >
+      <a href="/cart" class="site-control__link" >
         <span class="site-control__lable">{{ 'layout.cart.title' | t }}</span>
         {% include 'icon-cart' %}
         <span class="site-control__cart-count">({{ cart.item_count }})</span>
@@ -42,21 +42,10 @@
     </li>
   </ul><!-- /.site-control__list -->
 
-  <div class="site-control__search" data-state="off">
-<form action="/search" method="get" role="search" data-state="off">
-  <label class="site-control__lable" for="Search" class="label-hidden">
-    {{ 'general.search.placeholder' | t }}
-  </label>
-  <input type="search"
-         name="q"
-         id="Search"
-         value="{{ search.terms | escape }}"
-         placeholder="{{ 'general.search.placeholder' | t }}">
-  <button type="submit" class="btn">
-    {% include 'icon-search' %}
-    <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
-  </button>
-</form>
+
+
+  <div id="searchFormMain" class="site-control__search-site" data-state="off">
+    {% include 'search-site' %}
 </div><!-- site-controls__search -->
 
 </div><!-- site-controls -->

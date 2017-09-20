@@ -1,9 +1,9 @@
-<div class="collection-list">
-  <div class="collection-list__header">
-{% if section.settings.title != blank %}
-  <h2 class="collection-list__heading">{{ section.settings.title | escape }}</h2>
-{% endif %}
-  </div>
+<div class="collection-list is-{{ section.settings.collection_list_layout }}">
+  {% if section.settings.title != blank %}
+    <div class="collection-list__header">
+      <h2 class="collection-list__heading">{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
 
   <ul class="collection-list__list">
     {% for block in section.blocks limit: section.blocks.size %}
@@ -13,59 +13,132 @@
     {% endfor %}
   </ul>
 
-
-{% if section.blocks.size == 0 %}
-  {% include 'no-blocks' %}
-{% endif %}
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
 </div>
 
 {% schema %}
-  {
-    "name": "Collection list",
-    "class": "site__collection-list",
-    "max_blocks": 12,
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Heading",
-        "default": "Collection list"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "collection",
-        "name": "Collection List",
-        "settings": [
-          {
-            "label": "Collection",
-            "id": "collection",
-            "type": "collection"
-          },
-          {
-            "label": "Collection Title",
-            "id": "collection_title",
-            "type": "text"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Collection list",
-        "category": "Collection",
-        "blocks": [
-          {
-            "type": "collection"
-          },
-          {
-            "type": "collection"
-          },
-          {
-            "type": "collection"
-          }
-        ]
-      }
-    ]
-  }
+{
+"name": "Collection list",
+"class": "site__collection-list",
+"max_blocks": 12,
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Heading",
+"default": "Collection list"
+},
+{
+"type": "select",
+"id": "collection_list_layout",
+"label": "Layout Style",
+"info": "Change the layout style of the collection thumbnails",
+"default": "50-50",
+"options": [
+{"value" : "50-50",
+"label" : "50, 50"
+},
+{"value" : "25-50-25",
+"label" : "25, 50, 25"
+}]
+}
+],
+"blocks": [
+{
+"type": "collection",
+"name": "Collection List",
+"settings": [
+{
+"label": "Collection",
+"id": "collection",
+"type": "collection"
+},
+{
+"label": "Collection Title",
+"id": "collection_title",
+"info": "Override the collection title.",
+"type": "text"
+},
+{
+"label": "Collection Title Position",
+"id": "collection_title_position",
+"options": [
+{"value" : "top-left",
+"label" : "Top, Left",
+"group" : "Top"
+},
+{"value" : "top-centre",
+"label" : "Top, Centre",
+"group" : "Top"
+},
+{"value" : "top-right",
+"label" : "Top, Right",
+"group" : "Top"
+},
+{"value" : "centre-left",
+"label" : "Centre, Left",
+"group" : "Centre"
+},
+{"value" : "centre-centre",
+"label" : "Centre, Centre",
+"group" : "Centre"
+},
+{"value" : "centre-right",
+"label" : "Centre, Right",
+"group" : "Centre"
+},
+{"value" : "bottom-left",
+"label" : "Bottom, Left",
+"group" : "Bottom"
+},
+{"value" : "bottom-centre",
+"label" : "Bottom, Center",
+"group" : "Bottom"
+},
+{"value" : "bottom-right",
+"label" : "Bottom, Right",
+"group" : "Bottonm"
+}
+],
+"default":   "centre-centre",
+"type": "select"
+},
+
+{
+"label": "Hide Collection Title",
+"id": "hide_collection_title",
+"info": "Removes the collection title",
+"default": false,
+"type": "checkbox"
+},
+{
+"label": "Button Text",
+"id": "collection_button",
+"default": "Shop now",
+"info": "Leave blank to remove the button.",
+"type": "text"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Collection list",
+"category": "Collection",
+"blocks": [
+{
+"type": "collection"
+},
+{
+"type": "collection"
+},
+{
+"type": "collection"
+}
+]
+}
+]
+}
 {% endschema %}
