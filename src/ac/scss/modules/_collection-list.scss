@@ -9,7 +9,7 @@
   &header{
     text-align: center;
     border-bottom: solid 2px;
-    margin:0 auto $inuit-global-spacing-unit;
+    margin:$inuit-global-spacing-unit auto ;
     @include mq($from: desktop){
       width: 50%;
     }
