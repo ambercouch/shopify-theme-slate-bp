@@ -1,0 +1,22 @@
+<div class="search-site">
+  <form  class="search-site__form" action="/search" method="get" role="search" data-state="off">
+    <label class="search-site__label" for="Search" class="label-hidden">
+      {{ 'general.search.placeholder' | t }}
+    </label>
+    <input type="search"
+           name="q"
+           id="Search"
+           value="{{ search.terms | escape }}"
+           placeholder="{{ 'general.search.placeholder' | t }}"
+           class="search-site__input">
+
+    <button type="submit" class="btn search-site__control--search">
+      {% include 'icon-search' %}
+      <span class="icon-fallback-text search-site__text">{{ 'general.search.submit' | t }}</span>
+    </button>
+    <button id="searchControlClose"  class="btn search-site__control--close">
+      {% include 'icon-close' %}
+      <span class="icon-fallback-text search-site__text">Cancel</span>
+    </button>
+  </form>
+</div>

@@ -1,0 +1,71 @@
+.search-results{
+  @extend .o-wrapper;
+}
+
+.search-results__{
+  &header{
+    text-align: center;
+    border-bottom: solid 2px;
+    margin:0 auto $inuit-global-spacing-unit;
+    @include mq($from : tablet){
+      width: 50%;
+    }
+  }
+  &heading{
+    text-transform: uppercase;
+    font-weight: 500;
+    @include mq($until : tablet){
+      @include inuit-font-size($inuit-font-size-h3)
+    }
+  }
+ &search-site{
+   line-height: 1;
+   margin-bottom:$inuit-global-spacing-unit;
+ }
+
+
+  &main{
+    flex-grow:1;
+    width: 80%;
+  }
+  &list{
+    @extend .o-list-bare;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+  &item{
+    width: 25%;
+
+  }
+}
+
+
+.search-results__item--{
+  &layout2 {
+    @include mq($from: tablet) {
+      width: 50%;
+    }
+  }
+  &layout4{
+    @include mq($from : desktop){
+      width: 25%;
+    }
+
+    @include mq($from : tablet, $until : desktop){
+      width: 50%;
+    }
+
+  }
+}
+
+//Hide single filter Groups
+
+.filter-group.has_single_item {
+  display: none !important;
+}
+
+.filter-group.has_group_selected.has_single_item {
+  display: inherit !important;
+}
