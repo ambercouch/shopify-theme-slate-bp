@@ -48,7 +48,9 @@
               "collection_title_position": "centre-centre",
               "hide_collection_title": false,
               "collection_image_position": "centre",
-              "collection_button": "Shop now"
+              "collection_button": "Shop now",
+              "collection_button_text_colour": "p431",
+              "collection_button_background_colour": "white"
             }
           },
           "collection-list-1": {
@@ -59,7 +61,9 @@
               "collection_title_position": "top-left",
               "hide_collection_title": false,
               "collection_image_position": "centre",
-              "collection_button": ""
+              "collection_button": "",
+              "collection_button_text_colour": "Shop now",
+              "collection_button_background_colour": "white"
             }
           }
         },
@@ -155,7 +159,9 @@
               "collection_title_position": "top-left",
               "hide_collection_title": false,
               "collection_image_position": "centre",
-              "collection_button": ""
+              "collection_button": "",
+              "collection_button_text_colour": "Shop now",
+              "collection_button_background_colour": "white"
             }
           },
           "1506329773418-1": {
@@ -166,7 +172,9 @@
               "collection_title_position": "top-left",
               "hide_collection_title": false,
               "collection_image_position": "centre",
-              "collection_button": ""
+              "collection_button": "",
+              "collection_button_text_colour": "Shop now",
+              "collection_button_background_colour": "white"
             }
           },
           "1506329773418-2": {
@@ -176,8 +184,10 @@
               "collection_title": "",
               "collection_title_position": "top-left",
               "hide_collection_title": false,
-              "collection_image_position": "centre",
-              "collection_button": ""
+              "collection_image_position": "left",
+              "collection_button": "",
+              "collection_button_text_colour": "p431",
+              "collection_button_background_colour": "white"
             }
           }
         },
@@ -190,12 +200,52 @@
           "title": "",
           "collection_list_layout": "25-50-25"
         }
+      },
+      "1506339511798": {
+        "type": "collection-list",
+        "blocks": {
+          "1506339511798-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "seren",
+              "collection_title": "some title",
+              "collection_title_position": "bottom-centre",
+              "hide_collection_title": true,
+              "collection_image_position": "centre",
+              "collection_button": "Shop now",
+              "collection_button_text_colour": "white",
+              "collection_button_background_colour": "p489"
+            }
+          },
+          "1506339511798-1": {
+            "type": "collection",
+            "settings": {
+              "collection": "sarah-tempest",
+              "collection_title": "",
+              "collection_title_position": "bottom-centre",
+              "hide_collection_title": true,
+              "collection_image_position": "centre",
+              "collection_button": "Shop now",
+              "collection_button_text_colour": "white",
+              "collection_button_background_colour": "p318"
+            }
+          }
+        },
+        "block_order": [
+          "1506339511798-0",
+          "1506339511798-1"
+        ],
+        "settings": {
+          "title": "",
+          "collection_list_layout": "50-50"
+        }
       }
     },
     "content_for_index": [
       "hero",
       "collection-list",
       "1506329773418",
+      "1506339511798",
       "1498657188359"
     ]
   },
