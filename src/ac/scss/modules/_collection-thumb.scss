@@ -93,6 +93,8 @@
   CONTEXT SELECTORS
  modify the block or element based on an ancestor
  */
+
+//.collection-thumb
 .collection-thumb{
 
   .is-50-50 .collection-list__item:nth-child(odd) &{
@@ -116,8 +118,9 @@
     @include mq($from : tablet){
       padding-left:0;
     }
+
     @include mq($until : tablet){
-      padding-right: 0;
+      //padding-right: 0;
     }
   }
   .is-25-50-25 .collection-list__item:nth-child(3n) &{
@@ -125,7 +128,7 @@
       padding-right:0;
     }
     @include mq($until : tablet){
-      padding-left:0;
+      //padding-left:0;
     }
   }
 
@@ -157,27 +160,40 @@
 
 .collection-thumb__img{
   .is-25-50-25 .collection-list__item:nth-child(3n -2) &{
-    width: 200%;
-    max-width: 200%;
-    height: auto;
+
+    @include mq($from : tablet){
+      width: 200%;
+      max-width: 200%;
+      height: auto;
+    }
 
   }
   .is-25-50-25 .collection-list__item:nth-child(3n) &{
-    width: 200%;
-    max-width: 200%;
-    height: auto;
+    @include mq($from : tablet){
+      width: 200%;
+      max-width: 200%;
+      height: auto;
+    }
   }
    .is-25-50-25 .collection-list__item:nth-child(3n -2) .is-img-centre &{
-    transform: translate(-25% , 0);
+     @include mq($from : tablet){
+       transform: translate(-25% , 0);
+     }
   }
   .is-25-50-25 .collection-list__item:nth-child(3n) .is-img-centre &{
-    transform: translate(-25% , 0);
+    @include mq($from : tablet){
+      transform: translate(-25% , 0);
+    }
   }
   .is-25-50-25 .collection-list__item:nth-child(3n -2) .is-img-right &{
-    transform: translate(-50% , 0);
+    @include mq($from : tablet){
+      transform: translate(-50% , 0);
+    }
   }
   .is-25-50-25 .collection-list__item:nth-child(3n) .is-img-right &{
-    transform: translate(-50% , 0);
+    @include mq($from : tablet){
+      transform: translate(-50% , 0);
+    }
   }
 }
 .collection-thumb__img{

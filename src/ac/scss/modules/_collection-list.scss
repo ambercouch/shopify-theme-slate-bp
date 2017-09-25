@@ -38,12 +38,31 @@
 
 .collection-list__item{
   .is-25-50-25 &{
+
+    @include mq($until: tablet){
+    width: 100%;
+    }
+
   &:first-child {
+    @include mq($from : tablet){
     width: 25%;
+    }
   }
     &:last-child {
-      width: 25%;
+      @include mq($from : tablet){
+        width: 25%;
+      }
     }
   }
 
+}
+
+
+
+.collection-list__list{
+  .is-25-50-25 &{
+    @include mq($until : tablet){
+      display: block;
+    }
+  }
 }
