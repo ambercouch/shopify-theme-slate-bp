@@ -47,6 +47,7 @@
               "collection_title": "",
               "collection_title_position": "centre-centre",
               "hide_collection_title": false,
+              "collection_image_position": "centre",
               "collection_button": "Shop now"
             }
           },
@@ -57,6 +58,7 @@
               "collection_title": "",
               "collection_title_position": "top-left",
               "hide_collection_title": false,
+              "collection_image_position": "centre",
               "collection_button": ""
             }
           }
@@ -66,7 +68,8 @@
           "collection-list-1"
         ],
         "settings": {
-          "title": ""
+          "title": "",
+          "collection_list_layout": "50-50"
         }
       },
       "featured-product": {
@@ -140,11 +143,59 @@
         "settings": {
           "title": ""
         }
+      },
+      "1506329773418": {
+        "type": "collection-list",
+        "blocks": {
+          "1506329773418-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "earrings",
+              "collection_title": "",
+              "collection_title_position": "top-left",
+              "hide_collection_title": false,
+              "collection_image_position": "centre",
+              "collection_button": ""
+            }
+          },
+          "1506329773418-1": {
+            "type": "collection",
+            "settings": {
+              "collection": "bracelets",
+              "collection_title": "",
+              "collection_title_position": "top-left",
+              "hide_collection_title": false,
+              "collection_image_position": "centre",
+              "collection_button": ""
+            }
+          },
+          "1506329773418-2": {
+            "type": "collection",
+            "settings": {
+              "collection": "necklace",
+              "collection_title": "",
+              "collection_title_position": "top-left",
+              "hide_collection_title": false,
+              "collection_image_position": "centre",
+              "collection_button": ""
+            }
+          }
+        },
+        "block_order": [
+          "1506329773418-0",
+          "1506329773418-1",
+          "1506329773418-2"
+        ],
+        "settings": {
+          "title": "",
+          "collection_list_layout": "25-50-25"
+        }
       }
     },
     "content_for_index": [
       "hero",
       "collection-list",
+      "1506329773418",
       "1498657188359"
     ]
   },
