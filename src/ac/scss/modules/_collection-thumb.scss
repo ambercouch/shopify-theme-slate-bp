@@ -64,6 +64,12 @@
     
     @include mq($from : desktop){
       @include inuit-font-size($font-size-kilo, 1);
+      /* 1.5 dpr */
+      @media
+      (-webkit-min-device-pixel-ratio: 1.5),
+      (min-resolution: 144dpi){
+        @include inuit-font-size($inuit-font-size-h2, 1);
+      }
     }
 
     @include mq( $until : tablet){
@@ -73,7 +79,11 @@
 
     @include mq($from : tablet, $until : desktop){
       @include inuit-font-size($inuit-font-size-h2, 1);
+
+
     }
+
+
 
   }
 }
@@ -107,7 +117,7 @@
       padding-left:0;
     }
     @include mq($until : tablet){
-      padding-right:$inuit-global-spacing-unit-tiny /2;
+      padding-right: 0;
     }
   }
   .is-25-50-25 .collection-list__item:nth-child(3n) &{
@@ -115,7 +125,7 @@
       padding-right:0;
     }
     @include mq($until : tablet){
-      padding-left:$inuit-global-spacing-unit-tiny / 2;
+      padding-left:0;
     }
   }
 
@@ -150,11 +160,24 @@
     width: 200%;
     max-width: 200%;
     height: auto;
+
   }
   .is-25-50-25 .collection-list__item:nth-child(3n) &{
     width: 200%;
     max-width: 200%;
     height: auto;
+  }
+   .is-25-50-25 .collection-list__item:nth-child(3n -2) .is-img-centre &{
+    transform: translate(-25% , 0);
+  }
+  .is-25-50-25 .collection-list__item:nth-child(3n) .is-img-centre &{
+    transform: translate(-25% , 0);
+  }
+  .is-25-50-25 .collection-list__item:nth-child(3n -2) .is-img-right &{
+    transform: translate(-50% , 0);
+  }
+  .is-25-50-25 .collection-list__item:nth-child(3n) .is-img-right &{
+    transform: translate(-50% , 0);
   }
 }
 .collection-thumb__img{

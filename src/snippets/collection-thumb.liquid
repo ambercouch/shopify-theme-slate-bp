@@ -1,4 +1,4 @@
-<div class="collection-thumb" {{ block.shopify_attributes }}>
+<div class="collection-thumb is-img-{{ block.settings.collection_image_position }}" {{ block.shopify_attributes }}>
   {%- assign collection = collections[block.settings.collection] -%}
 
   <a class="collection-thumb__link" href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}">
