@@ -11,8 +11,78 @@
   }
 }
 
+[class*=shop-btn--]{
+  @extend .shop-btn;
+}
+
+.shop-btn--{
+
+  &white{
+    background-color: white;
+  }
+
+  /*
+  Brand pantone colours GREY
+   */
+  &p431{
+    background-color: $p431;
+  }
+  &p429{
+    background-color: $p429;
+  }
+  &p427{
+    background-color: $p427;
+  }
+
+  /*
+  Brand pantone colours PEACHES
+   */
+  &p4735{
+    background-color: $p4735;
+  }
+  &p489{
+    background-color: $p489;
+  }
+  &p475{
+    background-color: $p475;
+  }
+
+  /*
+  Brand pantone colours AQUAS
+   */
+
+  &p7466{
+    background-color: $p7466;
+  }
+  &p318{
+    background-color: $p318;
+  }
+
+}
+
+.shop-btn__text--{
+  &white{
+    color: white;
+  }
+
+  /*
+  Brand pantone colours GREY
+   */
+  &p431{
+    color: $p431;
+  }
+  &p429{
+    color: $p429;
+  }
+  &p427{
+    color: $p427;
+  }
+
+}
+
 .shop-btn{
   .collection-thumb__shop-btn &{
     margin-bottom: 0 !important;
   }
 }
+
