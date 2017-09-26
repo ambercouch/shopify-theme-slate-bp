@@ -1,0 +1,9 @@
+<script>
+    var url = window.location.protocol + '//' + window.location.hostname
+    if (window.location.port != '' ){
+        url = url + ':' + window.location.port
+    }
+    url = url + '/account/login';
+
+    window.location.replace(url);
+</script>

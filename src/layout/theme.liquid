@@ -31,18 +31,17 @@
         {{ content_for_layout }}
         {% else %}
         {% if customer %}
-          {{ content_for_layout }}
+          {%   if customer.tags  contains 'active' %}
+            {% if customer.tags contains 'inactive' %}
+              {% include 'main-content-inactive' %}
+            {% else %}
+              {{ content_for_layout }}
+            {% endif %}
+            {% else %}
+              {% include 'main-content-inactive' %}
+            {% endif %}
         {% else %}
-          <script>
-              var url = window.location.protocol + '//' + window.location.hostname
-              if (window.location.port != '' ){
-                  url = url + ':' + window.location.port
-              }
-              url = url + '/account/login';
-
-              window.location.replace(url);
-
-          </script>
+          {% include 'main-content-restricted' %}
         {% endif %}
         {% endcase %}
       </div>

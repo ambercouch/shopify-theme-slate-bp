@@ -4,6 +4,11 @@
   <div class="customer-login__header">
     <h1 class="customer-login__heading">{{ 'customer.login.title' | t }}</h1>
   </div>
+  <div class="customer-login__content">
+    <p>Access to our site is restricted. If you already have an account please enter your email address and password to sign in. If you would like to register for an account please use our <a href="/account/register" title="{{ 'layout.customer.create_account' | t }}">account registration</a> form.
+    </p>
+  </div>
+
 <div id="CustomerLoginForm" class="customer-login__form">
   {% form 'customer_login' %}
   {{ form.errors | default_errors }}

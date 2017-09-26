@@ -24,6 +24,14 @@
       @include inuit-font-size($inuit-font-size-h3)
     }
   }
+  &content{
+
+    margin: 0 auto;
+    margin-bottom:$inuit-global-spacing-unit;
+    @include mq($from : tablet){
+      width: 75%;
+    }
+  }
   &form{
 
     margin: 0 auto;
