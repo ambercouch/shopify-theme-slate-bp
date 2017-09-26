@@ -101,51 +101,35 @@
       "1498657188359": {
         "type": "banner-list",
         "blocks": {
-          "1498657188359-0": {
-            "type": "banner",
-            "settings": {
-              "banner_image": "",
-              "banner_url": ""
-            }
-          },
           "1498657223372": {
             "type": "banner",
             "settings": {
-              "banner_image": "shopify:\/\/shop_images\/glasgow.jpg",
-              "banner_url": ""
-            }
-          },
-          "1498657240653": {
-            "type": "banner",
-            "settings": {
-              "banner_image": "",
+              "banner_image": "shopify:\/\/shop_images\/MODA.png",
               "banner_url": ""
             }
           },
           "1498657244123": {
             "type": "banner",
             "settings": {
-              "banner_image": "shopify:\/\/shop_images\/moda.jpg",
+              "banner_image": "shopify:\/\/shop_images\/pure.png",
               "banner_url": ""
             }
           },
           "1498657251979": {
             "type": "banner",
             "settings": {
-              "banner_image": "shopify:\/\/shop_images\/pure.jpg",
+              "banner_image": "shopify:\/\/shop_images\/spring-fair.png",
               "banner_url": ""
             }
           }
         },
         "block_order": [
-          "1498657188359-0",
           "1498657223372",
-          "1498657240653",
           "1498657244123",
           "1498657251979"
         ],
         "settings": {
-          "title": ""
+          "title": "Exhibitions"
         }
       },
       "1506329773418": {
