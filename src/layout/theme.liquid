@@ -11,23 +11,45 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {% if customer %} customer--in {% else %} customer--out {% endif %}">
-  <div id="page" class="site">
+<div id="page" class="site">
 
-    <div class="site__accessibility">
-      <a class="accessibility__link in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
-    </div>
+  <div class="site__accessibility">
+    <a class="accessibility__link in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+  </div>
 
   {% section 'header' %}
 
   <main role="main" id="MainContent" class="site__main">
     <div class="main">
       <div class="main__content">
-    {{ content_for_layout }}
+        {% case template %}
+        {% when 'index' %}
+        {{ content_for_layout }}
+        {% when 'customers/login' %}
+        {{ content_for_layout }}
+        {% when 'customers/register' %}
+        {{ content_for_layout }}
+        {% else %}
+        {% if customer %}
+          {{ content_for_layout }}
+        {% else %}
+          <script>
+              var url = window.location.protocol + '//' + window.location.hostname
+              if (window.location.port != '' ){
+                  url = url + ':' + window.location.port
+              }
+              url = url + '/account/login';
+
+              window.location.replace(url);
+
+          </script>
+        {% endif %}
+        {% endcase %}
       </div>
     </div>
   </main>
-       {% section 'footer' %}
-  </div>
+  {% section 'footer' %}
+</div>
 
 
 
