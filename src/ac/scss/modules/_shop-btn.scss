@@ -6,8 +6,20 @@
   margin: $inuit-global-spacing-unit-small 0;
   @include inuit-font-size($inuit-font-size-h5, 1);
   @include mq($from : tablet){
-    @include inuit-font-size($inuit-font-size-h4, 1);
+    @include inuit-font-size($inuit-font-size-h3, 1);
     padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+    //display: none;
+  }
+  @include mq($from : desktop ){
+    @include inuit-font-size($inuit-font-size-h1, 1);
+    padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+    //display: none;
+    @media
+    (-webkit-min-device-pixel-ratio: 1.5),
+    (min-resolution: 144dpi){
+      @include inuit-font-size($inuit-font-size-h2, 1);
+      padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+    }
   }
 }
 
