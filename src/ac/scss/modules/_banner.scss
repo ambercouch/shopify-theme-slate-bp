@@ -1,4 +1,14 @@
 .banner{
   text-align: center;
-  margin-bottom: $inuit-global-spacing-unit
+  margin-bottom: $inuit-global-spacing-unit;
+  @include mq($from : tablet){
+    margin-bottom: 0;
+  }
+}
+
+.banner__{
+  &img{
+    width: 100%;
+    height:auto;
+  }
 }

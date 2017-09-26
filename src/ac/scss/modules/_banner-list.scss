@@ -16,5 +16,15 @@
   }
   &list{
     @extend .o-list-bare;
+    @include mq($from: tablet){
+      display: flex;
+    }
+  }
+  &item{
+    @include mq($from : tablet){
+      width: 33.333%;
+      padding: 0 $inuit-global-spacing-unit-tiny;
+    }
+
   }
 }
