@@ -1,1 +1,24 @@
-You account is currently inactive
+<!-- Create a page with the slug inactive-account to override this content -->
+<div class="page--inactive-account">
+  <div class="page__main">
+    <header class="page__header" role="banner">
+      {%  if pages.account-inactive.title != '' %}
+        <h1 class="page__heading">{{ pages.account-inactive.title  }}</h1>
+      {% else %}
+        <h1 class="page__heading">Account inactive</h1>
+      {% endif %}
+    </header>
+    <div class="page__content">
+    {%  if pages.account-inactive.content != '' %}
+      <div class="rte">
+      {{ pages.account-inactive.content }}
+      </div>
+    {% else %}
+      <p>Your account is inactive and currently under review.</p>
+    {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
