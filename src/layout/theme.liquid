@@ -22,28 +22,21 @@
   <main role="main" id="MainContent" class="site__main">
     <div class="main">
       <div class="main__content">
-        {% case template %}
-        {% when 'index' %}
-        {{ content_for_layout }}
-        {% when 'customers/login' %}
-        {{ content_for_layout }}
-        {% when 'customers/register' %}
-        {{ content_for_layout }}
-        {% else %}
-        {% if customer %}
-          {%   if customer.tags  contains 'active' %}
-            {% if customer.tags contains 'inactive' %}
-              {% include 'main-content-inactive' %}
-            {% else %}
-              {{ content_for_layout }}
-            {% endif %}
-            {% else %}
-              {% include 'main-content-inactive' %}
-            {% endif %}
-        {% else %}
-          {% include 'main-content-restricted' %}
-        {% endif %}
+
+        {%  include  'access-logic'%}
+        {% case access %}
+        {% when 'full' %}
+        {{  content_for_layout }}
+        {% when 'inactive' %}
+        <!-- template {{ template }} -->
+        <!-- access {{ access }} -->
+        {% include 'main-content-inactive' %}
+        {% when 'restricted' %}
+        <!-- template {{ template }} -->
+        <!-- access {{ access }} -->
+        {% include 'main-content-restricted' %}
         {% endcase %}
+
       </div>
     </div>
   </main>

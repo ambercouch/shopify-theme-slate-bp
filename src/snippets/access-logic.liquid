@@ -1,0 +1,31 @@
+{% assign access = 'restricted' %}
+        {% case template %}
+        {% when null %}
+        {% assign access = 'full' %}
+        {% when 'index' %}
+        {% assign access = 'full' %}
+        {% when 'customers/login' %}
+        {% assign access = 'full' %}
+        {% when 'customers/register' %}
+        {% assign access = 'full' %}
+        {% when 'customers/account' %}
+        {% assign access = 'full' %}
+{% when 'customers/register' %}
+        {% assign access = 'full' %}
+        {% else %}
+          {% if customer %}
+            {% assign access = 'inactive' %}
+            {%   if customer.tags  contains 'active' %}
+              {% assign access = 'full' %}
+              {% if customer.tags contains 'inactive' %}
+                {% assign access = 'inactive' %}
+              {% else %}
+                {% assign access = 'full' %}
+              {% endif %}
+            {% else %}
+              {% assign access = 'inactive' %}
+            {% endif %}
+          {% else %}
+            {% assign access = 'restricted' %}
+          {% endif %}
+          {% endcase %}
