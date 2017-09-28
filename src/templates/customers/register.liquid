@@ -17,6 +17,7 @@
           id="FirstName"
           placeholder="{{ 'customer.register.first_name' | t }}"
           autofocus
+          required
           {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
       </div>
       <div class="customer-register__form-control">
@@ -28,6 +29,7 @@
           class="customer-login__input"
           id="LastName"
           placeholder="{{ 'customer.register.last_name' | t }}"
+               required
           {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
       </div>
       <div class="customer-register__form-control">
@@ -43,7 +45,8 @@
                value="{% if form.email %}{{ form.email }}{% endif %}"
                spellcheck="false"
                autocomplete="off"
-               autocapitalize="off">
+               autocapitalize="off"
+               required>
       </div>
 
       <div class="customer-register__form-control">
@@ -59,7 +62,8 @@
                value=""
                spellcheck="false"
                autocomplete="on"
-               autocapitalize="off">
+               autocapitalize="off"
+               required>
       </div>
 
       <div class="customer-register__form-control">
@@ -75,7 +79,8 @@
                value=""
                spellcheck="false"
                autocomplete="on"
-               autocapitalize="off">
+               autocapitalize="off"
+               required>
       </div>
 
       <div class="customer-register__form-control">
@@ -87,7 +92,8 @@
           class="customer-login__input"
           id="CreatePassword"
           class="{% if form.errors contains 'password' %}input-error{% endif %}"
-          placeholder="{{ 'customer.register.password' | t }}">
+          placeholder="{{ 'customer.register.password' | t }}"
+               required>
       </div>
 
 
