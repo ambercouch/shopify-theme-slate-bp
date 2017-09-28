@@ -1,0 +1,26 @@
+.shopify-challenge{
+
+}
+
+.shopify-challenge__{
+  &container{
+    //margin-top:$inuit-global-spacing-unit-large;
+    //margin-bottom:$inuit-global-spacing-unit-large;
+  }
+  &button{
+    transition: background 0.3s ease;
+    padding: $inuit-global-spacing-unit-tiny 0;
+    margin-bottom: $inuit-global-spacing-unit-small;
+    display: block;
+    background: $brand-col-1 ;
+    color: $brand-col-3;
+    text-align: center;
+    &:hover{
+      background: darken($brand-col-1, 10%);
+    }
+    @include mq($from : tablet){
+      display: inline-block;
+      padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+    }
+  }
+}
