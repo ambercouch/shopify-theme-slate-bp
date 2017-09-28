@@ -21,7 +21,7 @@
 
   <main role="main" id="MainContent" class="site__main">
     <div class="main">
-      <div class="main__content">
+      <div class="main__content{% if template != null %}--{{ template | handleize }} {% endif %}">
 
         {%  include  'access-logic'%}
         {% case access %}
