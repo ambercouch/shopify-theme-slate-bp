@@ -7,6 +7,9 @@
 }
 
 .customer-address__{
+
+
+
   &address-card{
     position: relative;
     background: lighten($brand-col-3, 10%);
@@ -29,7 +32,7 @@
     }
   }
 
-  &address-edit{
+  &edit-address-form{
     display: none;
     margin-bottom: auto;
     padding: $inuit-global-spacing-unit-small;
@@ -40,6 +43,7 @@
   &controls{
      padding: $inuit-global-spacing-unit-small;
      background: $brand-col-2;
+
 
     @include mq($from : tablet){
       display: block;
@@ -59,6 +63,7 @@
     color: $brand-col-3;
     text-align: center;
     border: none;
+    line-height: 1;
     &:hover{
       background: darken($brand-col-1, 10%);
     }

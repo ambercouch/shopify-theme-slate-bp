@@ -27,6 +27,13 @@
       @include inuit-font-size($inuit-font-size-h3)
     }
   }
+
+  &new-address-form{
+    width: 600px;
+    max-width: 100%;
+    margin:$inuit-global-spacing-unit auto $inuit-global-spacing-unit-large;
+  }
+
   &section{
     background: $brand-col-3;
     display: flex;
@@ -36,7 +43,7 @@
   &controls{
     text-align: right;
   }
-  &control{
+  &control, &control:focus{
     transition: background 0.3s ease;
     padding: $inuit-global-spacing-unit-tiny 0;
     margin-bottom: $inuit-global-spacing-unit-small;
@@ -52,4 +59,11 @@
       padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
     }
   }
+}
+
+.customer-addresses__new-address-form[data-state=off]{
+  display: none;
+}
+.customer-addresses__new-address-form[data-state=on]{
+  display: block;
 }
