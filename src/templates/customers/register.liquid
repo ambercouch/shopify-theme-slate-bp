@@ -35,16 +35,49 @@
           {{ 'customer.register.email' | t }}
         </label>
         <input type="email"
-          name="customer[email]"
-          class="customer-login__input"
-          id="Email"
-          class="{% if form.errors contains 'email' %}input-error{% endif %}"
-          placeholder="{{ 'customer.register.email' | t }}"
-          value="{% if form.email %}{{ form.email }}{% endif %}"
-          spellcheck="false"
-          autocomplete="off"
-          autocapitalize="off">
+               name="customer[email]"
+               class="customer-login__input"
+               id="Email"
+               class="{% if form.errors contains 'email' %}input-error{% endif %}"
+               placeholder="{{ 'customer.register.email' | t }}"
+               value="{% if form.email %}{{ form.email }}{% endif %}"
+               spellcheck="false"
+               autocomplete="off"
+               autocapitalize="off">
       </div>
+
+      <div class="customer-register__form-control">
+        <label for="tel" class="label-hidden customer-register__label">
+          Tel
+        </label>
+        <input type="tel"
+               name="customer[note][tel]"
+               class="customer-login__input"
+               id="tel"
+               class="{% if form.errors contains 'tel' %}input-error{% endif %}"
+               placeholder="Tel"
+               value=""
+               spellcheck="false"
+               autocomplete="on"
+               autocapitalize="off">
+      </div>
+
+      <div class="customer-register__form-control">
+        <label for="company" class="label-hidden customer-register__label">
+          Company
+        </label>
+        <input type="text"
+               name="customer[note][company]"
+               class="customer-login__input"
+               id="company"
+               class="{% if form.errors contains 'company' %}input-error{% endif %}"
+               placeholder="Company"
+               value=""
+               spellcheck="false"
+               autocomplete="on"
+               autocapitalize="off">
+      </div>
+
       <div class="customer-register__form-control">
         <label for="CreatePassword" class="label-hidden customer-register__label">
           {{ 'customer.register.password' | t }}
