@@ -4,11 +4,11 @@
     <h1 class="customer-addresses__heading">{{ 'customer.account.title' | t }}</h1>
   </header>
   <div class="customer-addresses__controls">
-    <a  href="#" class="customer-addresses__control address-new-toggle">{{ 'customer.addresses.add_new' | t }}</a>
+    <a  id="addressNewOpen" data-state="off" href="#" class="customer-addresses__control">{{ 'customer.addresses.add_new' | t }}</a>
     <a class="customer-addresses__control" href="/account">{{ 'customer.account.return' | t }}</a>
   </div>
 
-  <div id="AddressNewForm" class="hide customer-addresses__new-address-form">
+  <div id="addressNewForm" data-state="off" class="customer-addresses__new-address-form">
       {% include 'new-address-form' %}
   </div>
 

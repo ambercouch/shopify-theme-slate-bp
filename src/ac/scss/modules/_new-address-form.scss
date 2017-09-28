@@ -1,0 +1,115 @@
+.new-address-form{
+
+}
+
+.new-address-form__{
+  &header{
+    background: $brand-col-4;
+    padding: $inuit-global-spacing-unit-small;
+  }
+  &heading{
+    color: #fff;
+    margin-bottom: 0;
+  }
+  &form{
+    position: relative;
+    background: lighten($brand-col-3, 10%);
+    min-height: 20em;
+    display: flex;
+    flex-direction: column;
+    padding: $inuit-global-spacing-unit;
+    //@include mq($from : tablet){
+    //  height: 18em;
+    //}
+  }
+  &form-label{
+    transition: opacity 0.3s ease;
+    display: block;
+    line-height:1.4em;
+    opacity: 0;
+    order: 1;
+    background: $brand-col-1;
+    color: white;
+    padding: 0 $inuit-global-spacing-unit-tiny;
+    margin-left: $inuit-global-spacing-unit-tiny;
+    @include inuit-font-size($inuit-font-size-h6);
+    flex-grow: 1;
+    white-space: nowrap;
+  }
+  &form-input{
+    width: 75%;
+    padding: 0 $inuit-global-spacing-unit-tiny;
+    @include inuit-font-size($inuit-font-size-h6,1)
+  }
+  &form-select{
+    width: 75%;
+    background-color: #fff;
+    padding-left: $inuit-global-spacing-unit-tiny;
+    @include inuit-font-size($inuit-font-size-h6,1)
+  }
+  &form-control{
+    display: flex;
+  }
+  &checkbox-wrapper{
+    width: 75%;
+    display: flex;
+    padding: $inuit-global-spacing-unit-tiny 0 0 $inuit-global-spacing-unit-tiny;
+    & > :first-child{
+      width: 12px;
+    }
+    & > :last-child{
+      flex-grow: 1;
+      margin-left:$inuit-global-spacing-unit-tiny;
+      background: $brand-col-1;
+      color: white;
+      padding: 0 $inuit-global-spacing-unit-tiny;
+      @include inuit-font-size($inuit-font-size-h6)
+    }
+  }
+
+  &control{
+    transition: background 0.3s ease;
+    padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
+    width: 44%;
+    margin-bottom: 0;
+    display: block;
+    background: $brand-col-1 ;
+    color: $brand-col-3;
+    text-align: center;
+    border: none;
+    line-height: 1;
+    &:hover{
+      background: darken($brand-col-1, 10%);
+    }
+    @include mq($from : tablet){
+      display: inline-block;
+      padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+      margin-bottom: 0;
+      width: auto;
+    }
+    @include mq($until : mobile){
+      width: 100%;
+      margin-bottom: $inuit-global-spacing-unit-small;
+    }
+  }
+  &controls{
+    padding: $inuit-global-spacing-unit-small;
+    background: $brand-col-2;
+
+    @include mq($from : tablet){
+      display: block;
+    }
+
+  }
+}
+
+.new-address-form__form-label{
+  .new-address-form__form-control:hover &{
+    opacity: 1;
+  }
+
+}
+
+.new-address-form__form-input:focus + .new-address-form__form-label{
+  opacity: 1;
+}

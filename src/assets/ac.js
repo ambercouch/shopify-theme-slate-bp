@@ -50,10 +50,15 @@ ACSHOPIFY = {
             var container = document.getElementById('searchFormMain');
             ACSHOPIFY.ac_fn.open(container, showButton);
 
+            //Search New Address
+            var showButton = $('#addressNewOpen, #addressNewClose');
+            var container = document.getElementById('addressNewForm');
+            ACSHOPIFY.ac_fn.open(container, showButton);
+
             //Edit Address Cards
             $('.customer-address__address-card').each(function () {
                 var formId = $(this).data('form-id');
-                console.log('formId' + formId);
+                //console.log('formId' + formId);
                 //address button
                 var showButton = $('.address-edit-toggle', this);
                 var container = $(this);
