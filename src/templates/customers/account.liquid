@@ -34,7 +34,9 @@
     </table>
     </div>
   {% else %}
+      <div class="customer-history__order-table--empty">
     <p>{{ 'customer.orders.none' | t }}</p>
+      </div>
   {% endif %}
 
   {% if paginate.pages > 1 %}
