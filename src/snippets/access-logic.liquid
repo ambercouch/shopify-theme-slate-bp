@@ -10,7 +10,9 @@
         {% assign access = 'full' %}
         {% when 'customers/account' %}
         {% assign access = 'full' %}
-{% when 'customers/register' %}
+        {% when 'customers/addresses' %}
+        {% assign access = 'full' %}
+        {% when 'customers/register' %}
         {% assign access = 'full' %}
         {% else %}
           {% if customer %}
