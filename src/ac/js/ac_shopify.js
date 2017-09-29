@@ -68,7 +68,7 @@ ACSHOPIFY = {
             var submit = false;
 
             $(document).on('submit', 'form#create_customer', function (event) {
-
+console.log('a false');
                 var first_name = $('[name="customer[first_name]"]').val();
                 var last_name = $('[name="customer[last_name]"]').val();
                 var phone = $('[name="customer[note][tel]"]').val();
