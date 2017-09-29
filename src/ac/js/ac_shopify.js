@@ -65,28 +65,47 @@ ACSHOPIFY = {
                 ACSHOPIFY.ac_fn.open(container, showButton);
             })
 
-            $(document).on('click', '#create_customer', function () {
-                alert('this is click 3');
-                var data = {'form_type' : 'contact',
-                    'contact[name]' : 'richard',
-                    'contact[email]' : 'richard@ambercouch.co.uk',
-                    'contact[body]' : 'ajax the mail'
-                }
-                $.ajax({
-                    type: "POST",
-                    async: true,
-                    url: 'http://tpd.ambercouch.co.uk',
-                    data: data,
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        //  Request Failed.
-                        console.log('boo');
-                    },
-                    success: function(response) {
-                        // Assume Success. 'response' is the complete HTML page of the
-                        // contact success form, so likely won't be helpful
-                        console.log('hooray');
+            var submit = false;
+
+            $(document).on('submit', 'form#create_customer', function (event) {
+
+                var first_name = $('[name="customer[first_name]"]').val();
+                var last_name = $('[name="customer[last_name]"]').val();
+                var phone = $('[name="customer[note][tel]"]').val();
+                var email = $('[name="customer[email]"]').val();
+                var company = $('[name="customer[note][company]"]').val();
+                if(submit == false) {
+                    event.preventDefault();
+                    var data = {
+                        'action': 'contact_form',
+                        'first_name': first_name,
+                        'last_name': last_name,
+                        'phone': phone,
+                        'email': email,
+                        'company': company,
+                        'subject': 'Tempest Design New Signup',
+                        'title': 'A new customer account request has been received'
                     }
-                });
+                    $.ajax({
+                        type: "POST",
+                        async: true,
+                        url: 'http://tpd.ambercouch.co.uk/script/contact_form.php',
+                        data: data,
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            //  Request Failed.
+                            submit = true;
+                            $('form#create_customer').submit();
+                            console.log('boo');
+                        },
+                        success: function (response) {
+                            // Assume Success. 'response' is the complete HTML page of the
+                            // contact success form, so likely won't be helpful
+                            submit = true;
+                            $('form#create_customer').submit();
+                            console.log('hooray');
+                        }
+                    });
+                }
             })
 
 
