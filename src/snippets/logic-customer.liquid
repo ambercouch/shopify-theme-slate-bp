@@ -1,0 +1,17 @@
+{% assign customerAccess = 'restricted' %}
+
+          {% if customer %}
+            {% assign customerAccess  = 'inactive' %}
+            {%   if customer.tags  contains 'active' %}
+              {% assign access = 'full' %}
+              {% if customer.tags contains 'inactive' %}
+                {% assign customerAccess  = 'inactive' %}
+              {% else %}
+                {% assign customerAccess  = 'full' %}
+              {% endif %}
+            {% else %}
+              {% assign customerAccess  = 'inactive' %}
+            {% endif %}
+          {% else %}
+            {% assign customerAccess  = 'restricted' %}
+          {% endif %}

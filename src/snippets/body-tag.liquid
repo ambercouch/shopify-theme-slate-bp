@@ -1,0 +1,33 @@
+{% include 'logic-access' %}
+{% include 'logic-customer' %}
+
+{%- capture classTemplate = -%}
+  template--{{ template.name | handle }}
+{%- endcapture -%}
+
+{% capture classCustomer %}
+  {% if customer %} customer--in {% else %} customer--out {% endif %}
+{% endcapture %}
+
+{% capture classCustomer %}
+  {% if customer %} customer--in {% else %} customer--out {% endif %}
+{% endcapture %}
+
+{% capture classAccess %}
+  access--{{ access }}
+{% endcapture %}
+{%- capture dataCustomerAccess -%}
+    {{ customerAccess }}{%- endcapture -%}
+
+{%- capture dataTemplateAccess -%}
+    {{ access }}{%- endcapture -%}
+
+{%- capture dataHandle -%}
+      {{ request.path | handleize }}{% endcapture %}
+
+<body id="{{ page_title | handle }}"
+      class="{{ classTemplate }} {{ classCustomer }} {{ classAccess }}"
+      data-template-access="{{ dataTemplateAccess }}"
+      data-customer-access="{{ dataCustomerAccess }}"
+      data-template="{{ template | handleize }}"
+      data-handle="{{ dataHandle }}">

@@ -10,7 +10,7 @@
   {{ content_for_header }}
 </head>
 
-<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {% if customer %} customer--in {% else %} customer--out {% endif %}">
+{% include 'body-tag' %}
 <div id="page" class="site">
 
   <div class="site__accessibility">
@@ -23,7 +23,7 @@
     <div class="main">
       <div class="main__content{% if template != null %}--{{ template | handleize }} {% endif %}">
 
-        {%  include  'access-logic'%}
+        {%  include  'logic-access'%}
         {% case access %}
         {% when 'full' %}
         {{  content_for_layout }}
