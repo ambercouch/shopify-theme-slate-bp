@@ -2,7 +2,7 @@
 {% include 'logic-customer' %}
 
 {%- capture classTemplate = -%}
-  template--{{ template.name | handle }}
+template--{{ template.name | handle }}
 {%- endcapture -%}
 
 {% capture classCustomer %}
@@ -14,7 +14,7 @@
 {% endcapture %}
 
 {% capture classAccess %}
-  access--{{ access }}
+access--{{ access }}
 {% endcapture %}
 {%- capture dataCustomerAccess -%}
     {{ customerAccess }}{%- endcapture -%}
@@ -25,9 +25,22 @@
 {%- capture dataHandle -%}
       {{ request.path | handleize }}{% endcapture %}
 
+{%- if customer -%}
+  {% capture customerData %}
+  data-customer-first-name='{{ customer.first_name }}'
+  data-customer-last-name='{{customer.name_last}}'
+  data-customer-email='{{  customer.email }}'
+  data-customer-phone='{{  customer.notes.tel }}'
+  data-customer-company='{{  customer.notes.company }}'
+  {% endcapture %}
+{% else %}
+{% endif %}
+
+
 <body id="{{ page_title | handle }}"
       class="{{ classTemplate }} {{ classCustomer }} {{ classAccess }}"
       data-template-access="{{ dataTemplateAccess }}"
       data-customer-access="{{ dataCustomerAccess }}"
       data-template="{{ template | handleize }}"
-      data-handle="{{ dataHandle }}">
+      data-handle="{{ dataHandle }}"
+    {{ customerData  }}>
