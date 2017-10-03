@@ -81,7 +81,8 @@ ACSHOPIFY = {
             var first_name = $('[data-customer-first-name]').attr('data-customer-first-name');
             var last_name = $('[data-customer-last-name]').attr('data-customer-last-name');
             var email = $('[data-customer-email]').attr('data-customer-email');
-            var company = $('[data-customer-company]').attr('data-customer-company');
+            var company = '';
+            var referrer = '';
             var phone = '';
 
             console.log('email - ' + email );
@@ -125,6 +126,7 @@ ACSHOPIFY = {
                 phone = $('[name="customer[note][tel]"]').val();
                 email = $('[name="customer[email]"]').val();
                 company = $('[name="customer[note][company]"]').val();
+                referrer = $('[name="customer[note][referrer]"]').val();
                 if(submit == false) {
                     event.preventDefault();
                     var data = {
@@ -136,6 +138,7 @@ ACSHOPIFY = {
                         'company': company,
                         'subject': 'Tempest Design New Signup',
                         'title': 'A new customer account request has been received'
+                        
                     }
                     $.ajax({
                         type: "POST",
