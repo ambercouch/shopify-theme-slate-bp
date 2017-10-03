@@ -33,6 +33,7 @@ ACSHOPIFY = {
             //     $(window).stop(true).scrollTo(this.hash, {duration:1000, interrupt:true});
             // });
             //add js class
+
             $('body').addClass('js');
 
             //menu button
@@ -65,15 +66,65 @@ ACSHOPIFY = {
                 ACSHOPIFY.ac_fn.open(container, showButton);
             })
 
+            var inactiveAccess = ($('[data-customer-access=inactive]').length > 0) ? true : false ;
+            var accessNotificationSent = Cookies.get('ac-accessNotificationSent');
+
+            var sendAccessNotification = (inactiveAccess == true && accessNotificationSent != 1) ? true : false;
+           //var sendAccessNotification =  true;
+
+            if (inactiveAccess == true){
+                Cookies.set("ac-inactiveAccess", 1, { expires : 1 });
+            }else{
+                Cookies.set("ac-inactiveAccess", 0, { expires : 1 });
+            }
+
+            var first_name = $('[data-customer-first-name]').attr('data-customer-first-name');
+            var last_name = $('[data-customer-last-name]').attr('data-customer-last-name');
+            var email = $('[data-customer-email]').attr('data-customer-email');
+            var company = $('[data-customer-company]').attr('data-customer-company');
+            var phone = '';
+
+            console.log('email - ' + email );
+
+            if (sendAccessNotification == true){
+                var data = {
+                    'action': 'contact_form',
+                    'first_name': first_name,
+                    'last_name': last_name,
+                    'email': email,
+                    'subject': 'Tempest Design inactive access',
+                    'title': 'A customer attempted to access their account but it is currently inactive.'
+                }
+                $.ajax({
+                    type: "POST",
+                    async: true,
+                    url: 'http://tpd.ambercouch.co.uk/script/contact_form.php',
+                    data: data,
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        //  Request Failed.
+                        console.log('Ajax failed')
+                    },
+                    success: function (response) {
+                        // Assume Success. 'response' is the complete HTML page of the
+                        // contact success form, so likely won't be helpful
+                        console.log('Ajax yes!')
+                    }
+                });
+                console.log('send access notification');
+                Cookies.set("ac-accessNotificationSent", 1, { expires : 1 });
+            }else{
+                console.log('dont send access notification');
+            }
+
             var submit = false;
 
             $(document).on('submit', 'form#create_customer', function (event) {
-console.log('a false');
-                var first_name = $('[name="customer[first_name]"]').val();
-                var last_name = $('[name="customer[last_name]"]').val();
-                var phone = $('[name="customer[note][tel]"]').val();
-                var email = $('[name="customer[email]"]').val();
-                var company = $('[name="customer[note][company]"]').val();
+
+                first_name = $('[name="customer[first_name]"]').val();
+                last_name = $('[name="customer[last_name]"]').val();
+                phone = $('[name="customer[note][tel]"]').val();
+                email = $('[name="customer[email]"]').val();
+                company = $('[name="customer[note][company]"]').val();
                 if(submit == false) {
                     event.preventDefault();
                     var data = {
@@ -95,14 +146,12 @@ console.log('a false');
                             //  Request Failed.
                             submit = true;
                             $('form#create_customer').submit();
-                            console.log('boo');
                         },
                         success: function (response) {
                             // Assume Success. 'response' is the complete HTML page of the
                             // contact success form, so likely won't be helpful
                             submit = true;
                             $('form#create_customer').submit();
-                            console.log('hooray');
                         }
                     });
                 }
@@ -321,8 +370,8 @@ UTIL = {
     },
     init: function () {
         var body = document.body,
-            template = body.getAttribute('data-post-type'),
-            handle = body.getAttribute('data-post-slug');
+            template = body.getAttribute('data-template'),
+            handle = body.getAttribute('data-handle');
 
         UTIL.exec('common');
         UTIL.exec(template);

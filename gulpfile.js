@@ -21,9 +21,9 @@ var watch = require('gulp-watch');
  */
 var jsScripts;
 var jsPath = 'src/ac/js/'
-var jsVendorPath = 'assets/vendor/'
+var jsVendorPath = 'src/vendor/'
 var jsCustomScripts = [
-    'ac_shopify.js',
+    'ac_shopify.js'
     // 'custom.js',
 ];
 var jsVendorScripts = [
@@ -31,6 +31,7 @@ var jsVendorScripts = [
     // 'jquery/dist/jquery.slim.js',
     // 'fitvids/.jquery.fitvids.js',
     'flickity/dist/flickity.pkgd.js',
+    'js-cookie/src/js.cookie.js'
 ];
 
 for (var i = 0; i < jsVendorScripts.length; i++) {
@@ -59,9 +60,10 @@ gulp.task('log', function () {
 
 //TASK: scripts - Concat and uglify all the vendor and custom javascript
 gulp.task('scripts', function (cb) {
+    gutil.log(jsScripts);
     pump([
             gulp.src(jsScripts),
-            concat('ac.js'),
+            concat('ac.js.liquid'),
             // browserify(),
             // uglify(),
             gulp.dest('src/assets/')

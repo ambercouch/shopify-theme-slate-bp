@@ -28,10 +28,8 @@ access--{{ access }}
 {%- if customer -%}
   {% capture customerData %}
   data-customer-first-name='{{ customer.first_name }}'
-  data-customer-last-name='{{customer.name_last}}'
+  data-customer-last-name='{{customer.last_name}}'
   data-customer-email='{{  customer.email }}'
-  data-customer-phone='{{  customer.notes.tel }}'
-  data-customer-company='{{  customer.notes.company }}'
   {% endcapture %}
 {% else %}
 {% endif %}
