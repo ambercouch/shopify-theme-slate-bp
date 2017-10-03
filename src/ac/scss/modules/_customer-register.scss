@@ -43,6 +43,14 @@
     margin-bottom:$inuit-global-spacing-unit-small;
     padding: $inuit-global-spacing-unit-tiny;
   }
+  &form-select{
+    display: block;
+    width: 100%;
+    margin-bottom:$inuit-global-spacing-unit-small;
+    padding: $inuit-global-spacing-unit-tiny;
+    background-color: white;
+    line-height: 1.3;
+  }
   &submit{
     transition: background 0.3s ease;
     padding: $inuit-global-spacing-unit-tiny;

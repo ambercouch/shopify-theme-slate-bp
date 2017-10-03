@@ -87,16 +87,18 @@
           How did you hear about Us?
         </label>
         <select
-            name="customer[notes][referrer]"
-            class="new-address-form__form-select"
+            name="customer[note][referrer]"
+            class="customer-register__form-select"
             id="referrer"
             placeholder="How did you hear about Us?"
             data-default="{{ form.country }}">
+          <option value="" style="color: #999" disabled selected>How did you hear about Us?</option>
           <option value="Social Media">Social Media</option>
           <option value="Trade Show ">Trade Show </option>
-          <option value="fiat">Press</option>
-          <option value="audi">Web</option>
-          <option value="audi">Word of Mouth</option>
+          <option value="Press">Press</option>
+          <option value="Web">Web</option>
+          <option value="Word of Mouth">Word of Mouth</option>
+          <option value="Store">Store</option>
         </select>
       </div>
 
