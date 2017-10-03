@@ -1,10 +1,10 @@
 <div class="customer-register">
   <div class="customer-register__header">
-<h1 class="customer-register__heading">{{ 'customer.register.title' | t }}</h1>
+    <h1 class="customer-register__heading">{{ 'customer.register.title' | t }}</h1>
   </div>
   <div class="customer-register__form">
-{% form 'create_customer' %}
-  {{ form.errors | default_errors }}
+    {% form 'create_customer' %}
+    {{ form.errors | default_errors }}
     <div class="customer-register__form-content">
 
       <div class="customer-register__form-control">
@@ -12,25 +12,25 @@
           {{ 'customer.register.first_name' | t }}
         </label>
         <input type="text"
-          name="customer[first_name]"
-          class="customer-login__input"
-          id="FirstName"
-          placeholder="{{ 'customer.register.first_name' | t }}"
-          autofocus
-          required
-          {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
+               name="customer[first_name]"
+               class="customer-login__input"
+               id="FirstName"
+               placeholder="{{ 'customer.register.first_name' | t }}"
+               autofocus
+               required
+               {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
       </div>
       <div class="customer-register__form-control">
         <label for="LastName" class="label-hidden customer-register__label">
           {{ 'customer.register.last_name' | t }}
         </label>
         <input type="text"
-          name="customer[last_name]"
-          class="customer-login__input"
-          id="LastName"
-          placeholder="{{ 'customer.register.last_name' | t }}"
+               name="customer[last_name]"
+               class="customer-login__input"
+               id="LastName"
+               placeholder="{{ 'customer.register.last_name' | t }}"
                required
-          {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+               {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
       </div>
       <div class="customer-register__form-control">
         <label for="Email" class="label-hidden customer-register__label">
@@ -82,17 +82,34 @@
                autocapitalize="off"
                required>
       </div>
+      <div class="customer-register__form-control">
+        <label for="company" class="label-hidden customer-register__label">
+          How did you hear about Us?
+        </label>
+        <select
+            name="customer[notes][referrer]"
+            class="new-address-form__form-select"
+            id="referrer"
+            placeholder="How did you hear about Us?"
+            data-default="{{ form.country }}">
+          <option value="Social Media">Social Media</option>
+          <option value="Trade Show ">Trade Show </option>
+          <option value="fiat">Press</option>
+          <option value="audi">Web</option>
+          <option value="audi">Word of Mouth</option>
+        </select>
+      </div>
 
       <div class="customer-register__form-control">
         <label for="CreatePassword" class="label-hidden customer-register__label">
           {{ 'customer.register.password' | t }}
         </label>
         <input type="password"
-          name="customer[password]"
-          class="customer-login__input"
-          id="CreatePassword"
-          class="{% if form.errors contains 'password' %}input-error{% endif %}"
-          placeholder="{{ 'customer.register.password' | t }}"
+               name="customer[password]"
+               class="customer-login__input"
+               id="CreatePassword"
+               class="{% if form.errors contains 'password' %}input-error{% endif %}"
+               placeholder="{{ 'customer.register.password' | t }}"
                required>
       </div>
 
@@ -103,7 +120,7 @@
         <a class="customer-login__link " href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
       </div>
     </div>
-{% endform %}
+    {% endform %}
   </div>
 </div>
 
