@@ -1,0 +1,55 @@
+<fieldset class="customer-register__fieldset--company">
+  <legend class="customer-register__legend">Company</legend>
+<div class="customer-register__form-control">
+  <label for="company" class="label-hidden customer-register__label">
+    Company Name
+  </label>
+  <input type="text"
+         name="customer[note][company]"
+         class="customer-login__input"
+         id="company"
+         class="{% if form.errors contains 'company' %}input-error{% endif %}"
+         placeholder="Company Name"
+         value=""
+         spellcheck="false"
+         autocomplete="on"
+         autocapitalize="off"
+         required>
+</div>
+
+<div class="customer-register__form-control">
+  <label for="vat" class="label-hidden customer-register__label">
+    VAT no.
+  </label>
+  <input type="text"
+         name="customer[note][company]"
+         class="customer-login__input"
+         id="vat"
+         class="{% if form.errors contains 'vat' %}input-error{% endif %}"
+         placeholder="VAT no. if applicable"
+         value=""
+         spellcheck="false"
+         autocomplete="on"
+         autocapitalize="off"
+  >
+</div>
+
+<div class="customer-register__form-control">
+  <label for="companytype" class="label-hidden customer-register__label">
+    What type of business are you?
+  </label>
+  <select
+      name="customer[note][Company Type]"
+      class="customer-register__form-select"
+      id="companytype"
+  >
+    <option value="" style="color: #999" disabled selected>What type of business are you?</option>
+    <option value="Boutique">Boutique</option>
+    <option value="Gift">Gift</option>
+    <option value="Living">Living</option>
+    <option value="Events">Events</option>
+    <option value="Retailer">Retailer</option>
+    <option value="Department Store">Department Store</option>
+  </select>
+</div>
+</fieldset>

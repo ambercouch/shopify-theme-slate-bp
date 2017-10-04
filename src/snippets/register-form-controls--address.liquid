@@ -1,0 +1,94 @@
+<fieldset class="customer-register__fieldset--address">
+  <legend class="customer-register__legend">Address</legend>
+
+  <div class="customer-register__form-control">
+    <label for="Address1" class="label-hidden customer-register__label">
+      Address 1
+    </label>
+    <input type="text"
+           name="customer[note][Address1]"
+           class="customer-register__input"
+           id="address1"
+           class="{% if form.errors contains 'address1' %}input-error{% endif %}"
+           placeholder="Address 1"
+           value=""
+           spellcheck="false"
+           autocomplete="on"
+           autocapitalize="on"
+           required
+    >
+  </div>
+
+  <div class="customer-register__form-control">
+    <label for="Address2" class="label-hidden customer-register__label">
+      Address 2
+    </label>
+    <input type="text"
+           name="customer[note][Address1]"
+           class="customer-register__input"
+           id="address2"
+           class="{% if form.errors contains 'address2' %}input-error{% endif %}"
+           placeholder="Address 2"
+           value=""
+           spellcheck="false"
+           autocomplete="on"
+           autocapitalize="on"
+           required
+    >
+  </div>
+
+  <div class="customer-register__form-control">
+    <label for="Address2" class="label-hidden customer-register__label">
+      City
+    </label>
+    <input type="text"
+           name="customer[note][city]"
+           class="customer-register__input"
+           id="city"
+           class="{% if form.errors contains 'city' %}input-error{% endif %}"
+           placeholder="City"
+           value=""
+           spellcheck="false"
+           autocomplete="on"
+           autocapitalize="on"
+           required
+    >
+  </div>
+
+  <div class="customer-register__form-control">
+    <label for="Address2" class="label-hidden customer-register__label">
+      Postcode
+    </label>
+    <input type="text"
+           name="customer[note][postcode]"
+           class="customer-register__input"
+           id="city"
+           class="{% if form.errors contains 'postcode' %}input-error{% endif %}"
+           placeholder="Postcode"
+           value=""
+           spellcheck="false"
+           autocomplete="on"
+           autocapitalize="on"
+           required
+    >
+  </div>
+
+  <div class="customer-register__form-control">
+    <label for="country" class="label-hidden customer-register__label">
+      Country
+    </label>
+    <input type="text"
+           name="customer[note][country]"
+           class="customer-register__input"
+           id="city"
+           class="{% if form.errors contains 'country' %}input-error{% endif %}"
+           placeholder="Country"
+           value=""
+           spellcheck="false"
+           autocomplete="on"
+           autocapitalize="on"
+           required
+    >
+  </div>
+
+</fieldset>

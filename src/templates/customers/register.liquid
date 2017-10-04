@@ -7,100 +7,9 @@
     {{ form.errors | default_errors }}
     <div class="customer-register__form-content">
 
-      <div class="customer-register__form-control">
-        <label for="FirstName" class="label-hidden customer-register__label" >
-          {{ 'customer.register.first_name' | t }}
-        </label>
-        <input type="text"
-               name="customer[first_name]"
-               class="customer-login__input"
-               id="FirstName"
-               placeholder="{{ 'customer.register.first_name' | t }}"
-               autofocus
-               required
-               {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
-      </div>
-      <div class="customer-register__form-control">
-        <label for="LastName" class="label-hidden customer-register__label">
-          {{ 'customer.register.last_name' | t }}
-        </label>
-        <input type="text"
-               name="customer[last_name]"
-               class="customer-login__input"
-               id="LastName"
-               placeholder="{{ 'customer.register.last_name' | t }}"
-               required
-               {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
-      </div>
-      <div class="customer-register__form-control">
-        <label for="Email" class="label-hidden customer-register__label">
-          {{ 'customer.register.email' | t }}
-        </label>
-        <input type="email"
-               name="customer[email]"
-               class="customer-login__input"
-               id="Email"
-               class="{% if form.errors contains 'email' %}input-error{% endif %}"
-               placeholder="{{ 'customer.register.email' | t }}"
-               value="{% if form.email %}{{ form.email }}{% endif %}"
-               spellcheck="false"
-               autocomplete="off"
-               autocapitalize="off"
-               required>
-      </div>
-
-      <div class="customer-register__form-control">
-        <label for="tel" class="label-hidden customer-register__label">
-          Tel
-        </label>
-        <input type="tel"
-               name="customer[note][tel]"
-               class="customer-login__input"
-               id="tel"
-               class="{% if form.errors contains 'tel' %}input-error{% endif %}"
-               placeholder="Tel"
-               value=""
-               spellcheck="false"
-               autocomplete="on"
-               autocapitalize="off"
-               required>
-      </div>
-
-      <div class="customer-register__form-control">
-        <label for="company" class="label-hidden customer-register__label">
-          Company
-        </label>
-        <input type="text"
-               name="customer[note][company]"
-               class="customer-login__input"
-               id="company"
-               class="{% if form.errors contains 'company' %}input-error{% endif %}"
-               placeholder="Company"
-               value=""
-               spellcheck="false"
-               autocomplete="on"
-               autocapitalize="off"
-               required>
-      </div>
-      <div class="customer-register__form-control">
-        <label for="company" class="label-hidden customer-register__label">
-          How did you hear about Us?
-        </label>
-        <select
-            name="customer[note][referrer]"
-            class="customer-register__form-select"
-            id="referrer"
-            placeholder="How did you hear about Us?"
-            data-default="{{ form.country }}">
-          <option value="" style="color: #999" disabled selected>How did you hear about Us?</option>
-          <option value="Social Media">Social Media</option>
-          <option value="Trade Show ">Trade Show </option>
-          <option value="Press">Press</option>
-          <option value="Web">Web</option>
-          <option value="Word of Mouth">Word of Mouth</option>
-          <option value="Store">Store</option>
-        </select>
-      </div>
+      {% include 'register-form-controls--about' %}
+      {% include 'register-form-controls--company' %}
+      {% include 'register-form-controls--address' %}
 
       <div class="customer-register__form-control">
         <label for="CreatePassword" class="label-hidden customer-register__label">
@@ -115,6 +24,24 @@
                required>
       </div>
 
+      <div class="customer-register__form-control">
+        <label for="referrer" class="label-hidden customer-register__label">
+          How did you hear about Us?
+        </label>
+        <select
+            name="customer[note][referrer]"
+            class="customer-register__form-select"
+            id="referrer"
+            data-default="{{ form.country }}">
+          <option value="" style="color: #999" disabled selected>How did you hear about Us?</option>
+          <option value="Social Media">Social Media</option>
+          <option value="Trade Show ">Trade Show </option>
+          <option value="Press">Press</option>
+          <option value="Web">Web</option>
+          <option value="Word of Mouth">Word of Mouth</option>
+          <option value="Store">Store</option>
+        </select>
+      </div>
 
       <input class="customer-login__submit btn " type="submit" value="{{ 'customer.register.submit' | t }}" class="btn">
 

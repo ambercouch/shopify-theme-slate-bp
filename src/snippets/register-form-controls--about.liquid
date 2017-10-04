@@ -1,0 +1,80 @@
+<fieldset class="customer-register__fieldset--about">
+  <legend class="customer-register__legend">Customer Details</legend>
+<div class="customer-register__form-control">
+  <label for="FirstName" class="label-hidden customer-register__label" >
+    {{ 'customer.register.first_name' | t }}
+  </label>
+  <input type="text"
+         name="customer[first_name]"
+         class="customer-login__input"
+         id="FirstName"
+         placeholder="{{ 'customer.register.first_name' | t }}"
+         autofocus
+         required
+         {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
+</div>
+
+<div class="customer-register__form-control">
+  <label for="LastName" class="label-hidden customer-register__label">
+    {{ 'customer.register.last_name' | t }}
+  </label>
+  <input type="text"
+         name="customer[last_name]"
+         class="customer-login__input"
+         id="LastName"
+         placeholder="{{ 'customer.register.last_name' | t }}"
+         required
+         {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+</div>
+
+<div class="customer-register__form-control">
+  <label for="Email" class="label-hidden customer-register__label">
+    {{ 'customer.register.email' | t }}
+  </label>
+  <input type="email"
+         name="customer[email]"
+         class="customer-login__input"
+         id="Email"
+         class="{% if form.errors contains 'email' %}input-error{% endif %}"
+         placeholder="{{ 'customer.register.email' | t }}"
+         value="{% if form.email %}{{ form.email }}{% endif %}"
+         spellcheck="false"
+         autocomplete="off"
+         autocapitalize="off"
+         required>
+</div>
+
+<div class="customer-register__form-control">
+  <label for="tel" class="label-hidden customer-register__label">
+    Tel
+  </label>
+  <input type="tel"
+         name="customer[note][tel]"
+         class="customer-login__input"
+         id="tel"
+         class="{% if form.errors contains 'tel' %}input-error{% endif %}"
+         placeholder="Tel"
+         value=""
+         spellcheck="false"
+         autocomplete="on"
+         autocapitalize="off"
+         required>
+</div>
+
+<div class="customer-register__form-control">
+  <label for="mobile" class="label-hidden customer-register__label">
+    Mobile
+  </label>
+  <input type="tel"
+         name="customer[note][mobile]"
+         class="customer-login__input"
+         id="tel"
+         class="{% if form.errors contains 'mobile' %}input-error{% endif %}"
+         placeholder="Mobile"
+         value=""
+         spellcheck="false"
+         autocomplete="on"
+         autocapitalize="off"
+         required>
+</div>
+</fieldset>
