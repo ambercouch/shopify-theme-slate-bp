@@ -6,12 +6,12 @@
       Address 1
     </label>
     <input type="text"
-           name="customer[note][Address1]"
+           name="customer[note][address1]"
            class="customer-register__input"
            id="address1"
            class="{% if form.errors contains 'address1' %}input-error{% endif %}"
            placeholder="Address 1"
-           value=""
+           value="{% if form.address1 %}{{ form.address1 }}{% endif %}"
            spellcheck="false"
            autocomplete="on"
            autocapitalize="on"
@@ -24,7 +24,7 @@
       Address 2
     </label>
     <input type="text"
-           name="customer[note][Address1]"
+           name="customer[note][address2]"
            class="customer-register__input"
            id="address2"
            class="{% if form.errors contains 'address2' %}input-error{% endif %}"

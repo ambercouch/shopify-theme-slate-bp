@@ -54,7 +54,7 @@
          id="tel"
          class="{% if form.errors contains 'tel' %}input-error{% endif %}"
          placeholder="Tel"
-         value=""
+         value="{% if form.note.tel %}{{ form.note.tel }}{% endif %}"
          spellcheck="false"
          autocomplete="on"
          autocapitalize="off"
