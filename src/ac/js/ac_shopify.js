@@ -36,6 +36,16 @@ ACSHOPIFY = {
 
             $('body').addClass('js');
 
+            //Flickity
+            $('.hero__carousel').flickity({
+                // options
+                cellAlign: 'center',
+                contain: true,
+                //autoPlay: 5000,
+                imagesLoaded: true,
+                wrapAround: true
+            });
+
             //menu button
             var showButton = $('#menuButtonOpen, #menuButtonClose');
             var container = document.getElementById('primaryNavigation');
@@ -76,14 +86,26 @@ ACSHOPIFY = {
                 Cookies.set("ac-inactiveAccess", 1, { expires : 1 });
             }else{
                 Cookies.set("ac-inactiveAccess", 0, { expires : 1 });
+
             }
 
             var first_name = $('[data-customer-first-name]').attr('data-customer-first-name');
             var last_name = $('[data-customer-last-name]').attr('data-customer-last-name');
             var email = $('[data-customer-email]').attr('data-customer-email');
-            var company = '';
-            var referrer = '';
             var phone = '';
+            var mobile = '';
+
+            var company = '';
+            var vat = $('[name="customer[note][vat]"]').val();
+            var company_type = $('[name="customer[note][company type]"]').val();
+
+            var address1 = $('[name="customer[note][address1]"]').val();
+            var address2 = $('[name="customer[note][address2]"]').val();
+            var city = $('[name="customer[note][city]"]').val();
+            var postcode = $('[name="customer[note][postcode]"]').val();
+            var country = $('[name="customer[note][country]"]').val();
+
+            var referrer = '';
 
             console.log('email - ' + email );
 
@@ -123,10 +145,24 @@ ACSHOPIFY = {
 
                 first_name = $('[name="customer[first_name]"]').val();
                 last_name = $('[name="customer[last_name]"]').val();
-                phone = $('[name="customer[note][tel]"]').val();
                 email = $('[name="customer[email]"]').val();
+                phone = $('[name="customer[note][tel]"]').val();
+                mobile = $('[name="customer[note][mobile]"]').val();
+
                 company = $('[name="customer[note][company]"]').val();
+                vat = $('[name="customer[note][vat]"]').val();
+                company_type = $('[name="customer[note][company type]"]').val();
+
+                address1 = $('[name="customer[note][address1]"]').val();
+                address2 = $('[name="customer[note][address2]"]').val();
+                city = $('[name="customer[note][city]"]').val();
+                postcode = $('[name="customer[note][postcode]"]').val();
+                country = $('[name="customer[note][country]"]').val();
+
                 referrer = $('[name="customer[note][referrer]"]').val();
+
+
+
                 if(submit == false) {
                     event.preventDefault();
                     var data = {
@@ -134,8 +170,21 @@ ACSHOPIFY = {
                         'first_name': first_name,
                         'last_name': last_name,
                         'phone': phone,
+                        'mobile': mobile,
                         'email': email,
+
                         'company': company,
+                        'vat' : vat,
+                        'company_type' : company_type,
+
+                        'address1': address1,
+                        'address2': address2,
+                        'city': city,
+                        'postcode': postcode,
+                        'country': country,
+
+                        'referrer': referrer,
+
                         'subject': 'Tempest Design New Signup',
                         'title': 'A new customer account request has been received'
                         
@@ -149,12 +198,18 @@ ACSHOPIFY = {
                             //  Request Failed.
                             submit = true;
                             $('form#create_customer').submit();
+                            console.log(data);
+                            console.log('data.vat' + data.vat);
+
                         },
                         success: function (response) {
                             // Assume Success. 'response' is the complete HTML page of the
                             // contact success form, so likely won't be helpful
                             submit = true;
                             $('form#create_customer').submit();
+                            console.log(data);
+                            console.log('data.vat' + data.vat);
+
                         }
                     });
                 }
