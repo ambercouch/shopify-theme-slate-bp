@@ -39,13 +39,7 @@ $(document).ready(function() {
   }
 
 
-  $('.hero__carousel').flickity({
-            // options
-            cellAlign: 'center',
-            contain: true,
-            //autoPlay: 5000,
-            wrapAround: true
-  });
+
 
 
 });
