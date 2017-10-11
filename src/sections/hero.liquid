@@ -1,15 +1,11 @@
 <div data-section-id="{{ section.id }}" data-section-type="promotion">
 <div class="hero">
   <div class="hero__carousel">
+    {% for block in section.blocks limit: section.blocks.size %}
     <div class="hero__cell">
-      <img src="{{ "slide1.jpg" | asset_url }}" alt="" class="slide__img">
+      <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="hero__img">
     </div>
-    <div class="hero__cell">
-      <img src="{{ "slide2.jpg" | asset_url }}" alt="" class="slide__img">
-    </div>
-    <div class="hero__cell">
-      <img src="{{ "slide3.jpg" | asset_url }}" alt="" class="slide__img">
-    </div>
+    {% endfor %}
   </div>
 </div>
 </div>
@@ -20,6 +16,27 @@
     "class": "site__hero",
     "settings": [
 
+    ],
+    "blocks": [
+{
+"type": "hero",
+"name": "Hero Slide",
+"settings": [
+{
+"label": "Hero Image",
+"id": "hero_image",
+"type": "image_picker",
+"info": "Image size should be 1270px by 465px"
+},
+
+{
+"label": "Banner Url",
+"id": "banner_url",
+"type": "text",
+"info": "Link to a url eg. http://google.com"
+}
+]
+}
     ],
     "presets": [
       {
