@@ -24,7 +24,15 @@ if(isset($_POST["action"]) && $_POST["action"]=="contact_form")
             "title" => $_POST["title"],
 			"email" => $_POST["email"],
 			"phone" => ($_POST["phone"]!=_def_phone ? $_POST["phone"] : ""),
+            "mobile" => $_POST["mobile"],
             "company" => $_POST["company"],
+            "vat" => $_POST["vat"],
+            "company_type" => $_POST["company_type"],
+            "address1" => $_POST["address1"],
+            "address2" => $_POST["address2"],
+            "city" => $_POST["city"],
+            "postcode" => $_POST["postcode"],
+            "country" => $_POST["country"],
             "referrer" => $_POST["referrer"]
 		);
 		if((bool)ini_get("magic_quotes_gpc")) 
