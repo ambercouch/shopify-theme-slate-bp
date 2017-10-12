@@ -1,5 +1,6 @@
 
 <div class="product-thumb">
+  <h5 class="product-thumb__sku">{{ product.variants[0].sku }}</h5>
   <a class="product-thumb__link--image" href="{{ product.url | within: collection }}">
     <img class="product-thumb__img" src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}" >
     </a>

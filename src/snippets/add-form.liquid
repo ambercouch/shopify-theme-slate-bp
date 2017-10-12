@@ -17,21 +17,22 @@
 
         {% if bold_compare_at_price_max > bold_price %}
           <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-          <s data-compare-price>
+          <span data-compare-price>
             {% if current_variant.compare_at_price > current_variant.price %}
               {{ current_variant.compare_at_price | money }}
             {% endif %}
-          </s>
+          </span>
         {% endif %}
       </div>
     </div>
 
     <div class="add-form__variants">
-      {% include 'add-form-variants' %}
       {% include 'bold-variant' with variant, hide_action: 'skip' %}
-      <select name="id" class="no-js" data-product-select>
+
+      {% include 'add-form-variants' %}
+
+      <select id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}"  name="id" class="product-form__variants no-js" data-product-select>
         {% for variant in product.variants %}
-          {% include 'bold-variant' with variant, hide_action: 'skip' %}
           <option
               {% if variant == current_variant %}selected="selected"{% endif %}
               {% unless variant.available %}disabled="disabled"{% endunless %}

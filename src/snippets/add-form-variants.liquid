@@ -1,5 +1,7 @@
-{% unless bold_variants_size == 1 and product.options.size == 1 and product.options.first == 'Title' and product.variants.first.title == 'Default Title' %}
-    {% for option in product.options_with_values %}
+{% unless bold_variants_size > 1 and product.options.size == 1 and product.options.first == 'Title' and product.variants.first.title == 'Default Title' or product.variants.first.title contains '1+' %}
+<!-- add form variants bvs {{ bold_variants_size }}-->
+
+{% for option in product.options_with_values %}
       <div class="selector-wrapper js variant">
         <label
             class="{% if option.name == 'default' %}label-hidden{% endif %} variant__name"

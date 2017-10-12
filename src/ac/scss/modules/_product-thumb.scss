@@ -21,6 +21,12 @@
     margin-bottom: 0;
     @include inuit-font-size($inuit-font-size-h5, 1)
   }
+  &sku{
+    @include inuit-font-size($inuit-font-size-h6, 1)
+    font-weight: 500;
+    margin-bottom: $inuit-global-spacing-unit-tiny;
+
+  }
 }
 
 

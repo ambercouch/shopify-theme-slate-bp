@@ -7,7 +7,7 @@
 .pagination{
   > * {
     padding: $inuit-global-spacing-unit-tiny;
-
+    margin: 0;
   }
   .next{
     margin-left: $inuit-global-spacing-unit-tiny;

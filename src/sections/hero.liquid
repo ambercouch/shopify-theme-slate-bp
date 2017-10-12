@@ -3,7 +3,13 @@
   <div class="hero__carousel">
     {% for block in section.blocks limit: section.blocks.size %}
     <div class="hero__cell">
+      {% if block.settings.hero_url != '' %}
+      <a href="{{ block.settings.hero_url }}" class="hero__link">
       <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="hero__img">
+      </a>
+      {% else %}
+        <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="hero__img">
+      {% endif %}
     </div>
     {% endfor %}
   </div>
@@ -30,8 +36,8 @@
 },
 
 {
-"label": "Banner Url",
-"id": "banner_url",
+"label": "Hero Url",
+"id": "hero_url",
 "type": "text",
 "info": "Link to a url eg. http://google.com"
 }
