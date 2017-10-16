@@ -47,6 +47,12 @@
  */
 @import "typography";
 
+/*
+ OBJECTS
+ */
+@import "objects/o-btn";
+@import "objects/o-notice";
+
 
 /*
   OTHER
@@ -54,7 +60,6 @@
 @import "accessibility";
 @import "placeholders/off-page";
 @import "placeholders/h";
-
 
 
 /*
@@ -101,6 +106,7 @@
 @import "modules/customer-register";
 @import "modules/customer-recover";
 @import "modules/customer-reset";
+@import "modules/customer-activate";
 @import "modules/customer-account";
 @import "modules/customer-history";
 @import "modules/customer-account-address";
