@@ -26,14 +26,19 @@
         {%  include  'logic-access'%}
         {% case access %}
         {% when 'full' %}
+        <!-- template {{ template }} -->
+        <!-- access {{ access }} -->
+        <!-- customerAccess {{ customerAccess }} -->
         {{  content_for_layout }}
         {% when 'inactive' %}
         <!-- template {{ template }} -->
         <!-- access {{ access }} -->
+        <!-- customerAccess {{ customerAccess }} -->
         {% include 'main-content-inactive' %}
         {% when 'restricted' %}
         <!-- template {{ template }} -->
         <!-- access {{ access }} -->
+        <!-- customerAccess {{ customerAccess }} -->
         {% include 'main-content-restricted' %}
         {% endcase %}
 

@@ -14,7 +14,11 @@
         {% assign access = 'full' %}
         {% when 'customers/register' %}
         {% assign access = 'full' %}
+        {% when 'customers/access' %}
+        {% assign access = 'full' %}
         {% when 'customers/reset_password' %}
+        {% assign access = 'full' %}
+        {% when 'customers/activate_account' %}
         {% assign access = 'full' %}
         {% when 'page.contact' %}
         {% assign access = 'full' %}

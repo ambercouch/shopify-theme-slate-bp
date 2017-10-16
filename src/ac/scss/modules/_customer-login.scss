@@ -76,26 +76,7 @@
     }
   }
   &link{
-    transition: background 0.3s ease;
-    margin-bottom:$inuit-global-spacing-unit-tiny;
-    padding: $inuit-global-spacing-unit-tiny;
-    display: block;
-    background: $brand-col-1;
-    color: $brand-col-3;
-    text-decoration: none;
-    &:first-child{
-      margin-left: 0;
-    }
-    &:last-child{
-      margin-bottom: 0;
-    }
-    &:hover{
-      background: darken($brand-col-1, 10%);
-    }
-    @include mq($from: desktop){
-      margin-left:$inuit-global-spacing-unit-tiny;
-      margin-bottom: 0;
-    }
+    @extend .o-btn--sub;
   }
   &recover-success{
     display: inline-block;

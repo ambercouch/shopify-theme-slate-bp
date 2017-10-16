@@ -30,6 +30,13 @@
     flex-direction: column;
     margin-bottom:$inuit-global-spacing-unit;
   }
+  &info{
+    margin: 0 auto;
+    margin-bottom:$inuit-global-spacing-unit;
+    @include mq($from : tablet){
+      width: 75%;
+    }
+  }
   &input{
     display: block;
     width: 100%;
@@ -87,6 +94,11 @@
     @include inuit-font-size($inuit-font-size-h6, 1);
     color: #fff;
     margin-bottom:$inuit-global-spacing-unit-tiny;
+  }
+  &notice{
+    @extend .o-notice;
+    @extend .o-notice--amber;
+
   }
 
 }

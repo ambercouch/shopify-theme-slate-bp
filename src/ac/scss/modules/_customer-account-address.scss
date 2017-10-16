@@ -18,23 +18,13 @@
   }
   &footer{
     text-align: left;
-    padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-small 0;
+    padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-small ;
     background: $brand-col-2;
   }
+  &account-details{
+    margin-bottom:$inuit-global-spacing-unit;
+  }
   &address-link{
-    transition: background 0.3s ease;
-    padding: $inuit-global-spacing-unit-tiny 0;
-    margin-bottom: $inuit-global-spacing-unit-small;
-    display: block;
-    background: $brand-col-1 ;
-    color: $brand-col-3;
-    text-align: center;
-    &:hover{
-      background: darken($brand-col-1, 10%);
-    }
-    @include mq($from : tablet){
-      display: inline-block;
-      padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
-    }
+    @extend .o-btn--sub
   }
 }
