@@ -34,6 +34,34 @@
     "sections": {
       "hero": {
         "type": "hero",
+        "blocks": {
+          "1508146508148": {
+            "type": "hero",
+            "settings": {
+              "hero_image": "shopify:\/\/shop_images\/Web-Banner-SP.jpg",
+              "hero_url": "https:\/\/tempestdesigns.myshopify.com\/collections\/spinning-rings"
+            }
+          },
+          "1508146529262": {
+            "type": "hero",
+            "settings": {
+              "hero_image": "shopify:\/\/shop_images\/Web-Banner-PURYL-1.jpg",
+              "hero_url": ""
+            }
+          },
+          "1508146543890": {
+            "type": "hero",
+            "settings": {
+              "hero_image": "shopify:\/\/shop_images\/Web-Banner-Spinning-bangles.jpg",
+              "hero_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1508146508148",
+          "1508146529262",
+          "1508146543890"
+        ],
         "settings": {
         }
       },
@@ -281,4 +309,4 @@
       ]
     }
   }
-}
+}s
