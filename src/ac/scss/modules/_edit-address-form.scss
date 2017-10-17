@@ -23,7 +23,7 @@
     @include inuit-font-size($inuit-font-size-h6,1)
   }
   &form-select{
-    width: 75%;
+    width: 100%;
     background-color: #fff;
     padding-left: $inuit-global-spacing-unit-tiny;
     @include inuit-font-size($inuit-font-size-h6,1)
@@ -47,6 +47,10 @@
       padding: 0 $inuit-global-spacing-unit-tiny;
       @include inuit-font-size($inuit-font-size-h6)
     }
+    @include mq($from : desktop){
+      width: 75%;
+    }
+
   }
 }
 

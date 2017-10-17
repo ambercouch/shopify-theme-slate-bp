@@ -8,8 +8,6 @@
 
 .customer-address__{
 
-
-
   &address-card{
     position: relative;
     background: lighten($brand-col-3, 10%);
@@ -42,7 +40,8 @@
   }
   &controls{
      padding: $inuit-global-spacing-unit-small;
-     background: $brand-col-2;
+     background: lighten($brand-col-3, 10%);
+    border-top:solid 1px $brand-col-2;
 
 
     @include mq($from : tablet){
@@ -52,25 +51,16 @@
    }
   &control-wrapper{
     display: none;
+
   }
   &control{
-    transition: background 0.3s ease;
-    padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
+    @extend .o-btn;
+    @extend .o-btn--sub;
     width: 44%;
     margin-bottom: 0;
-    display: block;
-    background: $brand-col-1 ;
-    color: $brand-col-3;
-    text-align: center;
-    border: none;
-    line-height: 1;
-    &:hover{
-      background: darken($brand-col-1, 10%);
-    }
     @include mq($from : tablet){
       display: inline-block;
       padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
-      margin-bottom: 0;
       width: auto;
     }
     @include mq($until : mobile){
@@ -111,6 +101,13 @@
   }
   &submit{
     @extend .customer-address__control-wrapper;
+    @include mq($until : tablet){
+      justify-content: space-around;
+    }
+    @include mq($until : mobile){
+      flex-wrap: wrap;
+      padding-bottom: 0;
+    }
     [data-state=on] &{
       display: block;
       @include mq($until : tablet) {

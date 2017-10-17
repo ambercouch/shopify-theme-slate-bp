@@ -19,12 +19,14 @@
   &footer{
     text-align: left;
     padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-small ;
-    background: $brand-col-2;
+    background: $brand-col-3;
+    border-top:solid 1px $brand-col-2;
   }
   &account-details{
     margin-bottom:$inuit-global-spacing-unit;
   }
   &address-link{
-    @extend .o-btn--sub
+    @extend .o-btn--sub;
+    @extend .o-btn--inline;
   }
 }
