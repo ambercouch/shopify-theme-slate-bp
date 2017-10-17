@@ -1,4 +1,4 @@
-{% if product.description == null %}
+{% if product.description == null or product.description == '' %}
   <!-- description Blank -->
   <p>{{ product.title }}</p>
 {% else %}
