@@ -83,7 +83,7 @@
   &submit-btn{
     transition: background 0.3s ease;
     width: 100%;
-    background:$brand-col-1;
+    background:$brand-col-4;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
@@ -91,7 +91,7 @@
     padding: $inuit-global-spacing-unit-small 0;
     border: none;
     &:hover{
-      background:$brand-col-4;
+      background:darken($brand-col-4, 5%);
     }
   }
 

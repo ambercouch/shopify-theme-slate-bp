@@ -62,7 +62,7 @@
     text-transform: uppercase;
     white-space: nowrap;
     .nav-main__item:hover &{
-      color: $brand-col-3;
+      color: $brand-col-1;
       position: relative;
     }
     @include mq(wide){
@@ -78,7 +78,7 @@
         display: block;
         width: 100%;
         height: 100%;
-        background: darken($brand-col-1, 5%);
+        //background: darken($brand-col-1, 5%);
         position: absolute;
         top: 0;
         left:0;
@@ -98,7 +98,7 @@
 
   &link-label{
     .nav-main__item:hover &{
-      color: #fff;
+      color: darken($brand-col-1, 20%);
       position: relative;
       @include mq($until : desktop){
         color: $brand-col-1;
@@ -109,13 +109,13 @@
   &mega{
     position: absolute;
     width: 100%;
-    background: rgba($brand-col-1, 0.95);
+    background: $brand-col-3;
     left:0;
     z-index: 10;
     padding: $inuit-global-spacing-unit;
     display: none;
-    border-bottom: solid 5px darken($brand-col-1, 5%);
-    border-top: solid 5px darken($brand-col-1, 5%);
+    border-bottom: solid 5px darken($brand-col-3, 5%);
+    border-top: solid 5px darken($brand-col-3, 5%);
     margin-top: -1px;
 
     .nav-main__item:hover &{
@@ -151,7 +151,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    background: $brand-col-1;
+    //background: $brand-col-1;
     position: absolute;
     top: 0;
     left:0;
@@ -170,7 +170,7 @@
     position: relative;
   }
   .nav-main__link-label{
-    color: #fff;
+    color: darken($brand-col-1, 20%);
     position: relative;
     @include mq($until : desktop){
       color: $brand-col-1 !important;
