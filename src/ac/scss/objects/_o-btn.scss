@@ -1,23 +1,50 @@
-.o-btn--sub{
-  @include inuit-font-size($inuit-font-size-h6, 1);
+.o-btn{
+  border: none;
   transition: background 0.3s ease;
-  margin-bottom:$inuit-global-spacing-unit-tiny;
   padding: $inuit-global-spacing-unit-tiny;
-  display: inline-block;
-  background: $brand-col-1;
-  color: $brand-col-3;
+  display: block;
   text-decoration: none;
-  &:first-child{
-    margin-left: 0;
-  }
+  line-height: 1 !important;
+  margin-bottom:$inuit-global-spacing-unit-tiny;
   &:last-child{
     margin-bottom: 0;
   }
-  &:hover{
-    background: darken($brand-col-1, 10%);
-  }
-  @include mq($from: desktop){
-    margin-left:$inuit-global-spacing-unit-tiny;
-    margin-bottom: 0;
-  }
+
 }
+
+[class*=o-btn--]{
+  @extend .o-btn;
+}
+
+.o-btn--{
+
+   &sub{
+
+     @extend .o-btn;
+     background: $brand-col-2;
+     color: $brand-col-1;
+     @include inuit-font-size($inuit-font-size-h6, 1);
+
+     &:hover, &:focus, &:active{
+       background: darken($brand-col-2, 10%);
+       color: #fff;
+     }
+
+   }
+
+  &inline{
+
+    @extend .o-btn;
+    display: inline-block;
+    &:first-child{
+      margin-left: 0;
+    }
+
+    @include mq($from: desktop){
+      margin-left:$inuit-global-spacing-unit-tiny;
+      margin-bottom: 0;
+    }
+
+  }
+
+ }
