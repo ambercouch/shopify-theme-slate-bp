@@ -31,7 +31,7 @@
 
       {% include 'add-form-variants' %}
 
-      <select id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}"  name="id" class="product-form__variants no-js" data-product-select>
+      <select id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}"  name="id" class="add-form__variants no-js" data-product-select>
         {% for variant in product.variants %}
           <option
               {% if variant == current_variant %}selected="selected"{% endif %}
@@ -42,8 +42,9 @@
         {% endfor %}
       </select>
     </div>
-<div class="product-form__description">
-  {{ product.description }}
+
+<div class="add-form__description test {% if product.description != '' %} rte {% endif %}">
+  {% include 'sales-description'%}
 </div>
 
     <div class="add-form__submit-wrapper">

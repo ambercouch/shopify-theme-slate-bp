@@ -1,3 +1,7 @@
-<div class="rte sales-description ">
+{% if product.description == null %}
+  <!-- description Blank -->
+  <p>{{ product.title }}</p>
+{% else %}
+  <!-- product description  -->
   {{ product.description }}
-</div>
+{% endif %}

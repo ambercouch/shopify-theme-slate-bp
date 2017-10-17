@@ -23,13 +23,19 @@
         <div class="product__add-form">
               {% include 'add-form' %}
         </div>
-        <div class="product__sales-description">
-          {% include 'sales-description'%}
-        </div>
+
         <div class="product__share-links">
           {% include 'share-links'%}
         </div>
+
       </div>
+      {% include 'logic-admin' %}
+      {% if adminUser %}
+        <!-- Admin user -->
+        <a style="color: #ddd" href="/admin/products/{{ product.id }}"><small>Edit this product</small></a>
+      {% else %}
+        <!-- Not Admin -->
+      {% endif %}
     </div>
   </div>
 </div>

@@ -43,7 +43,10 @@
     @include mq($from : desktop){
       width: 75%;
     }
-
+  }
+  &description{
+    padding: $inuit-global-spacing-unit 0;
+    width: 100%;
   }
   &price{
     top: 50%;
