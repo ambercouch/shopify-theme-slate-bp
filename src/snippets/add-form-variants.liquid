@@ -1,4 +1,10 @@
-{% unless bold_variants_size > 1 and product.options.size == 1 and product.options.first == 'Title' and product.variants.first.title == 'Default Title' or product.variants.first.title contains '1+' %}
+<!-- add form bold_variants_size {{ bold_variants_size }}-->
+<!-- add form product.options.size bvs {{ product.options.size }}-->
+<!-- add form product.options.first bvs {{ product.options.first }}-->
+<!-- add form product.variants.first.title bvs {{ product.variants.first.title }}-->
+
+
+{% unless bold_variants_size == 1 and product.options.size == 1 and product.options.first == 'Title' and product.variants.first.title == 'Default Title' or product.variants.first.title contains '1+' %}
 <!-- add form variants bvs {{ bold_variants_size }}-->
 
 {% for option in product.options_with_values %}
