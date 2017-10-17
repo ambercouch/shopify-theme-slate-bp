@@ -1,0 +1,5 @@
+{% capture CFH %}{{ content_for_header  }}{% endcapture %}{{ CFH }}
+
+{% if CFH contains 'admin_bar_iframe' %}
+  {% assign adminUser = true %}
+{% endif %}
