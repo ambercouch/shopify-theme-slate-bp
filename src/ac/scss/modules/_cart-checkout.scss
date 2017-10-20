@@ -46,6 +46,12 @@
     padding: $inuit-global-spacing-unit-small;
 
   }
+  &notes-min{
+    @include inuit-font-size($inuit-font-size-h6,1.2);
+    p{
+      margin-bottom:$inuit-global-spacing-unit-tiny;
+    }
+  }
   &submit{
     width: 100%;
     display: block;
@@ -54,5 +60,6 @@
     background: $brand-col-4;
     border: none;
     padding: $inuit-global-spacing-unit-tiny;
+    margin-bottom: $inuit-global-spacing-unit-small;
   }
 }

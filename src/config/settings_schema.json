@@ -144,6 +144,13 @@
         "id": "cart_notes_enable",
         "label": "Enable cart notes",
         "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_min_spend",
+        "label": "Minimum spend",
+        "default": "5000",
+        "info" : "The minimum cart value needed to checkout (5000 = £50 )"
       }
     ]
   },
