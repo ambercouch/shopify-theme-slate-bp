@@ -1,5 +1,21 @@
-<div class="collection-thumb is-img-{{ block.settings.collection_image_position }}" {{ block.shopify_attributes }}>
-  {%- assign collection = collections[block.settings.collection] -%}
+{%- if settingsId -%}
+  {%-  assign collectionSettings = settings -%}
+{% else %}
+  {%-  assign collectionSettings = block.settings -%}
+{%- endif -%}
+
+{%- capture c -%}{{ settingsId }}collection{%- endcapture -%}
+{%- capture cip -%}{{ settingsId }}collection_image_position{%- endcapture -%}
+{%- capture ctp -%}{{ settingsId }}collection_title_position{%- endcapture -%}
+{%- capture cht -%}{{ settingsId }}hide_collection_title{%- endcapture -%}
+{%- capture ct -%}{{ settingsId }}collection_title{%- endcapture -%}
+{%- capture cb -%}{{ settingsId }}collection_button{%- endcapture -%}
+{%- capture cbbc -%}{{ settingsId }}collection_button_background_colour{%- endcapture -%}
+{%- capture cbtc -%}{{ settingsId }}collection_button_text_colour{%- endcapture -%}
+
+{% if collectionSettings %}
+<div class="collection-thumb is-img-{{ collectionSettings[cip] }}" {{ block.shopify_attributes }}>
+  {%- assign collection = collections[collectionSettings[c]] -%}
 
   <a class="collection-thumb__link" href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}">
     {% if collection.image != blank %}
@@ -11,23 +27,26 @@
       {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
     {% endif %}
 
-    <div class="collection-thumb__heading is-{{ block.settings.collection_title_position }}">
-      <h5 class="collection-thumb__title " {% if block.settings.hide_collection_title == true %}style="display:none !important" {% endif %}>
+    <div class="collection-thumb__heading is-{{ collectionSettings[ctp] }}">
+      <h5 class="collection-thumb__title " {% if collectionSettings[cht] == true %}style="display:none !important" {% endif %}>
         {% if collection.empty? %}
           {{ 'homepage.onboarding.collection_title' | t }}
-        {% elsif block.settings.collection_title == '' %}
+        {% elsif collectionSettings[ct] == '' %}
           {{ collection.title }}
         {% else %}
-          {{ block.settings.collection_title }}
+          {{ collectionSettings[ct] }}
         {% endif %}
       </h5>
-      {% if block.settings.collection_button != '' %}
+      {% if collectionSettings[cb] != '' %}
       <div class="collection-thumb__shop-btn">
-        <span class="shop-btn--{{ block.settings.collection_button_background_colour }}">
-          <span class="shop-btn__text--{{ block.settings.collection_button_text_colour }}">{{ block.settings.collection_button }}</span>
+        <span class="shop-btn--{{ collectionSettings[cbbc] }}">
+          <span class="shop-btn__text--{{ collectionSettings[cbtc] }}">{{ collectionSettings[cb] }}</span>
         </span>
       </div>
       {% endif %}
     </div>
   </a>
 </div>
+{%- else -%}
+  <p>There are no settings for this collection  {{ settingsId }}</p>
+{%- endif -%}
