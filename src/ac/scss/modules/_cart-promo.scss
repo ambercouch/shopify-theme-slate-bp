@@ -1,0 +1,18 @@
+.cart-promo{
+  display: none;
+  @include mq($from : tablet){
+    display: block;
+  }
+}
+
+.cart-promo__{
+  &list{
+    list-style: none;
+    margin-left: 0;
+    display: flex;
+  }
+  &item{
+    width: 33.3333%;
+  }
+
+}

@@ -8,7 +8,9 @@
   <ul class="collection-list__list">
     {% for block in section.blocks limit: section.blocks.size %}
       <li class="collection-list__item">
+        <div class="collect-list__collection-thumb">
         {% include "collection-thumb" %}
+        </div>
       </li>
     {% endfor %}
   </ul>

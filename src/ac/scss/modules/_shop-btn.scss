@@ -1,5 +1,5 @@
 .shop-btn{
-  background: #fff;
+  background-color: #fff;
   line-height: 1;
   display: inline-block;
   padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
@@ -23,40 +23,68 @@
   }
 }
 
-[class*=shop-btn--]{
+/*
+  BEM MODIFIERS FALLBACKS
+ */
+
+//.shop-btn-- is a type of .shop-btn but not something__shop-btn--
+[class*=shop-btn--]:not([class*=__shop-btn]){
   @extend .shop-btn;
 }
 
+/*
+  CONTEXT SELECTOR
+ */
+
+
+.shop-btn{
+
+  //Remove the bottom margin if the .shop-btn is a child of [class*=collection-thumb__shop-btn]
+  [class*=collection-thumb__shop-btn] &{
+    margin-bottom: 0 !important;
+  }
+
+  //
+  .collection-thumb__shop-btn--cart-promo &{
+    @include inuit-font-size($inuit-font-size-h5, 1);
+  }
+}
+
+/*
+  BEM MODIFIERS
+ */
+
+//.shop-btn-- controls the background color
 .shop-btn--{
 
   &white{
-    background-color: white;
+    background-color: white !important;
   }
 
   /*
   Brand pantone colours GREY
    */
   &p431{
-    background-color: $p431;
+    background-color: $p431 !important;
   }
   &p429{
-    background-color: $p429;
+    background-color: $p429 !important;
   }
   &p427{
-    background-color: $p427;
+    background-color: $p427 !important;
   }
 
   /*
   Brand pantone colours PEACHES
    */
   &p4735{
-    background-color: $p4735;
+    background-color: $p4735 !important;
   }
   &p489{
-    background-color: $p489;
+    background-color: $p489 !important;
   }
   &p475{
-    background-color: $p475;
+    background-color: $p475 !important;
   }
 
   /*
@@ -64,10 +92,10 @@
    */
 
   &p7466{
-    background-color: $p7466;
+    background-color: $p7466 !important;
   }
   &p318{
-    background-color: $p318;
+    background-color: $p318 !important;
   }
 
 }
@@ -92,9 +120,5 @@
 
 }
 
-.shop-btn{
-  .collection-thumb__shop-btn &{
-    margin-bottom: 0 !important;
-  }
-}
+
 

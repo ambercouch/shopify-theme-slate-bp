@@ -1,0 +1,18 @@
+<div class="cart-promo">
+  <ul class="cart-promo__list">
+    {%  for i in (1..3) %}
+    {% capture cart_promo %}cart_promo_{{ i }}_collection{% endcapture %}
+    {% if settings[cart_promo] != '' %}
+      {% capture settingsId %}cart_promo_{{ i }}_{% endcapture %}
+      {% assign classModifier = '--cart-promo' %}
+      {% assign collection = collections[settings[cart_promo]] %}
+      <li class="cart-promo__item">
+        <div class="cart-promo__collection-thumb">
+          <!-- collection-thumb-->
+          {% include 'collection-thumb' %}
+        </div>
+      </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>

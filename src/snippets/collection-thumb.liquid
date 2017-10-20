@@ -14,7 +14,7 @@
 {%- capture cbtc -%}{{ settingsId }}collection_button_text_colour{%- endcapture -%}
 
 {% if collectionSettings %}
-<div class="collection-thumb is-img-{{ collectionSettings[cip] }}" {{ block.shopify_attributes }}>
+<div class="collection-thumb{{ classModifier }} is-img-{{ collectionSettings[cip] }}" {{ block.shopify_attributes }}>
   {%- assign collection = collections[collectionSettings[c]] -%}
 
   <a class="collection-thumb__link" href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}">
@@ -28,7 +28,7 @@
     {% endif %}
 
     <div class="collection-thumb__heading is-{{ collectionSettings[ctp] }}">
-      <h5 class="collection-thumb__title " {% if collectionSettings[cht] == true %}style="display:none !important" {% endif %}>
+      <h5 class="collection-thumb__title{{ classModifier }}" {% if collectionSettings[cht] == true %}style="display:none !important" {% endif %}>
         {% if collection.empty? %}
           {{ 'homepage.onboarding.collection_title' | t }}
         {% elsif collectionSettings[ct] == '' %}
@@ -38,7 +38,7 @@
         {% endif %}
       </h5>
       {% if collectionSettings[cb] != '' %}
-      <div class="collection-thumb__shop-btn">
+      <div class="collection-thumb__shop-btn{{ classModifier }}">
         <span class="shop-btn--{{ collectionSettings[cbbc] }}">
           <span class="shop-btn__text--{{ collectionSettings[cbtc] }}">{{ collectionSettings[cb] }}</span>
         </span>

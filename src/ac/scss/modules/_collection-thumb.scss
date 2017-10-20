@@ -1,3 +1,7 @@
+/*
+  BEM BLOCK .collection-thumb
+ */
+
 .collection-thumb{
   text-align: center;
   padding: 0 $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
@@ -9,6 +13,16 @@
     padding: 0 !important;
   }
 }
+
+//BEM BLOCK MODIFIER FALLBACK
+
+[class*=collection-thumb--]{
+  @extend .collection-thumb;
+}
+
+/*
+  BEM ELEMENTS
+ */
 
 .collection-thumb__{
   &link{
@@ -85,6 +99,22 @@
 }
 
 
+//BEM ELEMENTS MODIFIER FALLBACK
+
+[class*=collection-thumb__title--]{
+   @extend .collection-thumb__title;
+ }
+
+/*
+  BEM MODIFIERS
+ */
+
+.collection-thumb__title--{
+  &cart-promo{
+    @include inuit-font-size($inuit-font-size-h4, 1);
+  }
+}
+
 /*
   CONTEXT SELECTORS
  modify the block or element based on an ancestor
@@ -114,7 +144,6 @@
     @include mq($from : tablet){
       padding-left:0;
     }
-
     @include mq($until : tablet){
       //padding-right: 0;
     }
@@ -154,7 +183,9 @@
   }
 }
 
+//.collection-thumb__img
 .collection-thumb__img{
+
   .is-25-50-25 .collection-list__item:nth-child(3n -2) &{
 
     @include mq($from : tablet){
@@ -192,118 +223,112 @@
     }
   }
 }
-.collection-thumb__img{
 
-}
-
-
+//.collection-thumb__heading
 .collection-thumb__heading{
 
   .collection-list__item:nth-child(even) &{
 
-
     @include mq($from : tablet){
-      //top:75%;
-      //right: 0;
-      //text-align: right;
-      //padding:$inuit-global-spacing-unit-tiny ;
-      //padding-right: $inuit-global-spacing-unit-small;
-      //padding-left: $inuit-global-spacing-unit;
+
+    }
+
+  }
+}
+
+/*
+  BEM STATES
+ */
+
+//position .collection-thumb__heading
+.collection-thumb__heading{
+  &.is-top-left {
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: left;
+    transform: translate(0);
+    padding: $inuit-global-spacing-unit-tiny !important;
+    @include mq($from: tablet) {
+      padding: $inuit-global-spacing-unit !important;
     }
   }
-}
-
-.collection-thumb__heading.is-top-left{
-  width: 100%;
-  top: 0;
-  left: 0;
-  text-align: left;
-  transform: translate(0);
-  padding: $inuit-global-spacing-unit-tiny !important;
-  @include mq($from: tablet){
-    padding: $inuit-global-spacing-unit !important;
+  &.is-top-right{
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: right;
+    transform: translate(0);
+    padding: $inuit-global-spacing-unit-tiny !important;
+    @include mq($from: tablet){
+      padding: $inuit-global-spacing-unit !important;
+    }
   }
-}
-
-.collection-thumb__heading.is-top-right{
-   width: 100%;
-   top: 0;
-   left: 0;
-   text-align: right;
-   transform: translate(0);
-   padding: $inuit-global-spacing-unit-tiny !important;
-   @include mq($from: tablet){
-     padding: $inuit-global-spacing-unit !important;
-   }
- }
-
-.collection-thumb__heading.is-top-centre{
-  width: 100%;
-  top: 0;
-  left: 0;
-  text-align: center;
-  transform: translate(0);
-  padding: $inuit-global-spacing-unit-tiny !important;
-  @include mq($from: tablet){
-    padding: $inuit-global-spacing-unit !important;
+  &.is-top-centre{
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    transform: translate(0);
+    padding: $inuit-global-spacing-unit-tiny !important;
+    @include mq($from: tablet){
+      padding: $inuit-global-spacing-unit !important;
+    }
   }
-}
-
-.collection-thumb__heading.is-bottom-left{
-  width: 100%;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  text-align: left;
-  transform: translate(0);
-  padding: $inuit-global-spacing-unit-tiny !important;
-  @include mq($from: tablet){
-    padding: $inuit-global-spacing-unit !important;
+  &.is-bottom-left{
+    width: 100%;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    text-align: left;
+    transform: translate(0);
+    padding: $inuit-global-spacing-unit-tiny !important;
+    @include mq($from: tablet){
+      padding: $inuit-global-spacing-unit !important;
+    }
   }
-}
-
-.collection-thumb__heading.is-bottom-right{
-  width: 100%;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  text-align: right;
-  transform: translate(0);
-  padding: $inuit-global-spacing-unit-tiny !important;
-  @include mq($from: tablet){
-    padding: $inuit-global-spacing-unit !important;
+  &.is-bottom-right{
+    width: 100%;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    text-align: right;
+    transform: translate(0);
+    padding: $inuit-global-spacing-unit-tiny !important;
+    @include mq($from: tablet){
+      padding: $inuit-global-spacing-unit !important;
+    }
   }
-}
-.collection-thumb__heading.is-bottom-centre{
-  width: 100%;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  transform: translate(0);
-  padding: $inuit-global-spacing-unit-tiny !important;
-  @include mq($from: tablet){
-    padding: $inuit-global-spacing-unit !important;
+  &.is-bottom-centre{
+    width: 100%;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    transform: translate(0);
+    padding: $inuit-global-spacing-unit-tiny !important;
+    @include mq($from: tablet){
+      padding: $inuit-global-spacing-unit !important;
+    }
   }
-}
-
-.collection-thumb__heading.is-centre-left{
-  width: 100%;
-  left: 0;
-  text-align: left;
-  transform: translate(0, -50%);
-  padding: $inuit-global-spacing-unit-tiny !important;
-  @include mq($from: tablet){
-    padding: $inuit-global-spacing-unit !important;
+  &.is-centre-left{
+    width: 100%;
+    left: 0;
+    text-align: left;
+    transform: translate(0, -50%);
+    padding: $inuit-global-spacing-unit-tiny !important;
+    @include mq($from: tablet){
+      padding: $inuit-global-spacing-unit !important;
+    }
   }
-}
-.collection-thumb__heading.is-centre-right{
-  width: 100%;
-  left: 0;
-  text-align: right;
-  transform: translate(0, -50%);
-  padding: $inuit-global-spacing-unit-tiny !important;
-  @include mq($from: tablet){
-    padding: $inuit-global-spacing-unit !important;
+  &.is-centre-right{
+    width: 100%;
+    left: 0;
+    text-align: right;
+    transform: translate(0, -50%);
+    padding: $inuit-global-spacing-unit-tiny !important;
+    @include mq($from: tablet){
+      padding: $inuit-global-spacing-unit !important;
+    }
   }
 }
