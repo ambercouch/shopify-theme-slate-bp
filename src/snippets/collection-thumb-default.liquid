@@ -1,0 +1,33 @@
+
+<div class="collection-thumb{{ CTclassModifier}} is-img-{{ cip }}">
+
+  <a class="collection-thumb__link" title="{{ collection.title }}" href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}">
+    {% if collection.image != blank %}
+      <img class="collection-thumb__img" src="{{ collection | img_url: '600x600' }}" >
+      {% elsif collection.products.first != blank %}
+      <img class="collection-thumb__img" src="{{ collection.products.first | img_url: '600x600' }}" >
+      {% elsif collection.empty? %}
+      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+      {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+    {% endif %}
+
+    <div class="collection-thumb__heading is-{{ ctp }}">
+      <h5 class="collection-thumb__title{{ CTclassModifier}}" {% if cht == true %}style="display:none !important" {% endif %}>
+        {% if collection.empty? %}
+          {{ 'homepage.onboarding.collection_title' | t }}
+          {% elsif ct == '' %}
+          {{ collection.title }}
+        {% else %}
+          {{ ct }}
+        {% endif %}
+      </h5>
+      {% if cb != '' %}
+        <div class="collection-thumb__shop-btn{{ CTclassModifier}}">
+        <span class="shop-btn--{{ cbbc }}">
+          <span class="shop-btn__text--{{ collectionSettings[cbtc] }}">{{ collectionSettings[cb] }}</span>
+        </span>
+        </div>
+      {% endif %}
+    </div>
+  </a>
+</div>

@@ -4,11 +4,10 @@
     {% capture cart_promo %}cart_promo_{{ i }}_collection{% endcapture %}
     {% if settings[cart_promo] != '' %}
       {% capture settingsId %}cart_promo_{{ i }}_{% endcapture %}
-      {% assign classModifier = '--cart-promo' %}
-      {% assign collection = collections[settings[cart_promo]] %}
+      {% assign CTclassModifier = '--cart-promo' %}
       <li class="cart-promo__item">
         <div class="cart-promo__collection-thumb">
-          <!-- collection-thumb-->
+          <!-- collection-thumb -->
           {% include 'collection-thumb' %}
         </div>
       </li>
