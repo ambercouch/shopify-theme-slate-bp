@@ -1,5 +1,8 @@
 .collection{
   @extend .o-wrapper;
+  @include mq($until : tablet){
+    padding: 0 !important;
+  }
 }
 
 .collection__{

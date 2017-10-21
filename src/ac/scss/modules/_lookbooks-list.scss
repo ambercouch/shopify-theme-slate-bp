@@ -1,0 +1,38 @@
+.lookbooks-list{
+  display: block;
+}
+
+.lookbooks-list__{
+
+  &list{
+    display: flex;
+    margin: 0;
+    flex-wrap: wrap;
+
+  }
+
+  &item{
+    list-style: none;
+    width: 100%;
+    @include mq($from : tablet, $until : desktop){
+      width: 50%;
+      &:nth-child(5n - 2){
+         width: calc(100% / 3);
+       }
+      &:nth-child(5n - 1){
+        width: calc(100% / 3);
+      }
+      &:nth-child(5n){
+        width: calc(100% / 3);
+      }
+    }
+    @include mq($from : desktop){
+      width: 25%;
+      &:nth-child(7n - 2){
+        margin-left:12.5%;
+      }
+    }
+
+  }
+
+}

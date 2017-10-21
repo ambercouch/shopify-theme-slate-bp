@@ -1,0 +1,19 @@
+<div class="lookbooks-list">
+  <ul class="lookbooks-list__list">
+    {%  for link in linklists.lookbooks.links %}
+    <li class="lookbooks-list__item">
+      {%- assign collection = link.object -%}
+      {%- assign CTclassModifier = '--lookbook' -%}
+      {%- assign cip = 'centre' -%}
+      {%- assign ctp = 'centre' -%}
+      {%- assign cht = true -%}
+      {%- assign ct = '' -%}
+      {%- assign cb = 'Get the look' -%}
+      {%- assign cbbc = 'p4735' -%}
+      {%- assign cbtc = 'white' -%}
+      {%- include "collection-thumb" -%}
+    </li>
+
+    {% endfor %}
+  </ul>
+</div>

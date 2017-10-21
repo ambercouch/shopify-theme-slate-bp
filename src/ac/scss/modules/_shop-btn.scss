@@ -48,6 +48,12 @@
   .collection-thumb__shop-btn--cart-promo &{
     @include inuit-font-size($inuit-font-size-h5, 1);
   }
+
+  //
+  .collection-thumb__shop-btn--lookbook &{
+    @include inuit-font-size($inuit-font-size-h5, 1);
+  }
+
 }
 
 /*

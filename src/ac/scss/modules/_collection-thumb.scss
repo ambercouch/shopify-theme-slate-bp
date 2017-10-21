@@ -106,12 +106,23 @@
  }
 
 /*
-  BEM MODIFIERS
+  BEM ELEMENT MODIFIERS
  */
 
 .collection-thumb__title--{
   &cart-promo{
     @include inuit-font-size($inuit-font-size-h4, 1);
+  }
+}
+
+.collection-thumb__shop-btn--{
+
+  &lookbook{
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    .collection-thumb__link:hover &{
+      opacity: 1;
+    }
   }
 }
 

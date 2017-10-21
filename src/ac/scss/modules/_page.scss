@@ -1,9 +1,41 @@
+/*
+  BEM BLOCK .collection-thumb
+ */
+
 .page{
   @extend .o-wrapper;
+  margin-bottom: $inuit-global-spacing-unit-huge;
+  @include mq($until : tablet){
+    padding: 0 !important;
+  }
 }
+
+/*
+  BEM BLOCK MODIFIERS
+*/
+.page--{
+  &inactive-account{
+
+  }
+  &lookbooks{
+    text-align: center;
+    @include mq($until : desktop){
+      padding: 0 !important;
+    }
+
+  }
+}
+
+// BEM BLOCK MODIFIER FALLBACK
+
 [class*=page--]{
   @extend .page
 }
+
+
+/*
+  BEM ELEMENTS
+ */
 
 .page__{
   &header{
@@ -30,8 +62,8 @@
   }
 }
 
-.page--{
-  &inactive-account{
-    margin-bottom: $inuit-global-spacing-unit-huge;
-  }
+// BEM BLOCK MODIFIER FALLBACK
+
+[class*=page__content--]{
+  @extend .page__content;
 }
