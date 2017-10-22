@@ -1,17 +1,17 @@
 
-<div class="product-thumb">
-  <h5 class="product-thumb__sku">{{ product.variants[0].sku }}</h5>
+<div class="product-thumb{{ PTClassModifier }}">
+  <h5 class="product-thumb__sku{{ PTClassModifier }}">{{ product.variants[0].sku }}</h5>
   <a class="product-thumb__link--image" href="{{ product.url | within: collection }}">
-    <img class="product-thumb__img" src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}" >
+    <img class="product-thumb__img{{ PTClassModifier }}" src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}" >
     </a>
 
-  <div class="product-thumb__info">
+  <div class="product-thumb__info{{ PTClassModifier }}">
     <a class="product-thumb__link--heading" href="{{ product.url | within: collection }}">
-      <h5 class="product-thumb__heading">{{ product.title }}</h5>
+      <h5 class="product-thumb__heading{{ PTClassModifier }}">{{ product.title }}</h5>
     </a>
     {% if customer %}
+      <div class="product-thumb__price">
     {% if bold_compare_at_price > bold_price %}
-
       {% if bold_price_varies %}
         {%- assign sale_price = bold_price | money -%}
         {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
@@ -19,20 +19,18 @@
         {{ 'products.product.on_sale' | t }}
         {{ bold_price | money }}
       {% endif %}
-
+      </div>
     {% else %}
-
+    <div class="product-thumb__price">
       {% if bold_price_varies %}
         {%- assign price = bold_price | money -%}
         {{ 'products.product.from_text_html' | t: price: price }}
       {% else %}
         {{ bold_price | money }}
       {% endif %}
-
+    </div>
     {% endif %}
-
     {% endif %}
-
   </div>
 
 </div>

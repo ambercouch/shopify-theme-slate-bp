@@ -11,6 +11,10 @@
   <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
 
   <div class="product">
+    <div class="product__breadcrumbs">
+      {% assign BCClassModifier = "--product"  %}
+      {%  include "breadcrumbs" %}
+    </div>
     <div class="product__flex">
       <div class="product__header">
         <h1 class="product__heading" >{{ product.title }}</h1>

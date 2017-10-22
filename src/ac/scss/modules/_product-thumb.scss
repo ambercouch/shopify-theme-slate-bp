@@ -1,53 +1,134 @@
+/*
+  BEM BLOCK .product-thumb
+ */
+
 .product-thumb{
   text-align: center;
   padding: 0 $inuit-global-spacing-unit-small $inuit-global-spacing-unit-small;
   margin-bottom: $inuit-global-spacing-unit;
 }
 
-.product-thumb__{
-  &link{
-    display: block;
-    width: 100%;
-    text-decoration: none;
+//BEM BLOCK MODIFIER .product-thumb--
+.product-thumb--{
+    &lookbook {
+      padding: 0 $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
+      margin-bottom: 0;
+      position: relative;
+      @include mq($from: tablet) {
+        padding: $inuit-global-spacing-unit-tiny / 2 $inuit-global-spacing-unit-tiny / 2;
+      }
+      @include mq($until: mobile) {
+        padding: 0 !important;
+      }
+    }
   }
-  &img{
-    display: block;
-    width:100%;
-    height: auto;
-    margin-bottom:$inuit-global-spacing-unit-small;
-  }
-  &heading{
-    font-weight: 500;
-    margin-bottom: 0;
-    @include inuit-font-size($inuit-font-size-h5, 1);
-  }
-  &sku{
-    @include inuit-font-size($inuit-font-size-h6, 1);
-    font-weight: 500;
-    margin-bottom: $inuit-global-spacing-unit-tiny;
 
+  //BEM BLOCK MODIFIER FALLBACK
+  [class*=product-thumb--]{
+    @extend .product-thumb;
+  }
+
+  /*
+    BEM ELEMENTS .product-thumb__
+   */
+
+  .product-thumb__{
+    &link{
+      display: block;
+      width: 100%;
+      text-decoration: none;
+    }
+    &img{
+      display: block;
+      width:100%;
+      height: auto;
+      //margin-bottom:$inuit-global-spacing-unit-small;
+    }
+    &heading{
+      font-weight: 500;
+      margin-bottom: 0;
+      @include inuit-font-size($inuit-font-size-h5, 1);
+    }
+    &sku{
+      @include inuit-font-size($inuit-font-size-h6, 1);
+      font-weight: 500;
+      margin-bottom: $inuit-global-spacing-unit-tiny;
+
+    }
+  }
+
+  //BEM ELEMENT MODIFIER
+
+  .product-thumb__sku--{
+    &lookbook{
+      background: rgba(#fff, .45);
+      position: absolute;
+      padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny 0;
+      bottom: 50px;
+      width: 30%;
+      margin-bottom: 0;
+      text-align: left;
+    }
+  }
+
+  .product-thumb__info--{
+    &lookbook{
+      position: absolute;
+      background: rgba(#fff, .45);
+      bottom: 0;
+      padding: 0 $inuit-global-spacing-unit-tiny;
+      width: 30%;
+      height: 50px;
+      text-align: left;
+    }
+  }
+.product-thumb__heading--{
+  &lookbook{
+    display: none;
   }
 }
 
 
-.product-thumb{
-  .featured-collection__item:nth-child(odd) &{
-    padding-left:0;
-  }
-  .featured-collection__item:nth-child(even) &{
-    padding-right:0;
-  }
-}
+  .product-thumb__link--{
+    &image{
 
-[class^=product-thumb__link]{
-  @extend .product-thumb__link;
-}
+    }
+    &heading{
 
-.product-thumb__link--{
-  &image{
-
+    }
   }
-  &heading{
 
+  //BEM ELEMENT MODIFIER FALLBACK
+
+  [class*=product-thumb__link--]{
+    @extend .product-thumb__link;
   }
-}
+
+  [class*=product-thumb__img--]{
+    @extend .product-thumb__img;
+  }
+
+  [class*=product-thumb__heading--]{
+    @extend .product-thumb__heading;
+  }
+
+  [class*=product-thumb__sku--]{
+    @extend .product-thumb__sku;
+  }
+
+
+  /*
+    CONTEXT SELECTORS
+   */
+
+  .product-thumb{
+    .featured-collection__item:nth-child(odd) &{
+      padding-left:0;
+    }
+    .featured-collection__item:nth-child(even) &{
+      padding-right:0;
+    }
+  }
+
+
+

@@ -1,9 +1,23 @@
+/*
+  BEM BLOCK .collection
+ */
+
 .collection{
   @extend .o-wrapper;
   @include mq($until : tablet){
     padding: 0 !important;
   }
 }
+
+//BEM BLOCK MODIFIER FALLBACK
+
+[class*=collection--]{
+  @extend .collection;
+}
+
+/*
+  BEM ELEMENTS .collection__
+ */
 
 .collection__{
   &header{
@@ -32,7 +46,7 @@
     width: 100%;
 
     @include mq($from : desktop){
-      width: 20%;
+    width: 20%;
       padding-top: $inuit-global-spacing-unit-large ;
       margin-right:$inuit-global-spacing-unit;
     }
@@ -51,10 +65,12 @@
   }
   &item{
     width: 25%;
-
   }
 }
 
+/*
+  BEM ELEMENTS MODIFIERS
+ */
 
 .collection__item--{
   &layout2 {
@@ -70,8 +86,21 @@
     @include mq($from : tablet, $until : desktop){
       width: 50%;
     }
-
   }
+  &lookbook {
+    margin-bottom: $inuit-global-spacing-unit;
+    @include mq($from: tablet) {
+      width: 50%;
+    }
+  }
+}
+
+[class*=collection__list--]{
+  @extend .collection__list;
+}
+
+[class*=collection__item--]{
+  @extend .collection__item;
 }
 
 //Hide single filter Groups
