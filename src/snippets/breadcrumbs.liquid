@@ -1,0 +1,56 @@
+{% if product  %}
+  <!-- product breadcrumbs - p : {{ product.handle }}-->
+{% endif %}
+{% if collection  %}
+  <!-- Collection breadcrumbs - p : {{ collection.handle }}-->
+{% endif %}
+{% if collection.handle == 'all' %}
+  {% assign collectionTitle = 'All Products' %}
+  {% else %}
+    {% assign collectionTitle = collection.title %}
+{% endif %}
+<div class="breadcrumbs{{ BCClassModifier }}">
+  <ul class="breadcrumbs__list{{ BCClassModifier }}">
+    <li class="breadcrumbs__item{{ BCClassModifier }}">
+      <a href="/" class="breadcrumbs__link{{ BCClassModifier }}">
+        <span class="breadcrumbs__label{{ BCClassModifier }}">Home</span>
+      </a>
+    </li>
+    {% if collection.handle != 'all' %}
+    <li class="breadcrumbs__item{{ BCClassModifier }}">
+      <a href="/collections/all" class="breadcrumbs__link{{ BCClassModifier }}">
+        <span class="breadcrumbs__label{{ BCClassModifier }}">All Products</span>
+      </a>
+    </li>
+      {% else %}
+        {% unless product %}
+        <li class="breadcrumbs__item{{ BCClassModifier }}">
+            <span class="breadcrumbs__label--current">All Products</span>
+        </li>
+      {% endunless %}
+    {% endif %}
+
+    {% if product %}
+      {% if collection %}
+        <li class="breadcrumbs__item{{ BCClassModifier }}">
+          <a href="{{ collection.url }}" class="breadcrumbs__link{{ BCClassModifier }}">
+            <span class="breadcrumbs__label">{{ collectionTitle }}</span>
+          </a>
+        </li>
+      {% endif %}
+      <li class="breadcrumbs__item{{ BCClassModifier }}">
+        <span class="breadcrumbs__label--current">{{product.variants[0].sku}}</span>
+      </li>
+      {% else %}
+        {% if collection %}
+          {% if collection.handle != 'all' %}
+            <li class="breadcrumbs__item{{ BCClassModifier }}">
+              <span class="breadcrumbs__label--current">{{ collectionTitle}}</span>
+            </li>
+          {% endif %}
+        {% endif %}
+    {% endif %}
+
+
+  </ul>
+</div>

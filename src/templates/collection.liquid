@@ -1,5 +1,9 @@
 {% paginate collection.products by 40 %}
 <div class="collection">
+  <div class="collection__breadcrumbs">
+    {% assign BCClassModifier = "--collection"  %}
+    {%  include "breadcrumbs" %}
+  </div>
   <div class="collection__flex">
   <div class="collection__sidebar">
     <div class="collection__filters">

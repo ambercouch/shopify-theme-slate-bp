@@ -1,0 +1,32 @@
+/*
+  BEM BLOCK .breadcrumbs
+ */
+
+.breadcrumbs{
+  display: block;
+}
+
+//BEM BLOCK MODIFIER FALLBACK
+
+[class*=breadcrumbs--]{
+  @extend .breadcrumbs;
+
+}
+
+/*
+  BEM ELEMENTS
+ */
+
+.breadcrumbs__{
+  &list{
+
+  }
+  &item{
+    @extend .o-list-bare;
+  }
+  &link{
+    text-decoration: none;
+
+  }
+
+}
