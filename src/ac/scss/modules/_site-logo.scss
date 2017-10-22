@@ -2,7 +2,7 @@
   BLOCK .site-logo
  */
 .site-logo{
-  width: 200px;
+  width: 225px;
   @include mq(wide){
     width: 300px;
   }
