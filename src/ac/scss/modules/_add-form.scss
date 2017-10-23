@@ -79,6 +79,9 @@
     text-align: center;
     padding: $inuit-global-spacing-unit-tiny 0;
     width: 100%;
+    @include mq($from : desktop){
+      text-align: left;
+    }
   }
   &submit-btn{
     transition: background 0.3s ease;
@@ -89,9 +92,41 @@
     font-weight: bold;
     @include inuit-font-size($inuit-font-size-h2,1);
     padding: $inuit-global-spacing-unit-small 0;
+    margin-bottom:$inuit-global-spacing-unit;
     border: none;
     &:hover{
       background:darken($brand-col-4, 5%);
+    }
+    @include mq($from : desktop){
+      width: auto;
+      padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit;
+    }
+  }
+
+  &bqb{
+    @include inuit-font-size($inuit-font-size-h5, 1.1);
+    display: block;
+    width: 100%;
+    padding: 0;
+    table{
+      @extend .o-table;
+      @extend .o-table--tiny;
+      width: 100%;
+    }
+    small{
+      font-weight: normal;
+    }
+    td:nth-child(2){
+      text-align: right;
+      font-weight: bold;
+    }
+    td:nth-child(3){
+      text-align: right;
+    }
+    th{
+      background: $brand-col-1;
+      color: white;
+      border-left: solid 1px white;
     }
   }
 

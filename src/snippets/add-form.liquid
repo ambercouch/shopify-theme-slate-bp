@@ -64,7 +64,13 @@
     </div>
 
     {% unless qb_loaded == 'true' %}
-    <div class="shappify-qty-msg">{{bold_selected_or_first_available_variant.metafields.shappify_qb.pricing_html}}</div>{% assign qb_loaded = 'true' %}
+    <div class="add-form__bqb">
+      <h3 class="add-form__bqb-title"><span class="add-form__bqb-title-platinum">Platinum</span> <small>(Bulk Discounts)</small></h3>
+      <div class="shappify-qty-msg">
+      {{bold_selected_or_first_available_variant.metafields.shappify_qb.pricing_html}}
+    </div>
+    {% assign qb_loaded = 'true' %}
+    </div>
     {% endunless %}
 
   </form>
