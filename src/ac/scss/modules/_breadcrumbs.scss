@@ -4,6 +4,7 @@
 
 .breadcrumbs{
   display: block;
+  @include inuit-font-size($inuit-font-size-h6)
 }
 
 //BEM BLOCK MODIFIER FALLBACK
@@ -19,14 +20,34 @@
 
 .breadcrumbs__{
   &list{
-
+    @extend .o-list-bare;
+    @extend .o-list-inline;
+    display: block;
+    margin-bottom: 0;
   }
   &item{
-    @extend .o-list-bare;
+    padding-right: $inuit-global-spacing-unit-tiny;
+    &:after{
+      content: '>';
+      display: inline-block;
+      margin-left:$inuit-global-spacing-unit-tiny;
+    }
+
   }
   &link{
     text-decoration: none;
-
   }
 
+}
+
+[class*=breadcrumbs__list--]{
+  @extend .breadcrumbs__list;
+}
+
+[class*=breadcrumbs__item--]{
+  @extend .breadcrumbs__item;
+}
+
+[class*=breadcrumbs__link--]{
+  @extend .breadcrumbs__link;
 }
