@@ -1,54 +1,79 @@
-<h1>{{ page.title }}</h1>
-
+<div class="page">
+  <div class="page__header">
+    <h1 class="page__heading" >{{ page.title }}</h1>
+  </div>
+  <div class="page__content">
 <div class="rte">
   {{ page.content }}
 </div>
-
+  </div>
+  <div class="page__contact-form">
+    <div class="page__form">
 {% form 'contact' %}
 
   {% if form.posted_successfully? %}
-    <p class="form-success">
+    <p class="page__contact-form-success">
       {{ 'contact.form.post_success' | t }}
     </p>
   {% endif %}
 
   {{ form.errors | default_errors }}
 
-  <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+    <div class="page__form-content">
+      <fieldset class="page__fieldset--about">
+        <div class="page__form-control">
+  <label class=" page__label" for="ContactFormName">{{ 'contact.form.name' | t }}</label>
   <input type="text"
     name="contact[name]"
+         class="page__input"
     id="ContactFormName"
     placeholder="{{ 'contact.form.name' | t }}"
     value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
-
-  <label for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
+        </div>
+        <div class="page__form-control">
+  <label class=" page__label" for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
   <input type="email"
     name="contact[email]"
+         class="page__input"
     id="ContactFormEmail"
     placeholder="{{ 'contact.form.email' | t }}"
     value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
     spellcheck="false"
     autocomplete="off"
     autocapitalize="off">
-
-  <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+        </div>
+        <div class="page__form-control">
+  <label class=" page__label" for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
   <input type="tel"
     name="contact[phone]"
+         class="page__input"
     id="ContactFormPhone"
     placeholder="{{ 'contact.form.phone' | t }}"
     value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}"
     pattern="[0-9\-]*">
+        </div>
+      </fieldset>
+      <fieldset class="page__fieldset">
+        <div class="page__form-control">
+  <label class=" page__label" for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
 
-  <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
   <textarea rows="10"
     name="contact[body]"
+            class="page__input"
     id="ContactFormMessage"
     placeholder="{{ 'contact.form.message' | t }}">
     {% if form.body %}
       {{ form.body }}
     {% endif %}
   </textarea>
+        </div>
 
-  <input type="submit" class="btn" value="{{ 'contact.form.send' | t }}">
 
+  <input type="submit" class="page__submit btn" value="{{ 'contact.form.send' | t }}">
+      </fieldset>
+
+    </div>
 {% endform %}
+    </div>
+  </div>
+</div>
