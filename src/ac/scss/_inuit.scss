@@ -84,11 +84,12 @@
 
 
 // TOOLS
-@import "../../vendor/inuitcss/tools/tools.rem";
+//@import "../../vendor/inuitcss/tools/tools.rem";
 @import "../../vendor/inuitcss/tools/tools.font-size";
 @import "../../vendor/inuitcss/tools/tools.clearfix";
 @import "../../vendor/inuitcss/tools/tools.hidden";
 @import "../../vendor/sass-mq/mq";
+
 
 
 
@@ -127,7 +128,7 @@
 @import "../../vendor/inuitcss/objects/objects.block";
 @import "../../vendor/inuitcss/objects/objects.ratio";
 @import "../../vendor/inuitcss/objects/objects.crop";
-@import "../../vendor/inuitcss/objects/objects.tables";
+@import "../../vendor/inuitcss/objects/objects.table";
 @import "../../vendor/inuitcss/objects/objects.pack";
 
 
@@ -149,7 +150,7 @@
 $inuit-offsets: true;
 @import "../../vendor/inuitcss/utilities/utilities.widths";
 @import "../../vendor/inuitcss/utilities/utilities.headings";
-@import "../../vendor/inuitcss/utilities/utilities.spacing";
+//@import "../../vendor/inuitcss/utilities/utilities.spacing";
 @import "../../vendor/inuitcss/utilities/utilities.print";
 @import "../../vendor/inuitcss/utilities/utilities.hide";
 
