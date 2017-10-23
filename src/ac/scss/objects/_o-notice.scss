@@ -38,4 +38,15 @@
       margin-bottom: 0;
     }
   }
+  &green {
+    background: $green;
+    & > *:first-child > *:first-child, .o-notice__heading {
+
+      background: darken($green, 10%);
+
+    }
+    & > *:last-child > *:last-child, .o-notice__content > *:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

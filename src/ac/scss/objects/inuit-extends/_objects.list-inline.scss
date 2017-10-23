@@ -1,0 +1,13 @@
+/* ==========================================================================
+   #LIST-INLINE
+   ========================================================================== */
+
+/**
+ * The list-inline object simply displays a list of items in one line.
+ */
+
+.o-list-inline {
+  > li{
+    @extend .o-list-inline__item;
+  }
+}
