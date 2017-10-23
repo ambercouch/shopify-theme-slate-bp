@@ -17,17 +17,22 @@
   }
   &item{
     //@extend .o-list-inline__item;
-    margin-left: $inuit-global-spacing-unit-small;
+    margin-left: $inuit-global-spacing-unit-tiny;
+    @include inuit-font-size($inuit-font-size-h5);
     &:first-child{
       margin-left:0;
     }
-
+    &:nth-child(2){
+      @include mq($from : desktop){
+        margin-left:0;
+      }
+    }
 
   }
   &link{
     text-decoration: none;
 
-
+  @include inuit-font-size($inuit-font-size-h5);
     @include mq($until : tablet){
       flex-direction: column-reverse;
       align-items: center;
