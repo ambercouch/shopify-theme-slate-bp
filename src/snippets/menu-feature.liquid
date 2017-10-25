@@ -2,34 +2,43 @@
 {%-  assign featureLinks = linklists[featureListHandle]   -%}
 {%-  assign featureHandle = featureLinks.handle -%}
 {%-  assign featureSize = featureLinks.links | size -%}
+{% if featureSize > 1 %}
+  {% assign featureSize = 2 %}
+{% endif %}
 <!-- feature list handle {{ featureHandle }}   -->
 <!-- link {{ links }}   -->
 <!-- size {{ featureSize }}   -->
 {% if featureHandle != '' %}
   <div class="mega-menu__menu-feature is-size-{{ featureSize }}">
-  {% for link in linklists[featureListHandle].links %}
-    {%   assign feature = link.object %}
-    {%   assign featureType = link.type %}
-    {% case featureType %}
-    {% when 'page_link' %}
-    <div class="menu-feature">
-      <h5 class="menu-feature__heading">{{ feature.title }}</h5>
-      <div class="menu-feature__content" >
-        {{ feature.content }}
+    {% for link in linklists[featureListHandle].links %}
+      {%   assign feature = link.object %}
+      {%   assign featureType = link.type %}
+      {% case featureType %}
+      {% when 'page_link' %}
+      <div class="menu-feature">
+        <h5 class="menu-feature__heading">{{ feature.title }}</h5>
+        <div class="menu-feature__content" >
+          {{ feature.content }}
+        </div>
       </div>
-    </div>
-    {% when 'collection_link' %}
-    <div class="menu-feature">
-      <h5 class="menu-feature__heading">{{ feature.title }}</h5>
-      <div class="menu-feature__content" >
-        <a class="{{ feature.url }}">
-          <img src="{{ feature.image | img_url: 'large' }}" alt="{{ feature.title }}" />
+      {% when 'collection_link' %}
+      <div class="menu-feature">
+        <a href="{{ feature.url }}">
+          <h5 class="menu-feature__heading">{{ feature.title }}</h5>
+          <div class="menu-feature__content" >
+
+            <img src="{{ feature.image | img_url: 'large' }}" alt="{{ feature.title }}" />
+            <div class="menu-feature__shop-btn">
+        <span class="shop-btn--p4735">
+          <span class="shop-btn__text--white">Shop Now</span>
+        </span>
+            </div>
+          </div>
         </a>
       </div>
-    </div>
     {% else %}
 
-    {% endcase %}
-  {% endfor %}
+      {% endcase %}
+    {% endfor %}
   </div> <!-- /.mega-menu__menu-feature -->
 {% endif %}

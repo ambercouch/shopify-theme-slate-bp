@@ -62,7 +62,8 @@
   &menu-feature{
    margin-left: auto;
     display: flex;
-    justify-content: center;N
+    justify-content: center;
+    align-items: flex-start;
     &.is-size-1{
       width: 20%;
     }

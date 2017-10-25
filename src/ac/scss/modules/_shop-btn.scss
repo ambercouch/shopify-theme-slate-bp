@@ -126,5 +126,10 @@
 
 }
 
+[class*=shop-btn--]{
+  .menu-feature__shop-btn &{
+    @include inuit-font-size($inuit-font-size-h6,1);
+  }
+}
 
 
