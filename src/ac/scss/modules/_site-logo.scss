@@ -2,10 +2,9 @@
   BLOCK .site-logo
  */
 .site-logo{
-  width: 225px;
-  @include mq(wide){
-    width: 300px;
-  }
+  text-align: center;
+  width: 100%;
+
 }
 
 /*
@@ -13,7 +12,11 @@
  */
 
 .site-logo__{
+  &link{
+    display: block;
+  }
   &img{
     max-width:100%;
+    margin: 0 auto;
   }
 }
