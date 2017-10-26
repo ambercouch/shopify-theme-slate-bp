@@ -88,7 +88,7 @@
     }
   }
   &lookbook {
-    margin-bottom: $inuit-global-spacing-unit;
+    margin-bottom: 0;
     @include mq($from: tablet) {
       width: 50%;
     }
