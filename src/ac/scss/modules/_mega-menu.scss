@@ -64,8 +64,14 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-start;
     &.is-size-1{
-      width: 20%;
+      max-width: 40%;
+      width: 260px;
+      @include mq($until : desktop){
+        display: none;
+      }
     }
     &.is-size-2{
       width: 40%;
@@ -84,19 +90,19 @@
       color: $brand-col-1;
       position: relative;
     }
-    &:before{
-      .mega-menu__all-link:hover &{
-        content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        background:  #fff;
-        position: absolute;
-        top: 0;
-        left:0;
-        transform: skew(10deg);
-      }
-    }
+    //&:before{
+    //  .mega-menu__all-link:hover &{
+    //    content: '';
+    //    display: block;
+    //    width: 100%;
+    //    height: 100%;
+    //    background:  #fff;
+    //    position: absolute;
+    //    top: 0;
+    //    left:0;
+    //    transform: skew(10deg);
+    //  }
+    //}
   }
 }
 
