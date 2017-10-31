@@ -51,5 +51,25 @@
 
 
 
-</body>
+<!--BeginCFFPersistentCartCart-->
+{% if customer %}
+  <script>
+
+      window.cffCustomer = {
+          name: '{{customer.name}}',
+          email: '{{customer.email}}',
+          hasAccount: '{{customer.has_account}}',
+          id: '{{customer.id}}'
+      };
+
+
+  </script>
+
+{% endif %}
+
+<script>
+    window.cffPCLiquidPlaced = true
+</script>
+
+<!--EndCFFPersistentCartCart--></body>
 </html>
