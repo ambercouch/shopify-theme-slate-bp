@@ -150,7 +150,7 @@
         "id": "cart_min_spend",
         "label": "Minimum spend",
         "default": "5000",
-        "info" : "The minimum cart value needed to checkout (5000 = £50 )"
+        "info": "The minimum cart value needed to checkout (5000 = £50 )"
       }
     ]
   },
@@ -172,47 +172,55 @@
         "label": "Collection Title Position",
         "id": "cart_promo_1_collection_title_position",
         "options": [
-          {"value" : "top-left",
-            "label" : "Top, Left",
-            "group" : "Top"
+          {
+            "value": "top-left",
+            "label": "Top, Left",
+            "group": "Top"
           },
-          {"value" : "top-centre",
-            "label" : "Top, Centre",
-            "group" : "Top"
+          {
+            "value": "top-centre",
+            "label": "Top, Centre",
+            "group": "Top"
           },
-          {"value" : "top-right",
-            "label" : "Top, Right",
-            "group" : "Top"
+          {
+            "value": "top-right",
+            "label": "Top, Right",
+            "group": "Top"
           },
-          {"value" : "centre-left",
-            "label" : "Centre, Left",
-            "group" : "Centre"
+          {
+            "value": "centre-left",
+            "label": "Centre, Left",
+            "group": "Centre"
           },
-          {"value" : "centre-centre",
-            "label" : "Centre, Centre",
-            "group" : "Centre"
+          {
+            "value": "centre-centre",
+            "label": "Centre, Centre",
+            "group": "Centre"
           },
-          {"value" : "centre-right",
-            "label" : "Centre, Right",
-            "group" : "Centre"
+          {
+            "value": "centre-right",
+            "label": "Centre, Right",
+            "group": "Centre"
           },
-          {"value" : "bottom-left",
-            "label" : "Bottom, Left",
-            "group" : "Bottom"
+          {
+            "value": "bottom-left",
+            "label": "Bottom, Left",
+            "group": "Bottom"
           },
-          {"value" : "bottom-centre",
-            "label" : "Bottom, Center",
-            "group" : "Bottom"
+          {
+            "value": "bottom-centre",
+            "label": "Bottom, Center",
+            "group": "Bottom"
           },
-          {"value" : "bottom-right",
-            "label" : "Bottom, Right",
-            "group" : "Bottom"
+          {
+            "value": "bottom-right",
+            "label": "Bottom, Right",
+            "group": "Bottom"
           }
         ],
-        "default":   "centre-centre",
+        "default": "centre-centre",
         "type": "select"
       },
-
       {
         "label": "Hide Collection Title",
         "id": "cart_promo_1_hide_collection_title",
@@ -224,15 +232,21 @@
         "label": "Collection Image Position",
         "id": "cart_promo_1_collection_image_position",
         "info": "Position the collection image when cropped.",
-        "default":"centre",
+        "default": "centre",
         "type": "select",
-        "options" : [
-          {"value":"centre",
-            "label":"Centre"},
-          {"value":"left",
-            "label":"Left"},
-          {"value":"right",
-            "label":"Right"}
+        "options": [
+          {
+            "value": "centre",
+            "label": "Centre"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
         ]
       },
       {
@@ -246,12 +260,14 @@
         "label": "Button Text Colour",
         "id": "cart_promo_1_collection_button_text_colour",
         "options": [
-          {"value" : "white",
-            "label" : "White",
-            "group" : "Basic"
+          {
+            "value": "white",
+            "label": "White",
+            "group": "Basic"
           },
-          {"value" : "p431",
-            "label" : "Grey 1"
+          {
+            "value": "p431",
+            "label": "Grey 1"
           }
         ],
         "default": "p431",
@@ -261,41 +277,50 @@
         "label": "Button Background Colour",
         "id": "cart_promo_1_collection_button_background_colour",
         "options": [
-          {"value" : "white",
-            "label" : "White",
-            "group" : "Basic"
+          {
+            "value": "white",
+            "label": "White",
+            "group": "Basic"
           },
-          {"value" : "p431",
-            "label" : "Grey 1",
-            "group" : "Grey"
+          {
+            "value": "p431",
+            "label": "Grey 1",
+            "group": "Grey"
           },
-          {"value" : "p429",
-            "label" : "Grey 2",
-            "group" : "Grey"
+          {
+            "value": "p429",
+            "label": "Grey 2",
+            "group": "Grey"
           },
-          {"value" : "p427",
-            "label" : "Grey 3",
-            "group" : "Grey"
+          {
+            "value": "p427",
+            "label": "Grey 3",
+            "group": "Grey"
           },
-          {"value" : "p4735",
-            "label" : "Peach 1",
-            "group" : "Peach"
+          {
+            "value": "p4735",
+            "label": "Peach 1",
+            "group": "Peach"
           },
-          {"value" : "p489",
-            "label" : "Peach 2",
-            "group" : "Peach"
+          {
+            "value": "p489",
+            "label": "Peach 2",
+            "group": "Peach"
           },
-          {"value" : "p475",
-            "label" : "Peach 3",
-            "group" : "Peach"
+          {
+            "value": "p475",
+            "label": "Peach 3",
+            "group": "Peach"
           },
-          {"value" : "p7466",
-            "label" : "Aqua 1",
-            "group" : "Aqua"
+          {
+            "value": "p7466",
+            "label": "Aqua 1",
+            "group": "Aqua"
           },
-          {"value" : "p318",
-            "label" : "Aqua 2",
-            "group" : "Aqua"
+          {
+            "value": "p318",
+            "label": "Aqua 2",
+            "group": "Aqua"
           }
         ],
         "default": "white",
@@ -321,47 +346,55 @@
         "label": "Collection Title Position",
         "id": "cart_promo_2_collection_title_position",
         "options": [
-          {"value" : "top-left",
-            "label" : "Top, Left",
-            "group" : "Top"
+          {
+            "value": "top-left",
+            "label": "Top, Left",
+            "group": "Top"
           },
-          {"value" : "top-centre",
-            "label" : "Top, Centre",
-            "group" : "Top"
+          {
+            "value": "top-centre",
+            "label": "Top, Centre",
+            "group": "Top"
           },
-          {"value" : "top-right",
-            "label" : "Top, Right",
-            "group" : "Top"
+          {
+            "value": "top-right",
+            "label": "Top, Right",
+            "group": "Top"
           },
-          {"value" : "centre-left",
-            "label" : "Centre, Left",
-            "group" : "Centre"
+          {
+            "value": "centre-left",
+            "label": "Centre, Left",
+            "group": "Centre"
           },
-          {"value" : "centre-centre",
-            "label" : "Centre, Centre",
-            "group" : "Centre"
+          {
+            "value": "centre-centre",
+            "label": "Centre, Centre",
+            "group": "Centre"
           },
-          {"value" : "centre-right",
-            "label" : "Centre, Right",
-            "group" : "Centre"
+          {
+            "value": "centre-right",
+            "label": "Centre, Right",
+            "group": "Centre"
           },
-          {"value" : "bottom-left",
-            "label" : "Bottom, Left",
-            "group" : "Bottom"
+          {
+            "value": "bottom-left",
+            "label": "Bottom, Left",
+            "group": "Bottom"
           },
-          {"value" : "bottom-centre",
-            "label" : "Bottom, Center",
-            "group" : "Bottom"
+          {
+            "value": "bottom-centre",
+            "label": "Bottom, Center",
+            "group": "Bottom"
           },
-          {"value" : "bottom-right",
-            "label" : "Bottom, Right",
-            "group" : "Bottom"
+          {
+            "value": "bottom-right",
+            "label": "Bottom, Right",
+            "group": "Bottom"
           }
         ],
-        "default":   "centre-centre",
+        "default": "centre-centre",
         "type": "select"
       },
-
       {
         "label": "Hide Collection Title",
         "id": "cart_promo_2_hide_collection_title",
@@ -373,15 +406,21 @@
         "label": "Collection Image Position",
         "id": "cart_promo_2_collection_image_position",
         "info": "Position the collection image when cropped.",
-        "default":"centre",
+        "default": "centre",
         "type": "select",
-        "options" : [
-          {"value":"centre",
-            "label":"Centre"},
-          {"value":"left",
-            "label":"Left"},
-          {"value":"right",
-            "label":"Right"}
+        "options": [
+          {
+            "value": "centre",
+            "label": "Centre"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
         ]
       },
       {
@@ -395,12 +434,14 @@
         "label": "Button Text Colour",
         "id": "cart_promo_2_collection_button_text_colour",
         "options": [
-          {"value" : "white",
-            "label" : "White",
-            "group" : "Basic"
+          {
+            "value": "white",
+            "label": "White",
+            "group": "Basic"
           },
-          {"value" : "p431",
-            "label" : "Grey 1"
+          {
+            "value": "p431",
+            "label": "Grey 1"
           }
         ],
         "default": "p431",
@@ -410,41 +451,50 @@
         "label": "Button Background Colour",
         "id": "cart_promo_2_collection_button_background_colour",
         "options": [
-          {"value" : "white",
-            "label" : "White",
-            "group" : "Basic"
+          {
+            "value": "white",
+            "label": "White",
+            "group": "Basic"
           },
-          {"value" : "p431",
-            "label" : "Grey 1",
-            "group" : "Grey"
+          {
+            "value": "p431",
+            "label": "Grey 1",
+            "group": "Grey"
           },
-          {"value" : "p429",
-            "label" : "Grey 2",
-            "group" : "Grey"
+          {
+            "value": "p429",
+            "label": "Grey 2",
+            "group": "Grey"
           },
-          {"value" : "p427",
-            "label" : "Grey 3",
-            "group" : "Grey"
+          {
+            "value": "p427",
+            "label": "Grey 3",
+            "group": "Grey"
           },
-          {"value" : "p4735",
-            "label" : "Peach 1",
-            "group" : "Peach"
+          {
+            "value": "p4735",
+            "label": "Peach 1",
+            "group": "Peach"
           },
-          {"value" : "p489",
-            "label" : "Peach 2",
-            "group" : "Peach"
+          {
+            "value": "p489",
+            "label": "Peach 2",
+            "group": "Peach"
           },
-          {"value" : "p475",
-            "label" : "Peach 3",
-            "group" : "Peach"
+          {
+            "value": "p475",
+            "label": "Peach 3",
+            "group": "Peach"
           },
-          {"value" : "p7466",
-            "label" : "Aqua 1",
-            "group" : "Aqua"
+          {
+            "value": "p7466",
+            "label": "Aqua 1",
+            "group": "Aqua"
           },
-          {"value" : "p318",
-            "label" : "Aqua 2",
-            "group" : "Aqua"
+          {
+            "value": "p318",
+            "label": "Aqua 2",
+            "group": "Aqua"
           }
         ],
         "default": "white",
@@ -470,47 +520,55 @@
         "label": "Collection Title Position",
         "id": "cart_promo_3_collection_title_position",
         "options": [
-          {"value" : "top-left",
-            "label" : "Top, Left",
-            "group" : "Top"
+          {
+            "value": "top-left",
+            "label": "Top, Left",
+            "group": "Top"
           },
-          {"value" : "top-centre",
-            "label" : "Top, Centre",
-            "group" : "Top"
+          {
+            "value": "top-centre",
+            "label": "Top, Centre",
+            "group": "Top"
           },
-          {"value" : "top-right",
-            "label" : "Top, Right",
-            "group" : "Top"
+          {
+            "value": "top-right",
+            "label": "Top, Right",
+            "group": "Top"
           },
-          {"value" : "centre-left",
-            "label" : "Centre, Left",
-            "group" : "Centre"
+          {
+            "value": "centre-left",
+            "label": "Centre, Left",
+            "group": "Centre"
           },
-          {"value" : "centre-centre",
-            "label" : "Centre, Centre",
-            "group" : "Centre"
+          {
+            "value": "centre-centre",
+            "label": "Centre, Centre",
+            "group": "Centre"
           },
-          {"value" : "centre-right",
-            "label" : "Centre, Right",
-            "group" : "Centre"
+          {
+            "value": "centre-right",
+            "label": "Centre, Right",
+            "group": "Centre"
           },
-          {"value" : "bottom-left",
-            "label" : "Bottom, Left",
-            "group" : "Bottom"
+          {
+            "value": "bottom-left",
+            "label": "Bottom, Left",
+            "group": "Bottom"
           },
-          {"value" : "bottom-centre",
-            "label" : "Bottom, Center",
-            "group" : "Bottom"
+          {
+            "value": "bottom-centre",
+            "label": "Bottom, Center",
+            "group": "Bottom"
           },
-          {"value" : "bottom-right",
-            "label" : "Bottom, Right",
-            "group" : "Bottom"
+          {
+            "value": "bottom-right",
+            "label": "Bottom, Right",
+            "group": "Bottom"
           }
         ],
-        "default":   "centre-centre",
+        "default": "centre-centre",
         "type": "select"
       },
-
       {
         "label": "Hide Collection Title",
         "id": "cart_promo_3_hide_collection_title",
@@ -522,15 +580,21 @@
         "label": "Collection Image Position",
         "id": "cart_promo_3_collection_image_position",
         "info": "Position the collection image when cropped.",
-        "default":"centre",
+        "default": "centre",
         "type": "select",
-        "options" : [
-          {"value":"centre",
-            "label":"Centre"},
-          {"value":"left",
-            "label":"Left"},
-          {"value":"right",
-            "label":"Right"}
+        "options": [
+          {
+            "value": "centre",
+            "label": "Centre"
+          },
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
         ]
       },
       {
@@ -544,12 +608,14 @@
         "label": "Button Text Colour",
         "id": "cart_promo_3_collection_button_text_colour",
         "options": [
-          {"value" : "white",
-            "label" : "White",
-            "group" : "Basic"
+          {
+            "value": "white",
+            "label": "White",
+            "group": "Basic"
           },
-          {"value" : "p431",
-            "label" : "Grey 1"
+          {
+            "value": "p431",
+            "label": "Grey 1"
           }
         ],
         "default": "p431",
@@ -559,41 +625,50 @@
         "label": "Button Background Colour",
         "id": "cart_promo_3_collection_button_background_colour",
         "options": [
-          {"value" : "white",
-            "label" : "White",
-            "group" : "Basic"
+          {
+            "value": "white",
+            "label": "White",
+            "group": "Basic"
           },
-          {"value" : "p431",
-            "label" : "Grey 1",
-            "group" : "Grey"
+          {
+            "value": "p431",
+            "label": "Grey 1",
+            "group": "Grey"
           },
-          {"value" : "p429",
-            "label" : "Grey 2",
-            "group" : "Grey"
+          {
+            "value": "p429",
+            "label": "Grey 2",
+            "group": "Grey"
           },
-          {"value" : "p427",
-            "label" : "Grey 3",
-            "group" : "Grey"
+          {
+            "value": "p427",
+            "label": "Grey 3",
+            "group": "Grey"
           },
-          {"value" : "p4735",
-            "label" : "Peach 1",
-            "group" : "Peach"
+          {
+            "value": "p4735",
+            "label": "Peach 1",
+            "group": "Peach"
           },
-          {"value" : "p489",
-            "label" : "Peach 2",
-            "group" : "Peach"
+          {
+            "value": "p489",
+            "label": "Peach 2",
+            "group": "Peach"
           },
-          {"value" : "p475",
-            "label" : "Peach 3",
-            "group" : "Peach"
+          {
+            "value": "p475",
+            "label": "Peach 3",
+            "group": "Peach"
           },
-          {"value" : "p7466",
-            "label" : "Aqua 1",
-            "group" : "Aqua"
+          {
+            "value": "p7466",
+            "label": "Aqua 1",
+            "group": "Aqua"
           },
-          {"value" : "p318",
-            "label" : "Aqua 2",
-            "group" : "Aqua"
+          {
+            "value": "p318",
+            "label": "Aqua 2",
+            "group": "Aqua"
           }
         ],
         "default": "white",
