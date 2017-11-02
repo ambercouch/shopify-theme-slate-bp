@@ -53,7 +53,7 @@
           name="add"
           data-add-to-cart
           {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-          <span data-add-to-cart-text>
+          <span data-add-to-cart-text >
             {% if current_variant.available %}
               {{ 'products.product.add_to_cart' | t }}
             {% else %}
