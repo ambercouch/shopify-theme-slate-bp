@@ -1,0 +1,18 @@
+<script>
+    var ISRParams = ISRParams || {};
+    ISRParams.id = "d75d8c645bf384d838762a82f84997de";
+    ISRParams.apiScript = "{{ 'api.jquery.js' | shopify_asset_url }}";
+    ISRParams.moneyFormat = "{{shop.money_format | strip_html}}";
+    ISRParams.fullMoneyFormat = "{{shop.money_with_currency_format | strip_html}}";
+    ISRParams.customer = {};
+    ISRParams.product = {{ product | json }};
+
+    {% if  customer %}
+    ISRParams.customer.email = "{{ customer.email }}";
+    {% if customer.default_address != nil %}
+    ISRParams.customer.country_code = "{{ customer.default_address.country_code }}";
+    {% else %}
+    ISRParams.customer.country_code = null;
+    {% endif %}
+    {% endif %}
+</script>
