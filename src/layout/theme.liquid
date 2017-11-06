@@ -1,5 +1,5 @@
 <!doctype html>
-<!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if IE 9]> <html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}" data-customer='{{ customer.id }}'> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js supports-no-cookies" lang="{{ shop.locale }}"> <!--<![endif]-->
 <head>
   <!-- HEAD CONTENT -->
@@ -71,5 +71,7 @@
     window.cffPCLiquidPlaced = true
 </script>
 
-<!--EndCFFPersistentCartCart--><div style='display: none;' id='ait-customer-id'>{{customer.id}}</div></body>
+<!--EndCFFPersistentCartCart-->
+<div style='display: none;' id='ait-customer-id'>{{customer.id}}</div>
+</body>
 </html>
