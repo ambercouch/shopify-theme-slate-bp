@@ -61,7 +61,10 @@
             {% endif %}
           </span>
       </button>
+      <div id="smartwishlist" data-product="{{ product.id }}" data-variant="{{ product.variants.first.id }}"></div>
+
     </div>
+
 
     {% unless qb_loaded == 'true' %}
     <div class="add-form__bqb">
