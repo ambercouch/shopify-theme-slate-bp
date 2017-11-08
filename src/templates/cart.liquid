@@ -8,9 +8,11 @@
 
   <form class="shopping-cart__form" action="/cart" method="post" novalidate>
   <div class="shopping-cart__cart-table">
+    {% if customer.tags contains "platinum" %}
     <!-- Bold: Quantity Breaks - Cart Savings Banner -->
     <div id="shappify-qty-cart-msg"></div>
     <!-- // end Bold code -->
+    {% endif %}
     {% include 'cart-table' %}
     <div class="shopping-cart__cart-promo">
     {% include 'cart-promo' %}
