@@ -7,7 +7,39 @@
   <!-- TYPEKIT -->
   {%  include 'typekit' %}
   <!-- ADDITIONAL HEAD CONTENT (content_for_header) -->
+
+  {% comment %}
   {{ content_for_header }}
+  {% endcomment %}
+
+  {% if template == 'cart' %}
+    {% unless customer.tags contains 'platinum' %}
+  <script>
+      function defer(method) {
+          if (window.jQuery) {
+              method();
+          } else {
+              setTimeout(function() { defer(method) }, 50);
+          }
+      }
+      defer(function () {
+          var content_for_header = "{{ content_for_header | replace: '/', '\/' | replace: '"', '\"' | replace: 'quantity_breaks.php?shop=tempestdesigns.myshopify.com' : '' | strip_newlines  }}";
+          // Output content to the head, and add newlines where required
+          $('head').append(content_for_header
+              .replace(/}        /g, "}        \n")
+              .replace(/\/\/<!\[CDATA\[/g, "//<![CDATA[\n")
+              .replace(/\/\/]]>/g, "//]]>\n")
+          );
+      });
+  </script>
+    {% else %}
+      {{ content_for_header }}
+    {% endunless %}
+    {% else %}
+      {{ content_for_header }}
+  {% endif %}
+
+
 </head>
 
 {% include 'body-tag' %}
@@ -74,4 +106,6 @@
 <!--EndCFFPersistentCartCart-->
 <div style='display: none;' id='ait-customer-id'>{{customer.id}}</div>
 </body>
+
+
 </html>
