@@ -30,16 +30,34 @@
       {% include 'bold-variant' with variant, hide_action: 'skip' %}
 
       {% include 'add-form-variants' %}
-
-      <select id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}"  name="id" class="add-form__variants no-js" data-product-select>
+      {% assign varCount = 0 %}
+      {% for variant in product.variants %}
+        {% unless variant.title contains '+'  %}
+        {% assign varCount = varCount | plus : 1 %}
+        {% endunless %}
+      {% endfor %}
+      <!-- varCount {{ varCount }} -->
+      <select {% if varCount == 0 %} style="display: none" {% endif %} id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}"  name="id" class="add-form__variants no-js" data-product-select>
+        {% if  varCount > 0 %}
         {% for variant in product.variants %}
+          {% unless variant.title contains '+'  %}
           <option
               {% if variant == current_variant %}selected="selected"{% endif %}
               {% unless variant.available %}disabled="disabled"{% endunless %}
               value="{{ variant.id }}">
             {{ variant.title }}
           </option>
+          {% endunless %}
         {% endfor %}
+          {% else %}
+          {% assign variant = product.variants.first %}
+            <option
+                {% if variant == current_variant %}selected="selected"{% endif %}
+                {% unless variant.available %}disabled="disabled"{% endunless %}
+                value="{{ variant.id }}">
+              {{ variant.title }}
+            </option>
+        {% endif %}
       </select>
     </div>
 
@@ -66,6 +84,7 @@
     </div>
 
 
+    {% if customer.tags contains 'platinum' %}
     {% unless qb_loaded == 'true' %}
     <div class="add-form__bqb">
       <h3 class="add-form__bqb-title"><span class="add-form__bqb-title-platinum">Platinum</span> <small>(Bulk Discounts)</small></h3>
@@ -75,6 +94,7 @@
     {% assign qb_loaded = 'true' %}
     </div>
     {% endunless %}
+    {% endif %}
 
   </form>
 
