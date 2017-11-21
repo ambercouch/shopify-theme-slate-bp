@@ -4,40 +4,40 @@
     <li class="site-control__item--menu">
       <a id="menuButtonOpen" href="#" class="site-control__link" data-state="off">
         <span class="site-control__lable">Menu</span>
-      {% include 'icon-hamburger' %}
+        {% include 'icon-hamburger' %}
       </a>
     </li>
     <li class="site-control__item">
       <a id="searchControl" href="#" class="site-control__link" data-state="off">
         <span class="site-control__lable">Search</span>
-      {% include 'icon-search' %}
+        {% include 'icon-search' %}
       </a>
     </li>
-{% if shop.customer_accounts_enabled %}
+    {% if shop.customer_accounts_enabled %}
 
-    {% if customer %}
-      <li class="site-control__item--account">
+      {% if customer %}
+        <li class="site-control__item--account">
           <a href="/account" class="site-control__link">
             <span class="site-control__lable">
               {{ 'layout.customer.account' | t }}
             </span>
             {% include 'icon-user' %}
           </a>
-      </li>
-      <li class="site-control__item--customer">
-        {{ 'layout.customer.log_out' | t | customer_logout_link }} {% include 'icon-user' %}
-      </li>
-    {% else %}
-      <li class="site-control__item--customer">
-        {{ 'layout.customer.log_in' | t | customer_login_link }} {% include 'icon-user' %}
-      </li>
+        </li>
+        <li class="site-control__item--customer">
+          {{ 'layout.customer.log_out' | t | customer_logout_link }} {% include 'icon-user' %}
+        </li>
+      {% else %}
+        <li class="site-control__item--customer">
+          {{ 'layout.customer.log_in' | t | customer_login_link }} {% include 'icon-user' %}
+        </li>
+      {% endif %}
     {% endif %}
-{% endif %}
-    <li class="site-control__item" >
+    <li class="site-control__item" data-button-cart >
       <a href="/cart" class="site-control__link" >
         <span class="site-control__lable">{{ 'layout.cart.title' | t }}</span>
         {% include 'icon-cart' %}
-        <span class="site-control__cart-count">({{ cart.item_count }})</span>
+        <span data-cart-count class="site-control__cart-count">({{ cart.item_count }})</span>
       </a>
     </li>
   </ul><!-- /.site-control__list -->
@@ -46,6 +46,6 @@
 
   <div id="searchFormMain" class="site-control__search-site" data-state="off">
     {% include 'search-site' %}
-</div><!-- site-controls__search -->
+  </div><!-- site-controls__search -->
 
 </div><!-- site-controls -->

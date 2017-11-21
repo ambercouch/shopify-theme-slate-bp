@@ -1,0 +1,16 @@
+{% assign productTitle = product.title | split: ' ' %}
+      {% capture productTitlecase %}{% for word in productTitle %}{{ word | capitalize }} {% endfor %}{% endcapture %}
+
+<div class="continue-shopping-helper">
+  <div class="continue-shopping-helper__notice--added">
+    <div class="continue-shopping-helper__notice-content">
+      <p><span class="continue-shopping-helper__product-title"><strong>{{ productTitlecase }}</strong></span>
+        <span class="continue-shopping-helper__info">has been added to your cart</span></p>
+    </div>
+  </div>
+  <div class="continue-shopping-helper__options">
+    <a href="" data-close='continue-shopping-helper' class="continue-shopping-helper__link--shop">Continue Shopping</a>
+    <span class="continue-shopping-helper__sep"> or </span>
+    <a href="/cart" class="continue-shopping-helper__link--checkout">Checkout</a>
+  </div>
+</div>

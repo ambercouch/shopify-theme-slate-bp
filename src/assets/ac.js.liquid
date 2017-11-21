@@ -1,12 +1,12 @@
 /*!
- * Flickity PACKAGED v2.0.8
+ * Flickity PACKAGED v2.0.10
  * Touch, responsive, flickable carousels
  *
  * Licensed GPLv3 for open source use
  * or Flickity Commercial License for commercial use
  *
  * http://flickity.metafizzy.co
- * Copyright 2016 Metafizzy
+ * Copyright 2017 Metafizzy
  */
 
 /**
@@ -154,7 +154,7 @@ return jQueryBridget;
 }));
 
 /**
- * EvEmitter v1.0.3
+ * EvEmitter v1.1.0
  * Lil' event emitter
  * MIT License
  */
@@ -234,13 +234,14 @@ proto.emitEvent = function( eventName, args ) {
   if ( !listeners || !listeners.length ) {
     return;
   }
-  var i = 0;
-  var listener = listeners[i];
+  // copy over to avoid interference if .off() in listener
+  listeners = listeners.slice(0);
   args = args || [];
   // once stuff
   var onceListeners = this._onceEvents && this._onceEvents[ eventName ];
 
-  while ( listener ) {
+  for ( var i=0; i < listeners.length; i++ ) {
+    var listener = listeners[i]
     var isOnce = onceListeners && onceListeners[ listener ];
     if ( isOnce ) {
       // remove listener
@@ -251,12 +252,14 @@ proto.emitEvent = function( eventName, args ) {
     }
     // trigger listener
     listener.apply( this, args );
-    // get next listener
-    i += isOnce ? 0 : 1;
-    listener = listeners[i];
   }
 
   return this;
+};
+
+proto.allOff = function() {
+  delete this._events;
+  delete this._onceEvents;
 };
 
 return EvEmitter;
@@ -2307,7 +2310,7 @@ return Unipointer;
 }));
 
 /*!
- * Unidragger v2.2.2
+ * Unidragger v2.2.3
  * Draggable base class
  * MIT license
  */
@@ -2376,10 +2379,13 @@ proto._bindHandles = function( isBind ) {
     // touch-action: none to override browser touch gestures
     // metafizzy/flickity#540
     if ( window.PointerEvent ) {
-      handle.style.touchAction = isBind ? 'none' : '';
+      handle.style.touchAction = isBind ? this._touchActionValue : '';
     }
   }
 };
+
+// prototype so it can be overwriteable by Flickity
+proto._touchActionValue = 'none';
 
 // ----- start event ----- //
 
@@ -2625,6 +2631,7 @@ Flickity.createMethods.push('_createDrag');
 
 var proto = Flickity.prototype;
 utils.extend( proto, Unidragger.prototype );
+proto._touchActionValue = 'pan-y';
 
 // --------------------------  -------------------------- //
 
@@ -2738,20 +2745,16 @@ proto.pointerDownFocus = function( event ) {
   }
 };
 
-var touchStartEvents = {
-  touchstart: true,
-  pointerdown: true,
-};
-
 var focusNodes = {
   INPUT: true,
   SELECT: true,
 };
 
 function getCanPointerDown( event ) {
-  var isTouchStart = touchStartEvents[ event.type ];
+  var isTouchStart = event.type == 'touchstart';
+  var isTouchPointer = event.pointerType == 'touch';
   var isFocusNode = focusNodes[ event.target.nodeName ];
-  return isTouchStart || isFocusNode;
+  return isTouchStart || isTouchPointer || isFocusNode;
 }
 
 proto.canPreventDefaultOnPointerDown = function( event ) {
@@ -3997,14 +4000,14 @@ return Flickity;
 }));
 
 /*!
- * Flickity v2.0.8
+ * Flickity v2.0.10
  * Touch, responsive, flickable carousels
  *
  * Licensed GPLv3 for open source use
  * or Flickity Commercial License for commercial use
  *
  * http://flickity.metafizzy.co
- * Copyright 2016 Metafizzy
+ * Copyright 2017 Metafizzy
  */
 
 ( function( window, factory ) {
@@ -4191,7 +4194,7 @@ return Flickity;
 }));
 
 /*!
- * imagesLoaded v4.1.2
+ * imagesLoaded v4.1.3
  * JavaScript is all like "You images are done yet or what?"
  * MIT License
  */
@@ -5155,8 +5158,85 @@ ACSHOPIFY = {
 
 
 
+            console.log('ajax cart');
+            function refreshCart(cart) {
+                var $cartBtn = $("[data-button-cart]");
+                // console.log('$cartBtn');
+                // console.log($cartBtn);
+                // console.log('cart');
+                // console.log(cart);
+                if ($cartBtn) {
+                    var $cartCount = $cartBtn.find('[data-cart-count]');
+                    if(cart.item_count == 0) {
+
+                    } else if ($cartCount.length) {
+                        $cartCount.text(cart.item_count);
+                    }
+                }
+            }
+
+            $(document).on('click', '[data-close=continue-shopping-helper]' ,function (e) {
+                e.preventDefault();
+               $('.continue-shopping-helper').addClass('animated fadeOutRight');
+                setTimeout(function(){
+                    $('.continue-shopping-helper').hide().removeClass('fadeOutRight');
+                }, 1000);
+
+                //$('.continue-shopping-helper').unbind('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
+            });
+
+            $(".add-form__form").submit(function(e) {
+                console.log('add click');
+                e.preventDefault();
+                var $addToCartForm = $(this);
+                var $addToCartBtn = $addToCartForm.find('.add-form__submit-btn');
+
+                $.ajax({
+                    url: '/cart/add.js',
+                    dataType: 'json',
+                    type: 'post',
+                    data: $addToCartForm.serialize(),
+                    beforeSend: function() {
+                        $addToCartBtn.attr('disabled', 'disabled').addClass('disabled');
+                        //$addToCartBtn.find('span').text('Adding').removeClass("zoomIn").addClass('animated zoomOut');
+                    },
+                    success: function(itemData) {
+                        //$addToCartBtn.find('span').text('Added to your Cart').removeClass('zoomOut').addClass('fadeIn');
+                       // $addToCartForm.find('.add-form__submit-btn').show().addClass('animated fadeInLeft');
+                        $addToCartForm.find('.continue-shopping-helper').show().addClass('animated fadeInDown');
+
+                        window.setTimeout(function(){
+                            $addToCartBtn.removeAttr('disabled').removeClass('disabled');
+                            $addToCartBtn.find('span').addClass("fadeOut").text($addToCartBtn.data('label')).removeClass('fadeIn').removeClass("fadeOut").addClass('zoomIn');
+                        }, 2500);
 
 
+
+
+                        $.getJSON("/cart.js", function(cart) {
+                            refreshCart(cart);
+                        });
+                    },
+                    error: function(XMLHttpRequest) {
+                        var response = eval('(' + XMLHttpRequest.responseText + ')');
+                        response = response.description;
+                        // $('.warning').remove();
+
+                        var warning = '<p>' + response.replace('All 1 ', 'All ') + '</p>';
+
+                            // $('.continue-shopping-helper__notice').addClass(' warning animated bounceIn ');
+                            $('.continue-shopping-helper__notice-content').html(warning);
+                        $addToCartForm.find('.continue-shopping-helper').show();
+                        $('.continue-shopping-helper__notice--added, .continue-shopping-helper__notice--warning').removeClass('continue-shopping-helper__notice--added animated bounceIn').addClass('continue-shopping-helper__notice--warning animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                            $(this).removeClass('animated bounceIn');
+                        });
+                        $addToCartBtn.removeAttr('disabled').removeClass('disabled');
+                        //$addToCartBtn.find('span').text({{ 'products.product.add_to_cart' | t | json }}).removeClass('zoomOut').addClass('zoomIn');
+                    }
+                });
+
+                return false;
+            });
 
         }
     },
