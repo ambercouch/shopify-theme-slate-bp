@@ -45,7 +45,7 @@
     }
   }
   &description{
-    padding: $inuit-global-spacing-unit 0;
+    padding: $inuit-global-spacing-unit 0 0 ;
     width: 100%;
   }
   &price{
@@ -103,6 +103,8 @@
     }
   }
 
+
+
   &bqb{
     @include inuit-font-size($inuit-font-size-h5, 1.1);
     display: block;
@@ -130,4 +132,7 @@
     }
   }
 
+  &continue-shopping-helper{
+    margin-bottom: $inuit-global-spacing-unit;
+  }
 }
