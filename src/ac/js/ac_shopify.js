@@ -20,18 +20,7 @@ ACSHOPIFY = {
 
 
 
-            //ACSHOPIFY.ac_fn.locale($('body').attr('data-locale'));
 
-            //console.log('ACSHOPIFY.ac_fn.locale()');
-            //console.log(ACSHOPIFY.ac_fn.locale());
-
-            // $('[data-scroll]').click(function(e) {
-            //     // Prevent the jump and the #hash from appearing on the address bar
-            //     e.preventDefault();
-            //     // Scroll the window, stop any previous animation, stop on user manual scroll
-            //     // Check https://github.com/flesler/jquery.scrollTo for more customizability
-            //     $(window).stop(true).scrollTo(this.hash, {duration:1000, interrupt:true});
-            // });
             //add js class
 
             $('body').addClass('js');
@@ -449,11 +438,39 @@ ACSHOPIFY = {
             //console.log('pages');
         }
     },
-    post: {
+   collection: {
         init: function () {
             //uncomment to debug
-            //console.log('posts');
+            //console.log('collection');
+            var currentUrlPath = $('body').attr('data-url-path');
+            Cookies.set('lastCollectionPath', currentUrlPath,  { expires: 1 })
+
+            $(document).on('mouseenter', '.product-thumb', function (event) {
+                console.log('over' + this );
+            })
         }
+    },
+    product: {
+        init: function () {
+            //uncomment to debug
+            //console.log('collection');
+            var currentUrlPath = $('body').attr('data-url-path');
+            Cookies.set('lastProductPath', currentUrlPath,  { expires: 1 })
+        }
+    },
+    cart: {
+        init: function () {
+            //uncomment to debug
+            console.log('cart template');
+            var lastCollectionPath = Cookies.get('lastCollectionPath');
+            var lastProductPath = Cookies.get('lastProductPath');
+            if (lastCollectionPath != undefined){
+            $('[data-continue-path]').attr('href', lastCollectionPath);
+            }else if(lastProductPath != undefined){
+                $('[data-continue-path]').attr('href', lastProductPath);
+            }
+        }
+
     },
     var: {
         locale: ''
