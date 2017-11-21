@@ -30,6 +30,7 @@ access--{{ access }}
   data-customer-first-name='{{ customer.first_name }}'
   data-customer-last-name='{{customer.last_name}}'
   data-customer-email='{{  customer.email }}'
+  data-url-path='{{ request.path }}'
   {% endcapture %}
 {% else %}
 {% endif %}

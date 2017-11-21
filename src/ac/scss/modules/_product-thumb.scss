@@ -53,7 +53,14 @@
       @include inuit-font-size($inuit-font-size-h6, 1);
       font-weight: 500;
       margin-bottom: $inuit-global-spacing-unit-tiny;
+    }
+    &label{
+      display: block;
 
+      position: absolute;
+      text-transform: uppercase;
+      @include inuit-font-size($inuit-font-size-h6 / 1.7, 1);
+      padding: $inuit-global-spacing-unit-tiny / 3;
     }
   }
 
@@ -82,21 +89,42 @@
       text-align: left;
     }
   }
-.product-thumb__heading--{
-  &lookbook{
-    display: none;
-  }
-}
 
+  .product-thumb__heading--{
+    &lookbook{
+      display: none;
+    }
+  }
 
   .product-thumb__link--{
     &image{
-
+      position: relative;
+      margin-bottom: $inuit-global-spacing-unit-tiny;
     }
     &heading{
 
     }
   }
+.product-thumb__label--{
+  &sold-out{
+    left: 0;
+    top: 0;
+    background: $red;
+    color: white;
+    opacity: 0.5;
+  }
+
+  &reminder{
+    background: $brand-col-4;
+    color: white;
+    opacity: 1;
+    bottom:0;
+    right: 0;
+    @include inuit-font-size($inuit-font-size-h6, 1);
+    padding: $inuit-global-spacing-unit-tiny / 2;
+    display: none;
+  }
+}
 
   //BEM ELEMENT MODIFIER FALLBACK
 
@@ -116,6 +144,10 @@
     @extend .product-thumb__sku;
   }
 
+[class*=product-thumb__label--]{
+  @extend .product-thumb__label;
+}
+
 
   /*
     CONTEXT SELECTORS
@@ -129,6 +161,12 @@
       padding-right:0;
     }
   }
+
+.product-thumb__label--reminder{
+  .product-thumb:hover &{
+    display: block;
+  }
+}
 
 
 
