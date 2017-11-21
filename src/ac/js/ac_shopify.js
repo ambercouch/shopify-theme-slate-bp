@@ -361,8 +361,85 @@ ACSHOPIFY = {
 
 
 
+            console.log('ajax cart');
+            function refreshCart(cart) {
+                var $cartBtn = $("[data-button-cart]");
+                // console.log('$cartBtn');
+                // console.log($cartBtn);
+                // console.log('cart');
+                // console.log(cart);
+                if ($cartBtn) {
+                    var $cartCount = $cartBtn.find('[data-cart-count]');
+                    if(cart.item_count == 0) {
+
+                    } else if ($cartCount.length) {
+                        $cartCount.text(cart.item_count);
+                    }
+                }
+            }
+
+            $(document).on('click', '[data-close=continue-shopping-helper]' ,function (e) {
+                e.preventDefault();
+               $('.continue-shopping-helper').addClass('animated fadeOutRight');
+                setTimeout(function(){
+                    $('.continue-shopping-helper').hide().removeClass('fadeOutRight');
+                }, 1000);
+
+                //$('.continue-shopping-helper').unbind('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
+            });
+
+            $(".add-form__form").submit(function(e) {
+                console.log('add click');
+                e.preventDefault();
+                var $addToCartForm = $(this);
+                var $addToCartBtn = $addToCartForm.find('.add-form__submit-btn');
+
+                $.ajax({
+                    url: '/cart/add.js',
+                    dataType: 'json',
+                    type: 'post',
+                    data: $addToCartForm.serialize(),
+                    beforeSend: function() {
+                        $addToCartBtn.attr('disabled', 'disabled').addClass('disabled');
+                        //$addToCartBtn.find('span').text('Adding').removeClass("zoomIn").addClass('animated zoomOut');
+                    },
+                    success: function(itemData) {
+                        //$addToCartBtn.find('span').text('Added to your Cart').removeClass('zoomOut').addClass('fadeIn');
+                       // $addToCartForm.find('.add-form__submit-btn').show().addClass('animated fadeInLeft');
+                        $addToCartForm.find('.continue-shopping-helper').show().addClass('animated fadeInDown');
+
+                        window.setTimeout(function(){
+                            $addToCartBtn.removeAttr('disabled').removeClass('disabled');
+                            $addToCartBtn.find('span').addClass("fadeOut").text($addToCartBtn.data('label')).removeClass('fadeIn').removeClass("fadeOut").addClass('zoomIn');
+                        }, 2500);
 
 
+
+
+                        $.getJSON("/cart.js", function(cart) {
+                            refreshCart(cart);
+                        });
+                    },
+                    error: function(XMLHttpRequest) {
+                        var response = eval('(' + XMLHttpRequest.responseText + ')');
+                        response = response.description;
+                        // $('.warning').remove();
+
+                        var warning = '<p>' + response.replace('All 1 ', 'All ') + '</p>';
+
+                            // $('.continue-shopping-helper__notice').addClass(' warning animated bounceIn ');
+                            $('.continue-shopping-helper__notice-content').html(warning);
+                        $addToCartForm.find('.continue-shopping-helper').show();
+                        $('.continue-shopping-helper__notice--added, .continue-shopping-helper__notice--warning').removeClass('continue-shopping-helper__notice--added animated bounceIn').addClass('continue-shopping-helper__notice--warning animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                            $(this).removeClass('animated bounceIn');
+                        });
+                        $addToCartBtn.removeAttr('disabled').removeClass('disabled');
+                        //$addToCartBtn.find('span').text({{ 'products.product.add_to_cart' | t | json }}).removeClass('zoomOut').addClass('zoomIn');
+                    }
+                });
+
+                return false;
+            });
 
         }
     },
