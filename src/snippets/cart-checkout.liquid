@@ -1,17 +1,38 @@
 {%-  if settings.cart_min_spend -%}
-{%- assign min_spend = settings.cart_min_spend | times: 1  -%}
+  {%- assign min_spend = settings.cart_min_spend | times: 1  -%}
 {%- else -%}
-{% assign min_spend = 0 %}
+  {% assign min_spend = 0 %}
 {%- endif -%}
 <div class="cart-checkout">
+
   <div class="cart-checkout__subtotal">
     <div class="cart-checkout__heading">{{ 'cart.general.subtotal' | t }}</div>
+
     <div class="cart-checkout__subtotal-content">
-    <span class="cart-checkout__subtotal-text">{{ cart.total_price | money }}</span>
-    {% if cart.total_discounts > 0 %}
-      <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
-    {% endif %}
-    <span class="cart-checkout_shipping-text">{{ 'cart.general.shipping_at_checkout' | t }}</span>
+      <div class="cart-checkout__buttons">
+        {% if cart.total_price >= min_spend %}
+          <span class="cart-checkout__subtotal-text">{{ cart.total_price | money }}</span>
+          {% if cart.total_discounts > 0 %}
+            <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
+          {% endif %}
+          <input type="submit" name="checkout" class="cart-checkout__submit" value="{{ 'cart.general.checkout' | t }}">
+        {% else %}
+          <span class="cart-checkout__subtotal-text">{{ cart.total_price | money }}</span>
+          {% if cart.total_discounts > 0 %}
+            <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
+          {% endif %}
+          <input type="submit" disabled class="cart-checkout__submit" value="{{ 'cart.general.checkout' | t }}">
+
+          <div class="cart-checkout__notes-min">
+            <p>The value of your cart must be at least {{ min_spend | money }} to checkout.<br>
+              You need to spend an extra<strong> {{ min_spend  | minus :  cart.total_price | money}}</strong></p>
+            <p><a lass="cart-checkout__notes-min-link" href="/collections/all">Add more items to continue</a></p>
+            <p><span class="cart-checkout_shipping-text">{{ 'cart.general.shipping_at_checkout' | t }}</span></p>
+          </div>
+        {% endif %}
+      </div>
+
+
     </div>
   </div>
 
@@ -22,17 +43,6 @@
     </div>
   {% endif %}
 
-  <div class="cart-checkout__buttons">
-    {% if cart.total_price >= min_spend %}
-    <input type="submit" name="checkout" class="cart-checkout__submit" value="{{ 'cart.general.checkout' | t }}">
-    {% else %}
-      <input type="submit" disabled class="cart-checkout__submit" value="{{ 'cart.general.checkout' | t }}">
-      <div class="cart-checkout__notes-min">
-      <p>The value of your cart must be at least {{ min_spend | money }} to checkout.<br>
-        You need to spend an extra<strong> {{ min_spend  | minus :  cart.total_price | money}}</strong></p>
-        <a lass="cart-checkout__notes-min-link" href="/collections/all">Add more items to continue</a>
-      </div>
-        {% endif %}
-  </div>
+
 
 </div>
