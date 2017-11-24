@@ -5242,17 +5242,60 @@ ACSHOPIFY = {
             var currentUrlPath = $('body').attr('data-url-path');
             Cookies.set('lastCollectionPath', currentUrlPath,  { expires: 1 })
 
-            $(document).on('mouseenter', '.product-thumb', function (event) {
-                console.log('over' + this );
+            //hover animation
+            $(document).on('mouseenter', '.product-thumb.is-available-sold-out', function (event) {
+                //console.log($(this));
+                $(this).find('[data-hover-animation]').addClass(' animated fadeInUp ')
             })
-        }
+
+            //hover over the reminder
+            $(document).on('mouseenter', '[data-get-reminder]', function(event){
+                console.log('hovered')
+                var productUrl = $(this).parent().attr('href');
+                console.log(productUrl);
+                $(this).parent().removeAttr("href");
+                $(this).parent().attr("data-href", productUrl);
+                //$(this).parent().attr('href');
+            });
+
+
+            $(document).on('mouseleave', '[data-get-reminder]', function(event){
+                console.log('Leave it out')
+                var productUrl = $(this).parent().attr('data-href');
+                //$(this).parent().removeAttr("href");
+                $(this).parent().attr("href", productUrl);
+            });
+
+            $(document).on('click', '[data-get-reminder]', function(event){
+                var productUrl = $(this).attr('data-get-reminder');
+                Cookies.set('openStockReminder', 'true', {expires: 1});
+                console.log('reminder click')
+               window.location = productUrl
+
+            });
+
+
+        }//end collection.init
     },
     product: {
         init: function () {
             //uncomment to debug
             //console.log('collection');
+
+            var openStockReminder = Cookies.get('openStockReminder');
             var currentUrlPath = $('body').attr('data-url-path');
             Cookies.set('lastProductPath', currentUrlPath,  { expires: 1 })
+            //alert(openStockReminder);
+            if(openStockReminder == 'true'){
+
+                ACSHOPIFY.ac_fn.defer('undefined','undefined','undefined','undefined',3);
+
+            }else{
+                console.log('we have no reminder');
+            }
+
+
+
         }
     },
     cart: {
@@ -5304,6 +5347,37 @@ ACSHOPIFY = {
                 }
             });
         },
+        defer: function(successMethod, failMethod, testMethod, pause, attempts) {
+            var defTest = function () {
+                return $('#ISR_popup_container').length == 1
+            };
+            var  defFail = function () {
+                $( "#ISR_button" ).click();
+                console.log('deft clicking it');
+            }
+            var  defSuccess = function () {
+                Cookies.remove('openStockReminder');
+                console.log('return def success');;
+            }
+            attempts = (attempts == 'undefined')? false : attempts;
+            pause = (pause == 'undefined')? 50 : pause;
+            testMethod = (testMethod == 'undefined')? defTest : testMethod;
+            failMethod = (failMethod == 'undefined')? defFail : failMethod;
+            successMethod = (successMethod == 'undefined')? defSuccess : successMethod;
+
+
+            if (testMethod()) {
+                defSuccess();
+            } else {
+                failMethod();
+                if(attempts === false || attempts > 0) {
+                    setTimeout(function () {
+                        attempts = (attempts === false )? attempts : attempts = attempts - 1;
+                        ACSHOPIFY.ac_fn.defer(successMethod, failMethod, testMethod, pause, attempts)
+                    }, pause);
+                }
+            }
+        }
     },
 
 };
