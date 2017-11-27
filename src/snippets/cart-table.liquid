@@ -33,6 +33,7 @@
             {% unless item.variant.title contains 'Default' %}
             <small class="cart-table__product-type" >{{ item.variant.title }}</small>
             {% endunless %}
+            <small class="cart-table__product-type" >{{ item.variant.sku }}</small>
           </div>
 
           {%- assign property_size = item.properties | size -%}
@@ -64,9 +65,10 @@
             <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
             <span class="cart-table__product-price-text" >{{ bold_price | money }}</span>
             <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
-            <s class="cart-table__product-price-text--original"  >{{ item.original_price | money }}</s>
+            <span class="cart-table__product-price-text--original"  >{{ item.original_price | money }}</span>
           {% else %}
-            <span class="cart-table__product-price-text" >{{ bold_price | money }}</span>
+           <!-- <span class="cart-table__product-price-text" >{{ bold_price | money }}</span> -->
+            <span class="cart-table__product-price-text" >{{ item.line_price | money }}</span>
           {% endif %}
         </td>
         <td class="cart-table__qty" data-label="{{ 'cart.label.quantity' | t }}">
