@@ -56,11 +56,14 @@
     }
     &label{
       display: block;
-
       position: absolute;
       text-transform: uppercase;
-      @include inuit-font-size($inuit-font-size-h6 / 1.7, 1);
-      padding: $inuit-global-spacing-unit-tiny / 3;
+      padding: $inuit-global-spacing-unit-tiny ;
+      line-height: 1;
+      @include mq($from : desktop){
+        @include inuit-font-size($inuit-font-size-h6, 1);
+
+      }
     }
   }
 
@@ -119,10 +122,18 @@
     color: white;
     opacity: 1;
     bottom:0;
-    right: 0;
-    @include inuit-font-size($inuit-font-size-h6, 1);
-    padding: $inuit-global-spacing-unit-tiny / 2;
+    width: 100%;
+    cursor: pointer;
     display: none;
+
+    @include mq($from : mobile){
+      padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-tiny / 2;
+    }
+    @include mq($from : desktop){
+      @include inuit-font-size($inuit-font-size-h6, 1);
+      padding: $inuit-global-spacing-unit-tiny / 2;
+    }
+
   }
 }
 
