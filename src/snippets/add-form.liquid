@@ -7,7 +7,15 @@
 
     <div class="add-form__qty">
       <label class="add-form__label" for="Quantity">{{ 'products.product.quantity' | t }}</label>
-      <input class="add-form__qty-input" type="number" id="Quantity" name="quantity" value="1" min="1">
+      {% if current_variant.price > 200 %}
+        {% assign minQty = 1 %}
+        <!-- price > 200 {{ current_variant.price }} -->
+      {% else %}
+        {% assign minQty = 2 %}
+        <!--  price less than 200 {{ current_variant.price }} -->
+      {% endif %}
+
+      <input class="add-form__qty-input" type="number" id="Quantity" name="quantity" value="{{ minQty }}" min="{{ minQty }}">
     </div>
     <div class="add-form__price-wrapper">
       <div data-price-wrapper>
@@ -85,10 +93,10 @@
           </span>
 
       </button>
-
-      <div id="smartwishlist" data-product="{{ product.id }}" data-variant="{{ product.variants.first.id }}"></div>
+      <div class="add-form__reminder-btn" id="ISR_button">In Stock Reminder</div>
 
     </div>
+    <div id="smartwishlist" data-product="{{ product.id }}" data-variant="{{ product.variants.first.id }}"></div>
 
 
     {% if customer.tags contains 'platinum' %}
