@@ -159,6 +159,24 @@
         "label": "Minimum spend",
         "default": "5000",
         "info": "The minimum cart value needed to checkout (5000 = £50 )"
+      },
+      {
+        "type": "header",
+        "content": "Low Price Product Options"
+      },
+      {
+        "type": "text",
+        "id": "low_price_product",
+        "label": "Product price",
+        "default": "200",
+        "info": "The price that identifies product as low price (200 = £2)"
+      },
+      {
+        "type": "text",
+        "id": "low_cost_minimum_qty",
+        "label": "Quantity",
+        "default": "2",
+        "info": "The minimum quantity of low price product price"
       }
     ]
   },
