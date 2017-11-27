@@ -12,6 +12,23 @@
 
     {% for item in cart.items %}
 
+    {%- assign low_price = settings.low_price_product | times: 1  -%}
+    {%- if item.line_price >  low_price -%}
+      <!-- line price hi {{ item.line_price }}-->
+      {%- assign minQty = 1 -%}
+    {%- else -%}
+      <!-- line price low {{ item.line_price }}-->
+      {%- assign minQty = settings.low_cost_minimum_qty | times: 1-%}
+    {%- endif -%}
+
+    {%- assign currentQty = item.quantity -%}
+
+    {% if currentQty < minQty %}
+      <!-- low quatity {{ currentQty }}-->
+    {% assign currentQty = minQty %}
+    {% endif %}
+
+
     {% comment %}
 
     Cart Item Template
@@ -76,8 +93,8 @@
                  type="number"
                  name="updates[]"
                  id="updates_{{ item.key }}"
-                 value="{{ item.quantity }}"
-                 min="0"
+                 value="{{ currentQty }}"
+                 min="{{ minQty }}"
                  size="4"
                  aria-label="{{ 'cart.general.item_quantity' | t }}">
           <input class="cart-table__qty-input-submit" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
