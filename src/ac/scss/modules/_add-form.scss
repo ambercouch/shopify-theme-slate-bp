@@ -83,23 +83,42 @@
       text-align: left;
     }
   }
+  &reminder-btn{
+    @extend .o-btn--primary;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    @include mq($from : desktop){
+      width: 280px;
+      max-width: 100%;
+    }
+  }
   &submit-btn{
     transition: background 0.3s ease;
+    display: block;
     width: 100%;
+    max-width: 100%;
     background:$brand-col-4;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
     @include inuit-font-size($inuit-font-size-h2,1);
     padding: $inuit-global-spacing-unit-small 0;
-    margin-bottom:$inuit-global-spacing-unit;
+    margin-bottom:$inuit-global-spacing-unit-small;
     border: none;
     &:hover{
       background:darken($brand-col-4, 5%);
     }
     @include mq($from : desktop){
-      width: auto;
+      width: 280px;
       padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit;
+    }
+    &[disabled]{
+      opacity: 0.5;
+      background:$brand-col-3;
+      &:hover{
+        background:$brand-col-3;
+      }
     }
   }
 
