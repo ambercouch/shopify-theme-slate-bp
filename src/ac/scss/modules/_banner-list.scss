@@ -6,9 +6,12 @@
 .banner-list__{
   &header{
     text-align: center;
-    width: 50%;
+    width: 100%;
     border-bottom: solid 2px;
     margin:0 auto $inuit-global-spacing-unit;
+    @include mq($from : tablet){
+      width: 50%;
+    }
   }
   &heading{
     text-transform: uppercase;
