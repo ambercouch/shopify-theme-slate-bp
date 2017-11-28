@@ -712,5 +712,31 @@
         "info": "Will be scaled down to 32 x 32px"
       }
     ]
+  },
+  {
+    "name": "Menus",
+    "settings": [
+      {
+        "type": "text",
+        "id": "mega_menu_list",
+        "label": "Mega Menu List",
+        "info": "List of menu name to be use in mega menus",
+        "default": "range,plating,colour,decoration"
+      },
+      {
+        "type": "text",
+        "id": "mega_menu_list_range",
+        "label": "Range Menu List",
+        "info": "List of menu name to be use in mega menus",
+        "default": "type,brand"
+      },
+      {
+        "type": "text",
+        "id": "mega_menu_list_plating",
+        "label": "Plating Menu List",
+        "info": "List of menu name to be use in plating mega menu",
+        "default": "plating,antique-plating,matt-plating"
+      }
+    ]
   }
 ]

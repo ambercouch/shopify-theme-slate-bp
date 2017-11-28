@@ -8,8 +8,14 @@
 }
 
 .mega-menu__{
+  &menu-wrapper{
+    margin-right: 5%;
+    width: 20%;
+
+  }
   &menu{
-    margin-right: $inuit-global-spacing-unit;
+   margin-bottom: $inuit-global-spacing-unit-small;
+
   }
   &list{
     @extend .o-list-bare;
@@ -74,7 +80,7 @@
       }
     }
     &.is-size-2{
-      width: 40%;
+      width: 25%;
       @include mq($until : desktop){
         display: none;
       }
@@ -106,6 +112,9 @@
   }
 }
 
+[class*=mega-menu__menu-wrapper--]{
+  @extend .mega-menu__menu-wrapper;
+}
 [class*=mega-menu__menu--]{
   @extend .mega-menu__menu;
 }

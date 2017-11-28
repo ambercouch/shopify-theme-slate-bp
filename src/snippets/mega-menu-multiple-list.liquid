@@ -1,0 +1,12 @@
+
+  <div class="mega-menu__menu--{{ sublist }}">
+    <h6 class="mega-menu__menu-title">{{ sublist | append : "s" | upcase }}</h6>
+    <ul class="mega-menu__list">
+      {%  for link in linklists[megaListHandleSub].links %}
+        <li class="mega-menu__item">
+          <a class="mega-menu__link" href="{{ link.url }}"><span class="mega-menu__link-label">{{ link.title }}</span></a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div><!-- /.mega-menu__menu-- -->
+
