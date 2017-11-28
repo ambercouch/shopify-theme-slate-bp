@@ -1,6 +1,6 @@
 
   <div class="mega-menu__menu--{{ sublist }}">
-    <h6 class="mega-menu__menu-title">{{ sublist | append : "s" | upcase }}</h6>
+    <h6 class="mega-menu__menu-title">{{ sublist | append : "s" | upcase | replace : "-", " "}}</h6>
     <ul class="mega-menu__list">
       {%  for link in linklists[megaListHandleSub].links %}
         <li class="mega-menu__item">
