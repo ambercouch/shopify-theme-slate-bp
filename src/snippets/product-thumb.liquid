@@ -38,5 +38,12 @@
       {% endif %}
     {% endif %}
   </div>
+  {% include 'logic-admin' %}
+  {% if adminUser %}
+    <!-- Admin user -->
+    <a style="color: #ddd" target="_blank" href="/admin/products/{{ product.id }}"><small>Edit this product</small></a>
+  {% else %}
+    <!-- Not Admin -->
+  {% endif %}
 
 </div>
