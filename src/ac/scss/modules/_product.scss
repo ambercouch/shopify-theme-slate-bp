@@ -46,6 +46,7 @@
     }
   }
   &product-info{
+    max-width: 100%;
     @include mq($from: tablet){
       width: 50%;
       padding-left: $inuit-global-spacing-unit;
