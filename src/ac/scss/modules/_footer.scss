@@ -3,7 +3,12 @@
   a{
     color: #fff !important;
   }
-
+  @include inuit-font-size($inuit-font-size-h5, 1.5  );
+  @media
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+    @include inuit-font-size($inuit-font-size-h6, 1.5);
+  }
 }
 
 .footer__{
