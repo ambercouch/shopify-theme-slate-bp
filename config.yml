@@ -14,13 +14,13 @@
 ---
 
 development:
-  password: 779b2a8f76e47c5e028ad47df03bfdd7
-  theme_id: "live"
-  store: tempestdesigns.myshopify.com
+  password: 80571b7421438cfd1a91f2476185e6ba
+  theme_id: 12237242404
+  store: sarah-tempest.myshopify.com
   ignore_files:
 
 production:
-  password: 779b2a8f76e47c5e028ad47df03bfdd7
-  theme_id: "live"
-  store: tempestdesigns.myshopify.com
+  password: 80571b7421438cfd1a91f2476185e6ba
+  theme_id: 12237242404
+  store: sarah-tempest.myshopify.com
   ignore_files:

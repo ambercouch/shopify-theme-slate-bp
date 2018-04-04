@@ -1,3 +1,5 @@
+var siteLocalUrl = 'https://sarah-tempest.myshopify.com';
+var defaultBrowser = ['C:\\Program Files (x86)\\Firefox Developer Edition\\firefox.exe'];
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -91,7 +93,8 @@ gulp.task('sass', function (cb) {
 gulp.task('serve', ['sass'], function () {
 
     browserSync.init({
-        proxy: "https://tempestdesigns.myshopify.com/"
+        proxy: siteLocalUrl,
+        browser: defaultBrowser
     });
 
     gulp.watch("src/ac/scss/**/*.scss", ['sass']);
