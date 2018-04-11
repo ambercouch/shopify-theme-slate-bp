@@ -32,7 +32,8 @@ ACSHOPIFY = {
                 contain: true,
                 //autoPlay: 5000,
                 imagesLoaded: true,
-                wrapAround: true
+                wrapAround: true,
+                adaptiveHeight: true
             });
 
             //menu button
