@@ -2,7 +2,8 @@
   BLOCK .site-control
  */
 .site-control{
-  @include inuit-font-size($inuit-font-size-h5, 1)
+  @include inuit-font-size($inuit-font-size-h5, 1);
+  font-family: $acs-font-family-serif;
 }
 /*
   BLOCK .site-control__
@@ -11,14 +12,22 @@
   &list{
     @extend .o-list-bare;
     //@extend .o-list-inline;
+
     display: flex;
+
+    @include mq($from : desktop){
+      margin-bottom: $inuit-global-spacing-unit-tiny;
+    }
 
 
   }
   &item{
     //@extend .o-list-inline__item;
-    margin-left: $inuit-global-spacing-unit-tiny;
+    margin: 0 ;
+    display: block;
     @include inuit-font-size($inuit-font-size-h5);
+    position: relative;
+
     &:first-child{
       margin-left:0;
     }
@@ -28,11 +37,31 @@
       }
     }
 
+    &:after{
+      content: '';
+      width: 1px;
+      height: 50%;
+      display: none;
+      background: $brand-col-1;
+      position: absolute;
+      right: 0;
+      top: 25%;
+
+    }
+
+    @include mq($from : tablet){
+      &:after{
+        display: block;
+      }
+    }
+
   }
   &link{
     text-decoration: none;
-
-  @include inuit-font-size($inuit-font-size-h5);
+    text-transform: lowercase;
+    padding: $inuit-global-spacing-unit-tiny / 2 $inuit-global-spacing-unit-tiny;
+    display: block;
+  @include inuit-font-size($inuit-font-size-h5, 1);
     @include mq($until : tablet){
       flex-direction: column-reverse;
       align-items: center;
@@ -97,4 +126,14 @@
       align-items: center;
     }
   }
+}
+
+.site-control__link{
+  .site-control__item:last-child &{
+    padding-right: 0;
+  }
+}
+
+.site-control__item:last-child:after{
+  display: none !important;
 }

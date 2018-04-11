@@ -30,7 +30,8 @@
     @include mq($from : desktop){
       position: absolute;
       right: $inuit-global-spacing-unit;
-      top: 0;
+      bottom: 0;
+      transform: translate(0, 100%);
 
     }
   }

@@ -1,6 +1,7 @@
 .nav-main{
   @extend .o-wrapper;
   margin-bottom: $inuit-global-spacing-unit-small;
+
   //@include mq($until : tablet){
   //  position: fixed;
   //  left: 0;
@@ -21,9 +22,11 @@
 .nav-main__{
   &list{
     @extend .o-list-bare;
+    padding-bottom: $inuit-global-spacing-unit-tiny;
+    border-bottom: solid 1px $brand-col-1;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: 0;
     position: relative;
     @include mq($until : desktop){
@@ -34,16 +37,12 @@
   }
 
   &item{
-    margin: 0 $inuit-global-spacing-unit-tiny / 2 $inuit-global-spacing-unit-tiny;
+    margin: 0;
+    position: relative;
     @include mq($from : desktop){
       margin-bottom: 0;
     }
-    &:hover{
-      @include mq($until : desktop){
-        border-bottom:none;
-        margin-bottom: $inuit-global-spacing-unit-small + 1px;
-      }
-    }
+
 
     @include mq($until : desktop){
       border-bottom:solid 1px rgba($brand-col-3, 0.5);
@@ -51,22 +50,40 @@
       margin-bottom: $inuit-global-spacing-unit-small;
     }
 
+    &:hover{
+      @include mq($until : desktop){
+        border-bottom:none;
+        margin-bottom: $inuit-global-spacing-unit-small + 1px;
+      }
+    }
+
+    &:after{
+      content: '';
+      width: 1px;
+      height: 50%;
+      display: block;
+      background: $brand-col-1;
+      position: absolute;
+      right: 0;
+      top: 25%;
+    }
+
   }
 
   &link{
     @include inuit-font-size($inuit-font-size-h5, 1);
-    padding: $inuit-global-spacing-unit-tiny / 2 $inuit-global-spacing-unit-tiny / 2;
+    padding: $inuit-global-spacing-unit-tiny / 2 $inuit-global-spacing-unit-tiny;
     display: block;
     text-decoration: none;
     line-height: 1;
-    text-transform: uppercase;
+    text-transform: lowercase;
     white-space: nowrap;
     .nav-main__item:hover &{
       color: $brand-col-1;
       position: relative;
     }
     @include mq(wide){
-      padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-tiny;
+      padding: $inuit-global-spacing-unit-tiny  $inuit-global-spacing-unit;
     }
 
     arrow{
@@ -97,6 +114,7 @@
   }
 
   &link-label{
+    font-family: $acs-font-family-serif;
     .nav-main__item:hover &{
       color: darken($brand-col-1, 20%);
       position: relative;
@@ -172,8 +190,19 @@
   .nav-main__link-label{
     color: darken($brand-col-1, 20%);
     position: relative;
+
     @include mq($until : desktop){
       color: $brand-col-1 !important;
     }
   }
+}
+
+.nav-main__link{
+  .nav-main__item:first-child &{
+    padding-left: 0 !important;
+  }
+}
+
+.nav-main__item:last-child:after{
+  display: none !important;
 }
