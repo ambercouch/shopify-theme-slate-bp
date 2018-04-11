@@ -49,6 +49,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
+    font-weight: 300;
 
     @include mq($from : desktop){
       padding-right: $inuit-global-spacing-unit ;
@@ -69,7 +70,7 @@
 
   &title{
 
-    font-weight: 500;
+    font-weight: 300; 
     color: #fff;
     text-transform: uppercase;
     margin-bottom: 0;

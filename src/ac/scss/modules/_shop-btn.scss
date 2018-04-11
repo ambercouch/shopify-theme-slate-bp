@@ -11,7 +11,7 @@
     //display: none;
   }
   @include mq($from : desktop ){
-    @include inuit-font-size($inuit-font-size-h1, 1);
+    @include inuit-font-size($inuit-font-size-h3, 1);
     padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
     //display: none;
     @media

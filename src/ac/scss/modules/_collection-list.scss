@@ -16,7 +16,7 @@
   }
   &heading{
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 300;
     @include mq($until: tablet){
       @include inuit-font-size($inuit-font-size-h5);
       margin-bottom: 0;

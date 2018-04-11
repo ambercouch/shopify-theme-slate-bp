@@ -15,7 +15,7 @@
     <a class="product-thumb__link--heading" href="{{ product.url | within: collection }}">
       <h5 class="product-thumb__heading{{ PTClassModifier }}">{{ product.title }}</h5>
     </a>
-    {% if customer %}
+
       <div class="product-thumb__price">
       {% if bold_compare_at_price > bold_price %}
         {% if bold_price_varies %}
@@ -36,7 +36,7 @@
           {% endif %}
         </div>
       {% endif %}
-    {% endif %}
+
   </div>
   {% include 'logic-admin' %}
   {% if adminUser %}

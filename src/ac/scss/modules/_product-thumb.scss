@@ -3,7 +3,7 @@
  */
 
 .product-thumb{
-  text-align: center;
+  text-align: left;
   padding: 0 $inuit-global-spacing-unit-small $inuit-global-spacing-unit-small;
   margin-bottom: $inuit-global-spacing-unit;
 }
@@ -45,7 +45,7 @@
       //margin-bottom:$inuit-global-spacing-unit-small;
     }
     &heading{
-      font-weight: 500;
+      font-weight: 300;
       margin-bottom: 0;
       @include inuit-font-size($inuit-font-size-h5, 1);
     }
@@ -53,6 +53,7 @@
       @include inuit-font-size($inuit-font-size-h6, 1);
       font-weight: 500;
       margin-bottom: $inuit-global-spacing-unit-tiny;
+      display: none;
     }
     &label{
       display: block;
@@ -64,6 +65,9 @@
         @include inuit-font-size($inuit-font-size-h6, 1);
 
       }
+    }
+    &price{
+      font-weight: 500;
     }
   }
 
