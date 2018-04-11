@@ -80,22 +80,22 @@
     padding: $inuit-global-spacing-unit-tiny 0;
     width: 100%;
     @include mq($from : desktop){
-      text-align: left;
+      text-align: right;
     }
   }
   &reminder-btn{
     @extend .o-btn--primary;
-    display: block;
+    display: inline-block;
     width: 100%;
     max-width: 100%;
     @include mq($from : desktop){
-      width: 280px;
-      max-width: 100%;
+      width: 50%;
+      min-width: 300px;
     }
   }
   &submit-btn{
     transition: background 0.3s ease;
-    display: block;
+    display: inline-block;
     width: 100%;
     max-width: 100%;
     background:$brand-col-4;
@@ -110,7 +110,8 @@
       background:darken($brand-col-4, 5%);
     }
     @include mq($from : desktop){
-      width: 280px;
+      width: 50%;
+      min-width: 300px;
       padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit;
     }
     &[disabled]{
