@@ -36,7 +36,7 @@
           {% endif %}
         </div>
       {% endif %}
-
+      <a class="product-thumb__link--details" href="{{ product.url | within: collection }}" >View Details</a>
   </div>
   {% include 'logic-admin' %}
   {% if adminUser %}
