@@ -4,6 +4,12 @@
 .site-control{
   @include inuit-font-size($inuit-font-size-h5, 1);
   font-family: $acs-font-family-serif;
+  text-align: right;
+  padding-right: $inuit-global-spacing-unit ;
+  pointer-events: none;
+  > *{
+    pointer-events: all;
+  }
 }
 /*
   BLOCK .site-control__
@@ -13,7 +19,8 @@
     @extend .o-list-bare;
     //@extend .o-list-inline;
 
-    display: flex;
+    display: inline-flex;
+
 
     @include mq($from : desktop){
       margin-bottom: $inuit-global-spacing-unit-tiny;
@@ -78,6 +85,7 @@
     position: fixed;
     width: 100%;
     left: 0;
+    top: 50px;
     &[data-state=off]{
       left: -100%;
       display: block;

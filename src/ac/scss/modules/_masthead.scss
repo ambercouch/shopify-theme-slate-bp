@@ -29,7 +29,13 @@
 
     @include mq($from : desktop){
       position: absolute;
-      right: $inuit-global-spacing-unit;
+      width: 100%;
+      z-index: 1;
+      pointer-events: none;
+      > *{
+        pointer-events: all;
+      }
+      right: 0;
       bottom: 0;
       transform: translate(0, 100%);
 

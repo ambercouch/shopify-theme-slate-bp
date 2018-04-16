@@ -29,6 +29,7 @@
     justify-content: flex-start;
     margin-bottom: 0;
     position: relative;
+    pointer-events: none;
     @include mq($until : desktop){
 
       flex-direction: column;
@@ -39,6 +40,7 @@
   &item{
     margin: 0;
     position: relative;
+    pointer-events: all;
     @include mq($from : desktop){
       margin-bottom: 0;
     }
