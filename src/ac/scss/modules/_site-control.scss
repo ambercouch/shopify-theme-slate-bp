@@ -61,6 +61,10 @@
     text-transform: lowercase;
     padding: $inuit-global-spacing-unit-tiny / 2 $inuit-global-spacing-unit-tiny;
     display: block;
+    color: $brand-col-2;
+    &:hover{
+      color: $brand-col-1;
+    }
   @include inuit-font-size($inuit-font-size-h5, 1);
     @include mq($until : tablet){
       flex-direction: column-reverse;

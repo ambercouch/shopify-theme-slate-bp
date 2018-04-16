@@ -68,32 +68,45 @@
   }
 
   /*
-  Brand pantone colours GREY
+  Brand pantone colours MAIN
    */
-  //&p431{
-  //  background-color: $p431 !important;
-  //}
-  //&p429{
-  //  background-color: $p429 !important;
-  //}
-  //&p427{
-  //  background-color: $p427 !important;
-  //}
-  //
-  ///*
+  &p5655{
+    background-color: $p5655 !important;
+  }
+
+  /*
+  Brand pantone colours MUTED
+   */
+  &p11{
+    background-color: $p11 !important;
+  }
+  &p7{
+    background-color: $p7 !important;
+  }
+  &p538{
+    background-color: $p538!important;
+  }
+  &p7534{
+    background-color: $p7534!important;
+  }
+
+  /*
   //Brand pantone colours PEACHES
-  // */
-  //&p4735{
-  //  background-color: $p4735 !important;
-  //}
-  //&p489{
-  //  background-color: $p489 !important;
-  //}
-  //&p475{
-  //  background-color: $p475 !important;
-  //}
-  //
-  ///*
+  */
+  &p436{
+    background-color: $p436!important;
+  }
+  &p5175{
+    background-color: $p5175!important;
+  }
+  &p691{
+    background-color: $p691 !important;
+  }
+  &p474{
+    background-color: $p474 !important;
+  }
+
+  /*
   //Brand pantone colours AQUAS
   // */
   //

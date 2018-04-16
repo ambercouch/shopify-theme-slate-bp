@@ -109,12 +109,13 @@
       }
     }
     @include mq($until : desktop){
-      color: $brand-col-3;
+      color: $brand-col-1;
     }
   }
 
   &link-label{
     font-family: $acs-font-family-serif;
+    color: $brand-col-2;
     .nav-main__item:hover &{
       color: darken($brand-col-1, 20%);
       position: relative;
@@ -188,7 +189,7 @@
     position: relative;
   }
   .nav-main__link-label{
-    color: darken($brand-col-1, 20%);
+    color: $brand-col-1;
     position: relative;
 
     @include mq($until : desktop){
