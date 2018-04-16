@@ -132,6 +132,7 @@
     width: 100%;
     cursor: pointer;
     display: none;
+    text-align: center;
 
     @include mq($from : mobile){
       padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-tiny / 2;
