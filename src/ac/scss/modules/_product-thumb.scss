@@ -69,6 +69,24 @@
     &price{
       font-weight: 500;
     }
+    &add-form{
+      padding:$inuit-global-spacing-unit-small 0;
+    }
+    &add-btn{
+      color: $brand-col-1;
+      background-color: transparent;
+      font-family: $acs-font-family-serif;
+      border: solid 1px $brand-col-1;
+      padding:$inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+      @include inuit-font-size($inuit-font-size-h5, 1);
+      &:hover:not([disabled]){
+        color: darken($brand-col-1, 10%);
+        border: solid 1px darken($brand-col-1, 10%);
+      }
+      &[disabled]{
+        opacity: 0.4;
+      }
+    }
   }
 
   //BEM ELEMENT MODIFIER

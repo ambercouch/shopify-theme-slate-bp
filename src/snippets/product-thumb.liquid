@@ -36,7 +36,19 @@
           {% endif %}
         </div>
       {% endif %}
-      <a class="product-thumb__link--details" href="{{ product.url | within: collection }}" >View Details</a>
+
+    <a class="product-thumb__link--details" href="{{ product.url | within: collection }}" >View Details</a>
+
+    <form class="product-thumb__add-form"  method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+      <button class="product-thumb__add-btn"
+              type="submit"
+              name="add"
+              data-add-to-cart
+              {% unless product.variants.first.available %}disabled="disabled"{% endunless %}>
+        <span>add to basket</span>
+      </button>
+    </form>
   </div>
   {% include 'logic-admin' %}
   {% if adminUser %}
