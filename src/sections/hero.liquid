@@ -2,10 +2,44 @@
 <div class="hero">
   <div class="hero__carousel">
     {% for block in section.blocks limit: section.blocks.size %}
+      {%-  assign collectionSettings = block.settings -%}
+      {% assign settingsId = 'hero_' %}
+      {%-  include "collection-thumb-settings" -%}
+      {%- assign collection = collections[collectionSettings[c]] -%}
+      {% assign heroTextUrl =  block.settings.hero_url %}
+      {% assign heroCollection = block.settings.hero_collection %}
+
+      {% assign heroCollectionUrl = collection.url %}
+      {% if heroCollectionUrl == '' %}
+        {% assign heroUrl = heroTextUrl %}
+      {% else %}
+        {% assign heroUrl = heroCollectionUrl %}
+      {% endif %}
     <div class="hero__cell">
-      {% if block.settings.hero_url != '' %}
-      <a href="{{ block.settings.hero_url }}" class="hero__link">
+      {% if heroUrl != '' %}
+      <a href="{{ heroUrl }}" class="hero__link">
       <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="hero__img">
+        <div class="hero__collection-thumb">
+        <div class="collection-thumb__heading is-{{ collectionSettings[ctp] }}">
+          <h5 class="collection-thumb__title" {% if collectionSettings[cht] == true %}style="display:none !important" {% endif %}>
+
+            {% if collectionSettings['hero_collection_title'] == '' %}
+              {{ collection.title }}
+            {% else %}
+              {{ collectionSettings[ct] }}
+            {% endif %}
+
+          </h5>
+          {% if collectionSettings[cb] != '' %}
+            <div class="collection-thumb__shop-btn{{ CTclassModifier }}">
+              <span class="shop-btn--{{ collectionSettings[cbbc] }}">
+                <span class="shop-btn__text--{{ collectionSettings[cbtc] }}">{{ collectionSettings[cb] }}</span>
+              </span>
+            </div>
+          {% endif %}
+
+        </div>
+        </div>
       </a>
       {% else %}
         <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="hero__img">
@@ -16,6 +50,7 @@
 </div>
 </div>
 
+
 {% schema %}
   {
     "name": "Hero Slider",
@@ -24,25 +59,169 @@
 
     ],
     "blocks": [
-{
-"type": "hero",
-"name": "Hero Slide",
-"settings": [
-{
-"label": "Hero Image",
-"id": "hero_image",
-"type": "image_picker",
-"info": "Image size should be 1270px by 465px"
-},
+      {
+      "type": "hero",
+      "name": "Hero Slide",
+      "settings": [
+        {
+          "label": "Hero Image",
+          "id": "hero_image",
+          "type": "image_picker",
+          "info": "Image size 1270px by 465px works well"
+        },
 
+        {
+          "label": "Hero Url",
+          "id": "hero_url",
+          "type": "text",
+          "info": "Link to a url eg. http://google.com"
+        },
+        {
+        "label": "Hero Collection",
+        "id": "hero_collection",
+        "type": "collection"
+        },
+        {
+        "label": "Hero Title",
+        "id": "hero_collection_title",
+        "info": "Override the collection title.",
+        "type": "text"
+        },
 {
-"label": "Hero Url",
-"id": "hero_url",
-"type": "text",
-"info": "Link to a url eg. http://google.com"
+"label": "Collection Title Position",
+"id": "hero_collection_title_position",
+"options": [
+{"value" : "top-left",
+"label" : "Top, Left",
+"group" : "Top"
+},
+{"value" : "top-centre",
+"label" : "Top, Centre",
+"group" : "Top"
+},
+{"value" : "top-right",
+"label" : "Top, Right",
+"group" : "Top"
+},
+{"value" : "centre-left",
+"label" : "Centre, Left",
+"group" : "Centre"
+},
+{"value" : "centre-centre",
+"label" : "Centre, Centre",
+"group" : "Centre"
+},
+{"value" : "centre-right",
+"label" : "Centre, Right",
+"group" : "Centre"
+},
+{"value" : "bottom-left",
+"label" : "Bottom, Left",
+"group" : "Bottom"
+},
+{"value" : "bottom-centre",
+"label" : "Bottom, Center",
+"group" : "Bottom"
+},
+{"value" : "bottom-right",
+"label" : "Bottom, Right",
+"group" : "Bottom"
 }
+],
+"default":   "centre-centre",
+"type": "select"
+},
+{
+"label": "Hide Collection Title",
+"id": "hero_hide_collection_title",
+"info": "Removes the collection title",
+"default": false,
+"type": "checkbox"
+},
+{
+"label": "Button Text",
+"id": "hero_collection_button",
+"default": "Shop now",
+"info": "Leave blank to remove the button.",
+"type": "text"
+},
+{
+"label": "Button Text Colour",
+"id": "hero_collection_button_text_colour",
+"options": [
+{"value" : "white",
+"label" : "White",
+"group" : "Basic"
+},
+{"value": "p5655",
+"label": "Green Grey",
+"group": "Brand Colours"
+}
+],
+"default": "white",
+"type": "select"
+},
+{
+"label": "Button Background Colour",
+"id": "hero_collection_button_background_colour",
+"options": [
+{
+"value": "white",
+"label": "White",
+"group": "Basic"
+},
+{
+"value": "p5655",
+"label": "Green Grey",
+"group": "Brand Colours"
+},
+{
+"value": "p11",
+"label": "Cool Grey 11",
+"group": "Muted"
+},
+{
+"value": "p7",
+"label": "Cool Grey 7",
+"group": "Muted"
+},
+{
+"value": "p538",
+"label": "Blue Grey",
+"group": "Muted"
+},
+{
+"value": "p7534",
+"label": "Fawn",
+"group": "Muted"
+},
+{
+"value": "p436",
+"label": "Mushroom",
+"group": "Reds"
+},
+{
+"value": "p5175",
+"label": "Muted Pink",
+"group": "Reds"
+},
+{
+"value": "p691",
+"label": "Pink",
+"group": "Reds"
+},
+{
+"value": "p474",
+"label": "Peach",
+"group": "Reds"
+}
+],
+"default": "white",
+"type": "select"
+}
+
 ]
-}
+      }
     ],
     "presets": [
       {
