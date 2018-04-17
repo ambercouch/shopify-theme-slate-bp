@@ -442,7 +442,7 @@ ACSHOPIFY = {
    collection: {
         init: function () {
             //uncomment to debug
-            //console.log('collection');
+            console.log('collection');
             var currentUrlPath = $('body').attr('data-url-path');
             Cookies.set('lastCollectionPath', currentUrlPath,  { expires: 1 })
 
@@ -484,11 +484,13 @@ ACSHOPIFY = {
     product: {
         init: function () {
             //uncomment to debug
-            //console.log('collection');
+            console.log('product');
 
             var openStockReminder = Cookies.get('openStockReminder');
             var currentUrlPath = $('body').attr('data-url-path');
+            console.log('currentUrlPath = ' + currentUrlPath );
             Cookies.set('lastProductPath', currentUrlPath,  { expires: 1 })
+            console.log('Cookies.get(lastProductPath)'+Cookies.get('lastProductPath'));
             //alert(openStockReminder);
             if(openStockReminder == 'true'){
 
@@ -505,13 +507,16 @@ ACSHOPIFY = {
     cart: {
         init: function () {
             //uncomment to debug
-            console.log('cart template');
+            //console.log('cart template');
             var lastCollectionPath = Cookies.get('lastCollectionPath');
             var lastProductPath = Cookies.get('lastProductPath');
-            if (lastCollectionPath != undefined){
-            $('[data-continue-path]').attr('href', lastCollectionPath);
-            }else if(lastProductPath != undefined){
+
+            if (lastCollectionPath != 'undefined'){
+                $('[data-continue-path]').attr('href', lastCollectionPath);
+            }else if(lastProductPath != 'undefined'){
                 $('[data-continue-path]').attr('href', lastProductPath);
+            }else {
+                $('[data-continue-path]').attr('href', '/');
             }
         }
 

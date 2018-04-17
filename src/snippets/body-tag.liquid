@@ -30,16 +30,15 @@ access--{{ access }}
   data-customer-first-name='{{ customer.first_name }}'
   data-customer-last-name='{{customer.last_name}}'
   data-customer-email='{{  customer.email }}'
-  data-url-path='{{ request.path }}'
   {% endcapture %}
 {% else %}
 {% endif %}
 
 
 <body id="{{ page_title | handle }}"
-      class="{{ classTemplate }} {{ classCustomer }} {{ classAccess }}"
+      class="sometest {{ classTemplate }} {{ classCustomer }} {{ classAccess }}"
       data-template-access="{{ dataTemplateAccess }}"
       data-customer-access="{{ dataCustomerAccess }}"
       data-template="{{ template | handleize }}"
-      data-handle="{{ dataHandle }}"
+      data-handle="{{ dataHandle }}" data-url-path="{{ request.path }}"
     {{ customerData  }}>
