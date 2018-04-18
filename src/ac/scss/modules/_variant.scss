@@ -9,11 +9,14 @@
 
 .variant__{
   &input{
-    border: solid 1px $brand-col-1;
+    border: none 0px $brand-col-1;
    background-color: #fff;
+    width: 100%;
   }
   &name{
     display: block;
     line-height:1;
+    color: white;
+    margin-bottom:$inuit-global-spacing-unit-tiny;
   }
 }
