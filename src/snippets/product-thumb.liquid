@@ -8,7 +8,7 @@
     {%-  unless product.available -%}
     <span data-hover-animation data-get-reminder="{{  product.url | within: collection }}" class="product-thumb__label--reminder" >Back In Stock Reminder</span>
     {% endunless %}
-    <img class="product-thumb__img{{ PTClassModifier }}" src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}" >
+    <img class="product-thumb__img{{ PTClassModifier }}" src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title | escape }}" >
   </a>
 
   <div class="product-thumb__info{{ PTClassModifier }}">
@@ -49,6 +49,7 @@
         <span>add to basket</span>
       </button>
     </form>
+    {% include 'collection-swatches' %}
   </div>
   {% include 'logic-admin' %}
   {% if adminUser %}
