@@ -295,9 +295,9 @@
             "value": "p5655",
             "label": "Green Grey",
             "group": "Brand Colours"
-          },
+          }
         ],
-        "default": "p431",
+        "default": "white",
         "type": "select"
       },
       {
