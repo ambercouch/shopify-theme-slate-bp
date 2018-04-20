@@ -501,7 +501,14 @@ ACSHOPIFY = {
             }
 
 
+            $(document).on('click', '.product-gallery__img', function (e) {
+                var src = $(this).attr('data-variantimage');
+                var href = $(this).attr('data-variantlink');
 
+                $('[data-product-featured-image]').attr('src', src);
+                $('[data-product-featured-link]').attr('href', href);
+                console.log($(this).attr('data-variantimage'));
+            })
         }
     },
     cart: {

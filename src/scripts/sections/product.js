@@ -46,6 +46,7 @@ theme.Product = (function() {
     this.settings.linkSize = "900x900";
 
     slate.Image.preload(this.productSingleObject.images, this.settings.imageSize);
+      slate.Image.preload(this.productSingleObject.images, this.settings.linkSize);
 
     this.initVariants();
   }
