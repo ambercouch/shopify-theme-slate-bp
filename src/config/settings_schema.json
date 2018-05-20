@@ -137,6 +137,21 @@
     ]
   },
   {
+    "name": "Collections",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Collection Options"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_swatches",
+        "label": "Enable product colour variants for collections",
+        "default": true
+      }
+    ]
+  },
+  {
     "name": "Cart",
     "settings": [
       {
