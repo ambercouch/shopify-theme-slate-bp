@@ -39,7 +39,6 @@
 
   &item{
     margin: 0;
-    position: relative;
     pointer-events: all;
     @include mq($from : desktop){
       margin-bottom: 0;
@@ -59,16 +58,7 @@
       }
     }
 
-    &:after{
-      content: '';
-      width: 1px;
-      height: 50%;
-      display: block;
-      background: $brand-col-1;
-      position: absolute;
-      right: 0;
-      top: 25%;
-    }
+
 
   }
 
@@ -80,9 +70,9 @@
     line-height: 1;
     text-transform: lowercase;
     white-space: nowrap;
+    position: relative;
     .nav-main__item:hover &{
       color: $brand-col-1;
-      position: relative;
     }
     @include mq(wide){
       padding: $inuit-global-spacing-unit-tiny  $inuit-global-spacing-unit;
@@ -109,6 +99,16 @@
           transform: skew(10deg);
         }
       }
+    }
+    &:after{
+      content: '';
+      width: 1px;
+      height: 50%;
+      display: block;
+      background: $brand-col-1;
+      position: absolute;
+      right: 0;
+      top: 25%;
     }
     @include mq($until : desktop){
       color: $brand-col-1;

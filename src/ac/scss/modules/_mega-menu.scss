@@ -1,7 +1,8 @@
 .mega-menu{
-  color: $brand-col-1;
+  color: $brand-col-2;
   display: flex;
   flex-wrap: wrap;
+  flex-grow: 1;
   @include mq($until : desktop){
     display: none;
   }
@@ -27,13 +28,14 @@
       margin-bottom:0;
     }
   }
+  
   &link{
-    color: $brand-col-1;
+    color: $brand-col-2;
     text-decoration: none;
     padding: 0 $inuit-global-spacing-unit-tiny;
     display: block;
     .mega-menu__item:hover &{
-      color: darken($brand-col-1, 20%);
+      color: darken($brand-col-2, 20%) !important;
       position: relative;
     }
     &:before{
@@ -51,7 +53,7 @@
   }
   &link-label{
     .mega-menu__item:hover &, .mega-menu__all-link:hover &{
-      color: darken($brand-col-1, 20%);
+      color: darken($brand-col-2, 20%);
       position: relative;
     }
   }
@@ -93,7 +95,7 @@
     @include inuit-font-size($inuit-font-size-h3);
     display: inline-block !important;
     .mega-menu__all-link:hover &{
-      color: $brand-col-1;
+      color: $brand-col-2;
       position: relative;
     }
     //&:before{

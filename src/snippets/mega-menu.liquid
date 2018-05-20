@@ -1,18 +1,19 @@
 <div class="mega-menu">
-  <div class="mega-menu__all-link">
-    <a class="mega-menu__link--all" href="{{ link.url }}"><span class="mega-menu__link-label">All {{ link.title }}</span></a>
-  </div>
-  {% for list in menus %}
-  {%  assign megaListHandle = child_list_handle | append : '-' | append : list %}
-  {%  assign linksHandle = linklists[megaListHandle].handle   %}
-  <!-- mega list handle {{ megaListHandle }}   -->
-  <!-- link {{ links }}   -->
-  {% if linksHandle != '' %}
 
-    {% comment %}
-    Include the single list
-    {% endcomment %}
-  {% include 'mega-menu-single-list' %}
+  {% comment %}
+  {% include 'mega-menu-all-link' %}
+  {% endcomment %}
+  {% for list in menus %}
+    {%  assign megaListHandle = child_list_handle | append : '-' | append : list %}
+    {%  assign linksHandle = linklists[megaListHandle].handle   %}
+    <!-- mega list handle {{ megaListHandle }}   -->
+    <!-- link {{ links }}   -->
+    {% if linksHandle != '' %}
+
+      {% comment %}
+      Include the single list
+      {% endcomment %}
+      {% include 'mega-menu-single-list' %}
     {% else %}
       <!-- Multi list -->
       <!-- {list} {{ list }} -->
@@ -21,26 +22,40 @@
 
       <!-- settings[subMenusHandle] {{ settings[subMenusHandle] }} -->
       {% assign submenus = settings[subMenusHandle] | split : ',' %}
-  <div class="mega-menu__menu-wrapper">
-      {% for sublist in submenus %}
-      {%  assign megaListHandleSub = megaListHandle | append : '-' | append : sublist %}
+      {% assign submenusSive = submenus | size %}
+      <!-- submenu length {{ submenus | size }} -->
+      {% if submenusSive > 0   %}
+        {%   assign someLists = false %}
+        {% for sublist in submenus %}
+          {%  assign megaListHandleSub = megaListHandle | append : '-' | append : sublist %}
+          {%  assign sublinksHandle = linklists[megaListHandleSub].handle   %}
+          {% if sublinksHandle != '' %}
+            {%  assign someLists = true %}
+          {% endif %}
+        {% endfor %}
+        {% if someLists == true %}
+          <div class="mega-menu__menu-wrapper sometest-{{ submenus  }} " {% if multiMenu == false %} style="display:none" {% endif %}>
+            {% for sublist in submenus %}
+              {%  assign megaListHandleSub = megaListHandle | append : '-' | append : sublist %}
 
-        <!-- list = {{ list }} - sublist ={{ sublist }} -->
+              <!-- list = {{ list }} - sublist ={{ sublist }} -->
 
-        <!-- list = {{ list }} - sublist ={{ sublist }} -->
+              <!-- list = {{ list }} - sublist ={{ sublist }} -->
 
-        {%  assign sublinksHandle = linklists[megaListHandleSub].handle   %}
-        <!-- mega list handle {{ megaListHandle }}   -->
-        <!-- link {{ links }}   -->
-        {% if sublinksHandle != '' %}
-        {% include 'mega-menu-multiple-list' %}
-          {% else %}
-          <!-- no menus for {{ megaListHandleSub }} -->
+              {%  assign sublinksHandle = linklists[megaListHandleSub].handle   %}
+              <!-- mega list handle {{ megaListHandle }}   -->
+              <!-- link {{ links }}   -->
+              {% if sublinksHandle != '' %}
+                {% include 'mega-menu-multiple-list' %}
+              {% else %}
+                <!-- no menus for {{ megaListHandleSub }} -->
+              {% endif %}
+
+            {% endfor %}
+          </div>
+        {% endif %}
       {% endif %}
-
-      {% endfor %}
-  </div>
-  {% endif %}
+    {% endif %}
   {% endfor %}
 
 </div><!-- /.mega-menu -->
