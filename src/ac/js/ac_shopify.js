@@ -369,11 +369,12 @@ ACSHOPIFY = {
 
             $(document).on('click', '[data-close=continue-shopping-helper]' ,function (e) {
                 e.preventDefault();
-               $('.continue-shopping-helper').addClass('animated fadeOutRight');
-                setTimeout(function(){
-                    $('.continue-shopping-helper').hide().removeClass('fadeOutRight');
-                }, 1000);
-
+               // $('.continue-shopping-helper').addClass('animated fadeOutRight');
+               //  setTimeout(function(){
+               //      $('.continue-shopping-helper').hide().removeClass('fadeOutRight');
+               //  }, 1000);
+                window.history.back();
+                console.log('back button');
                 //$('.continue-shopping-helper').unbind('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
             });
 
