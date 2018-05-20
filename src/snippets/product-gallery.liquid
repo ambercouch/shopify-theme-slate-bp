@@ -1,11 +1,11 @@
 <div class="product-gallery">
-  <img class="product-gallery__featured" src="{{ featured_image | img_url: '700x700' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+  <a href="{{ featured_image | img_url: '900x900' }}" data-product-featured-link ><img class="product-gallery__featured" src="{{ featured_image | img_url: '700x700' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image></a>
   {% if product.images.size > 1 %}
     <ul class="product-gallery__list">
         {% for variant in product.variants %}
         <li class="product-gallery__item">
 
-            <img class="product-gallery__img" src="{{ variant.image.src | img_url: '160x160' }}" alt="{{ variant.title }}" title="{{ variant.title }}" data-variantImage="{{ variant.image.src | img_url: '700x700' }}" data-variantTitle="{{ variant.title }}" data-variantId="{{ variant.id }}">
+            <img class="product-gallery__img" src="{{ variant.image.src | img_url: '160x160' }}" alt="{{ variant.title }}" title="{{ variant.title }}" data-variantImage="{{ variant.image.src | img_url: '900x900' }}" data-variantTitle="{{ variant.title }}" data-variantId="{{ variant.id }}">
 
         </li>
 

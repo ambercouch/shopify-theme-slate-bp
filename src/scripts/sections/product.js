@@ -16,6 +16,7 @@ theme.Product = (function() {
     originalSelectorId: '[data-product-select]',
     priceWrapper: '[data-price-wrapper]',
     productFeaturedImage: '[data-product-featured-image]',
+      productFeaturedLink: '[data-product-featured-link]',
     productJson: '[data-product-json]',
     productPrice: '[data-product-price]',
     productThumbs: '[data-product-single-thumbnail]',
@@ -42,6 +43,7 @@ theme.Product = (function() {
 
     this.productSingleObject = JSON.parse($(selectors.productJson, this.$container).html());
     this.settings.imageSize = slate.Image.imageSize($(selectors.productFeaturedImage, this.$container).attr('src'));
+    this.settings.linkSize = "900x900";
 
     slate.Image.preload(this.productSingleObject.images, this.settings.imageSize);
 
@@ -127,8 +129,10 @@ theme.Product = (function() {
     updateProductImage: function(evt) {
       var variant = evt.variant;
       var sizedImgUrl = slate.Image.getSizedImageUrl(variant.featured_image.src, this.settings.imageSize);
+        var sizedlinkUrl = slate.Image.getSizedImageUrl(variant.featured_image.src, this.settings.linkSize);
 
       $(selectors.productFeaturedImage, this.$container).attr('src', sizedImgUrl);
+        $(selectors.productFeaturedLink, this.$container).attr('href', sizedlinkUrl);
     },
 
     /**
