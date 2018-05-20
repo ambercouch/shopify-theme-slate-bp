@@ -1,12 +1,12 @@
 /*!
- * Flickity PACKAGED v2.0.10
+ * Flickity PACKAGED v2.0.8
  * Touch, responsive, flickable carousels
  *
  * Licensed GPLv3 for open source use
  * or Flickity Commercial License for commercial use
  *
  * http://flickity.metafizzy.co
- * Copyright 2017 Metafizzy
+ * Copyright 2016 Metafizzy
  */
 
 /**
@@ -154,7 +154,7 @@ return jQueryBridget;
 }));
 
 /**
- * EvEmitter v1.1.0
+ * EvEmitter v1.0.3
  * Lil' event emitter
  * MIT License
  */
@@ -234,14 +234,13 @@ proto.emitEvent = function( eventName, args ) {
   if ( !listeners || !listeners.length ) {
     return;
   }
-  // copy over to avoid interference if .off() in listener
-  listeners = listeners.slice(0);
+  var i = 0;
+  var listener = listeners[i];
   args = args || [];
   // once stuff
   var onceListeners = this._onceEvents && this._onceEvents[ eventName ];
 
-  for ( var i=0; i < listeners.length; i++ ) {
-    var listener = listeners[i]
+  while ( listener ) {
     var isOnce = onceListeners && onceListeners[ listener ];
     if ( isOnce ) {
       // remove listener
@@ -252,14 +251,12 @@ proto.emitEvent = function( eventName, args ) {
     }
     // trigger listener
     listener.apply( this, args );
+    // get next listener
+    i += isOnce ? 0 : 1;
+    listener = listeners[i];
   }
 
   return this;
-};
-
-proto.allOff = function() {
-  delete this._events;
-  delete this._onceEvents;
 };
 
 return EvEmitter;
@@ -2310,7 +2307,7 @@ return Unipointer;
 }));
 
 /*!
- * Unidragger v2.2.3
+ * Unidragger v2.2.2
  * Draggable base class
  * MIT license
  */
@@ -2379,13 +2376,10 @@ proto._bindHandles = function( isBind ) {
     // touch-action: none to override browser touch gestures
     // metafizzy/flickity#540
     if ( window.PointerEvent ) {
-      handle.style.touchAction = isBind ? this._touchActionValue : '';
+      handle.style.touchAction = isBind ? 'none' : '';
     }
   }
 };
-
-// prototype so it can be overwriteable by Flickity
-proto._touchActionValue = 'none';
 
 // ----- start event ----- //
 
@@ -2631,7 +2625,6 @@ Flickity.createMethods.push('_createDrag');
 
 var proto = Flickity.prototype;
 utils.extend( proto, Unidragger.prototype );
-proto._touchActionValue = 'pan-y';
 
 // --------------------------  -------------------------- //
 
@@ -2745,16 +2738,20 @@ proto.pointerDownFocus = function( event ) {
   }
 };
 
+var touchStartEvents = {
+  touchstart: true,
+  pointerdown: true,
+};
+
 var focusNodes = {
   INPUT: true,
   SELECT: true,
 };
 
 function getCanPointerDown( event ) {
-  var isTouchStart = event.type == 'touchstart';
-  var isTouchPointer = event.pointerType == 'touch';
+  var isTouchStart = touchStartEvents[ event.type ];
   var isFocusNode = focusNodes[ event.target.nodeName ];
-  return isTouchStart || isTouchPointer || isFocusNode;
+  return isTouchStart || isFocusNode;
 }
 
 proto.canPreventDefaultOnPointerDown = function( event ) {
@@ -4000,14 +3997,14 @@ return Flickity;
 }));
 
 /*!
- * Flickity v2.0.10
+ * Flickity v2.0.8
  * Touch, responsive, flickable carousels
  *
  * Licensed GPLv3 for open source use
  * or Flickity Commercial License for commercial use
  *
  * http://flickity.metafizzy.co
- * Copyright 2017 Metafizzy
+ * Copyright 2016 Metafizzy
  */
 
 ( function( window, factory ) {
@@ -4194,7 +4191,7 @@ return Flickity;
 }));
 
 /*!
- * imagesLoaded v4.1.3
+ * imagesLoaded v4.1.2
  * JavaScript is all like "You images are done yet or what?"
  * MIT License
  */
@@ -5166,11 +5163,12 @@ ACSHOPIFY = {
 
             $(document).on('click', '[data-close=continue-shopping-helper]' ,function (e) {
                 e.preventDefault();
-               $('.continue-shopping-helper').addClass('animated fadeOutRight');
-                setTimeout(function(){
-                    $('.continue-shopping-helper').hide().removeClass('fadeOutRight');
-                }, 1000);
-
+               // $('.continue-shopping-helper').addClass('animated fadeOutRight');
+               //  setTimeout(function(){
+               //      $('.continue-shopping-helper').hide().removeClass('fadeOutRight');
+               //  }, 1000);
+                window.history.back();
+                console.log('back button');
                 //$('.continue-shopping-helper').unbind('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
             });
 
