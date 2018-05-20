@@ -10,7 +10,12 @@
   &list{
     @extend .o-list-bare;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-bottom:0;
+  }
+  &item{
+    width: 25%;
+    padding: $inuit-global-spacing-unit-tiny;
   }
 }
