@@ -21,7 +21,19 @@
 
       <!-- settings[subMenusHandle] {{ settings[subMenusHandle] }} -->
       {% assign submenus = settings[subMenusHandle] | split : ',' %}
-  <div class="mega-menu__menu-wrapper">
+      {% assign submenusSive = submenus | size %}
+      <!-- submenu length {{ submenus | size }} -->
+      {% if submenusSive > 0   %}
+        {%   assign someLists = false %}
+        {% for sublist in submenus %}
+          {%  assign megaListHandleSub = megaListHandle | append : '-' | append : sublist %}
+          {%  assign sublinksHandle = linklists[megaListHandleSub].handle   %}
+          {% if sublinksHandle != '' %}
+              {%  assign someLists = true %}
+          {% endif %}
+        {% endfor %}
+        {% if someLists == true %}
+  <div class="mega-menu__menu-wrapper sometest-{{ submenus  }} " {% if multiMenu == false %} style="display:none" {% endif %}>
       {% for sublist in submenus %}
       {%  assign megaListHandleSub = megaListHandle | append : '-' | append : sublist %}
 
@@ -40,6 +52,8 @@
 
       {% endfor %}
   </div>
+          {% endif %}
+  {% endif %}
   {% endif %}
   {% endfor %}
 
