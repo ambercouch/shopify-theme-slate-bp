@@ -5293,7 +5293,17 @@ ACSHOPIFY = {
             }
 
 
+            $(document).on('click', '.product-gallery__img', function (e) {
+                var src = $(this).attr('data-variantimage');
+                var href = $(this).attr('data-variantlink');
+                var optTitle = $(this).attr('title');
 
+                $('[data-product-featured-image]').attr('src', src);
+                $('[data-product-featured-link]').attr('href', href);
+                $('#SingleOptionSelector-0').val(optTitle)
+                console.log($(this).attr('data-variantimage'));
+                console.log(optTitle);
+            })
         }
     },
     cart: {
