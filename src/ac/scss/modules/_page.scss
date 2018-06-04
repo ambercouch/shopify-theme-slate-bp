@@ -22,7 +22,6 @@
     @include mq($until : desktop){
       padding: 0 !important;
     }
-
   }
 }
 
@@ -123,6 +122,9 @@
     @extend .o-notice;
     @extend .o-notice--green;
     color: white;
+  }
+  &wholesale-info{
+    text-align: center;
   }
 }
 

@@ -24,6 +24,8 @@
         {% assign access = 'full' %}
         {% when 'page' %}
         {% assign access = 'full' %}
+        {% when 'page.login-footer' %}
+        {% assign access = 'SEO' %}
         {% when 'collection' %}
         {% assign access = 'SEO' %}
 
