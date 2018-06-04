@@ -62,6 +62,11 @@
         <!-- access {{ access }} -->
         <!-- customerAccess {{ customerAccess }} -->
         {{  content_for_layout }}
+        {% when 'SEO' %}
+          <!-- template {{ template }} -->
+          <!-- access {{ access }} -->
+          <!-- customerAccess {{ customerAccess }} -->
+          {{  content_for_layout }}
         {% when 'inactive' %}
         <!-- template {{ template }} -->
         <!-- access {{ access }} -->
@@ -71,7 +76,7 @@
         <!-- template {{ template }} -->
         <!-- access {{ access }} -->
         <!-- customerAccess {{ customerAccess }} -->
-        {% include 'main-content-restricted' %}
+          {% include 'main-content-restricted' %}
         {% endcase %}
 
       </div>

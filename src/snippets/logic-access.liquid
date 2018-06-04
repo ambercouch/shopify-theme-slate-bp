@@ -22,6 +22,11 @@
         {% assign access = 'full' %}
         {% when 'page.contact' %}
         {% assign access = 'full' %}
+        {% when 'page' %}
+        {% assign access = 'full' %}
+        {% when 'collection' %}
+        {% assign access = 'SEO' %}
+
         {% else %}
           {% if customer %}
             {% assign access = 'inactive' %}
