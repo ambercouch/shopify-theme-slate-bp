@@ -90,18 +90,23 @@
 
         {% endfor %}
       </ul>
+      <footer class="collection__footer">
+        <div class="collection__wholesale-info">
+          <p>To you want to buy wholesale jewellery? Sign in or <a href="/account/register">sign up</a> for an account now.</p>
+        </div>
 
       {% include 'customer-login-form-login' %}
       {% include 'customer-login-form-recover' %}
+      </footer>
     {% endunless %}
 
   </div>
-    {% unless access == 'restricted' %}
-  <div class="collection__footer">
+    {% unless customerAccess == 'restricted' %}
+  <footer class="collection__footer">
   {% if paginate.pages > 1 %}
     {% include 'pagination' %}
   {% endif %}
-  </div>
+  </footer>
   </div>
     {% endunless %}
 </div>
