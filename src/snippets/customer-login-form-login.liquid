@@ -1,0 +1,57 @@
+<div id="CustomerLoginForm" class="customer-login__form">
+  {% form 'customer_login' %}
+    {{ form.errors | default_errors }}
+    <div class="customer-login__recover-success form-success hide" id="ResetSuccess">
+      {{ 'customer.recover_password.success' | t }}
+    </div>
+    <div class="customer-login__form-content">
+
+
+      <div class="customer-login__form-control">
+        <label for="CustomerEmail" class="label-hidden customer-login__label">
+          {{ 'customer.login.email' | t }}
+        </label>
+        <input type="email"
+               name="customer[email]"
+               id="CustomerEmail"
+               class="{% if form.errors contains 'email' %}input-error{% endif %} customer-login__input"
+               placeholder="{{ 'customer.login.email' | t }}"
+               spellcheck="false"
+               autocomplete="off"
+               autocapitalize="off"
+               autofocus>
+      </div>
+
+      {% if form.password_needed %}
+        <div class="customer-login__form-control">
+          <label for="CustomerPassword" class="label-hidden customer-login__label">
+            {{ 'customer.login.password' | t }}
+          </label>
+          <input type="password"
+                 name="customer[password]"
+                 id="CustomerPassword"
+                 class="{% if form.errors contains 'password' %}input-error{% endif %} customer-login__input"
+                 placeholder="{{ 'customer.login.password' | t }}">
+        </div>
+      {% endif %}
+
+      <input type="submit" class="btn customer-login__submit" value="{{ 'customer.login.sign_in' | t }}">
+
+      <div class="customer-login__control-links">
+        <a class="customer-login__link" href="/">
+          {{ 'customer.login.cancel' | t }}
+        </a>
+
+        <a class="customer-login__link" href="/account/register">
+          {{ 'layout.customer.create_account' | t }}
+        </a>
+
+        {% if form.password_needed %}
+          <a class="customer-login__link" href="#recover" id="RecoverPassword">
+            {{ 'customer.login.forgot_password' | t }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  {% endform %}
+</div>
