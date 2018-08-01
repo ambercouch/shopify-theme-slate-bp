@@ -1,0 +1,49 @@
+<!-- product {%  if product.available %} available {% else %} out of stock {% endif %} -->
+<div class="product-thumb{{ PTClassModifier }} {%  if product.available %} is-available {% else %} is-available-sold-out {% endif %} ">
+  <h5 class="product-thumb__sku{{ PTClassModifier }}">{{ variant.sku }}</h5>
+  <a class="product-thumb__link--image" href="{{ variant.url | within: collection }}">
+    {%-  unless product.available -%}
+    <span class="product-thumb__label--sold-out" >Out of Stock</span>
+    {% endunless %}
+    {%-  unless product.available -%}
+    <span data-hover-animation data-get-reminder="{{  variant.url | within: collection }}" class="product-thumb__label--reminder" >Back In Stock Reminder</span>
+    {% endunless %}
+    <img class="product-thumb__img{{ PTClassModifier }}" src="{{  variant  | img_url: '600x600' }}" alt="{{ product.title }} - {{ variant.image.alt | escape }}" >
+  </a>
+
+  <div class="product-thumb__info{{ PTClassModifier }}">
+    <a class="product-thumb__link--heading" href="{{ variant.url | within: collection }}">
+      <h5 class="product-thumb__heading{{ PTClassModifier }}">{{ product.title }}</h5>
+    </a>
+    {% if customer %}
+      <div class="product-thumb__price">
+      {% if bold_compare_at_price > bold_price %}
+        {% if bold_price_varies %}
+          {%- assign sale_price = bold_price | money -%}
+          {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+        {% else %}
+          {{ 'products.product.on_sale' | t }}
+          {{ bold_price | money }}
+        {% endif %}
+        </div>
+      {% else %}
+        <div class="product-thumb__price">
+          {% if bold_price_varies %}
+            {%- assign price = bold_price | money -%}
+            {{ 'products.product.from_text_html' | t: price: price }}
+          {% else %}
+            {{ bold_price | money }}
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+  {% include 'logic-admin' %}
+  {% if adminUser %}
+    <!-- Admin user -->
+    <a style="color: #ddd" target="_blank" href="/admin/products/{{ product.id }}"><small>Edit this product</small></a>
+  {% else %}
+    <!-- Not Admin -->
+  {% endif %}
+
+</div>
