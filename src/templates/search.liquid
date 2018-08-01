@@ -20,9 +20,14 @@
 {% if search.performed %}
   <ul class="collection__list">
     {% for product in search.results %}
-    <li class="collection__item--layout4">
-      {% include 'product-thumb' %}
-    </li>
+      {% if variant.available %}
+        <li class="collection__item--layout4">
+          {%  comment %}
+            {% include 'product-thumb' %}
+          {% endcomment %}
+          {% include 'variant-thumb' %}
+        </li>
+      {% endif %}
     {%  endfor %}
   </ul>
 
