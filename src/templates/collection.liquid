@@ -38,12 +38,14 @@
     {% for product in collection.products %}
       {% for variant in product.variants %}
       {% include 'bold-product' with product, hide_action: 'skip' %}
-      <li class="collection__item--layout4">
-        {%  comment %}
-        {% include 'product-thumb' %}
-        {% endcomment %}
-        {% include 'variant-thumb' %}
-      </li>
+        {% if variant.available %}
+          <li class="collection__item--layout4">
+            {%  comment %}
+              {% include 'product-thumb' %}
+            {% endcomment %}
+            {% include 'variant-thumb' %}
+          </li>
+        {% endif %}
 
     {% else %}
       {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
