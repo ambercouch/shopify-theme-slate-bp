@@ -24,25 +24,21 @@
   </header>
 
   <div class="collection__content">
-    {% if customerAccess == 'restricted' %}
+
     {% if collection.description != blank %}
       <div class="rte collection__description">
         {{ collection.description }}
       </div>
     {% endif %}
-    {% endif %}
+
 
 
     {% unless customerAccess == 'restricted' %}
     <ul class="collection__list customerAccess-{{ customerAccess }}">
     {% for product in collection.products %}
-      {% for variant in product.variants %}
       {% include 'bold-product' with product, hide_action: 'skip' %}
       <li class="collection__item--layout4">
-        {%  comment %}
         {% include 'product-thumb' %}
-        {% endcomment %}
-        {% include 'variant-thumb' %}
       </li>
 
     {% else %}
@@ -64,7 +60,7 @@
       {% else %}
         <p>{{ 'collections.general.no_matches' | t }}</p>
       {% endif %}
-      {% endfor %}
+
     {% endfor %}
     </ul>
       {% else %}

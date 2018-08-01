@@ -1,0 +1,21 @@
+<div class="page">
+  <div class="page__header">
+    <h1 class="page__heading" >{{ page.title }}</h1>
+  </div>
+  <div class="page__content">
+    <div class="rte">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+{% include 'logic-customer' %}
+{% if customerAccess == 'restricted' %}
+<footer class="page__footer">
+  <div class="page__wholesale-info">
+    <p>To you want to buy wholesale jewellery? Sign in or <a href="/account/register">sign up</a> for an account now.</p>
+  </div>
+
+  {% include 'customer-login-form-login' %}
+  {% include 'customer-login-form-recover' %}
+</footer>
+{% endif %}

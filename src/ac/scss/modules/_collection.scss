@@ -66,6 +66,16 @@
   &item{
     width: 100%;
   }
+  &description{
+    margin-bottom: $inuit-global-spacing-unit;
+    text-align: center;
+    p{
+      margin-bottom: $inuit-global-spacing-unit-tiny;
+    }
+  }
+  &wholesale-info{
+    text-align: center;
+  }
 }
 
 /*
