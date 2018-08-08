@@ -24,12 +24,16 @@
         {% assign access = 'full' %}
         {% when 'page' %}
         {% assign access = 'full' %}
+        {% when 'article' %}
+        {% assign access = 'full' %}
+        {% when 'blog' %}
+        {% assign access = 'full' %}
         {% when 'page.login-footer' %}
         {% assign access = 'SEO' %}
         {% when 'collection' %}
         {% assign access = 'SEO' %}
 
-        {% else %}
+          {% else %}
           {% if customer %}
             {% assign access = 'inactive' %}
             {%   if customer.tags  contains 'active' %}
@@ -45,4 +49,4 @@
           {% else %}
             {% assign access = 'restricted' %}
           {% endif %}
-          {% endcase %}
+        {% endcase %}
