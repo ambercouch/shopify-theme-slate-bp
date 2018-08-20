@@ -1,6 +1,6 @@
 <div class="blog__article">
   <div class="article--preview">
-    <div class="article__header">
+    <div class="article__header--preview">
       {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
       <div class="article__meta">
         <small>{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</small>
@@ -17,7 +17,7 @@
     </div>
     {% endif %}
   <div class="article__content">
-    <div class="rte article__body">
+    <div class="rte article__body--preview">
       {% if article.excerpt.size > 0 %}
         {{ article.excerpt }}
       {% else %}

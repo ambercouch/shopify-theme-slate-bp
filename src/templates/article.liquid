@@ -13,19 +13,30 @@
   {% assign number_of_comments = article.comments_count | plus: 1 %}
 {% endif %}
 
-<article role="article" itemscope itemtype="http://schema.org/Article">
+<article class="article" role="article" itemscope itemtype="http://schema.org/Article">
 
-  {% if article.image %}
-    {{ article | img_url: '1024x1024' | img_tag: article.title }}
-  {% endif %}
-
-  <header role="banner">
-    <h1>{{ article.title }}</h1>
+  <header role="banner" class="article__header">
     {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
-    <p>{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</p>
+    <div class="article__meta">
+      <small>{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</small>
+    </div>
+    <h1 class="article__heading">
+      <span  class="article__title">{{ article.title }}</span>
+    </h1>
+
   </header>
 
-  <div class="rte" itemprop="articleBody">
+  {% if article.image %}
+    <div class="article__featured-image">
+      <a href="{{ article.url }}" class="article__image-link">
+        <img src="{{ article | img_url: '1024x1024' }}" alt="{{ article.title }}" class="article__img">
+      </a>
+    </div>
+  {% endif %}
+
+
+
+  <div class="rte article__body" itemprop="articleBody">
     {{ article.content }}
   </div>
 
