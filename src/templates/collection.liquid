@@ -1,3 +1,4 @@
+<!-- collection.liquid -->
 {%  include  'logic-access'%}
 {%  include  'logic-customer'%}
 {% paginate collection.products by 40 %}
@@ -17,13 +18,54 @@
       </div>
     </div>
   </div>
+    <!-- Test theme -->
+    <!-- collection handle {{ collection.handle }} -->
+    <!-- blogs  -->
+    {% assign headers_handel = 'collection-restricted-headers' %}
+    {% assign headers_handel_path = headers_handel | append : '/' %}
+    {% assign headers = blogs[headers_handel] %}
+    {% assign custom_header = false %}
+    {% for header in headers.articles %}
+      {% assign header_handle = header.handle | remove : headers_handel_path %}
+      <!-- headers_handel_path {{ headers_handel_path }}  -->
+      <!-- header.handle  {{ header.handle }} -->
+      <!-- header_handle  {{ header_handle }} -->
+      {% if header_handle == collection.handle %}
+        <!-- blog matches {{ header_handle }} -->
+        <!-- image url {{ header.image  }} -->
+        {% if  header.image %}
+            {% assign custom_header = true %}
+            {% assign custom_header_image = header.image %}
+
+          {% else %}
+
+          {% endif %}
+      {% else %}
+      {% endif %}
+    {% endfor %}
+
   <div class="collection__main">
+    {% if custom_header == false %}
   <header class="collection__header" role="banner">
     <h1 class="collection__heading">{% if current_tags contains 'sarah-tempest' %}<!-- Sarah Tempest -->Sarah Tempest {% else %}<!-- NOT Sarah Tempest -->{% endif %}{{ collection.title }}</h1>
-
   </header>
+      {% else %}
+        <header class="collection__header--custom" role="banner">
+          <img  class="collection__img" src="{{ custom_header_image | img_url : 'original'}}" />
+          <h1 class="collection__heading--custom">
+            {% if current_tags contains 'sarah-tempest' %}
+              <!-- Sarah Tempest -->
+              Sarah Tempest
+              {% else %}
+                <!-- NOT Sarah Tempest -->
+            {% endif %}
+            {{ collection.title }}
+          </h1>
+        </header>
+    {% endif %}
 
   <div class="collection__content">
+    <!-- .collection__content -->
     {% if customerAccess == 'restricted' %}
     {% if collection.description != blank %}
       <div class="rte collection__description">
@@ -70,11 +112,12 @@
     {% endfor %}
     </ul>
       {% else %}
+      <!-- Restricted Access -->
       <ul class="collection__list customerAccess-{{ customerAccess }} ">
-        {% for product in collection.products | limit: 4 %}
+        {% for product in collection.products | limit: 3 %}
           {% include 'bold-product' with product, hide_action: 'skip' %}
-          <li class="collection__item--layout4">
-            {% include 'product-thumb' %}
+          <li class="collection__item--layout3">
+            {% include 'product-thumb-restricted' %}
           </li>
 
         {% else %}
