@@ -1,3 +1,4 @@
+<!-- variant-thumb.liquid -->
 <!-- product {%  if product.available %} available {% else %} out of stock {% endif %} -->
 <div class="product-thumb{{ PTClassModifier }} {%  if product.available %} is-available {% else %} is-available-sold-out {% endif %} ">
   <h5 class="product-thumb__sku{{ PTClassModifier }}">{{ variant.sku }}</h5>
@@ -8,7 +9,13 @@
     {%-  unless product.available -%}
     <span data-hover-animation data-get-reminder="{{  variant.url | within: collection }}" class="product-thumb__label--reminder" >Back In Stock Reminder</span>
     {% endunless %}
+    {% if variant.image.src  %}
+      <!-- variant image -->
     <img class="product-thumb__img{{ PTClassModifier }}" src="{{  variant  | img_url: '600x600' }}" alt="{{ product.title }} - {{ variant.image.alt | escape }}" >
+    {% else %}
+      <!-- featured image -->
+    <img class="product-thumb__img{{ PTClassModifier }}" src="{{ product.featured_image.src | img_url: '600x600' }}" alt="{{ product.title }} - {{ product.featured_image.alt | escape }}" >
+{% endif %}
   </a>
 
   <div class="product-thumb__info{{ PTClassModifier }}">
