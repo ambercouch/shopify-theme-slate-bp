@@ -2,28 +2,33 @@
 
   {%- assign blog_title = blog.title -%}
 
-  {% if current_tags %}
-    {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
-  {% endif %}
+  
 
 <div class="blog">
   <div class="blog__header">
     <h1 class="blog__heading">{{ blog_title }}</h1>
-
+  </div>
+  <div class="blog__blog-cats">
+    <div class="blog-cats">
     {% if blog.all_tags.size > 0 %}
-    <h2>{{ 'blogs.general.categories' | t }}</h2>
-    <ul>
-      {% for tag in blog.all_tags %}
+      <div class="blog-cats__header">
+      <span class="blog-cats__title">{{ 'blogs.general.categories' | t }}</span>
+      </div>
+      <ul class="blog-cats__list" >
+        <li class="blog-cats__item"  ><a href="/blogs/news">All</a></li>
+        {% for tag in blog.all_tags %}
 
-        {% if current_tags contains tag %}
-          <li>{{ tag }}</li>
-        {% else %}
-          <li>{{ tag | link_to_tag: tag }}</li>
-        {% endif %}
+          {% if current_tags contains tag %}
 
-      {% endfor %}
-    </ul>
-  {% endif %}
+            <li class="blog-cats__item is-current"  ><span class="blog-cats__label"> {{ tag }}</span></li>
+          {% else %}
+            <li class="blog-cats__item ">{{ tag | link_to_tag: tag }}</li>
+          {% endif %}
+
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
   </div>
 
   {% comment %}

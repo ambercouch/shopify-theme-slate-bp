@@ -31,9 +31,9 @@
     </div>
     <div class="article__footer">
       {% if blog.comments_enabled? or article.tags.size > 0 %}
-        <ul>
+        <ul class="article__meta-list">
           {% if blog.comments_enabled? %}
-            <li>
+            <li class="article__meta-item" >
               <a href="{{ article.url }}#comments">
                 {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
               </a>
@@ -42,7 +42,7 @@
 
           {% if article.tags.size > 0 %}
             {% for tag in article.tags %}
-              <li>
+              <li class="article__meta-item" >
                 <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
                 {% unless forloop.last %}, {% endunless %}
               </li>
