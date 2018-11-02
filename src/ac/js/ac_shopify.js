@@ -506,7 +506,7 @@ ACSHOPIFY = {
 
                 $('[data-product-featured-image]').attr('src', src);
                 $('[data-product-featured-link]').attr('href', href);
-                $('#SingleOptionSelector-0').val(optTitle)
+                $('#SingleOptionSelector-0').val(optTitle).trigger('change');
                 console.log($(this).attr('data-variantimage'));
                 console.log(optTitle);
             })
