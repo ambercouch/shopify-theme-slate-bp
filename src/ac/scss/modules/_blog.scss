@@ -1,0 +1,76 @@
+/*
+  BEM BLOCK .collection-thumb
+ */
+
+.blog{
+  @extend .o-wrapper;
+  max-width: 800px;
+  margin-bottom: $inuit-global-spacing-unit-huge;
+  @include mq($until : tablet){
+    padding: 0 !important;
+  }
+}
+
+/*
+  BEM BLOCK MODIFIERS
+*/
+.blog--{
+  &inactive-account{
+
+  }
+  &lookbooks{
+    text-align: center;
+    @include mq($until : desktop){
+      padding: 0 !important;
+    }
+  }
+}
+
+// BEM BLOCK MODIFIER FALLBACK
+
+[class*=page--]{
+  @extend .blog
+}
+
+
+/*
+  BEM ELEMENTS
+ */
+
+.blog__{
+  &header{
+    text-align: center;
+    border-bottom: solid 2px;
+    margin:0 auto $inuit-global-spacing-unit-large;
+    @include mq($from : tablet){
+      width: 50%;
+    }
+  }
+  &heading{
+    text-transform: uppercase;
+    font-weight: 500;
+    @include mq($until : tablet){
+      @include inuit-font-size($inuit-font-size-h3)
+    }
+  }
+  &content{
+    margin: 0 auto;
+    margin-bottom:$inuit-global-spacing-unit;
+    @include mq($from : tablet){
+      width: 75%;
+    }
+  }
+  &list{
+    @extend .o-list-bare;
+  }
+  &article{
+    padding-bottom:$inuit-global-spacing-unit-large;
+    border-bottom:solid 1px $brand-col-1;
+    margin-bottom: $inuit-global-spacing-unit-large;
+  }
+}
+
+// BEM BLOCK MODIFIER FALLBACK
+
+
+

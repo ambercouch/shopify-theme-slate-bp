@@ -1,0 +1,57 @@
+<div class="blog__article">
+  <div class="article--preview">
+    <div class="article__header--preview">
+      {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+      <div class="article__meta">
+        <small>{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</small>
+      </div>
+      <h3 class="article__heading">
+        <a href="{{ article.url }}" class="article__link">{{ article.title }}</a>
+      </h3>
+    </div>
+    {% if article.image %}
+    <div class="article__featured-image">
+      <a href="{{ article.url }}" class="article__image-link">
+        <img src="{{ article | img_url: '1024x1024' }}" alt="{{ article.title }}" class="article__img">
+      </a>
+    </div>
+    {% endif %}
+  <div class="article__content">
+    <div class="rte article__body--preview">
+      {% if article.excerpt.size > 0 %}
+        {{ article.excerpt }}
+      {% else %}
+        <p>
+          {{ article.content | strip_html | truncatewords: 100 }}
+        </p>
+      {% endif %}
+    </div>
+    <div class="article__read-more">
+      <a class="article__read-more-link" ref="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a>
+    </div>
+    <div class="article__footer">
+      {% if blog.comments_enabled? or article.tags.size > 0 %}
+        <ul>
+          {% if blog.comments_enabled? %}
+            <li>
+              <a href="{{ article.url }}#comments">
+                {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+              </a>
+            </li>
+          {% endif %}
+
+          {% if article.tags.size > 0 %}
+            {% for tag in article.tags %}
+              <li>
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+                {% unless forloop.last %}, {% endunless %}
+              </li>
+            {% endfor %}
+          {% endif %}
+          </li>
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+  </div>

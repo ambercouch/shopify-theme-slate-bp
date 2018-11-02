@@ -1,0 +1,98 @@
+/*
+  BEM BLOCK .article
+ */
+
+.article {
+  display: block;
+  @extend .o-wrapper;
+  max-width: 1100px;
+  margin-bottom: $inuit-global-spacing-unit-huge;
+  padding-top: $inuit-global-spacing-unit-large;
+  @include mq($until : tablet){
+    padding: 0 !important;
+  }
+}
+
+/*
+  BEM BLOCK MODIFIER .article--
+ */
+
+.article-- {
+  &preview{
+    //padding: 0 $inuit-global-spacing-unit;
+    padding: 0 !important;
+    max-width: none;
+    margin-bottom: 0;
+    max-width: 800px;
+  }
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .article--
+
+[class*=article--] {
+  @extend .article;
+}
+
+/*
+  BEM ELEMENTS .article__
+ */
+
+.article__ {
+  &header {
+    display: block;
+    padding: 0 $inuit-global-spacing-unit-huge;
+  }
+  &heading {
+    display: block;
+    line-height: 1.2;
+    margin-top:0;
+  }
+  &title {
+    display: inline;
+  }
+  &link {
+    display: inline;
+    text-decoration: none;
+  }
+  &content {
+    display: block
+  }
+  &footer {
+    display: block;
+    padding: 0 $inuit-global-spacing-unit;
+  }
+  &featured-image {
+    margin-bottom: $inuit-global-spacing-unit;
+  }
+  &body {
+    margin-bottom: $inuit-global-spacing-unit;
+    padding: 0 $inuit-global-spacing-unit-huge;
+  }
+  &read-more{
+    padding: 0 $inuit-global-spacing-unit;
+  }
+}
+//BEM ELEMENT MODIFIER FALLBACK .article--
+
+[class*=article__header--] {
+    @extend .article__header;
+  }
+
+  .article__header-- {
+    &preview{
+      padding: 0 $inuit-global-spacing-unit;
+    }
+  }
+
+[class*=article__body--] {
+  @extend .article__body;
+}
+
+.article__body-- {
+  &preview{
+    padding: 0 $inuit-global-spacing-unit;
+  }
+}
