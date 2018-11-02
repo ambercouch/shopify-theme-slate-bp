@@ -1,0 +1,337 @@
+
+<div class="bold-loyalties-welcome-overlay">
+    <div class="bold-loyalties-welcome-modal">
+        <div class="bold-loyalties-section">
+            <a href="#" class="bold-modal-close-btn">x</a>
+            <div class="section-top">
+
+                <div class="section-top__left">
+                    <img src="https://loy.boldapps.net/cdn/loyalties/bold16.myshopify.com/da88907d6fd9994ec56abb8dfe195f8b.png">
+                </div>
+                <div class="section-top__right">
+                    <h1>Welcome to the Loyalty Points Demo Store :-)</h1>
+                    <p>Sign up and receive 5000 pts to test out in our Store.</p>
+                </div>
+            </div>
+        </div>
+        <div class="bold-loyalties-section">
+            <div class="section-middle">
+                <div class="section-middle__left">
+                    <div class="section-middle__inner">
+                        <p>Earning and redeeming {{ shop.metafields.bold_loyalties.plural_point_name }}</p>
+                        <div>
+                            <span>$1</span>
+                            <div class="points-earn">Earns you</div>
+                            <span class="ratio">5</span>
+                        </div>
+                        <div>
+                            <span>$1</span>
+                            <div class="points-redeem">Redeems to</div>
+                            <span class="ratio">{{ shop.metafields.bold_loyalties.redemption_ratio }}</span>
+                        </div>
+                        <div>
+                            <p><a href="http://bold16.myshopify.com/pages/about-us" target="blank">
+                                    You can get better earnings and redeeming rates at higher tier levels.                                </a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-middle__right">
+                    <div class="section-middle__inner">
+                        <h3>Ways you can earn</h3>
+                        <ul>
+                            <li><span class="icon icon-money"></span>
+                                Product Purchase                                </li>
+                            <li><span class="icon icon-mail"></span>
+                                Refer a friend                                </li>
+                            <li><span class="icon icon-share"></span>
+                                Share on social media                                </li>
+                        </ul>
+                        <p style="text-align:left"><a target="_blank"
+                                                      href="http://bold16.myshopify.com/pages/about-us">
+                                Learn more about our program                            </a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bold-loyalties-section">
+            <div class="section-bottom">
+                <a class="bold-loyalties-welcome-btn"
+                   href="/account/register">Register</a>
+                <a class="bold-loyalties-welcome-btn"
+                   href="/account/login">Login</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bold-loyalties-welcome-overlay {
+        display: none;
+        z-index: 9000;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, .6);
+        overflow-y: scroll;
+    }
+    .bold-loyalties-welcome-modal {
+        /*display: none*/
+        overflow: hidden;
+        z-index: 9001;
+        position: relative;
+        margin: auto;
+        top: 10%;
+        max-width: 720px;
+        color: rgba(0, 0, 0, .8);
+        line-height: normal;
+        background: rgba(255, 255, 255, 1);
+        border-radius: 15px;
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .bold-loyalties-welcome-modal .bold-modal-close-btn {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 20px;
+        text-decoration: none;
+    }
+    .bold-loyalties-welcome-modal h1, .bold-loyalties-welcome-modal h2 {
+        font-weight: 100;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .bold-loyalties-welcome-modal h1, .bold-loyalties-welcome-modal h2, .bold-loyalties-welcome-modal h3 {
+        color: rgba(0, 0, 0, .8);
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-transform: none;
+        letter-spacing: normal;
+    }
+    .bold-loyalties-welcome-modal h1 {
+        font-size: 2em;
+    }
+    .bold-loyalties-welcome-modal h2 {
+        font-size: 1.4em;
+    }
+    .bold-loyalties-welcome-modal h3 {
+        margin: 0;
+        font-size: 1.17em;
+        font-weight: 500;
+    }
+    .bold-loyalties-welcome-modal a, .bold-loyalties-welcome-modal a:visited, .bold-loyalties-welcome-modal a:focus, .bold-loyalties-welcome-modal a:active, .bold-loyalties-welcome-modal a:hover {
+        text-decoration: underline;
+        color: rgba(0, 0, 0, .8);
+    }
+    .bold-loyalties-welcome-modal .bold-loyalties-welcome-btn {
+        display: inline-block;
+        width: 160px;
+        vertical-align: middle;
+        cursor: pointer;
+        margin: 35px 8px;
+        padding: 12px 0;
+        font-weight: 400;
+        background: rgba(210, 0, 13, 1);
+    }
+    .bold-loyalties-welcome-modal .bold-loyalties-section {
+        clear: both;
+    }
+    .bold-loyalties-welcome-modal .section-top {
+        display: flex;
+    }
+    .bold-loyalties-welcome-modal .section-top div:first-child:nth-last-child(1) {
+        text-align: center;
+        flex-grow: 1;
+    }
+    .bold-loyalties-welcome-modal .section-top__left {
+        float: left;
+        flex-grow: 0;
+        align-self: center;
+        margin: 45px 22.5px 45px 45px;
+    }
+    .bold-loyalties-welcome-modal .section-top__left img {
+        max-height: 130px;
+        max-width: 130px;
+        border: rgba(151, 151, 151, 1);
+        border-width: 1px;
+        border-style: solid;
+        box-sizing: content-box;
+        display: inline-block;
+    }
+    .bold-loyalties-welcome-modal .section-top__right {
+        float: left;
+        width: 60%;
+        flex-grow: 1;
+        margin: 45px 45px 45px 22.5px;
+    }
+    .bold-loyalties-welcome-modal .section-middle {
+        display: flex;
+        border: rgba(0, 0, 0, .1);
+        border-style: solid;
+        border-width: 1px 0px;
+    }
+    .bold-loyalties-welcome-modal .section-middle__left, .section-middle__right {
+        float: left;
+        flex-grow: 1;
+        width: 50%;
+        min-height: 310px;
+    }
+    .bold-loyalties-welcome-modal .section-middle__right {
+        border: rgba(0, 0, 0, .1);
+        border-style: solid;
+        border-width: 0px 0px 0px 1px;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner {
+        margin: 45px;
+        margin-left: 34px;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner div {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner div:nth-of-type(2) {
+        align-items: right;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner .points-earn,
+    .bold-loyalties-welcome-modal .section-middle__inner .points-redeem {
+        width: 104px;
+        height: 60px;
+        position: relative;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner .points-earn:before,
+    .bold-loyalties-welcome-modal .section-middle__inner .points-redeem:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 104px;
+        height: 60px;
+        background-image: url(https://loy.boldapps.net/app_assets/images/arrows.sprite.png);
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner .ratio {
+        width: 115px;
+        text-align: center;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner .points-redeem:before {
+        background-position: 0px 60px;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner span {
+        font-size: 3.5em;
+        font-weight: 600;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner ul {
+        list-style: none;
+        line-height: 30px;
+        padding: 0;
+        margin: 16px 0;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner li {
+        color: rgba(0, 0, 0, .5);
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        align-self: center;
+        margin: -2px 0 0 10px;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon-money:before,
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon-profile:before,
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon-mail:before,
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon-share:before,
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon-star:before {
+        content: '';
+        position: absolute;
+        z-index -1;
+        width: 30px;
+        height: 30px;
+        background-image: url(https://loy.boldapps.net/app_assets/images/sprite.icons.png);
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon-money:before {
+        background-position: 0 0;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon-profile:before {
+        background-position: 0 -30px;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon-mail:before {
+        background-position: 0 -60px;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon-share:before {
+        background-position: 0 -90px;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner li span.icon-star:before {
+        background-position: 0 -120px;
+    }
+    .bold-loyalties-welcome-modal .section-middle__inner p {
+        text-align: center;
+        font-size: 14px;
+        font-weight: 200;
+        margin: 14px 0;
+        color: rgba(0, 0, 0, .8)
+    }
+    .bold-loyalties-welcome-modal .section-bottom {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.05);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+    .bold-loyalties-welcome-modal .section-bottom a {
+        color: rgba(255, 255, 255, 1);
+        text-decoration: none;
+    }
+    @media (max-width: 767px) {
+        .bold-loyalties-welcome-modal {
+            top: 0;
+            width: 100%;
+        }
+        .bold-loyalties-welcome-modal .section-top__left {
+            margin: 25px 12.5px 25px 25px;
+        }
+        .bold-loyalties-welcome-modal .section-top__right {
+            margin: 25px 25px 25px 12.5px;
+        }
+        .bold-loyalties-welcome-modal .section-middle__inner {
+            margin: 25px;
+        }
+    }
+    @media (max-width: 639px) {
+        .bold-loyalties-welcome-modal .section-top {
+            flex-wrap: wrap;
+        }
+        .bold-loyalties-welcome-modal .section-top div {
+            text-align: center;
+            flex-grow: 1;
+        }
+        .bold-loyalties-welcome-modal .section-top__left {
+            width: 100%;
+            margin: 45px 10px 10px 10px;
+        }
+        .bold-loyalties-welcome-modal .section-top__right {
+            width: 100%;
+            margin: 10px 10px 15px 10px;
+        }
+        .bold-loyalties-welcome-modal .section-middle {
+            flex-wrap: wrap;
+        }
+        .bold-loyalties-welcome-modal .section-middle__inner {
+            margin: 25px;
+        }
+        .bold-loyalties-welcome-modal .section-middle__left, .section-middle__right {
+            width: 100%;
+            min-height: auto;
+        }
+        .bold-loyalties-welcome-modal .section-middle__right {
+            border-width: 1px 0px 0px 0px;
+        }
+    }
+    @media (max-width: 359px) {
+        .bold-loyalties-welcome-modal .bold-loyalties-welcome-btn {
+            width: 140px;
+        }
+    }
+</style>

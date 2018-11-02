@@ -18,6 +18,7 @@
 
   <meta name="description" content="{{ 'gift_cards.issued.subtext' | t }}">
 
+  {{ 'ac_main.css' | asset_url | stylesheet_tag }}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
 
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
@@ -32,9 +33,24 @@
   {{ content_for_header }}
 </head>
 
-<body class="template-giftcard">
-  <main role="main" id="MainContent">
-    {{ content_for_layout }}
+{% assign bodyClasses = ' template-giftcard ' %}
+{% include 'body-tag' %}
+
+<div class="site__accessibility">
+  <a class="accessibility__link in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+</div>
+
+{% section 'header' %}
+
+<div id="page" class="site">
+  <main role="main" id="MainContent" class="site__main">
+    <div class="main">
+      <div class="main__content{% if template != null %}--{{ template | handleize }} {% endif %}">
+
+      {{ content_for_layout }}
+      </div>
+    </div>
   </main>
+</div>
 </body>
 </html>

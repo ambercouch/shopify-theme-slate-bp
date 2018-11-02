@@ -1,0 +1,18 @@
+<script>
+    function defer(method) {
+        if (window.jQuery) {
+            method();
+        } else {
+            setTimeout(function() { defer(method) }, 50);
+        }
+    }
+    defer(function () {
+        var content_for_header = "{{ content_for_header | replace: '/', '\/' | replace: '"', '\"' | replace: 'quantity_breaks.php?shop=tempestdesigns.myshopify.com' : '' | strip_newlines  }}";
+        // Output content to the head, and add newlines where required
+        $('head').append(content_for_header
+            .replace(/}        /g, "}        \n")
+            .replace(/\/\/<!\[CDATA\[/g, "//<![CDATA[\n")
+            .replace(/\/\/]]>/g, "//]]>\n")
+        );
+    });
+</script>

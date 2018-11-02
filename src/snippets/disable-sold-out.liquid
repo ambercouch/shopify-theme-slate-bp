@@ -3,40 +3,39 @@
   Only works for products that have one option.
   It won't work with products that have two or three options, like Size and Color.
   See: https://docs.myshopify.io/themes/customization/products/hide-variants-that-are-sold-out
-  https://gist.github.com/carolineschnapp/18c5a74eeb953c7e3d92
 {% endcomment %}
 
 <style>
   option[disabled]{
-    color: #ddd;
+   color: #ddd;
   }
 </style>
 
 {% if product.options.size == 1 %}
   <script>
-
-      defer(function(){
-          console.log('document ready')
-
-          var $addToCartForm = $('form[action="/cart/add"]');
-          if (window.MutationObserver && $addToCartForm.length) {
-              if (typeof observer === 'object' && typeof observer.disconnect === 'function') {
-                  observer.disconnect();
-              }
-              var config = { childList: true, subtree: true };
-              var observer = new MutationObserver(function() {
-                {% for variant in product.variants %}
-                {% unless variant.available %}
-                  jQuery('.variant__input option:eq({{ forloop.index0 }})').prop('disabled', true);
-                  jQuery('.variant__input option:eq({{ forloop.index0 }})').attr('title', 'Variant Sold Out');
-                {% endunless %}
-                {% endfor %}
-                  jQuery('.variant__input').trigger('change');
-                  observer.disconnect();
-              });
-              observer.observe($addToCartForm[0], config);
-          }
-
-      });
+    
+    defer(function(){
+     console.log('document ready')
+     
+     var $addToCartForm = $('form[action="/cart/add"]');
+  if (window.MutationObserver && $addToCartForm.length) {
+    if (typeof observer === 'object' && typeof observer.disconnect === 'function') {
+      observer.disconnect();
+    }
+    var config = { childList: true, subtree: true };
+    var observer = new MutationObserver(function() { 
+      {% for variant in product.variants %}
+        {% unless variant.available %}
+          jQuery('.variant__input option:eq({{ forloop.index0 }})').prop('disabled', true);
+          jQuery('.variant__input option:eq({{ forloop.index0 }})').attr('title', 'Variant Sold Out');
+        {% endunless %}
+      {% endfor %}
+      jQuery('.variant__input').trigger('change');
+      observer.disconnect();
+    });  
+    observer.observe($addToCartForm[0], config);
+  }
+      
+    });
   </script>
 {% endif %}

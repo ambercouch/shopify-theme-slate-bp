@@ -3,6 +3,7 @@
 <div class="customer-account">
   <div class="customer-account__header">
     <h1 class="customer-account__heading" >{{ 'customer.account.title' | t }}</h1>
+
   </div>
   <div class="customer-account__info">
     <!-- customerAccess {{ customerAccess }} -->
@@ -19,13 +20,16 @@
         {% endif %}
     <p>Hi {{ customer.first_name | capitalize }}, you are now logged into your <strong>Tempest Designs</strong> customer account.</p>
     <p>This is your account area, here you can find details of your <a href="#orderHistory">order history</a> and your <a href="#accountDetails">account details</a>. Please use the <a href="/account/login#recover" >password reset form</a>, If you need to reset your password</p>
+    {% if customer.tags contains 'little gems' %}
+      <p>As a 'Little Gems' loyalty customer you earn points on every on purchase you make. To see how many points you have earned this month, scroll down to your <a href="loyaltyPoints">Loyalty Program Section</a>. When you have enough points you can exchange them for <a href="/products/tempest-little-gems-voucher">'Little Gems Vouchers'</a> which you can spend in our <a href="/">store</a></p>
+    {% endif %}
   </div>
   <div class="customer-account__section" >
     <div id="orderHistory"  class="customer-history">
      <div class="customer-history__header">
 <h2 class="customer-history__heading" >{{ 'customer.orders.title' | t }}</h2>
      </div>
-{% paginate customer.orders by 20 %}
+{% paginate customer.orders by 3 %}
   {% if customer.orders.size != 0 %}
     <div class="customer-history__order-table">
     <table class="responsive-table order-table__table" >
@@ -57,13 +61,23 @@
       </div>
   {% endif %}
 
-  {% if paginate.pages > 1 %}
+  {% if paginate.orders > 1 %}
     {% include 'pagination' %}
   {% endif %}
-
 {% endpaginate %}
     </div>
   </div>
+  {% if customer.tags contains 'little gems' %}
+  <div id="loyaltyPoints" class="customer-account__section">
+    <div class="customer-account-loyalty">
+        <!-- Bold: Loyalty Points - Step 3 -->
+        {% include 'bold-loyalties-customer-transactions' %}
+        <!-- // end bold code -->
+    </div>
+  </div>
+  {% else %}
+    <!-- {{ customer.tags }} -->
+  {% endif %}
   <div id="accountDetails" class="customer-account__section">
     <div class="customer-account-address">
       <div class="customer-account-address__header">

@@ -1,0 +1,68 @@
+{% paginate collection.products by 40 %}
+<div class="collection">
+  <div class="collection__breadcrumbs">
+    {% assign BCClassModifier = "--collection"  %}
+    {%  include "breadcrumbs" %}
+  </div>
+  <div class="collection__flex">
+  <div class="collection__sidebar">
+    <div class="collection__filters">
+      <div class="filter-menu__wrapper">
+        <h3 id="filterButtonOpen" data-state="off" class="filter-menu__title" >Filters</h3>
+      </div>
+      <div class="filter-menu__container" id="filterContainer">
+      {% include 'filter-menu' %}
+      </div>
+    </div>
+  </div>
+  <div class="collection__main">
+  <header class="collection__header" role="banner">
+    <h1 class="collection__heading">{% if current_tags contains 'sarah-tempest' %}<!-- Sarah Tempest -->Sarah Tempest {% else %}<!-- NOT Sarah Tempest -->{% endif %}{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div class="rte">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="collection__content">
+    <ul class="collection__list">
+    {% for product in collection.products %}
+      {% include 'bold-product' with product, hide_action: 'skip' %}
+      <li class="collection__item--layout4">
+        {% include 'product-thumb' %}
+      </li>
+
+    {% else %}
+      {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+        {% for i in (1..8) %}
+          <a href="#">
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+          </a>
+
+          <p>
+            <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+          </p>
+
+          <p>
+            {{ 1999 | money }}
+          </p>
+        {% endfor %}
+      {% else %}
+        <p>{{ 'collections.general.no_matches' | t }}</p>
+      {% endif %}
+
+    {% endfor %}
+    </ul>
+  </div>
+
+  <div class="collection__footer">
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+  </div>
+  </div>
+</div>
+</div>
+{% endpaginate %}

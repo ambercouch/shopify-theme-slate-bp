@@ -1,0 +1,125 @@
+<div class="add-form" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+  <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+  <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+  <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+  <form class="add-form__form shapp_qb_prod" action="/cart/add" method="post" enctype="multipart/form-data">
+
+    <div class="add-form__qty">
+      <label class="add-form__label" for="Quantity">{{ 'products.product.quantity' | t }}</label>
+      <input class="add-form__qty-input" type="number" id="Quantity" name="quantity" value="1" min="1">
+    </div>
+    <div class="add-form__price-wrapper {% if customer.tags contains 'little gems' %} little-gems {% endif %}">
+      <div data-price-wrapper>
+        <span class="add-form__price" data-product-price>
+          {{ current_variant.price | money }}
+        </span>
+
+        {% if customer.tags contains 'little gems' %}
+          {% if product.variants[0].available %}
+            <!-- Bold: Loyalty Points - Step 4 -->
+            {% if shop.metafields.bold_loyalties.active == 1 %}
+              <div class="bold-loyalties-redeem-amount">or <span class="bold-placeholder"></span></div>
+            {% endif %}
+            <!-- // end bold code -->
+          {% endif %}
+        {% endif %}
+ 
+        {% if bold_compare_at_price_max > bold_price %}
+          <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+          <span data-compare-price>
+            {% if current_variant.compare_at_price > current_variant.price %}
+              {{ current_variant.compare_at_price | money }}
+            {% endif %}
+          </span>
+        {% endif %}
+
+      </div>
+    </div>
+
+    {% if customer.tags contains 'little gems' %}
+      <!-- Bold: Loyalty Points - Step 4.1 -->
+      <div class="bold-loyalties-earn"></div>
+      <!-- // end bold code -->
+    {% endif %}
+    <div class="add-form__variants">
+      {% include 'bold-variant' with variant, hide_action: 'skip' %}
+
+      {% include 'add-form-variants' %}
+      {% assign varCount = 0 %}
+      {% for variant in product.variants %}
+        {% unless variant.title contains '+'  %}
+        {% assign varCount = varCount | plus : 1 %}
+        {% endunless %}
+      {% endfor %}
+      <!-- varCount {{ varCount }} -->
+      <select {% if varCount == 0 %} style="display: none" {% endif %} id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}"  name="id" class="add-form__variants no-js" data-product-select>
+        {% if  varCount > 0 %}
+        {% for variant in product.variants %}
+          {% unless variant.title contains '+'  %}
+          <option
+              {% if variant == current_variant %}selected="selected"{% endif %}
+              {% unless variant.available %}disabled="disabled"{% endunless %}
+              value="{{ variant.id }}">
+            {{ variant.title }}
+          </option>
+          {% endunless %}
+        {% endfor %}
+          {% else %}
+          {% assign variant = product.variants.first %}
+            <option
+                {% if variant == current_variant %}selected="selected"{% endif %}
+                {% unless variant.available %}disabled="disabled"{% endunless %}
+                value="{{ variant.id }}">
+              {{ variant.title }}
+            </option>
+        {% endif %}
+      </select>
+    </div>
+
+<div class="add-form__description test {% if product.description != '' %} rte {% endif %}">
+  {% include 'sales-description'%}
+</div>
+
+    <div class="add-form__submit-wrapper">
+      <button class="add-form__submit-btn"
+          type="submit"
+          name="add"
+          data-add-to-cart
+          {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+          <span data-add-to-cart-text >
+            {% if current_variant.available %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+              {{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </span>
+      </button>
+      {% if customer.tags contains 'little gems'%}
+          <!-- Bold: Loyalty Points - Step 4.2 -->
+          <div class="bold-loyalties-redeem"></div>
+          <!-- // end bold code -->
+      {% endif %}
+    </div>
+
+      <div id="smartwishlist" data-product="{{ product.id }}" data-variant="{{ product.variants.first.id }}"></div>
+
+
+    {% if customer.tags contains 'platinum' %}
+    {% unless qb_loaded == 'true' %}
+    <div class="add-form__bqb">
+      <h3 class="add-form__bqb-title"><span class="add-form__bqb-title-platinum">Platinum</span> <small>(Bulk Discounts)</small></h3>
+      <div class="shappify-qty-msg">
+      {{bold_selected_or_first_available_variant.metafields.shappify_qb.pricing_html}}
+    </div>
+    {% assign qb_loaded = 'true' %}
+    </div>
+    {% endunless %}
+    {% endif %}
+
+  </form>
+
+</div>
+<!-- Bold: Loyalty Points - Step 4.3 -->
+ {% include 'bold-loyalties-product' %}
+<!-- // end bold code -->

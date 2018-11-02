@@ -39,16 +39,25 @@
   <div class="rte article__body" itemprop="articleBody">
     {{ article.content }}
   </div>
+<div class="article__footer">
+  {% comment %}
 
   {% if article.tags.size > 0 %}
-    <ul>
+  <div class="article__blog-cats">
+    <div class="blog-cats">
+    <ul class="blog-cats__list">
       {% for tag in article.tags %}
-        <li>
+        <li class="blog-cats__item">
           <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
         </li>
       {% endfor %}
     </ul>
+    </div>
+  </div>
+
   {% endif %}
+  {% endcomment %}
+</div>
 
   {% if settings.social_sharing_blog %}
     {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}

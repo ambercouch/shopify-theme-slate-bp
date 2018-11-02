@@ -25,7 +25,11 @@
       </div>
       <div class="product__product-info">
         <div class="product__add-form">
+          {% if template == 'product' %}
               {% include 'add-form' %}
+            {% elsif template == 'product.voucher'%}
+            {% include 'add-form-voucher' %}
+          {% endif %}
         </div>
 
         <div class="product__share-links">
