@@ -1,0 +1,77 @@
+/*
+  BEM BLOCK .blog-cats
+ */
+
+.blog-cats {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .blog-cats--
+ */
+
+.blog-cats-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .blog-cats--
+
+[class*=blog-cats--] {
+  @extend .blog-cats;
+}
+
+/*
+  BEM ELEMENTS .blog-cats__
+ */
+
+.blog-cats__ {
+  &header {
+    display: block;
+    padding: $inuit-global-spacing-unit-small / 2 $inuit-global-spacing-unit-small;
+    background: #EEE;
+  }
+  &heading {
+    display: block
+  }
+  &title {
+    display: inline;
+  }
+  &link {
+    display: inline
+  }
+  &content {
+    display: block
+  }
+  &footer {
+    display: block
+  }
+  &list{
+    @extend .o-list-bare;
+    @extend .o-list-inline;
+    background: #fafafa;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .blog-cats--
+
+[class*=blog-cats__header--] {
+  @extend .blog-cats__header;
+}
+
+.blog-cats__item a, .blog-cats__item .blog-cats__label{
+  text-decoration: none;
+  padding: $inuit-global-spacing-unit-tiny;
+  background-color: #EEEEEE;
+  margin: $inuit-global-spacing-unit-tiny;
+  display: block;
+&:hover{
+  background-color: #dddddd;
+}
+}
+
+.is-current .blog-cats__label{
+  background-color: #dddddd;
+
+}

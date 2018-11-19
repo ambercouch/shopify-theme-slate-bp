@@ -74,6 +74,13 @@
   &read-more{
     padding: 0 $inuit-global-spacing-unit;
   }
+  &meta-list{
+    @extend .o-list-bare ;
+    @extend .o-list-inline;
+  }
+  &meta-item{
+    @include inuit-font-size($inuit-font-size-h6);
+  }
 }
 //BEM ELEMENT MODIFIER FALLBACK .article--
 
