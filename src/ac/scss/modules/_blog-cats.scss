@@ -51,6 +51,7 @@
     @extend .o-list-bare;
     @extend .o-list-inline;
     background: #fafafa;
+    padding: $inuit-global-spacing-unit-tiny;
   }
 }
 
@@ -62,10 +63,12 @@
 
 .blog-cats__item a, .blog-cats__item .blog-cats__label{
   text-decoration: none;
-  padding: $inuit-global-spacing-unit-tiny;
+  padding: $inuit-global-spacing-unit-tiny / 2;
   background-color: #EEEEEE;
-  margin: $inuit-global-spacing-unit-tiny;
+  margin: $inuit-global-spacing-unit-tiny / 2;
   display: block;
+  line-height: 1;
+  @include inuit-font-size($inuit-font-size-h5, 1);
 &:hover{
   background-color: #dddddd;
 }
