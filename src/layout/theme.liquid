@@ -15,29 +15,29 @@
 
   {% if template == 'cart' %}
     {% unless customer.tags contains 'platinum' %}
-  <script>
-      function defer(method) {
-          if (window.jQuery) {
-              method();
-          } else {
-              setTimeout(function() { defer(method) }, 50);
-          }
-      }
-      defer(function () {
-          var content_for_header = "{{ content_for_header | replace: '/', '\/' | replace: '"', '\"' | replace: 'quantity_breaks.php?shop=tempestdesigns.myshopify.com' : '' | strip_newlines  }}";
-          // Output content to the head, and add newlines where required
-          $('head').append(content_for_header
-              .replace(/}        /g, "}        \n")
-              .replace(/\/\/<!\[CDATA\[/g, "//<![CDATA[\n")
-              .replace(/\/\/]]>/g, "//]]>\n")
-          );
-      });
-  </script>
-    {% else %}
-      {{ content_for_header }}
+    <script>
+        function defer(method) {
+            if (window.jQuery) {
+                method();
+            } else {
+                setTimeout(function() { defer(method) }, 50);
+            }
+        }
+        defer(function () {
+            var content_for_header = "{{ content_for_header | replace: '/', '\/' | replace: '"', '\"' | replace: 'quantity_breaks.php?shop=tempestdesigns.myshopify.com' : '' | strip_newlines  }}";
+            // Output content to the head, and add newlines where required
+            $('head').append(content_for_header
+                .replace(/}        /g, "}        \n")
+                .replace(/\/\/<!\[CDATA\[/g, "//<![CDATA[\n")
+                .replace(/\/\/]]>/g, "//]]>\n")
+            );
+        });
+    </script>
+  {% else %}
+    {{ content_for_header }}
     {% endunless %}
-    {% else %}
-      {{ content_for_header }}
+  {% else %}
+    {{ content_for_header }}
   {% endif %}
 
 
@@ -90,16 +90,11 @@
 <!--EndCFFPersistentCartCart-->
 <div style='display: none;' id='ait-customer-id'>{{customer.id}}</div>
 
-{% if settings[promo_popup] != '' %}
+{% if settings.enable_popup == true %}
   <div class="remodal" data-remodal-id="modal">
     <button data-remodal-action="close" class="remodal-close"></button>
-    <h1>Remodal</h1>
-    <p>
-      Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
-    </p>
-    <br>
-    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-    <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+    <p>Get 20% off you next order</p>
+    <p>enter code [ <b>SAVE20</b> ] at checkout</p>
   </div>
 {% endif %}
 </body>
