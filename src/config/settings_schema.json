@@ -137,6 +137,21 @@
     ]
   },
   {
+    "name": "Promo Popup",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Promo popup options"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_popup",
+        "label": "Enable sharing popup",
+        "default": true
+      }
+    ]
+  },
+  {
     "name": "Collections",
     "settings": [
       {
