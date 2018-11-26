@@ -1,0 +1,51 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Users\Richard\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Richard\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\HashiCorp\Vagrant\bin;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\QuickTime\QTSystem;C:\Users\Richard\AppData\Local\Microsoft\WindowsApps;C:\Users\Richard\AppData\Roaming\npm;C:\Users\Richard\AppData\Local\Yarn\bin;C:\Users\Richard\AppData\Local\Programs\EmEditor;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.6.0
+
+Node version: 
+  8.11.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'K:\htdocs\sarah-tempest.co.uk\node_modules\node-sass\vendor\win32-x64-57\binding.node'
+
+npm manifest: 
+  {
+    "name": "tempestdesigns.co.uk",
+    "version": "0.0.1",
+    "devDependencies": {
+      "@shopify/slate-tools": "0.13.0",
+      "autoprefixer": "^6.7.6",
+      "bower": "^1.8.0",
+      "browser-sync": "^2.18.8",
+      "browsersync": "0.0.1-security",
+      "cssnano": "^3.10.0",
+      "gulp": "^3.9.1",
+      "gulp-browserify": "^0.5.1",
+      "gulp-concat": "^2.6.1",
+      "gulp-postcss": "^6.3.0",
+      "gulp-sass": "^3.1.0",
+      "gulp-sourcemaps": "^2.4.1",
+      "gulp-svgmin": "^1.2.3",
+      "gulp-svgstore": "^6.1.0",
+      "gulp-uglify": "^2.0.1",
+      "gulp-util": "^3.0.8",
+      "gulp-watch": "^4.3.11",
+      "pixrem": "^3.0.2",
+      "pump": "^1.0.2",
+      "webpack": "^2.2.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
