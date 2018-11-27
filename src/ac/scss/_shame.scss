@@ -140,7 +140,7 @@ html.remodal-is-locked {
 /* Default theme styles of the overlay */
 
 .remodal-overlay {
-  background: rgba(43, 46, 56, 0.9);
+  background: rgba(43, 46, 56, 0.5);
 }
 
 .remodal-overlay.remodal-is-opening,
@@ -440,3 +440,12 @@ html.remodal-is-locked {
   width: 700px;
 }
 
+.remodal--promo{
+  padding: 0;
+  box-shadow: 0px 0px 50px rgba(0,0,0,0.6);
+}
+
+.remodal__content{
+  @extend .o-box;
+  padding: $inuit-global-spacing-unit;
+}
