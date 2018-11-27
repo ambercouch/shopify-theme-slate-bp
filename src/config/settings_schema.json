@@ -146,9 +146,53 @@
       {
         "type": "checkbox",
         "id": "enable_popup",
-        "label": "Enable sharing popup",
+        "label": "Enable promo popup",
         "default": true
+      },
+      {
+        "type": "page",
+        "id": "popup_content",
+        "label": "select a page to use in the popup"
+      },
+      {
+        "type": "textarea",
+        "id": "popup_content_simple",
+        "label": "Use some text in the popup instead of a page"
+      },
+      {
+        "type": "image_picker",
+        "id": "popup_content_image",
+        "label": "Add an image to the popup"
+      },
+      {
+        "type": "select",
+        "id": "popup_expires",
+        "label": "Select how often to show the promo popup",
+        "options": [
+          {
+            "value": "0.00011",
+            "label": "Test Mode"
+          },
+          {
+            "value": "1",
+            "label": "1 Day"
+          },
+          {
+            "value": "2",
+            "label": "2 Days"
+          },
+          {
+            "value": "3",
+            "label": "3 Days"
+          },
+          {
+            "value": "7",
+            "label": "1 Week"
+          }
+        ],
+        "default" : "1"
       }
+
     ]
   },
   {
