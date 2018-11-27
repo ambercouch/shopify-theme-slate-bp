@@ -44,7 +44,7 @@
 </head>
 
 {% include 'body-tag' %}
-<div id="page" class="site">
+<div id="page" class="site remodal-bg">
 
   <div class="site__accessibility">
     <a class="accessibility__link in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
@@ -91,11 +91,37 @@
 <div style='display: none;' id='ait-customer-id'>{{customer.id}}</div>
 
 {% if settings.enable_popup == true %}
-  <div class="remodal" data-remodal-id="modal">
+  {% assign popup_page = pages[settings.popup_content]%}
+  {% assign popup_image =  settings.popup_content_image %}
+{% assign popup_expires = settings.popup_expires %}
+
+  <div id="remodalPopupPromo" class="remodal remodal--promo" data-remodal-id="modal"  data-hash-tracking="false" data-expires="{% if popup_expires  %}{{ popup_expires }}{% else %}0{% endif %}">
+
     <button data-remodal-action="close" class="remodal-close"></button>
-    <p>Get 20% off you next order</p>
-    <p>enter code [ <b>SAVE20</b> ] at checkout</p>
+
+    {% if popup_image %}
+    <div class="remodal__image">
+    <img class="remodal__img" src="{{  popup_image  | img_url: '1000x600', crop: 'center' }}" >
+    </div>
+    {% endif %}
+
+    {% if popup_page.content != '' %}
+    <div class="remodal__content">
+      <!-- popup page - {{ popup_page.title }} -->
+      {{ popup_page.content }}
+    </div>
+    {% elsif settings.popup_content_simple != '' %}
+    <div class="remodal__content">
+    <!-- Popup content simple - update in theme customizer -->
+      {{  settings.popup_content_simple }}
+
+    {% elsif popup_image == nil %}
+    <div class="remodal__content">
+      <p>Turn off or add content to this promo popup in the theme customizer</p>
+    </div>
+    {% endif %}
   </div>
+
 {% endif %}
 </body>
 
