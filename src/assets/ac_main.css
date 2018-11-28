@@ -4487,6 +4487,9 @@ p {
   @media (min-width: 46.25em) {
     .page__content, [class*=page__content--] {
       width: 75%; } }
+  .page__content li, [class*=page__content--] li {
+    margin-bottom: 18px;
+    line-height: 1.3; }
 
 .page__contact-form {
   margin: 0 auto;
@@ -5223,6 +5226,9 @@ p {
   @media (min-width: 61.25em) {
     .customer-login__control-links {
       flex-direction: row; } }
+
+.customer-login__link {
+  color: #fff; }
 
 .customer-login__recover-success {
   display: inline-block;
@@ -6548,3 +6554,16 @@ p {
 
 .c-collection-swatches__footer {
   display: block; }
+
+.instruction-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.instruction-illustration .sep {
+  margin-bottom: 35px; }
+
+figure img {
+  box-shadow: 0 0 50px 3px rgba(69, 79, 91, 0.2);
+  display: block;
+  margin: 35px auto 70px; }
