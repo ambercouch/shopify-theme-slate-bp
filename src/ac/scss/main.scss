@@ -138,3 +138,19 @@
 @import "components";
 
 //@import "shame";
+
+.instruction-illustration{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.instruction-illustration .sep{
+  margin-bottom: $inuit-global-spacing-unit;
+}
+
+figure img{
+  box-shadow: 0 0 50px 3px rgba(69,79,91,0.2);
+  display: block;
+  margin: $inuit-global-spacing-unit auto $inuit-global-spacing-unit-large;
+}
+
