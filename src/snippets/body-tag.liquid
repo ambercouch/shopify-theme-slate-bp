@@ -31,14 +31,14 @@ access--{{ access }}
   data-customer-last-name='{{customer.last_name}}'
   data-customer-email='{{  customer.email }}'
   data-url-path='{{ request.path }}'
-  data-customer-tags='{{ customer.tags }}'
+  data-customer-tags='{{ customer.tags | join: ',' }}'
   {% endcapture %}
 {% else %}
 {% endif %}
 
 
 <body id="{{ page_title | handle }}"
-      class="{{ classTemplate }} {{ classCustomer }} {{ classAccess }}"
+      class="test-ac {{ classTemplate }} {{ classCustomer }} {{ classAccess }}"
       data-template-access="{{ dataTemplateAccess }}"
       data-customer-access="{{ dataCustomerAccess }}"
       data-template="{{ template | handleize }}"
