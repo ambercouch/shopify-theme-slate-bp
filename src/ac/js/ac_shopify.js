@@ -16,8 +16,17 @@ ACSHOPIFY = {
 
             'use strict';
             //uncomment to debug
-            console.log('common');
+            console.log('common customer data 123');
 
+            var customerTags = $('body').data('customer-tags');
+            console.log(customerTags);
+
+            if($.inArray('30DAY', customerTags) !== -1){
+                console.log('this is 30day')
+                Cookies.set("ac-30day", 1, { expires : 1 });
+            }else {
+                Cookies.set("ac-30day", 0, { expires : 1 });
+            }
 
 
 
