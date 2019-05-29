@@ -1,0 +1,18 @@
+.c-btn{
+  @extend .o-btn;
+}
+
+[class*='c-btn--']{
+  @extend .c-btn;
+}
+
+.c-btn--{
+  &col1{
+    @extend .c-btn;
+    background: $brand-col-1;
+  }
+  &col2{
+    @extend .c-btn;
+    background: $brand-col-2;
+  }
+}

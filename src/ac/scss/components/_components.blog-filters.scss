@@ -1,0 +1,85 @@
+/*
+  BEM BLOCK .c-blog-filters
+ */
+
+.c-blog-filters {
+  display: block;
+  border:solid 1px #eee;
+  border-width: 1px 0;
+  padding-top: $act-unit-s;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-blog-filters--
+ */
+
+.c-blog-filters-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-blog-filters--
+
+[class*=c-blog-filters--] {
+  @extend .c-blog-filters;
+}
+
+/*
+  BEM ELEMENTS .c-blog-filters__
+ */
+
+.c-blog-filters__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block;
+    margin-bottom: $act-unit-s;
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &list{
+    @extend .o-list-flex;
+   @extend .o-list-flex--w;
+    @extend .o-list-flex--center;
+    @extend .o-list-flex--t;
+  }
+  &link{
+    @extend .o-btn;
+    @extend .c-btn--col1;
+    @extend .o-btn--nw;
+    @extend .o-btn--t;
+    margin-top: $act-unit-t;
+    color: white;
+    border:solid 1px transparent ;
+    &:hover{
+      background: darken($brand-col-1, 8%);
+      opacity: 1!important;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-blog-filters--
+
+[class*=c-blog-filters__header--] {
+  @extend .c-blog-filters__header;
+}
+
+.c-blog-filters__link{
+  &.is-selected{
+    background: darken($brand-col-1, 25%);
+    border:solid 1px darken($brand-col-1, 25%);
+  }
+}

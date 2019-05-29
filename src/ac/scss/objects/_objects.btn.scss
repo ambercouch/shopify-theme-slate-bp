@@ -1,0 +1,26 @@
+.o-btn {
+  display: inline-block; /* [1] */
+  vertical-align: middle; /* [2] */
+  font: inherit; /* [3] */
+  text-align: center; /* [4] */
+  margin: 0; /* [4] */
+  cursor: pointer; /* [5] */
+  padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit;
+  transition: $global-transition;
+  border-radius: $global-radius;
+}
+
+[class*="o-btn--"]{
+  @extend .o-btn;
+}
+
+.o-btn--{
+  &nw{
+    @extend .o-btn;
+    white-space: nowrap;
+  }
+  &t{
+    padding: $act-unit-t;
+    @include act-font-size($inuit-font-size-h6,1);
+  }
+}
