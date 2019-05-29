@@ -1,0 +1,89 @@
+.o-list-flex{
+  display: flex;
+
+  > *{
+    margin: 0 $act-unit-s;
+
+    &:first-child{
+      margin-left: 0;
+    }
+
+    &:last-child{
+      margin-right: 0;
+    }
+
+  }
+}
+
+.o-list-flex--{
+  &flush{
+    > * {
+      margin: 0 !important;
+    }
+  }
+  &tiny{
+    > * {
+      margin: 0 $act-unit-t;
+    }
+  }
+  &small{
+    > * {
+      margin: 0 $act-unit-s;
+    }
+  }
+  &medium{
+    > * {
+      margin: 0 $act-unit;
+    }
+  }
+  &large{
+    > * {
+      margin: 0 $act-unit-l;
+    }
+  }
+  &huge{
+    > * {
+      margin: 0 $act-unit-h;
+    }
+  }
+}
+
+.o-list-flex--center{
+  @extend .o-list-flex;
+  justify-content: center;
+}
+
+.o-list-flex--1-1{
+  @extend .o-list-flex;
+  > * {
+    width: 100%;
+  }
+}
+
+.o-list-flex--1-2{
+  @extend .o-list-flex;
+  > * {
+    width: 50%;
+  }
+}
+
+.o-list-flex--1-3{
+  @extend .o-list-flex;
+  > * {
+    width: 33.333%;
+  }
+}
+
+.o-list-flex--1-4{
+  @extend .o-list-flex;
+  > * {
+    width: 25%;
+  }
+}
+
+.o-list-flex--1-5{
+  @extend .o-list-flex;
+  > * {
+    width: 50%;
+  }
+}

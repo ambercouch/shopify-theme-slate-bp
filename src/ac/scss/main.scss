@@ -40,96 +40,24 @@
 /*
   BASE - Styles for HTML elements eg body ul etc
  */
+
 @import "base";
 
 /*
-  TYPOGRAPHY - Styles for HTML elements eg body ul etc
+  TYPOGRAPHY
  */
+
 @import "typography";
 
 /*
  OBJECTS
  */
-@import "objects/o-btn";
-@import "objects/o-notice";
-
-@import "objects/inuit-extends/objects.list-bare";
-@import "objects/inuit-extends/objects.list-inline";
-
+@import "objects";
 
 /*
-  OTHER
- */
-@import "accessibility";
-@import "placeholders/off-page";
-@import "placeholders/h";
-
-
-/*
-  BEM - BLOCK MODULES
+  BEM - BLOCK LAYOUTS
  */
 
-@import "modules/site";
-@import "modules/main";
-@import "modules/masthead";
-@import "modules/site-logo";
-@import "modules/site-control";
-@import "modules/search-site";
-@import "modules/nav-main";
-@import "modules/mega-menu";
-@import "modules/menu-feature";
-@import "modules/hero";
-@import "modules/collection";
-@import "modules/featured-collection";
-@import "modules/collection-list";
-@import "modules/search-results";
-@import "modules/content-list";
-@import "modules/banner-list";
-@import "modules/product-thumb";
-@import "modules/collection-thumb";
-@import "modules/page-thumb";
-@import "modules/page";
-@import "modules/banner";
-@import "modules/footer";
-@import "modules/info-links";
-@import "modules/social-links";
-@import "modules/payment-icons";
-@import "modules/address";
-@import "modules/icon";
-@import "modules/pagination";
-@import "modules/filter-menu";
-@import "modules/product";
-@import "modules/product-gallery";
-@import "modules/add-form";
-@import "modules/share-links";
-@import "modules/variant";
-@import "modules/shopping-cart";
-@import "modules/cart-table";
-@import "modules/cart-checkout";
-@import "modules/customer-login";
-@import "modules/customer-register";
-@import "modules/customer-recover";
-@import "modules/customer-reset";
-@import "modules/customer-activate";
-@import "modules/customer-account";
-@import "modules/customer-history";
-@import "modules/customer-account-address";
-@import "modules/customer-addresses";
-@import "modules/customer-address";
-@import "modules/customer-address-list";
-@import "modules/default-address";
-@import "modules/order-table";
-@import "modules/new-address-form";
-@import "modules/edit-address-form";
-@import "modules/shop-btn";
-@import "modules/shopify-challenge";
-@import "modules/cart-promo";
-@import "modules/lookbooks-list";
-@import "modules/breadcrumbs";
-@import "modules/blog";
-@import "modules/article";
-@import "modules/blog-cats";
-@import "modules/continue-shopping-helper";
 
 /*
   BEM - BLOCK Components
@@ -137,20 +65,10 @@
 
 @import "components";
 
-//@import "shame";
 
-.instruction-illustration{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.instruction-illustration .sep{
-  margin-bottom: $inuit-global-spacing-unit;
-}
+/*
+  BEM - BLOCK SHAME
+ */
 
-figure img{
-  box-shadow: 0 0 50px 3px rgba(69,79,91,0.2);
-  display: block;
-  margin: $inuit-global-spacing-unit auto $inuit-global-spacing-unit-large;
-}
+@import "shame";
 
