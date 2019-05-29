@@ -1,35 +1,6 @@
-<div class="shopping-cart">
+{% comment %}
+  The contents of the cart.liquid template can be found in /sections/cart-template.liquid
+{% endcomment %}
 
-  <div class="shopping-cart__header">
-    <h1 class="shopping-cart__heading" >{{ 'cart.general.title' | t }}</h1>
-  </div>
-{% if cart.item_count > 0 %}
+{% section 'cart-template' %}
 
-  <div class="cart-table__continue">
-    <p>Check out now or <a data-continue-path href="/collections/all">continue shopping</a></p>
-  </div>
-  <form class="shopping-cart__form" action="/cart" method="post" novalidate>
-  <div class="shopping-cart__cart-table">
-    {% if customer.tags contains "platinum" %}
-    <!-- Bold: Quantity Breaks - Cart Savings Banner -->
-    <div id="shappify-qty-cart-msg"></div>
-    <!-- // end Bold code -->
-    {% endif %}
-    {% include 'cart-table' %}
-    <div class="shopping-cart__cart-promo">
-    {% include 'cart-promo' %}
-    </div>
-  </div>
-    <div class="shopping-cart__cart-checkout">
-     {% include "cart-checkout" %}
-    </div>
-
-
-
-
-  </form>
-{% else %}
-  {% include 'cart-empty' %}
-{% endif %}
-</div>
-<div id="cbb-also-bought-box"></div>

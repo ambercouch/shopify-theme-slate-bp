@@ -1,0 +1,20 @@
+<script>
+/* Upsell System App Config */
+if (!window.ShopifyUpsellConfig) {
+    window.ShopifyUpsellConfig = {
+        "template": {{ template | json }},
+        "cart": {{ cart | json }},
+        "appName": "shopify_upsell",
+        "formSelector": 'form[action="/cart"]',
+        "checkoutButtonSelector": '[type="submit"][name="checkout"]',
+        "updateInputSelector": '[name^="updates["]',
+        "productFormSelector": 'form[action="/cart/add"]',
+        "addToCartSelector": '[type="submit"]',
+        "blockDefaultAddToCart": true,
+        "baseUrl": '/a/shopify-upsell-api/v1',
+        "debug": false,
+    };
+}
+</script>
+
+{% include 'shopify-upsell-data' %}

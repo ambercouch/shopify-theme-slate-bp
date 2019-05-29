@@ -1,19 +1,31 @@
-<div class="collection-list is-{{ section.settings.collection_list_layout }}">
+<div class="page-width">
   {% if section.settings.title != blank %}
-    <div class="collection-list__header">
-      <h2 class="collection-list__heading">{{ section.settings.title | escape }}</h2>
+    <div class="section-header text-center">
+      <h2>{{ section.settings.title | escape }}</h2>
     </div>
   {% endif %}
 
-  <ul class="collection-list__list">
-    {% for block in section.blocks limit: section.blocks.size %}
-      <li class="collection-list__item">
-        <div class="collect-list__collection-thumb">
-        {% include "collection-thumb" %}
+  {% case section.settings.grid %}
+    {% when 2 %}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}
+    {% when 3 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+    {% when 4 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+    {% when 5 %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+  {% endcase %}
+
+  <div class="collection-grid">
+    <div class="grid grid--uniform">
+      {% for block in section.blocks limit: section.blocks.size %}
+        <div class="grid__item {{ grid_item_width }}" {{ block.shopify_attributes }}>
+          {%- assign collection = collections[block.settings.collection] -%}
+          {% include 'collection-grid-item' %}
         </div>
-      </li>
-    {% endfor %}
-  </ul>
+      {% endfor %}
+    </div>
+  </div>
 
   {% if section.blocks.size == 0 %}
     {% include 'no-blocks' %}
@@ -21,200 +33,56 @@
 </div>
 
 {% schema %}
-{
-"name": "Collection list",
-"class": "site__collection-list",
-"max_blocks": 12,
-"settings": [
-{
-"type": "text",
-"id": "title",
-"label": "Heading",
-"default": "Collection list"
-},
-{
-"type": "select",
-"id": "collection_list_layout",
-"label": "Layout Style",
-"info": "Change the layout style of the collection thumbnails",
-"default": "50-50",
-"options": [
-{"value" : "50-50",
-"label" : "50, 50"
-},
-{"value" : "25-50-25",
-"label" : "25, 50, 25"
-}]
-}
-],
-"blocks": [
-{
-"type": "collection",
-"name": "Collection List",
-"settings": [
-{
-"label": "Collection",
-"id": "collection",
-"type": "collection"
-},
-{
-"label": "Collection Title",
-"id": "collection_title",
-"info": "Override the collection title.",
-"type": "text"
-},
-{
-"label": "Collection Title Position",
-"id": "collection_title_position",
-"options": [
-{"value" : "top-left",
-"label" : "Top, Left",
-"group" : "Top"
-},
-{"value" : "top-centre",
-"label" : "Top, Centre",
-"group" : "Top"
-},
-{"value" : "top-right",
-"label" : "Top, Right",
-"group" : "Top"
-},
-{"value" : "centre-left",
-"label" : "Centre, Left",
-"group" : "Centre"
-},
-{"value" : "centre-centre",
-"label" : "Centre, Centre",
-"group" : "Centre"
-},
-{"value" : "centre-right",
-"label" : "Centre, Right",
-"group" : "Centre"
-},
-{"value" : "bottom-left",
-"label" : "Bottom, Left",
-"group" : "Bottom"
-},
-{"value" : "bottom-centre",
-"label" : "Bottom, Center",
-"group" : "Bottom"
-},
-{"value" : "bottom-right",
-"label" : "Bottom, Right",
-"group" : "Bottom"
-}
-],
-"default":   "centre-centre",
-"type": "select"
-},
-
-{
-"label": "Hide Collection Title",
-"id": "hide_collection_title",
-"info": "Removes the collection title",
-"default": false,
-"type": "checkbox"
-},
-{
-"label": "Collection Image Position",
-"id": "collection_image_position",
-"info": "Position the collection image when cropped.",
-"default":"centre",
-"type": "select",
-"options" : [
-{"value":"centre",
-"label":"Centre"},
-{"value":"left",
- "label":"Left"},
-{"value":"right",
-"label":"Right"}
-]
-},
-{
-"label": "Button Text",
-"id": "collection_button",
-"default": "Shop now",
-"info": "Leave blank to remove the button.",
-"type": "text"
-},
-{
-"label": "Button Text Colour",
-"id": "collection_button_text_colour",
-"options": [
-{"value" : "white",
-"label" : "White",
-"group" : "Basic"
-},
-{"value" : "p431",
-"label" : "Grey 1"
-}
-],
-"default": "p431",
-"type": "select"
-},
-{
-"label": "Button Background Colour",
-"id": "collection_button_background_colour",
-"options": [
-{"value" : "white",
-"label" : "White",
-"group" : "Basic"
-},
-{"value" : "p431",
-"label" : "Grey 1",
-"group" : "Grey"
-},
-{"value" : "p429",
-"label" : "Grey 2",
-"group" : "Grey"
-},
-{"value" : "p427",
-"label" : "Grey 3",
-"group" : "Grey"
-},
-{"value" : "p4735",
-"label" : "Peach 1",
-"group" : "Peach"
-},
-{"value" : "p489",
-"label" : "Peach 2",
-"group" : "Peach"
-},
-{"value" : "p475",
-"label" : "Peach 3",
-"group" : "Peach"
-},
-{"value" : "p7466",
-"label" : "Aqua 1",
-"group" : "Aqua"
-},
-{"value" : "p318",
-"label" : "Aqua 2",
-"group" : "Aqua"
-}
-],
-"default": "white",
-"type": "select"
-}
-]
-}
-],
-"presets": [
-{
-"name": "Collection list",
-"category": "Collection",
-"blocks": [
-{
-"type": "collection"
-},
-{
-"type": "collection"
-},
-{
-"type": "collection"
-}
-]
-}
-]
-}
+  {
+    "name": "Collection list",
+    "class": "index-section",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Collections per row",
+        "min": 2,
+        "max": 5,
+        "step": 1,
+        "default": 3
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          }
+        ]
+      }
+    ]
+  }
 {% endschema %}

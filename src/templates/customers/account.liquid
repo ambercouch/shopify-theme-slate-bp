@@ -1,103 +1,57 @@
-{% include 'logic-access' %}
-{% include 'logic-customer' %}
-<div class="customer-account">
-  <div class="customer-account__header">
-    <h1 class="customer-account__heading" >{{ 'customer.account.title' | t }}</h1>
-
+<div class="page-width">
+  <div class="section-header text-center">
+    <h1>{{ 'customer.account.title' | t }}</h1>
+    {{ 'layout.customer.log_out' | t | customer_logout_link }}
   </div>
-  <div class="customer-account__info">
-    <!-- customerAccess {{ customerAccess }} -->
-    {% if customerAccess == 'inactive' %}
-      <div class="customer-account__notice">
-        <div class="customer-account__notice-header" >
-        <h6 class="customer-account__notice-heading" >Account Notice</h6>
-        </div>
-          <div class="customer-account__notice-content" >
-        <p><small>Your account is inactive and currently under review. We will review your account shortly and email you once it has been activated.</small></p>
-        </div>
-      </div>
+
+  <div class="grid">
+    <div class="grid__item medium-up--two-thirds">
+      <h2>{{ 'customer.orders.title' | t }}</h2>
+
+      {% paginate customer.orders by 20 %}
+        {% if customer.orders.size != 0 %}
+
+          <table class="responsive-table">
+            <thead>
+              <tr>
+                <th>{{ 'customer.orders.order_number' | t }}</th>
+                <th>{{ 'customer.orders.date' | t }}</th>
+                <th>{{ 'customer.orders.payment_status' | t }}</th>
+                <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                <th>{{ 'customer.orders.total' | t }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in customer.orders %}
+                <tr>
+                  <td data-label="{{ 'customer.orders.order_number' | t }}">
+                    <a href="{{ order.customer_url }}" class="btn btn--secondary btn--small">{{ order.name }}</a>
+                  </td>
+                  <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                  <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                  <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                  <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        {% else %}
+
+          <p>{{ 'customer.orders.none' | t }}</p>
 
         {% endif %}
-    <p>Hi {{ customer.first_name | capitalize }}, you are now logged into your <strong>Tempest Designs</strong> customer account.</p>
-    <p>This is your account area, here you can find details of your <a href="#orderHistory">order history</a> and your <a href="#accountDetails">account details</a>. Please use the <a href="/account/login#recover" >password reset form</a>, If you need to reset your password</p>
-    {% if customer.tags contains 'little gems' %}
-      <p>As a 'Little Gems' loyalty customer you earn points on every on purchase you make. To see how many points you have earned this month, scroll down to your <a href="loyaltyPoints">Loyalty Program Section</a>. When you have enough points you can exchange them for <a href="/products/tempest-little-gems-voucher">'Little Gems Vouchers'</a> which you can spend in our <a href="/">store</a></p>
-    {% endif %}
-  </div>
-  <div class="customer-account__section" >
-    <div id="orderHistory"  class="customer-history">
-     <div class="customer-history__header">
-<h2 class="customer-history__heading" >{{ 'customer.orders.title' | t }}</h2>
-     </div>
-{% paginate customer.orders by 3 %}
-  {% if customer.orders.size != 0 %}
-    <div class="customer-history__order-table">
-    <table class="responsive-table order-table__table" >
-      <thead>
-        <tr>
-          <th class="order-table__th">{{ 'customer.orders.order_number' | t }}</th>
-          <th class="order-table__th">{{ 'customer.orders.date' | t }}</th>
-          <th class="order-table__th">{{ 'customer.orders.payment_status' | t }}</th>
-          <th class="order-table__th">{{ 'customer.orders.fulfillment_status' | t }}</th>
-          <th class="order-table__th">{{ 'customer.orders.total' | t }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for order in customer.orders %}
-          <tr class="responsive-table-row order-table__row">
-            <td class="order-table__data" data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
-            <td  class="order-table__data" data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
-            <td  class="order-table__data" data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
-            <td  class="order-table__data" data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
-            <td  class="order-table__data" data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    </div>
-  {% else %}
-      <div class="customer-history__order-table--empty">
-    <p>{{ 'customer.orders.none' | t }}</p>
-      </div>
-  {% endif %}
-
-  {% if paginate.orders > 1 %}
-    {% include 'pagination' %}
-  {% endif %}
-{% endpaginate %}
-    </div>
-  </div>
-  {% if customer.tags contains 'little gems' %}
-  <div id="loyaltyPoints" class="customer-account__section">
-    <div class="customer-account-loyalty">
-        <!-- Bold: Loyalty Points - Step 3 -->
-        {% include 'bold-loyalties-customer-transactions' %}
-        <!-- // end bold code -->
-    </div>
-  </div>
-  {% else %}
-    <!-- {{ customer.tags }} -->
-  {% endif %}
-  <div id="accountDetails" class="customer-account__section">
-    <div class="customer-account-address">
-      <div class="customer-account-address__header">
-        <h2 class="customer-account-address__heading">{{ 'customer.account.details' | t }}</h2>
-      </div>
-      <div class="customer-account-address__default-address">
-        <div class="customer-account-address__account-details">
-        Name: {{ customer.name | capitalize }}<br>
-        Email: {{ customer.email }}
-        </div>
-        {%  if customer.default_address %}
-        <div class="default-address">
-          <h3 class="default-address__heading" >Default Address</h3>
-          {{ customer.default_address | format_address }}
-        </div>
+        {% if paginate.pages > 1 %}
+          {% include 'pagination' %}
         {% endif %}
-      </div>
-      <div class="customer-account-address__footer">
-      <a class="customer-account-address__address-link" href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
-      </div>
-     </div>
+      {% endpaginate %}
+    </div>
+    <div class="grid__item medium-up--one-third">
+      <h2>{{ 'customer.account.details' | t }}</h2>
+
+      {{ customer.default_address | format_address }}
+
+      <p><a href="/account/addresses" class="btn btn--small">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+    </div>
   </div>
 </div>

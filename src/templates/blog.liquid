@@ -1,53 +1,5 @@
-{% paginate blog.articles by 5 %}
+{% comment %}
+  The contents of the blog.liquid template can be found in /sections/blog-template.liquid
+{% endcomment %}
 
-  {%- assign blog_title = blog.title -%}
-
-  
-
-<div class="blog">
-  <div class="blog__header">
-    <h1 class="blog__heading">{{ blog_title }}</h1>
-  </div>
-  <div class="blog__blog-cats">
-    <div class="blog-cats">
-    {% if blog.all_tags.size > 0 %}
-      <div class="blog-cats__header">
-      <span class="blog-cats__title">{{ 'blogs.general.categories' | t }}</span>
-      </div>
-      <ul class="blog-cats__list" >
-        <li class="blog-cats__item"  ><a href="/blogs/news">All</a></li>
-        {% for tag in blog.all_tags %}
-
-          {% if current_tags contains tag %}
-
-            <li class="blog-cats__item is-current"  ><span class="blog-cats__label"> {{ tag }}</span></li>
-          {% else %}
-            <li class="blog-cats__item ">{{ tag | link_to_tag: tag }}</li>
-          {% endif %}
-
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </div>
-  </div>
-
-  {% comment %}
-
-  Article Previews
-  ====================
-  {% endcomment %}
-
-  <div class="blog__articles">
-    <ul class="blog__list">
-      {% for article in blog.articles %}
-        <li class="blog__item">
-          {% include 'blog-article-preview' %}
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% if paginate.pages > 1 %}
-    {% include 'pagination' %}
-  {% endif %}
-</div>
-{% endpaginate %}
+{% section 'blog-template' %}

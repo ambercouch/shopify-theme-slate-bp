@@ -1,0 +1,16 @@
+<script>
+  window.addEventListener("load", function(event) {
+var boldCheckoutBtn = document.getElementsByClassName("bold-validate-chk"); //class of checkout button
+
+  for (var i = 0; i < boldCheckoutBtn.length; i++) {    
+    boldCheckoutBtn[i].disabled = false;
+    };
+  });
+</script>
+  
+<style>
+.bold-custom-checkout:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+</style>
