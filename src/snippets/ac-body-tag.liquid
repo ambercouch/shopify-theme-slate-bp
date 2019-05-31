@@ -1,1 +1,13 @@
-<body class="ac-body-tag template-{{ template | split: '.' | first }}">
+
+{% capture classCustomer %}
+  {% if customer %} customer--in {% else %} customer--out {% endif %}
+{% endcapture %}
+{%- capture dataHandle -%}
+  {{ request.path | handleize }}
+{% endcapture %}
+<!-- current tags {{ current_tags }} -->
+
+<body class="ac-body-tag template-{{ template | split: '.' | first }} {{ classCustomer }} "
+      data-template="{{ template | handleize }}"
+      data-handle="{{ dataHandle }}"
+      data-current-tags="{{ current_tags  | handleize | join: '|' }}">
