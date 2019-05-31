@@ -16,7 +16,7 @@ ACSHOPIFY = {
 
             'use strict';
             //uncomment to debug
-            console.log('common customer data 123');
+            console.log('common customer data 123 blog');
 
 
             $('body').addClass('js');
@@ -29,6 +29,26 @@ ACSHOPIFY = {
         init: function () {
             //uncomment to debug
             //console.log('pages');
+        }
+    },
+    blog: {
+        init: function () {
+            //uncomment to debug
+            console.log('blog');
+
+            let currentTags = document.body.dataset.currentTags;
+            let tagsArray = (currentTags == "") ? false : currentTags.split('|')
+
+            if(tagsArray != false ){
+                $(document).on('click', ".c-blog-filters__link", function () {
+                    
+                } )
+            }
+
+            console.log(currentTags);
+            console.log(tagsArray);
+            console.log(window.location.pathname.substring(this.href.lastIndexOf('/') + 1));
+
         }
     },
    collection: {
