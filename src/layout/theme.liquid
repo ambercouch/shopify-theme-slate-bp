@@ -4,10 +4,10 @@
 <head>
   <!-- AmberCouch 20190528  -->
   <meta name="google-site-verification" content="9DQBhASSx2w52hWlsKwLznejgj-xU92D8bDibNGhfi4" />
-  
+
   <meta name="google-site-verification" content="iTXE7cOkAiA0ucjxS5l99SUD-CRElJ_mNOcCbmnimx8" />
-    
-  
+
+
 
 <!-- Global site tag (gtag.js) - Google AdWords: 800605528 -->
 
@@ -21,7 +21,7 @@
 
   gtag('js', new Date());
 
- 
+
 
   gtag('config', 'AW-800605528');
 
@@ -98,15 +98,18 @@
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
   <!--[if lte IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
 
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'ac.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'ac.js' | asset_url }}"></script><![endif]-->
+
   {{ content_for_header }}
 {%- include 'bold-common' -%}
 <!--Gem_Page_Header_Script-->
 {% include 'gem-app-header-scripts' %}
 <!--End_Gem_Page_Header_Script-->
-  
-  
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  
+
 <script src="//staticxx.s3.amazonaws.com/aio_stats_lib_v1.min.js?v=1.0"></script>
 
 		<!-- Snippet for Upsell System app -->
@@ -120,14 +123,12 @@
 
 {% include 'ac-body-tag' %}
 
-  
+
   <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W8FQR6Z"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  
-  
-  
-  
+
+
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
   <div id="SearchDrawer" class="search-bar drawer drawer--top">
@@ -164,8 +165,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!--Gem_Page_Footer_Script-->
 {% include 'gem-app-footer-scripts' %}
 <!--End_Gem_Page_Footer_Script-->
-  
-  
+
+
 <script type="text/javascript">
   $(document).ready(function(){
   $('a[href^="#"]').on('click',function (e) {
@@ -191,9 +192,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 } );
-  
+
 </script>
-  
+
 <input type="hidden" id="656565115116111114101" data-customer-id="{{ customer.id }}" data-customer-email="{{ customer.email }}" data-customer-name="{{ customer.first_name }} {{ customer.last_name }}"/>
 {% comment %}
 
