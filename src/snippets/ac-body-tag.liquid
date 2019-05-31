@@ -10,4 +10,4 @@
 <body class="ac-body-tag template-{{ template | split: '.' | first }} {{ classCustomer }} "
       data-template="{{ template | handleize }}"
       data-handle="{{ dataHandle }}"
-      data-current-tags="{{ current_tags  | handleize | join: '|' }}">
+      data-current-tags="{{ current_tags  | join: '|' | replace: ' ', '-' | downcase }}">
