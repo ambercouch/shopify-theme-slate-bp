@@ -1,0 +1,55 @@
+//border-style
+
+.u-bss{
+  border-style: solid;
+}
+
+.u-blss{
+  border-style:none; //default
+  border-left-style: solid !important;
+}
+.u-brss{
+  border-style:none; //default
+  border-right-style: solid !important;
+}
+.u-btss{
+  border-style:none; //default
+  border-top-style: solid !important;
+}
+.u-bbss{
+  border-style:none; //default
+  border-bottom-style: solid !important;
+
+ }
+
+//border-width
+.u-bw1{
+  border-width: 1px;
+}
+.u-bw2{
+  border-width: 2px;
+}
+.u-bw3{
+  border-width: 3px;
+}
+.u-bw4{
+  border-width: 4px;
+}
+.u-bw5{
+  border-width: 5px;
+}
+.u-bwt{
+  border-width: $act-unit-t;
+}
+.u-bws{
+  border-width: $act-unit-s;
+}
+.u-bwm{
+  border-width: $act-unit;
+}
+.u-bwl{
+  border-width: $act-unit-l;
+}
+.u-bwh{
+  border-width: $act-unit-h;
+}

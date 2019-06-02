@@ -1,0 +1,88 @@
+
+.u-col1 {
+  color: $brand-col-1 !important;
+  background-color: white; //default
+  .nav-menu__link *{
+    color: $brand-col-1 !important;
+  }
+}
+
+.u-col2 {
+  color: $brand-col-2 !important;
+  background-color: $brand-col-1; //default
+  .nav-menu__link *{
+    color: $brand-col-2 !important;
+  }
+}
+
+.u-col3 {
+  color: $brand-col-3 !important;
+  background-color: white; //default
+  .nav-menu__link *{
+    color: $brand-col-3 !important;
+  }
+}
+
+.u-col4{
+  color: $brand-col-4 !important;
+  background-color: white;
+  .nav-menu__link *{
+    color: $brand-col-4 !important;
+  }
+}
+
+.u-col5 {
+  color: $brand-col-5 !important;
+  background-color: white; //default
+  .nav-menu__link *{
+    color: $brand-col-5 !important;
+  }
+}
+
+.u-col6 {
+  color: $brand-col-6 !important;
+  background-color: white; //default
+  .nav-menu__link *{
+    color: $brand-col-6 !important;
+  }
+}
+
+.u-col7 {
+  color: $brand-col-7 !important;
+  background-color: white; //default
+  .nav-menu__link *{
+    color: $brand-col-7 !important;
+  }
+}
+
+.u-col8 {
+  color: $brand-col-8 !important;
+  background-color: white; //default
+  .nav-menu__link *{
+    color: $brand-col-8 !important;
+  }
+}
+
+.u-col9 {
+  color: $brand-col-9 !important;
+  background-color: white; //default
+  .nav-menu__link *{
+    color: $brand-col-9 !important;
+  }
+}
+
+.u-col-white {
+  color: white !important;
+  background-color: black; //default
+  .nav-menu__link *{
+    color: white !important;
+  }
+}
+
+.u-col-black {
+  color: black !important;
+  background-color: white; //default
+  .nav-menu__link *{
+    color: black !important;
+  }
+}

@@ -1,0 +1,27 @@
+.u-gap{
+  width: 100%;
+  display: block;
+  border: none !important;
+  height: $act-unit;
+  padding: 0!important;
+  margin: 0!important;
+}
+
+[class*=u-gap--]{
+  @extend .u-gap
+}
+
+.u-gap--{
+  &t{
+    height: $act-unit-t !important;
+  }
+  &s{
+    height: $act-unit-s !important;
+  }
+  &l{
+    height: $act-unit-l !important;
+  }
+  &h{
+    height: $act-unit-h !important;
+  }
+}

@@ -1,0 +1,111 @@
+@mixin act-padding($breakpoint : null){
+  .u-p0#{$breakpoint} {
+    padding: 0;
+  }
+  .u-pt#{$breakpoint} {
+    padding: $inuit-global-spacing-unit-tiny;
+  }
+  .u-ps#{$breakpoint} {
+    padding: $inuit-global-spacing-unit-small;
+  }
+  .u-pm#{$breakpoint} {
+    padding: $inuit-global-spacing-unit;
+  }
+  .u-pl#{$breakpoint} {
+    padding: $inuit-global-spacing-unit-large;
+  }
+  .u-ph#{$breakpoint} {
+    padding: $inuit-global-spacing-unit-huge;
+  }
+
+  .u-pl0#{$breakpoint}  {
+    padding-left: 0 !important;
+  }
+  .u-plt#{$breakpoint} {
+    padding-left: $inuit-global-spacing-unit-tiny;
+  }
+  .u-pls#{$breakpoint} {
+    padding-left: $inuit-global-spacing-unit-small;
+  }
+  .u-plm#{$breakpoint} {
+    padding-left: $inuit-global-spacing-unit;
+  }
+  .u-pll#{$breakpoint} {
+    padding-left: $inuit-global-spacing-unit-large;
+  }
+  .u-plh#{$breakpoint} {
+    padding-left: $inuit-global-spacing-unit-huge;
+  }
+
+  .u-pr0#{$breakpoint} {
+    padding-right: 0;
+  }
+  .u-prt#{$breakpoint} {
+    padding-right: $inuit-global-spacing-unit-tiny;
+  }
+  .u-prs#{$breakpoint} {
+    padding-right: $inuit-global-spacing-unit-small;
+  }
+  .u-prm#{$breakpoint} {
+    padding-right: $inuit-global-spacing-unit;
+  }
+  .u-prl#{$breakpoint} {
+    padding-right: $inuit-global-spacing-unit-large;
+  }
+  .u-prh#{$breakpoint} {
+    padding-right: $inuit-global-spacing-unit-huge;
+  }
+
+  .u-p0#{$breakpoint} {
+    padding-top: 0;
+  }
+  .u-ptt#{$breakpoint} {
+    padding-top: $inuit-global-spacing-unit-tiny;
+  }
+  .u-pts#{$breakpoint} {
+    padding-top: $inuit-global-spacing-unit-small;
+  }
+  .u-ptm#{$breakpoint} {
+    padding-top: $inuit-global-spacing-unit;
+  }
+  .u-ptl#{$breakpoint} {
+    padding-top: $inuit-global-spacing-unit-large;
+  }
+  .u-pth#{$breakpoint} {
+    padding-top: $inuit-global-spacing-unit-huge;
+  }
+
+  .u-pb0#{$breakpoint} {
+    padding-bottom: 0;
+  }
+  .u-pbt#{$breakpoint} {
+    padding-bottom: $inuit-global-spacing-unit-tiny;
+  }
+  .u-pbs#{$breakpoint} {
+    padding-bottom: $inuit-global-spacing-unit-small;
+  }
+  .u-pbm#{$breakpoint} {
+    padding-bottom: $inuit-global-spacing-unit;
+  }
+  .u-pbl#{$breakpoint} {
+    padding-bottom: $inuit-global-spacing-unit-large;
+  }
+  .u-pbh#{$breakpoint} {
+    padding-bottom: $inuit-global-spacing-unit-huge;
+  }
+}
+
+@include act-padding;
+
+@if (variable-exists(mq-breakpoints)) {
+
+  @each $inuit-bp-name, $inuit-bp-value in $mq-breakpoints {
+
+    @include mq($from: $inuit-bp-name) {
+      @include act-padding(#{$inuit-widths-breakpoint-separator}#{$inuit-bp-name});
+    }
+
+  }
+
+}
+
