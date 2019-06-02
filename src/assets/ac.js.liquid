@@ -16,7 +16,7 @@ ACSHOPIFY = {
 
             'use strict';
             //uncomment to debug
-            console.log('common customer data 123 blog');
+            console.log('common customer data 123 blog 1234567890');
 
 
             $('body').addClass('js');
@@ -38,17 +38,58 @@ ACSHOPIFY = {
 
             let currentTags = document.body.dataset.currentTags;
             let tagsArray = (currentTags == "") ? false : currentTags.split('|')
+            let currentLocation = window.location.href;
+            let currentPath = window.location.pathname;
+            let pathArray = currentPath.split('/');
+            let pathLastSection = pathArray[pathArray.length - 1];
+            let pathFirstSection = currentPath.replace(String(pathLastSection), "");
+            let pathUpdate = '';
 
             if(tagsArray != false ){
-                $(document).on('click', ".c-blog-filters__link", function () {
-                    
+
+                //If filter clicked
+                $(document).on('click', ".c-blog-filters__link", function (e) {
+
+                    e.preventDefault();
+
+                    //Get the filter tag
+                    let clickedTag = this.dataset.tag;
+
+                    //If tag is already sellected
+                    if ( tagsArray.includes(clickedTag) ){
+
+                        //remove the tag from the url path
+                        pathLastSection = ACSHOPIFY.fn.removePlus(pathLastSection.replace(clickedTag, ""));
+
+                        //if no tags selected
+                        if(pathLastSection == ''){
+
+                            //reset url to blog path
+                            pathArray.pop();
+                            pathArray.pop();
+
+                            //update the url path
+                            pathUpdate = pathArray.join('/')
+
+                            //if there are tags
+                        }else{
+                            //update the url path with latest tags
+                            pathArray[pathArray.length - 1] = pathLastSection;
+                            pathUpdate = pathArray.join('/')
+                        }
+
+                        //redirect to new tags
+                        window.location.pathname = pathUpdate;
+
+                        //If the tag was not already selected
+                    }else{
+                        //add the tag to the current url and redirect
+                        location.href = currentLocation + '+' + clickedTag;
+                    }
+
+
                 } )
             }
-
-            console.log(currentTags);
-            console.log(tagsArray);
-            console.log(window.location.pathname.substring(this.href.lastIndexOf('/') + 1));
-
         }
     },
    collection: {
@@ -76,7 +117,20 @@ ACSHOPIFY = {
     var: {
         locale: ''
     },
-    ac_fn:{
+    fn:{
+        removePlus: function (myUrl){
+            if (myUrl.substring(myUrl.length-1) == "+")
+            {
+                myUrl = myUrl.substring(0, myUrl.length-1);
+            }
+
+            myUrl = myUrl.replace('++', '+');
+
+            myUrl = (myUrl[0] == '+')? myUrl.substr(1) : myUrl;
+
+
+            return myUrl;
+        },
         locale: function (local) {
 
             if(local === undefined)
@@ -134,7 +188,7 @@ ACSHOPIFY = {
                 if(attempts === false || attempts > 0) {
                     setTimeout(function () {
                         attempts = (attempts === false )? attempts : attempts = attempts - 1;
-                        ACSHOPIFY.ac_fn.defer(successMethod, failMethod, testMethod, pause, attempts)
+                        ACSHOPIFY.fn.defer(successMethod, failMethod, testMethod, pause, attempts)
                     }, pause);
                 }
             }
