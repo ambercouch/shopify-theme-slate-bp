@@ -3,7 +3,7 @@
 <div class="page-width">
   <header class="section-header text-center">
     <h1>{{ page_title }}</h1>
-    {% if blog.tags.size > 0 %}
+    {% if  blog.articles_count < 1 or blog.tags.size > 0 %}
       {% include 'ac-blog-tags' %}
     {% endif %}
   </header>
@@ -13,6 +13,7 @@
   {% if section.settings.layout == 'grid' %}
     <div class="page-width">
       <div class="grid grid--uniform grid--blog">
+        {% if  blog.articles_count > 0  %}
         {% for article in blog.articles %}
           <div class="grid__item medium-up--one-third">
             {% if article.image %}
@@ -91,6 +92,12 @@
             </div>
           </div>
         {% endfor %}
+        {% else %}
+          <div class="u-tac">
+            <p><b>We cant find any blogs!</b><br>Try removing some filter or check out all the <a href="{{ blog.url }}">{{ page_title }}</a> blog post or head to the <a href="/collections">shop</a></p>
+          </div>
+
+        {% endif %}
       </div>
     </div>
   {% else %}
