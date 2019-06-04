@@ -35,14 +35,15 @@ ACSHOPIFY = {
             $('body').addClass('js');
 
             //Flickity
-            $('.hero__carousel').flickity({
-                // options
-                cellAlign: 'center',
-                contain: true,
-                //autoPlay: 5000,
-                imagesLoaded: true,
-                wrapAround: true
-            });
+            //
+            // $('.hero__carousel').flickity({
+            //     // options
+            //     cellAlign: 'center',
+            //     contain: true,
+            //     //autoPlay: 5000,
+            //     imagesLoaded: true,
+            //     wrapAround: true
+            // });
 
             //menu button
             var showButton = $('#menuButtonOpen, #menuButtonClose');
@@ -185,7 +186,7 @@ ACSHOPIFY = {
 
                         'subject': 'Tempest Design New Signup',
                         'title': 'A new customer account request has been received'
-                        
+
                     }
                     $.ajax({
                         type: "POST",
