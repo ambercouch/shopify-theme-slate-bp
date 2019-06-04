@@ -1,0 +1,54 @@
+<div class="c-nav-menu">
+
+  <ul class="c-nav-menu__list--site-tools">
+    <li class="c-nav-menu__item--menu">
+      <a id="menuButtonOpen" href="#" class="c-nav-menu__link--menu" data-state="off">
+        <span class="c-nav-menu__label--menu">Menu</span>
+        {% include 'icon-hamburger' %}
+      </a>
+    </li>
+    {%  comment %}
+    <li class="c-nav-menu__item">
+      <a id="searchControl" href="#" class="c-nav-menu__link" data-state="off">
+        <span class="c-nav-menu__lable">Search</span>
+        {% include 'icon-search' %}
+      </a>
+    </li>
+
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+        <li class="c-nav-menu__item--account">
+          <a href="/account" class="c-nav-menu__link">
+            <span class="c-nav-menu__label">
+              {{ 'layout.customer.account' | t }}
+            </span>
+            {% include 'icon-user' %}
+          </a>
+        </li>
+        <li class="c-nav-menu__item--customer">
+          {{ 'layout.customer.log_out' | t | customer_logout_link }} {% include 'icon-user' %}
+        </li>
+      {% else %}
+        <li class="c-nav-menu__item--customer">
+          {{ 'layout.customer.log_in' | t | customer_login_link }} {% include 'icon-user' %}
+        </li>
+      {% endif %}
+    {% endif %}
+    {% endcomment %}
+    <li class="c-nav-menu__item" data-button-cart >
+      <a href="/cart" class="c-nav-menu__link" >
+        <span class="c-nav-menu__label--cart">{{ 'layout.cart.title' | t }}</span>
+        {% include 'icon-cart' %}
+        <span data-cart-count class="c-nav-menu__cart-count">({{ cart.item_count }})</span>
+      </a>
+    </li>
+  </ul><!-- /.c-nav-menu__list -->
+
+{% comment %}
+
+  <div id="searchFormMain" class="c-nav-menu__search-site" data-state="off">
+    {% include 'search-site' %}
+  </div><!-- c-nav-menus__search -->
+  {% endcomment %}
+
+</div><!-- c-nav-menus -->

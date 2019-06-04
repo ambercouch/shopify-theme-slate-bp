@@ -1,0 +1,137 @@
+/*
+  BLOCK .c-nav-menu
+ */
+.c-nav-menu{
+  @include inuit-font-size($inuit-font-size-h5, 1)
+}
+/*
+  BLOCK .c-nav-menu__
+ */
+.c-nav-menu__{
+  &list{
+    @extend .o-list-bare;
+    //@extend .o-list-inline;
+    display: flex;
+  }
+  &item{
+    //@extend .o-list-inline__item;
+    pointer-events: all;
+    margin-left: $inuit-global-spacing-unit-tiny;
+    @include inuit-font-size($inuit-font-size-h5);
+    &:first-child{
+      margin-left:0;
+    }
+    &:nth-child(2){
+      @include mq($from : desktop){
+        margin-left:0;
+      }
+    }
+
+  }
+  &link{
+    text-decoration: none;
+    color: $brand-col-2;
+
+  @include inuit-font-size($inuit-font-size-h5);
+    @include mq($until : tablet){
+      flex-direction: column-reverse;
+      align-items: center;
+      display: flex;
+    }
+  }
+  &label{
+    display: none;
+  }
+  &search-site{
+    transition: opacity .3s ease;
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    &[data-state=off]{
+      left: -100%;
+      display: block;
+      opacity: 0;
+    }
+
+    &[data-state=on]{
+      opacity: 1;
+      display: block;
+    }
+  }
+
+  &cart-count{
+    @include mq($until : tablet){
+      display: none;
+    }
+  }
+}
+
+
+/*
+  BEM FREE ELEMENTS .c-nav-menu
+ */
+.c-nav-menu{
+  a{
+    text-decoration: none;
+    white-space: nowrap;
+  }
+}
+
+/*
+  BEM [class*=] @extends
+ */
+
+[class*='c-nav-menu__item--']{
+  @extend .c-nav-menu__item;
+}
+
+.c-nav-menu__item--{
+  &menu{
+     @include mq($from : desktop ){
+       display: none;
+     }
+   }
+  &customer{
+    @extend .c-nav-menu__item;
+    @include mq($until : tablet ){
+      display: inline-flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+}
+
+
+[class*='c-nav-menu__list--']{
+  @extend .c-nav-menu__list;
+}
+
+.c-nav-menu__list--{
+  &site-tools{
+    justify-content: space-between;
+  }
+}
+
+[class*='c-nav-menu__label--']{
+  @extend .c-nav-menu__label;
+}
+.c-nav-menu__label--{
+  &menu{
+    display: inline-block;
+    margin-left: $act-unit-t;
+    line-height: 1;
+  }
+}
+
+[class*='c-nav-menu__link--']{
+  @extend .c-nav-menu__link;
+}
+
+.c-nav-menu__link--{
+  &menu{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+  }
+}
