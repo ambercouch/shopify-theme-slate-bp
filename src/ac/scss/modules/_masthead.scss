@@ -23,14 +23,18 @@
  */
 .masthead__{
   &site-logo{
-
+    width:40%;
   }
   &site-control{
-
+    width: 100%;
+    padding: 0 $act-unit-t;
+    position: absolute;
+    top:0;
+    pointer-events: none;
     @include mq($from : desktop){
       position: absolute;
       right: $inuit-global-spacing-unit;
-      top: 0;
+      top:0;
 
     }
   }
