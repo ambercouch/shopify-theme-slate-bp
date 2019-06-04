@@ -1,17 +1,29 @@
 <div data-section-id="{{ section.id }}" data-section-type="promotion">
-<div class="hero">
-  <div class="hero__carousel">
+<div class="c-hero">
+  <div class="c-hero__carousel">
     {% for block in section.blocks limit: section.blocks.size %}
-    <div class="hero__cell">
+    <div class="c-hero__cell">
       {% if block.settings.hero_url != '' %}
-      <a href="{{ block.settings.hero_url }}" class="hero__link">
-      <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="hero__img">
+      <a href="{{ block.settings.hero_url }}" class="c-hero__link">
+      <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="c-hero__img">
       </a>
       {% else %}
-        <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="hero__img">
+        <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="c-hero__img">
       {% endif %}
     </div>
     {% endfor %}
+  </div>
+  <div class="c-hero__cta">
+    <div class="c-cta">
+      <div class="cta__btn">
+        <a class="c-btn--more">
+          <span class="c-btn__label">Find Out More</span><span class="c-btn__icon"> > </span>
+        </a>
+        <a class="c-btn--video">
+          <span class="c-btn__label">iClean mini in action</span><span class="c-btn__icon"> >   </span>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 </div>

@@ -1,0 +1,18 @@
+.c-hero{
+  @extend .o-wrapper;
+  @include mq($until : tablet){
+    padding: 0 !important;
+  }
+}
+.c-hero__{
+  &carousel{
+
+  }
+  &cell{
+    width: 100%;
+    text-align: center;
+  }
+  &img{
+    width: 100%;
+  }
+}

@@ -12,7 +12,14 @@
   {% endif %}
 </style>
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
-  <header id="masthead" class="site__masthead" role="banner">
+  <div class="site_top-bar">
+    <div class="c-top-bar">
+      <div class="c-top-bar__text">
+        100% Money Back Guarantee and Free UK Delivery
+      </div>
+    </div>
+  </div>
+  <header data-section-id="{{ section.id }}" data-section-type="header-section" id="masthead" class="site__masthead" role="banner">
     {% include 'masthead' %}
   </header>
 
