@@ -155,7 +155,7 @@
     width: 90%;
     background: rgba(#fff, 0.5);
     text-align: center;
-    @include inuit-font-size($font-size-kilo);
+    @include inuit-font-size($act-fs-k);
     @include mq($from : tablet){
       @include inuit-font-size($inuit-font-size-h1);
       bottom:0;

@@ -30,7 +30,7 @@
     font-weight: 500;
     margin-bottom: 0;
     text-transform: uppercase;
-    @include inuit-font-size($font-size-kilo, 1);
+    @include inuit-font-size($act-fs-k, 1);
     padding:$inuit-global-spacing-unit-tiny ;
     padding-right: $inuit-global-spacing-unit ;
     padding-left: $inuit-global-spacing-unit-small ;

@@ -1,0 +1,27 @@
+// Reassign `$inuit-global-spacing-unit` to `$ac-unit`.
+$act-unit: $inuit-global-spacing-unit;
+$act-unit-t: $inuit-global-spacing-unit-tiny;
+$act-unit-s: $inuit-global-spacing-unit-small;
+$act-unit-l: $inuit-global-spacing-unit-large;
+$act-unit-h: $inuit-global-spacing-unit-huge;
+
+$act-fs-g: $inuit-font-size-giga;
+$act-fs-m: $inuit-font-size-mega;
+$act-fs-k: $inuit-font-size-kilo;
+
+$act-fs-1: $inuit-font-size-h1;
+$act-fs-2: $inuit-font-size-h2;
+$act-fs-3: $inuit-font-size-h3;
+$act-fs-4: $inuit-font-size-h4;
+$act-fs-5: $inuit-font-size-h5;
+$act-fs-6: $inuit-font-size-h6;
+
+$act-fs-s: $inuit-font-size-small;
+$act-fs-sp: $inuit-font-size-small-print;
+
+
+
+// Reassign lengthy font-size mixin to `act-font-size()`.
+@mixin act-font-size($args...) {
+  @include inuit-font-size($args...);
+}

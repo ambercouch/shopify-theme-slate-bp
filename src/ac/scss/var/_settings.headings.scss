@@ -11,9 +11,9 @@ $scale--palm : 1.1006;
 $scale--lap : 1.1447;
 $scale--desk : 1.21141;
 
-$font-size-giga: $inuit-global-font-size * pow($scale, 6 );
-$font-size-mega: $inuit-global-font-size * pow($scale, 5 );
-$font-size-kilo: $inuit-global-font-size * pow($scale, 4 );
+$inuit-font-size-giga: $inuit-global-font-size * pow($scale, 6 );
+$inuit-font-size-mega: $inuit-global-font-size * pow($scale, 5 );
+$inuit-font-size-kilo: $inuit-global-font-size * pow($scale, 4 );
 
 // Predefine the variables below in order to alter and enable specific features.
 $inuit-font-size-h1:   $inuit-global-font-size * pow($scale, 3 );
@@ -23,7 +23,9 @@ $inuit-font-size-h4:   $inuit-global-font-size;
 $inuit-font-size-h5:   $inuit-global-font-size / $scale;
 $inuit-font-size-h6:   $inuit-global-font-size / pow($scale, 2 );
 
-$inuit-small-print:   $inuit-global-font-size / pow($scale, 4 );;
+$inuit-font-size-small:   $inuit-global-font-size / pow($scale, 3 );
+$inuit-font-size-small-print:   $inuit-global-font-size / pow($scale, 4 );
+
 
 //$inuit-font-size-h1--lap:   $inuit-global-font-size-h-lap * ($scale--lap  * $scale--lap * $scale--lap);
 //$inuit-font-size-h2--lap:   $inuit-global-font-size-h-lap * ($scale--lap  * $scale--lap);
