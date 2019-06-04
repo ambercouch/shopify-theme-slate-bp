@@ -24,5 +24,8 @@
     "pixrem": "^3.0.2",
     "pump": "^1.0.2",
     "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "inuitcss": "^6.0.0"
   }
 }
