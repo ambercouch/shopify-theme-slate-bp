@@ -16,7 +16,7 @@
 }
 
 .c-drawer__control-icon{
-  @include act-font-size($inuit-font-size-h3, 1)
+  @include act-font-size($inuit-font-size-h3, 1);
   padding: 0 $act-unit-t;
 }
 
