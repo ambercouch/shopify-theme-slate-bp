@@ -4,3 +4,30 @@
 
 .c-blog-filters{
 }
+
+
+[class*=c-drawer__control-icon]{
+  @extend .c-drawer__control-icon;
+}
+.c-drawer__control{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-drawer__control-icon{
+  @include act-font-size($inuit-font-size-h3, 1)
+  padding: 0 $act-unit-t;
+}
+
+.c-drawer__control[data-state=off]{
+  .c-drawer__control-icon--close{
+    display: none;
+  }
+}
+
+.c-drawer__control[data-state=on]{
+  .c-drawer__control-icon--open{
+    display: none;
+  }
+}

@@ -7,8 +7,8 @@
   border:solid 1px #eee;
   border-width: 1px 0;
   padding-top: $act-unit-s;
-}
 
+}
 /*
   BEM BLOCK MODIFIER .c-blog-filters--
  */
@@ -55,6 +55,10 @@
    @extend .o-list-flex--w;
     @extend .o-list-flex--center;
     @extend .o-list-flex--t;
+    transition: max-height 0.3s ease-in-out;
+    margin-left: 0;
+    max-height: $act-unit * 1.5;
+    overflow: hidden;
   }
   &link{
     @extend .o-btn;
@@ -83,3 +87,22 @@
     border:solid 1px darken($brand-col-1, 25%);
   }
 }
+
+.c-blog-filters__list {
+  &[data-state=on]{
+   max-height: $act-unit-h * 3 !important;
+   overflow: auto;
+  }
+}
+
+[data-control]{
+  cursor: pointer !important;
+}
+
+.c-blog-filters__list[data-state=off]{
+  .c-blog-filters:hover & {
+    max-height: $act-unit * 2.5;
+  }
+}
+
+

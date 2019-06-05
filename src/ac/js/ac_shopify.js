@@ -9,8 +9,8 @@
 //FidVids - uses custom selector because the youtube vid is lazy loaded so does not exist until modal is opened
 //$("[data-fitvid]").fitVids({ customSelector: "iframe[data-youtube-iframe]"});
 
-console.log('ACSHOPIFY BBD');
-ACSHOPIFY = {
+console.log('ACTIMBER BBD');
+ACTIMBER = {
     common: {
         init: function () {
 
@@ -20,6 +20,14 @@ ACSHOPIFY = {
 
 
             $('body').addClass('js');
+
+            $('[data-control]').each(function () {
+                var dataValue = $(this).attr('data-control');
+                var showButton = $(this);
+                var container = $(this).next('[data-container='+dataValue+']');
+                ACTIMBER.fn.actStateToggle(container, showButton);
+                console.log(container);
+            });
 
 
 
@@ -59,7 +67,7 @@ ACSHOPIFY = {
                     if ( tagsArray.includes(clickedTag) ){
 
                         //remove the tag from the url path
-                        pathLastSection = ACSHOPIFY.fn.removePlus(pathLastSection.replace(clickedTag, ""));
+                        pathLastSection = ACTIMBER.fn.removePlus(pathLastSection.replace(clickedTag, ""));
 
                         //if no tags selected
                         if(pathLastSection == ''){
@@ -86,6 +94,7 @@ ACSHOPIFY = {
                     }
                     else{
                         //add the tag to the current url and redirect
+
                         location.href = currentLocation + '+' + clickedTag;
                         console.log('clickedTag');
                         console.log(clickedTag);
@@ -140,33 +149,42 @@ ACSHOPIFY = {
 
             if(local === undefined)
             {
-                return ACSHOPIFY.var.locale
+                return ACTIMBER.var.locale
             }else{
-                ACSHOPIFY.var.locale = local;
-                return ACSHOPIFY.var.locale;
+                ACTIMBER.var.locale = local;
+                return ACTIMBER.var.locale;
             }
 
         },
-        open: function (container, showButton, parent, listParent) {
+        actStateToggle: function (container, showButton, parent, listParent) {
             var elState = showButton.attr('data-state');
+            var eventActOpen = new Event('actOpen');
+            var eventActClose = new Event('actClose');
             showButton.on('click', function(e){
                 e.preventDefault();
-                console.log('clicker');
-                elState = showButton.attr('data-state');
+                elState = $(this).attr('data-state');
                 if ('off' === elState ) {
-                    showButton.attr('data-state', 'on');
+                    console.log('click on');
+                    $(this).attr('data-state', 'on');
                     $(container).attr('data-state', 'on');
                     $(parent).attr('data-state', 'on');
                     $(container).addClass('ac-on');
+                    document.body.className += ' ' + 'container-is-open';
+                    window.dispatchEvent(eventActOpen);
 
                 } else {
-                    $(showButton).attr('data-state', 'off');
+                    console.log('click off');
+                    $(this).attr('data-state', 'off');
                     $(container).attr('data-state', 'off');
                     $(parent).attr('data-state', 'off');
                     $(container).removeClass('ac-on');
+                    document.querySelector('body').classList.remove('container-is-open');
+
+                    window.dispatchEvent(eventActClose);
                 }
             });
         },
+
         defer: function(successMethod, failMethod, testMethod, pause, attempts) {
             var defTest = function () {
                 return $('#ISR_popup_container').length == 1
@@ -193,7 +211,7 @@ ACSHOPIFY = {
                 if(attempts === false || attempts > 0) {
                     setTimeout(function () {
                         attempts = (attempts === false )? attempts : attempts = attempts - 1;
-                        ACSHOPIFY.fn.defer(successMethod, failMethod, testMethod, pause, attempts)
+                        ACTIMBER.fn.defer(successMethod, failMethod, testMethod, pause, attempts)
                     }, pause);
                 }
             }
@@ -204,7 +222,7 @@ ACSHOPIFY = {
 
 UTIL = {
     exec: function (template, handle) {
-        var ns = ACSHOPIFY,
+        var ns = ACTIMBER,
             handle = (handle === undefined) ? "init" : handle;
 
         if (template !== '' && ns[template] && typeof ns[template][handle] === 'function') {
