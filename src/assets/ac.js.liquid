@@ -72,7 +72,8 @@ ACSHOPIFY = {
                             pathUpdate = pathArray.join('/')
 
                             //if there are tags
-                        }else{
+                        }
+                        else{
                             //update the url path with latest tags
                             pathArray[pathArray.length - 1] = pathLastSection;
                             pathUpdate = pathArray.join('/')
@@ -82,9 +83,13 @@ ACSHOPIFY = {
                         window.location.pathname = pathUpdate;
 
                         //If the tag was not already selected
-                    }else{
+                    }
+                    else{
                         //add the tag to the current url and redirect
                         location.href = currentLocation + '+' + clickedTag;
+                        console.log('clickedTag');
+                        console.log(clickedTag);
+                        console.log('tag added');
                     }
 
 
