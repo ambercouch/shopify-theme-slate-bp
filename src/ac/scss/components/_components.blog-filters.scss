@@ -55,8 +55,10 @@
    @extend .o-list-flex--w;
     @extend .o-list-flex--center;
     @extend .o-list-flex--t;
-    transition: max-height 0.3s ease-in-out;
     margin-left: 0;
+  }
+  &filter-lists{
+    transition: max-height 0.3s ease-in-out;
     max-height: $act-unit * 1.5;
     overflow: hidden;
   }
@@ -88,7 +90,7 @@
   }
 }
 
-.c-blog-filters__list {
+.c-blog-filters__filter-lists {
   &[data-state=on]{
    max-height: $act-unit-h * 3 !important;
    overflow: auto;
@@ -99,7 +101,7 @@
   cursor: pointer !important;
 }
 
-.c-blog-filters__list[data-state=off]{
+.c-blog-filters__filter-lists[data-state=off]{
   .c-blog-filters:hover & {
     max-height: $act-unit * 2.5;
   }
