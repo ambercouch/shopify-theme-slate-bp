@@ -30,6 +30,9 @@
  */
 
 .c-blog-filters__ {
+  &container{
+    margin-bottom: $act-unit;
+  }
   &header {
     display: block
   }
