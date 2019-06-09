@@ -1,0 +1,64 @@
+/*
+  BEM BLOCK .c-footer
+ */
+
+.c-footer {
+    display: block;
+  @include act-font-size($act-fs-5);
+}
+
+/*
+  BEM BLOCK MODIFIER .c-footer--
+ */
+
+.c-footer-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-footer--
+
+[class*=c-footer--] {
+  @extend .c-footer;
+}
+
+/*
+  BEM ELEMENTS .c-footer__
+ */
+
+.c-footer__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+
+  &block{
+    margin-bottom: $act-unit-s;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-footer--
+
+[class*=c-footer__header--] {
+  @extend .c-footer__header;
+}

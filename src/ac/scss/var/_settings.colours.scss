@@ -45,6 +45,15 @@ $col-act-gray-xxlight : blue;
 $brand-col-1 : $icm-grey;
 $brand-col-2 : $icm-blue;
 $brand-col-3 : $icm-orange;
+$brand-col-4 :  darken($icm-grey, 25%);
+$brand-col-5 : darken($icm-grey, 20%);
+$brand-col-6 : $icm-orange;
+$brand-col-7 : $icm-grey;
+$brand-col-8 : $icm-blue;
+$brand-col-9 : $icm-orange;
 
-$brand-col-4 : $p7466;
+$col-text : $brand-col-1;
+$col-heading : $brand-col-2;
+$col-link : $brand-col-2;
+$col-accent : $brand-col-3;
 

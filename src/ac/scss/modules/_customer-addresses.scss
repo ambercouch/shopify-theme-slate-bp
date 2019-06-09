@@ -46,9 +46,9 @@
     padding-bottom: $inuit-global-spacing-unit-tiny;
   }
   &control{
-    @extend .o-btn;
-    @extend .o-btn--sub;
-    @extend .o-btn--inline;
+    @extend .c-btn;
+    @extend .c-btn--sub;
+    @extend .c-btn--inline;
   }
 }
 

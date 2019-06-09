@@ -1,0 +1,11 @@
+
+.u-bgi--primary {
+  background-image: url('assets/images/png/leaves-bg.png')!important;
+  background-size: 150%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  @include mq($from : tablet){
+    background-position: center;
+    background-size: 100%;
+  }
+}

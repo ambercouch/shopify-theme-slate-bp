@@ -8,20 +8,30 @@
       <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="c-hero__img">
       </a>
       {% else %}
+        <div class="c-hero__slide">
         <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="c-hero__img">
+          <div class="c-hero__caption">
+          <div class="c-hero__text">
+            {{ block.settings.hero_text }}</div>
+        </div>
+        </div>
       {% endif %}
     </div>
     {% endfor %}
   </div>
   <div class="c-hero__cta">
     <div class="c-cta">
-      <div class="cta__btn">
-        <a class="c-btn--more">
-          <span class="c-btn__label">Find Out More</span><span class="c-btn__icon"> > </span>
-        </a>
-        <a class="c-btn--video">
-          <span class="c-btn__label">iClean mini in action</span><span class="c-btn__icon"> >   </span>
-        </a>
+      <div class="c-cta__btn-wrapper--2btn-flex">
+        <div class="c-cta__btn">
+          <a href="/products/icleanmini" class="c-btn--more">
+            <span class="c-btn__label">Find Out More</span><span class="c-btn__icon"> > </span>
+          </a>
+        </div>
+        <div class="c-cta__btn">
+          <a href="#homepageVideos" class="c-btn--video">
+            <span class="c-btn__label">See it in action</span><span class="c-btn__icon"> >   </span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -31,7 +41,6 @@
 {% schema %}
   {
     "name": "Hero Slider",
-    "class": "site__hero",
     "settings": [
 
     ],
@@ -46,6 +55,13 @@
 "type": "image_picker",
 "info": "Image size should be 1270px by 465px"
 },
+
+  {
+  "label": "Hero Text",
+  "id": "hero_text",
+  "type": "text",
+  "info": "Text for the image"
+  },
 
 {
 "label": "Hero Url",

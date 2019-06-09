@@ -14,5 +14,26 @@
   }
   &img{
     width: 100%;
+
+  }
+  &slide{
+    position: relative;
+  }
+  &caption{
+    position: absolute;
+    bottom: $act-unit-t;
+    text-align: center;
+    width: 100%;
+  }
+  &text{
+    color: white;
+    background: rgba(black, 0.5);
+    text-transform: uppercase;
+    padding: $act-unit-t;
+    width: 250px;
+    max-width: 100%;
+    margin: 0 auto;
+    font-weight: bold;
+    line-height: 1;
   }
 }

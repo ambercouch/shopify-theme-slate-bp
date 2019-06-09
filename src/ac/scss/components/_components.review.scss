@@ -1,0 +1,80 @@
+/*
+  BEM BLOCK .c-review
+ */
+
+.c-review {
+  display: block;
+  text-align: center;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-review--
+ */
+
+.c-review-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-review--
+
+[class*=c-review--] {
+  @extend .c-review;
+}
+
+/*
+  BEM ELEMENTS .c-review__
+ */
+
+.c-review__ {
+  &score{
+    color: $brand-col-3;
+    @include act-font-size($act-fs-1);
+    margin-bottom: $act-unit-s;
+  }
+  &stars{
+    display: flex;
+    justify-content: center;
+    color: $brand-col-3;
+    margin-bottom: $act-unit-s;
+  }
+  &quote{
+    @extend .o-box;
+    @extend .o-box--small;
+    margin-bottom: 0;
+  }
+  &cite{
+    @include act-font-size($act-fs-5);
+    font-style: normal;
+  }
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-review--
+
+[class*=c-review__header--] {
+  @extend .c-review__header;
+}

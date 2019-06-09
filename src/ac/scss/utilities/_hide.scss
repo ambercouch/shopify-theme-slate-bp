@@ -1,0 +1,25 @@
+@mixin hide(){
+  display: none !important;
+}
+
+.u-hide{
+  @include hide;
+}
+
+.u-hide--desktop{
+  @include mq($from : desktop, $until : wide){
+    @include hide;
+  }
+}
+
+.u-hide--tablet{
+  @include mq($from : tablet, $until : desktop){
+    @include hide;
+  }
+}
+
+.u-hide--mobile{
+  @include mq( $until : tablet){
+    @include hide;
+  }
+}

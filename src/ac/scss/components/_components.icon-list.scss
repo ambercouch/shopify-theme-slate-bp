@@ -1,0 +1,82 @@
+/*
+  BEM BLOCK .c-icon-list
+ */
+
+.c-icon-list {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-icon-list--
+ */
+
+.c-icon-list-- {
+  &type {
+    display: block
+  }
+  &small{
+    @include act-font-size($inuit-font-size-h5);
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-icon-list--
+
+[class*=c-icon-list--] {
+  @extend .c-icon-list;
+}
+
+/*
+  BEM ELEMENTS .c-icon-list__
+ */
+
+.c-icon-list__ {
+  &list {
+    display: block;
+    list-style: none;
+    margin-left: 0;
+    .rte &{
+      margin-left: 0;
+    }
+  }
+  &item{
+    display: flex;
+    margin-bottom: $act-unit-s;
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+  &icon{
+    display: block;
+    width: $act-unit-s;
+    color: $brand-col-2;
+  }
+
+  &text {
+    display: inline;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-icon-list__list--
+
+[class*=c-icon-list__list--] {
+  @extend .c-icon-list__list;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-icon-list__item--
+
+[class*=c-icon-list__item--] {
+  @extend .c-icon-list__item;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-icon-list__icon--
+
+[class*=c-icon-list__icon--] {
+  @extend .c-icon-list__icon;
+}
+
+.c-icon-list__icon--{
+  &left{
+    margin-right: $act-unit-s;
+    //margin-left: -$act-unit-s;
+  }
+}

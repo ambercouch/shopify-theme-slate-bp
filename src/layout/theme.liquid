@@ -12,15 +12,22 @@
 </head>
 
 {% include 'body-tag' %}
+<div style="display: none;">
+{% include "defs.svg" %}
+</div>
 <div id="page" class="site">
 
-  <div class="site__accessibility">
+  <div class="l-site__accessibility">
     <a class="accessibility__link in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
   </div>
 
   {% section 'header' %}
 
-  <main role="main" id="MainContent" class="site__main">
+  <div class="l-site__hero">
+  {% section 'hero' %}
+  </div>
+
+  <main role="main" id="MainContent" class="l-site__main">
     <div class="main">
       <div class="main__content{% if template != null %}--{{ template | handleize }} {% endif %}">
 
@@ -51,6 +58,21 @@
       </div>
     </div>
   </main>
+
+  {% if template != null %}
+    {% assign templateId =   template | handleize | prepend : "-"%}
+    {% assign subsidiarySnippet = 'subsidiary' | append : templateId %}
+    {% capture subsidiaryInc =  %}{% include subsidiarySnippet %}{% endcapture %}
+    {% unless subsidiaryInc contains "Liquid error" %}
+      <div class="l-site__subsidiary">
+         {{ subsidiaryInc}}
+      </div>
+
+    {% endunless %}
+  {% endif %}
+
+
+
   {% section 'footer' %}
 </div>
 
@@ -92,13 +114,6 @@ window.__lo_site_id = 139417;
 	  })();
 	</script>
 
-
-{% comment %}
-<!-- SOLD OUT OPTIONS -->
-{% include 'disable-sold-out' %}
-{% endcomment %}
-
-{% include 'adolab-get-clicked-seo' %}
 
 </body>
 

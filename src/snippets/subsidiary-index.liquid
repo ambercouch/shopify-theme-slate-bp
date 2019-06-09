@@ -1,0 +1,16 @@
+{% assign feature = pages.an-all-in-one-solution %}
+  <div class="c-page--feature">
+    <div class="c-page__header">
+      <div class="c-page__feature-image">
+      <img class="c-page__img" src="{{ feature.metafields.global.feature_image | file_url }}" alt="{{ page.title }}" >
+      </div>
+      <h3 class="c-page__heading--feature" ><span class="c-page__title">{{ feature.title }}</span></h3>
+    </div>
+    <div class="c-page__content">
+      <div class="rte">
+        {{ feature.content }}
+      </div>
+    </div>
+  </div>
+
+

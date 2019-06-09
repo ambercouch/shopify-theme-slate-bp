@@ -28,7 +28,7 @@
 
 // BEM BLOCK MODIFIER FALLBACK
 
-[class*=page--]{
+[class*=blog--]{
   @extend .blog
 }
 

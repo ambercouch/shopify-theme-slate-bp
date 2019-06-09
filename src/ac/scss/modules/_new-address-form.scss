@@ -68,8 +68,8 @@
   }
 
   &control{
-    @extend .o-btn;
-    @extend .o-btn--sub;
+    @extend .c-btn;
+    @extend .c-btn--sub;
     width: 44%;
     margin-bottom: 0;
     @include mq($from : tablet){

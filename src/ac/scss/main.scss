@@ -51,12 +51,10 @@
 /*
  OBJECTS
  */
-@import "objects/o-btn";
-@import "objects/o-notice";
+@import "objects";
 
 @import "objects/inuit-extends/objects.list-bare";
 @import "objects/inuit-extends/objects.list-inline";
-
 
 /*
   OTHER
@@ -64,6 +62,15 @@
 @import "accessibility";
 @import "placeholders/off-page";
 @import "placeholders/h";
+
+/*
+ LAYOUTS
+ */
+@import "layouts";
+
+
+
+
 
 
 /*
@@ -137,6 +144,18 @@
  */
 
 @import "components";
+
+
+/*
+ UTILITIES
+ */
+@import "utilities";
+
+
+/*
+ UTILITIES
+ */
+@import "shame";
 
 //@import "shame";
 

@@ -67,8 +67,8 @@
     text-align: center;
   }
   &link{
-    @extend .o-btn;
-    @extend .o-btn--primary;
+    @extend .c-btn;
+    @extend .c-btn--primary;
     margin-bottom:0 !important;
     @include inuit-font-size($inuit-font-size-h5);
     width: 40%;

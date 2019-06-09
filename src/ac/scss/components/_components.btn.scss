@@ -1,0 +1,156 @@
+/*
+  BEM BLOCK .c-btn
+ */
+
+.c-btn {
+ @extend .o-btn;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-btn--
+ */
+
+.c-btn-- {
+  &primary{
+    @extend .c-btn;
+  }
+  &type {
+    display: block
+  }
+  &sub{
+    @extend .c-btn;
+  }
+  &inline{
+    @extend .c-btn;
+  }
+  &pill{
+    border-radius: $act-unit;
+    padding-left: $act-unit;
+    padding-right: $act-unit;
+  }
+  &transparent{
+    @extend .c-btn;
+    background-color: transparent;
+    &:hover{
+      background-color: transparent;
+    }
+  }
+  &n{
+    @extend .c-btn;
+    padding: $inuit-global-spacing-unit-tiny  $inuit-global-spacing-unit-small;
+    @include act-font-size($act-fs-4, 1);
+    text-transform: none;
+  }
+  &cta1{
+    @extend .c-btn--video;
+    padding-left: 0;
+    margin-left: 0;
+  }
+  &more{
+    @extend .o-btn--s;
+    @extend .c-btn--bg-3;
+    @extend .c-btn--pill;
+  }
+  &video{
+    @extend .o-btn--s;
+    @extend .c-btn--transparent;
+    @extend  .c-btn--col-3;
+  }
+  &bg-1{
+    @extend .c-btn;
+    background: $brand-col-1;
+    border-color: $brand-col-1;
+    &:hover{
+      background: darken($brand-col-1, 10%);
+    }
+    a:hover{
+      color: white;
+    }
+  }
+  &bg-2{
+    @extend .c-btn;
+    background: $brand-col-2;
+    border-color: $brand-col-2;
+    &:hover{
+      background: darken($brand-col-2, 10%);
+    }
+    a:hover{
+      color: white;
+    }
+  }
+  &bg-3{
+    @extend .c-btn;
+    background: $brand-col-3;
+    border-color: $brand-col-3;
+    color: white;
+    &:hover{
+      background: lighten($brand-col-3, 5);
+    }
+    a:hover{
+      color: white;
+    }
+  }
+  &col-3{
+    @extend .c-btn;
+    color: $brand-col-3;
+    &:hover{
+      color: darken($brand-col-3, 5);
+    }
+    a:hover{
+      color: darken($brand-col-3, 5);
+    }
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-btn--
+
+[class*=c-btn--] {
+  @extend .c-btn;
+}
+
+/*
+  BEM ELEMENTS .c-btn__
+ */
+
+.c-btn__ {
+  &header {
+    display: block
+  }
+  &heading {
+    display: block
+  }
+  &title {
+    display: inline;
+  }
+  &link {
+    display: inline
+  }
+  &content {
+    display: block
+  }
+  &footer {
+    display: block
+  }
+  &label{
+    @extend .o-btn__label
+  }
+  &icon{
+    @extend .o-btn__icon
+  }
+
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-btn--
+
+[class*=c-btn__header--] {
+  @extend .c-btn__header;
+}
+
+.c-btn__svg--more{
+  @include size(1em);
+}
+
+.c-btn__label--more{
+  margin-left: $act-unit-l;
+  margin-right: $act-unit-l;
+}

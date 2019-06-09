@@ -26,7 +26,7 @@
     margin-bottom:$inuit-global-spacing-unit;
   }
   &address-link{
-    @extend .o-btn--sub;
-    @extend .o-btn--inline;
+    @extend .c-btn--sub;
+    @extend .c-btn--inline;
   }
 }

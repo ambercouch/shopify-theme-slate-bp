@@ -1,0 +1,77 @@
+/*
+  BEM BLOCK .c-cta
+ */
+
+.c-cta {
+  display: block;
+  text-align: center;
+  @extend .o-box;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-cta--
+ */
+
+.c-cta-- {
+  &2btn-flex {
+    display: block;
+
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-cta--
+
+[class*=c-cta--] {
+  @extend .c-cta;
+}
+
+/*
+  BEM ELEMENTS .c-cta__
+ */
+
+.c-cta__ {
+  &btn-wrapper{
+    display: flex;
+  }
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-cta--
+
+[class*=c-cta__header--] {
+  @extend .c-cta__header;
+}
+
+
+[class*=c-cta__btn-wrapper--] {
+  @extend .c-cta__btn-wrapper;
+}
+
+.c-cta__btn-wrapper--{
+  &2btn-flex{
+    display: flex;
+    justify-content: space-around;
+  }
+}

@@ -2,13 +2,40 @@
   display: inline-flex;
   padding: $act-unit;
   margin: 0 $act-unit-t;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.o-btn--{
+  &t{
+    @include act-font-size($act-fs-6, 1);
+    padding: $act-unit-t;
+  }
+  &s{
+    @include act-font-size($act-fs-5, 1);
+    padding: $act-unit-s;
+  }
+  &m{
+    @include act-font-size($act-fs-4, 1);
+  }
+  &l{
+    @include act-font-size($act-fs-3, 1);
+    padding: $act-unit-l;
+  }
+  &h{
+    @include act-font-size($act-fs-2, 1);
+    padding: $act-unit-h;
+  }
 }
 
 .o-btn__{
   &label{
-
+    white-space: nowrap;
+    line-height: 1;
+    margin-right: $act-unit-t
   }
   &icon{
-
+    display: block;
+    line-height: 1;
   }
 }
