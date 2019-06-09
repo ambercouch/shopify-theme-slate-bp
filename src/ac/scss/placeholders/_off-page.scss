@@ -11,6 +11,7 @@
     background: $brand-col-1;
     transition: left 0.4s cubic-bezier(0.6, 0.72, 0.38, 1.08);
     z-index: 9999;
+    max-width: 80%;
     &[data-state=on]{
       left: -0rem;
     }

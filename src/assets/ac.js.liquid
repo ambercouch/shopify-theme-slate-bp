@@ -5015,20 +5015,21 @@ ACTIMBER = {
             }
 
         },
-        acStateOn: function(container, showButton, parent, listParent ){
+        acStateOn: function(container, showButton, parent, controlName, listParent ){
             var eventActOpen = new Event('actOpen');
             console.log('click on');
-            $(showButton).attr('data-state', 'on');
+            console.log(' controlName - ' +  controlName );
+            $('[data-control='+controlName+']').attr('data-state', 'on');
             $(container).attr('data-state', 'on');
             $(parent).attr('data-state', 'on');
             $(container).addClass('ac-on');
             document.body.className += ' ' + 'container-is-open';
             window.dispatchEvent(eventActOpen);
         },
-        acStateOff: function(container, showButton, parent, listParent){
+        acStateOff: function(container, showButton, parent, controlName, listParent){
             var eventActClose = new Event('actClose');
             console.log('click off');
-            $(showButton).attr('data-state', 'off');
+            $('[data-control='+controlName+']').attr('data-state', 'off');
             $(container).attr('data-state', 'off');
             $(parent).attr('data-state', 'off');
             $(container).removeClass('ac-on');
@@ -5036,17 +5037,18 @@ ACTIMBER = {
 
             window.dispatchEvent(eventActClose);
         },
-        actStateToggle: function (container, showButton, parent, listParent) {
+        actStateToggle: function (container, showButton, parent, controlName, listParent) {
             var elState = showButton.attr('data-state');
+            var controlName = showButton.attr('data-control')
 
             showButton.on('click', function(e){
                 var clicker = this;
                 e.preventDefault();
                 elState = $(this).attr('data-state');
                 if ('off' === elState ) {
-                   ACTIMBER.fn.acStateOn(container, showButton, parent, listParent);
+                   ACTIMBER.fn.acStateOn(container, showButton, parent, controlName, listParent);
                 } else {
-                    ACTIMBER.fn.acStateOff(container, showButton, parent, listParent);
+                    ACTIMBER.fn.acStateOff(container, showButton, parent, controlName, listParent);
                 }
             });
         },
