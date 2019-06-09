@@ -5015,21 +5015,30 @@ ACTIMBER = {
             }
 
         },
-        acStateOn: function(container, showButton, parent, controlName, listParent ){
+        acStateOn: function(container, showButton, parent, controlName = false, listParent ){
             var eventActOpen = new Event('actOpen');
             console.log('click on');
             console.log(' controlName - ' +  controlName );
-            $('[data-control='+controlName+']').attr('data-state', 'on');
+            if(controlName != false){
+                $('[data-control='+controlName+']').attr('data-state', 'on');
+            } else {
+                $(showButton).attr('data-state','on');
+
+            }
             $(container).attr('data-state', 'on');
             $(parent).attr('data-state', 'on');
             $(container).addClass('ac-on');
             document.body.className += ' ' + 'container-is-open';
             window.dispatchEvent(eventActOpen);
         },
-        acStateOff: function(container, showButton, parent, controlName, listParent){
+        acStateOff: function(container, showButton, parent, controlName = false, listParent){
             var eventActClose = new Event('actClose');
             console.log('click off');
+            if (controlName != false ){
             $('[data-control='+controlName+']').attr('data-state', 'off');
+            }else {
+                $(showButton).attr('data-state', 'off');
+            }
             $(container).attr('data-state', 'off');
             $(parent).attr('data-state', 'off');
             $(container).removeClass('ac-on');
