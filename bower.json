@@ -14,10 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "inuitcss": "^6.0.0-beta.4",
     "fitvids": "^1.2.0",
-    "sass-mq": "^3.3.2",
-    "animate.css": "^3.5.2",
     "flickity": "^2.0.5",
     "js-cookie": "^2.1.4"
   }

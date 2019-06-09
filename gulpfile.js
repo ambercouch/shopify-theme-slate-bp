@@ -15,6 +15,7 @@ var browserSync = require('browser-sync').create();
 var svgstore = require('gulp-svgstore');
 var svgmin = require('gulp-svgmin');
 var watch = require('gulp-watch');
+var rename = require('gulp-rename');
 
 /*
  SOURCE FILES
@@ -29,7 +30,7 @@ var jsCustomScripts = [
 var jsVendorScripts = [
     //All ready deprecated with browserify
     // 'jquery/dist/jquery.slim.js',
-    // 'fitvids/.jquery.fitvids.js',
+    'fitvids/jquery.fitvids.js',
     'flickity/dist/flickity.pkgd.js',
     'js-cookie/src/js.cookie.js'
 ];
@@ -95,27 +96,18 @@ gulp.task('serve', ['sass'], function () {
     });
 
     gulp.watch("src/ac/scss/**/*.scss", ['sass']);
-    // gulp.watch("assets/images/svg/**/*.svg", ['svgstore']).on('change', browserSync.reload);
+    gulp.watch("assets/images/svg/**/*.svg", ['svgstore']).on('change', browserSync.reload);
     // gulp.watch("craft/templates/**/*.html").on('change', browserSync.reload);
     // gulp.watch("assets/js/**/*.js",['scripts']).on('change', browserSync.reload);
 });
 
 gulp.task('svgstore', function () {
     return gulp
-        .src('src/ac/styles/images/svg/**/*.svg')
-        .pipe(svgmin(function (file) {
-            //var prefix = path.basename(file.relative, path.extname(file.relative));
-            return {
-                plugins: [{
-                    cleanupIDs: {
-                        //prefix: prefix + '-',
-                        minify: true
-                    }
-                }]
-            }
-        }))
+        .src('src/ac/images/svg/**/*.svg')
+        .pipe(svgmin())
+        .pipe(rename({prefix: 'icon-'}))
         .pipe(svgstore())
-        .pipe(concat('defs.svg.liquid'))
+        .pipe(rename("defs.svg.liquid"))
         .pipe(gulp.dest('src/snippets'));
 });
 
@@ -123,6 +115,7 @@ gulp.task('stream', function () {
     // Endless stream mode
     gulp.watch('src/ac/scss/**/*.scss', ['sass']);
     gulp.watch('src/ac/js/**/*.js', ['scripts']);
+    gulp.watch("src/ac/images/svg/**/*.svg", ['svgstore']);
 });
 
 gulp.task('callback', function () {
