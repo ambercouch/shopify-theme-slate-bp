@@ -1,0 +1,105 @@
+/*
+  BEM BLOCK .c-video-player
+ */
+
+.c-video-player {
+  display:block;
+  position: relative;
+  background: black;
+
+}
+
+/*
+  BEM BLOCK MODIFIER .c-video-player--
+ */
+
+.c-video-player-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-video-player--
+
+[class*=c-video-player--] {
+  @extend .c-video-player;
+}
+
+/*
+  BEM ELEMENTS .c-video-player__
+ */
+
+.c-video-player__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &cover{
+    position: relative;
+    z-index: 999;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    cursor: pointer;
+
+  }
+  &cover-img{
+    filter: brightness(50%);
+  }
+  &icon{
+    color: $brand-col-3;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    width: $act-unit-l * 1.25;
+    height: $act-unit-l * 1.25;
+    border:solid 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transform: translate(-50%,-50%);
+    > *{
+      position: relative;
+      left: 3px
+    }
+  }
+  &video{
+    position: absolute;
+    top:50%;
+    width:100%;
+    height: auto;
+    transform: translate(0, -50%);
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-video-player--
+
+[class*=c-video-player__header--] {
+  @extend .c-video-player__header;
+}
+
+.c-video-player__cover{
+  &[data-state=on]{
+    opacity: 0;
+    pointer-events: none;
+  }
+}

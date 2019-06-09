@@ -1,0 +1,13 @@
+<div class="c-video-player">
+  <div class="c-video-player__cover" data-state="off" data-control="video1" data-vim-play="video1">
+    <img class="c-video-player__cover-img" src="{{ "video_cover.jpg" | asset_url }}" alt="iClean mini video" />
+    <div class="c-video-player__icon">
+      {% assign icon = "play" %}
+      {% include "svg-icon" %}
+    </div>
+  </div>
+  <div class="c-video-player__video" data-fitvid data-container="video1" >
+    <iframe src="https://player.vimeo.com/video/260880293/?api=1?title=0&byline=0&portrait=0&badge=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+
+</div>
