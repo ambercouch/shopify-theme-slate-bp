@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" width="163.861" height="162.115" viewBox="0 0 163.861 162.115">
+  <g id="_20" data-name="20" transform="translate(-1628.918 -1630.304)">
+    <g id="Group_39" data-name="Group 39" transform="translate(1629.918 1631.304)">
+      <line id="Line_6" data-name="Line 6" y1="4.771" transform="translate(115.375 55.561)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <g id="Group_37" data-name="Group 37">
+        <path id="Path_212" data-name="Path 212" d="M1675.23,1692.288h-40.068a5.244,5.244,0,0,1-5.244-5.244V1657.1a5.274,5.274,0,0,1,5.274-5.274h109.745a5.994,5.994,0,0,1,5.994,5.994v29.189a5.274,5.274,0,0,1-5.273,5.274h-40.069" transform="translate(-1629.918 -1636.727)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Path_213" data-name="Path 213" d="M1637.045,1706.812v35.211a5.232,5.232,0,0,0,5.245,5.245h77.678" transform="translate(-1631.801 -1651.251)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <rect id="Rectangle_606" data-name="Rectangle 606" width="30.341" height="16.859" transform="translate(45.327 46.583)" stroke-width="2" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path id="Path_214" data-name="Path 214" d="M1674.555,1646.409v-3.118a11.988,11.988,0,0,1,11.987-11.987h31.348a11.988,11.988,0,0,1,11.988,11.987v3.118" transform="translate(-1641.71 -1631.304)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <g id="Group_38" data-name="Group 38" transform="translate(72.233 94.806)">
+        <path id="Path_215" data-name="Path 215" d="M1820.267,1794.092c24.121,4.172,21.755,17.023,21.755,40.325" transform="translate(-1752.436 -1769.114)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Path_216" data-name="Path 216" d="M1749.9,1794.1c-24.12,4.176-21.755,17.027-21.752,40.328" transform="translate(-1728.084 -1769.115)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Path_217" data-name="Path 217" d="M1762.56,1761.265c.364,12.455,6.9,22.345,19.522,22.345,12.981,0,19.587-10.482,19.587-23.463" transform="translate(-1737.192 -1760.147)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="Line_7" data-name="Line 7" y1="0.162" transform="translate(25.336 1.117)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Path_218" data-name="Path 218" d="M1780.752,1832.458l.075.237,11.408-45.144,11.5,4.578v10.716l-4.93,5.605,4.93,7.4-22.912,16.848-.075-.068-.081.068-22.908-16.845,4.926-7.4-4.929-5.6v-10.717l11.5-4.582,11.412,45.144Z" transform="translate(-1735.923 -1767.386)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="Line_8" data-name="Line 8" y2="15.035" transform="translate(77.534 27.701)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="Line_9" data-name="Line 9" y2="15.035" transform="translate(12.114 27.704)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+      <path id="Path_219" data-name="Path 219" d="M1777.553,1723.862c-7.392,9.858-2.59,16.542-2.59,16.542-2.4,5.06-5.291,10.18-12.783,11.165a2.524,2.524,0,0,1-.494.032h-.032a2.4,2.4,0,0,1-1.58-.692,2.689,2.689,0,0,1-.819-2.07c1.021-18.7,11.9-25.271,21.888-25.271,10.021,0,21.755,7.49,22.118,25.9a.912.912,0,0,1-.263.624.887.887,0,0,1-.594.23c-9.171-.2-12.709,1.651-19.842-4.166-1.15-.952-6.382-4.7-7.6-5.751" transform="translate(-1664.084 -1655.678)" fill="none" stroke="#cbb149" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>
