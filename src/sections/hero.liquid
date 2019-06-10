@@ -1,5 +1,5 @@
 <div data-section-id="{{ section.id }}" data-section-type="promotion">
-<div class="c-hero">
+<div class="c-hero test-hero-ac">
   <div class="c-hero__carousel">
     {% for block in section.blocks limit: section.blocks.size %}
     <div class="c-hero__cell">
@@ -12,7 +12,8 @@
         <img src="{{ block.settings.hero_image | img_url: '1270x465' }}" alt="" class="c-hero__img">
           <div class="c-hero__caption">
           <div class="c-hero__text">
-            {{ block.settings.hero_text }}</div>
+            {{ block.settings.hero_text }}
+          </div>
         </div>
         </div>
       {% endif %}

@@ -92,11 +92,15 @@ gulp.task('sass', function (cb) {
 gulp.task('serve', ['sass'], function () {
 
     browserSync.init({
-        proxy: "https://tempestdesigns.myshopify.com/"
+        proxy: "https://ambercouchdesign.myshopify.com/",
+        reloadDelay: 2000
     });
 
-    gulp.watch("src/ac/scss/**/*.scss", ['sass']);
-    gulp.watch("assets/images/svg/**/*.svg", ['svgstore']).on('change', browserSync.reload);
+    gulp.watch('src/ac/scss/**/*.scss', ['sass']).on('change', browserSync.reload);
+    gulp.watch('src/ac/js/**/*.js', ['scripts']).on('change', browserSync.reload);
+    gulp.watch("src/ac/images/svg/**/*.svg", ['svgstore']).on('change', browserSync.reload);
+
+;
     // gulp.watch("craft/templates/**/*.html").on('change', browserSync.reload);
     // gulp.watch("assets/js/**/*.js",['scripts']).on('change', browserSync.reload);
 });

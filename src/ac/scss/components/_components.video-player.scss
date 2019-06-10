@@ -63,6 +63,12 @@
   }
   &cover-img{
     filter: brightness(50%);
+    width: 100%;
+    @include mq($from: desktop){
+      max-height: 780px;
+      object-fit: cover;
+    }
+
   }
   &icon{
     color: $brand-col-3;

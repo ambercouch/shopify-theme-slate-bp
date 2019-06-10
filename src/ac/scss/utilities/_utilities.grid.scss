@@ -1,0 +1,17 @@
+.u-grid{
+  @include mq($from: desktop){
+    display: grid;
+  }
+}
+
+.u-gtc1-2{
+  grid-template-columns: 1fr 1fr;
+}
+
+.u-gtc1-3{
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.u-gtc1-3{
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

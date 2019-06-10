@@ -50,8 +50,20 @@
   &footer {
     display: block
   }
+  &hero{
+    @include mq($from : desktop){
+      margin-bottom: $act-unit-l;
+    }
+  }
   &main{
     margin-bottom: $act-unit;
+  }
+  &nav-main{
+    @include mq($from : desktop){
+      margin-bottom: $act-unit-l;
+      margin-top: -65px;
+    }
+
   }
   &reviews{
     padding: 0 $act-unit-s;

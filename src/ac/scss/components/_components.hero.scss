@@ -1,29 +1,64 @@
 .c-hero{
-  @extend .o-wrapper;
-  @include mq($until : tablet){
-    padding: 0 !important;
-  }
+  width: 1600px;
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+ @include mq($from : desktop){
+   height: 500px;
+
+ }
 }
 .c-hero__{
+  &cta{
+    @include mq($from: desktop){
+      position: absolute;
+      top: 236px;
+      width: 1400px;
+      max-width: 100%;
+      margin:0 auto;
+      left: 50%;
+      transform: translate(-50%, 0);
+      text-align: left;
+      padding: 0 $act-unit;
+    }
+  }
   &carousel{
-
+    height:100%;
   }
   &cell{
     width: 100%;
+    height:100%;
     text-align: center;
   }
   &img{
     width: 100%;
+    height:100%;
+    object-fit: cover;
+    object-position: 50% 60%;
+    @include mq($from:desktop){
+      filter:brightness(50%);
+    }
 
   }
   &slide{
     position: relative;
+    height: 100%  ;
   }
   &caption{
     position: absolute;
     bottom: $act-unit-t;
     text-align: center;
     width: 100%;
+    @include mq($from:desktop){
+      width: 1400px;
+      max-width: 100%;
+      margin:0 auto;
+      left: 50%;
+      top: 120px;
+      transform: translate(-50%, 0);
+      text-align: left;
+      padding: 0 $act-unit;
+    }
   }
   &text{
     color: white;
@@ -35,5 +70,13 @@
     margin: 0 auto;
     font-weight: bold;
     line-height: 1;
+    @include mq($from:desktop){
+      background: transparent;
+      width: 500px;
+      @include act-font-size($inuit-font-size-kilo);
+      text-align: left;
+      text-transform: none;
+      margin: 0;
+    }
   }
 }

@@ -8,13 +8,14 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  margin-top:$inuit-global-spacing-unit;
+  margin-top: $act-unit-s;
 
   @include mq($from : desktop){
     flex-direction: row;
+    justify-content: start;
   }
-  @include mq($until : desktop){
-    //padding: 0;
+  @include mq($from : desktop){
+    margin-top:$act-unit-l;
   }
 }
 
@@ -25,6 +26,7 @@
   &site-logo{
     width:40%;
   }
+
   &site-control{
     width: 100%;
     padding: 0 $act-unit-s;
@@ -32,10 +34,9 @@
     top:0;
     pointer-events: none;
     @include mq($from : desktop){
-      position: absolute;
-      right: $inuit-global-spacing-unit;
-      top:0;
-
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
     }
   }
 }

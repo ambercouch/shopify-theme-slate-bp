@@ -1,0 +1,60 @@
+/*
+  BEM BLOCK .l-subsidiary
+ */
+
+.l-subsidiary {
+  display: block;
+  @extend .o-wrapper;
+}
+
+/*
+  BEM BLOCK MODIFIER .l-subsidiary--
+ */
+
+.l-subsidiary-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .l-subsidiary--
+
+[class*=l-subsidiary--] {
+  @extend .l-subsidiary;
+}
+
+/*
+  BEM ELEMENTS .l-subsidiary__
+ */
+
+.l-subsidiary__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-subsidiary--
+
+[class*=l-subsidiary__header--] {
+  @extend .l-subsidiary__header;
+}

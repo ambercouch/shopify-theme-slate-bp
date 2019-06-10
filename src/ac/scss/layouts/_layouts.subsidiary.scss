@@ -1,0 +1,80 @@
+/*
+  BEM BLOCK .l-subsidiary
+ */
+
+.l-subsidiary {
+  display: block;
+  @extend .o-wrapper;
+}
+
+/*
+  BEM BLOCK MODIFIER .l-subsidiary--
+ */
+
+.l-subsidiary-- {
+  &index{
+
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .l-subsidiary--
+
+[class*=l-subsidiary--] {
+  @extend .l-subsidiary;
+}
+
+/*
+  BEM ELEMENTS .l-subsidiary__
+ */
+
+.l-subsidiary__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &list{
+    display: block;
+    @include mq($from: desktop){
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: $act-unit-l;
+
+    }
+  }
+  &item{
+    @include mq($from: desktop){
+        width: 50%;
+
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-subsidiary--
+
+[class*=l-subsidiary__header--] {
+  @extend .l-subsidiary__header;
+}
+
+  [class*=l-subsidiary__list--] {
+    @extend .l-subsidiary__list;
+  }
+

@@ -1,16 +1,21 @@
+<div class="l-subsidiary--index">
+  <div class="l-subsidiary__list--index">
 {% assign feature = pages.an-all-in-one-solution %}
-  <div class="c-page--feature">
-    <div class="c-page__header">
-      <div class="c-page__feature-image">
-      <img class="c-page__img" src="{{ feature.metafields.global.feature_image | file_url }}" alt="{{ page.title }}" >
-      </div>
-      <h3 class="c-page__heading--feature" ><span class="c-page__title">{{ feature.title }}</span></h3>
+    <div class="l-subsidiary__item">
+      {% include "feature-page" %}
     </div>
-    <div class="c-page__content">
-      <div class="rte">
-        {{ feature.content }}
-      </div>
+    {% assign feature = pages.an-all-in-one-solution %}
+    <div class="l-subsidiary__item">
+      {% include "feature-page" %}
     </div>
-  </div>
-
+    {% assign feature = pages.an-all-in-one-solution %}
+    <div class="l-subsidiary__item">
+      {% include "feature-page" %}
+    </div>
+    {% assign feature = pages.an-all-in-one-solution %}
+    <div class="l-subsidiary__item">
+      {% include "feature-page" %}
+    </div>
+</div>
+</div>
 

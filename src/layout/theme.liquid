@@ -28,8 +28,8 @@
   </div>
 
   <main role="main" id="MainContent" class="l-site__main">
-    <div class="main">
-      <div class="main__content{% if template != null %}--{{ template | handleize }} {% endif %}">
+    <div class="l-main">
+      <div class="l-main__content{% if template != null %}--{{ template | handleize }} {% endif %}">
 
         {%  include  'logic-access'%}
         {% case access %}

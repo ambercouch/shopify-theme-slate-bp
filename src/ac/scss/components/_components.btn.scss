@@ -50,6 +50,9 @@
     @extend .o-btn--s;
     @extend .c-btn--bg-3;
     @extend .c-btn--pill;
+    &:focus{
+      //color: white;
+    }
   }
   &video{
     @extend .o-btn--s;
@@ -63,7 +66,7 @@
     &:hover{
       background: darken($brand-col-1, 10%);
     }
-    a:hover{
+    a:hover, a:focus, a:active{
       color: white;
     }
   }
@@ -71,10 +74,11 @@
     @extend .c-btn;
     background: $brand-col-2;
     border-color: $brand-col-2;
-    &:hover{
+    &:hover, &:focus,  &:active{
       background: darken($brand-col-2, 10%);
+      color: white;
     }
-    a:hover{
+    a:hover, a:focus, a:active{
       color: white;
     }
   }
@@ -83,10 +87,11 @@
     background: $brand-col-3;
     border-color: $brand-col-3;
     color: white;
-    &:hover{
-      background: lighten($brand-col-3, 5);
+    &:hover, &:focus,  &:active{
+      background: darken($brand-col-3, 10%);
+      color: white;
     }
-    a:hover{
+    a:hover, a:focus, a:active{
       color: white;
     }
   }

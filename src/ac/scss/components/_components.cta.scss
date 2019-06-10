@@ -6,6 +6,11 @@
   display: block;
   text-align: center;
   @extend .o-box;
+  @include mq($from: desktop){
+    display: inline-block;
+    width: auto;
+    padding-left: 0;
+  }
 }
 
 /*

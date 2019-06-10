@@ -14,8 +14,16 @@
  */
 
 .c-page-- {
-  &type {
-    display: block
+  &feature {
+    @include mq($from: desktop){
+      div:nth-child(odd) > &{
+        padding-left: 0;
+      }
+      div:nth-child(even) > &{
+        padding-right: 0;
+      }
+    padding: 0 $act-unit;
+    }
   }
 }
 

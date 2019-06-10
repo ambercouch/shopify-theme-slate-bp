@@ -59,6 +59,10 @@
     text-align: left;
     padding: $act-unit-t;
     margin-bottom: $act-unit-t;
+    pointer-events: all;
+    &:focus{
+      color: $brand-col-2;
+    }
     @include mq($until : tablet){
       flex-direction: column-reverse;
       align-items: center;
@@ -141,6 +145,12 @@
     @extend .o-list-bare;
     display: flex;
     flex-direction: column;
+    @include mq($from:desktop){
+      flex-direction: row;
+      justify-content: center;
+      position: relative;
+      pointer-events: none;
+    }
   }
 }
 
