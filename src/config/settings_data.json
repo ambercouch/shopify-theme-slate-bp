@@ -108,10 +108,19 @@
         "settings": {
           "page": "intro"
         }
+      },
+      "1560152165839": {
+        "type": "featured-product",
+        "settings": {
+          "product": "you-are-capable-of-amazing-things-bangles-4697",
+          "show_share_buttons": false
+        }
       }
     },
     "content_for_index": [
-      "1543407482729"
+      "hero",
+      "1543407482729",
+      "1560152165839"
     ]
   },
   "presets": {
@@ -156,6 +165,7 @@
         }
       },
       "content_for_index": [
+        "hero",
         "featured-collection",
         "collection-list"
       ]
