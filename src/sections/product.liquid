@@ -1,5 +1,5 @@
 {% include 'bold-product' with product, hide_action: 'break' %}{% if bold_hidden_product %}{% break %}{%endif %}
-<div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
+<div data-section-id="{{ section.id }}" data-section-type="l-product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
 
   {%- assign current_variant = bold_selected_or_first_available_variant -%}
   {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
@@ -10,41 +10,45 @@
   <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
   <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
 
-  <div class="product">
-    <div class="product__breadcrumbs">
+  <div class="l-product">
+    {% comment %}
+    <div class="l-product__breadcrumbs">
       {% assign BCClassModifier = "--product"  %}
       {%  include "breadcrumbs" %}
     </div>
-    <div class="product__flex">
-      <div class="product__header">
-        <h1 class="product__heading" >{{ product.title }}</h1>
-        <span class="product__sku">{{ bold_selected_or_first_available_variant.sku }}</span>
-      </div>
-      <div class="product__product-gallery">
-        {% include 'product-gallery' %}
-      </div>
-      <div class="product__product-info">
-        <div class="product__add-form">
-          {% if template == 'product' %}
-              {% include 'add-form' %}
-            {% elsif template == 'product.voucher'%}
-            {% include 'add-form-voucher' %}
-          {% endif %}
-        </div>
+    {% endcomment %}
 
-        <div class="product__share-links">
-          {% include 'share-links'%}
-        </div>
-
-      </div>
-      {% include 'logic-admin' %}
-      {% if adminUser %}
-        <!-- Admin user -->
-        <a style="color: #ddd" href="/admin/products/{{ product.id }}"><small>Edit this product</small></a>
-      {% else %}
-        <!-- Not Admin -->
-      {% endif %}
+    <div class="l-product__product-gallery">
+      {% include 'product-gallery' %}
     </div>
+
+    <div class="l-product__header">
+      <h1 class="l-product__heading" >{{ product.title }}</h1>
+      <span class="l-product__sku">{{ bold_selected_or_first_available_variant.sku }}</span>
+    </div>
+
+    <div class="l-product__product-info">
+      <div class="l-product__add-form">
+        {% if template == 'product' %}
+            {% include 'add-form' %}
+          {% elsif template == 'product.voucher'%}
+          {% include 'add-form-voucher' %}
+        {% endif %}
+      </div>
+
+      <div class="l-product__share-links">
+        {% include 'share-links'%}
+      </div>
+
+    </div>
+    {% include 'logic-admin' %}
+    {% if adminUser %}
+      <!-- Admin user -->
+      <a style="color: #ddd" href="/admin/products/{{ product.id }}"><small>Edit this product</small></a>
+    {% else %}
+      <!-- Not Admin -->
+    {% endif %}
+
   </div>
 </div>
 

@@ -1,0 +1,67 @@
+/*
+  BEM BLOCK l-product
+ */
+
+.l-product {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER l-product--
+ */
+
+.l-product-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .l-product--
+
+[class*=l-product--
+
+]
+{
+  @extend .l-product;
+}
+
+/*
+  BEM ELEMENTS .l-product__
+ */
+
+.l-product__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block;
+    text-align: center;
+    letter-spacing: -1px;
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-product--
+
+[class*=l-product__header--
+
+]
+{
+  @extend .l-product__header;
+}

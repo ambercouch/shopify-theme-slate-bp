@@ -1,12 +1,12 @@
-<div class="add-form" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+<div class="c-add-form" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
   <meta itemprop="priceCurrency" content="{{ shop.currency }}">
   <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
   <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
 
-  <form class="add-form__form shapp_qb_prod" action="/cart/add" method="post" enctype="multipart/form-data">
+  <form class="c-add-form__form shapp_qb_prod" action="/cart/add" method="post" enctype="multipart/form-data">
 
-    <div class="add-form__qty">
-      <label class="add-form__label" for="Quantity">{{ 'products.product.quantity' | t }}</label>
+    <div class="c-add-form__qty">
+      <label class="c-add-form__label" for="Quantity">{{ 'products.product.quantity' | t }}</label>
 
       {%- assign low_price = settings.low_price_product | times: 1  -%}
 
@@ -18,11 +18,11 @@
         <!--  price : {{ current_variant.price }} < low_price : {{ low_price }} > -->
       {%- endif -%}
 
-      <input class="add-form__qty-input" type="number" id="Quantity" name="quantity" value="{{ minQty }}" min="{{ minQty }}">
+      <input class="c-add-form__qty-input" type="number" id="Quantity" name="quantity" value="{{ minQty }}" min="{{ minQty }}">
     </div>
-    <div class="add-form__price-wrapper">
+    <div class="c-add-form__price-wrapper">
       <div data-price-wrapper>
-        <span class="add-form__price" data-product-price>
+        <span class="c-add-form__price" data-product-price>
           {{ current_variant.price | money }}
         </span>
 
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div class="add-form__variants">
+    <div class="c-add-form__variants">
       {% include 'bold-variant' with variant, hide_action: 'skip' %}
 
       {% include 'add-form-variants' %}
@@ -48,7 +48,7 @@
         {% endunless %}
       {% endfor %}
       <!-- varCount {{ varCount }} -->
-      <select {% if varCount == 0 %} style="display: none" {% endif %} id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}"  name="id" class="add-form__variants no-js" data-product-select>
+      <select {% if varCount == 0 %} style="display: none" {% endif %} id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}"  name="id" class="c-add-form__variants no-js" data-product-select>
         {% if  varCount > 0 %}
           {% for variant in product.variants %}
             {% unless variant.title contains '+'  %}
@@ -72,16 +72,16 @@
       </select>
     </div>
 
-    <div class="add-form__description test {% if product.description != '' %} rte {% endif %}">
+    <div class="c-add-form__description test {% if product.description != '' %} rte {% endif %}">
       {% include 'sales-description'%}
     </div>
 
-    <div class="add-form__continue-shopping-helper">
+    <div class="c-add-form__continue-shopping-helper">
       {% include 'continue-shopping-helper' %}
     </div>
 
-    <div class="add-form__submit-wrapper">
-      <button class="add-form__submit-btn"
+    <div class="c-add-form__submit-wrapper">
+      <button class="c-add-form__submit-btn"
               type="submit"
               name="add"
               data-add-to-cart
@@ -96,7 +96,7 @@
           </span>
 
       </button>
-      <div class="add-form__reminder-btn" id="ISR_button">In Stock Reminder</div>
+      <div class="c-add-form__reminder-btn" id="ISR_button">In Stock Reminder</div>
 
     </div>
     <div id="smartwishlist" data-product="{{ product.id }}" data-variant="{{ product.variants.first.id }}"></div>
@@ -104,8 +104,8 @@
 
     {% if customer.tags contains 'platinum' %}
       {% unless qb_loaded == 'true' %}
-      <div class="add-form__bqb">
-        <h3 class="add-form__bqb-title"><span class="add-form__bqb-title-platinum">Platinum</span> <small>(Bulk Discounts)</small></h3>
+      <div class="c-add-form__bqb">
+        <h3 class="c-add-form__bqb-title"><span class="c-add-form__bqb-title-platinum">Platinum</span> <small>(Bulk Discounts)</small></h3>
         <div class="shappify-qty-msg">
           {{bold_selected_or_first_available_variant.metafields.shappify_qb.pricing_html}}
         </div>
