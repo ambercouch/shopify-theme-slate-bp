@@ -37,7 +37,7 @@
     {% endif %}
     {% endcomment %}
     <li class="c-nav-menu__item" data-button-cart >
-      <a href="/cart" class="c-nav-menu__link" >
+      <a href="/cart" class="c-nav-menu__link--cart" >
         <span class="c-nav-menu__label--cart">{{ 'layout.cart.title' | t }}</span>
         {% include 'icon-cart' %}
         <span data-cart-count class="c-nav-menu__cart-count">({{ cart.item_count }})</span>

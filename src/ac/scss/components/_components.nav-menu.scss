@@ -163,6 +163,11 @@
     margin-left: $act-unit-t;
     line-height: 1;
   }
+  &cart{
+    display: inline-block;
+    margin-right: $act-unit-t;
+    line-height: 1;
+  }
 }
 
 [class*='c-nav-menu__link--']{
@@ -174,6 +179,12 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row-reverse;
+  }
+  &cart{
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
   }
   &main{
     @include inuit-font-size($inuit-font-size-h5);
