@@ -82,7 +82,7 @@ gulp.task('sass', function (cb) {
         //.pipe(postcss([ autoprefixer(), cssnano(), pixrem() ]))
         //.pipe(sourcemaps.write('.'))
         .pipe(concat('ac_main.css'))
-        .pipe(gulp.dest('dist/assets'))
+        .pipe(gulp.dest('src/assets'))
         .pipe(browserSync.stream());
 
 });
@@ -93,7 +93,7 @@ gulp.task('serve', ['sass'], function () {
 
     browserSync.init({
         proxy: "https://ambercouchdesign.myshopify.com/",
-        reloadDelay: 2000
+        reloadDelay: 8000
     });
 
     gulp.watch('src/ac/scss/**/*.scss', ['sass']).on('change', browserSync.reload);
