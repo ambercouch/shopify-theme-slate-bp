@@ -22,39 +22,16 @@
   </div>
 
   {% section 'header' %}
-
+{% if template == "index" %}
   <div class="l-site__hero">
   {% section 'hero' %}
   </div>
+  {% endif %}
 
   <main role="main" id="MainContent" class="l-site__main">
     <div class="l-main">
       <div class="l-main__content{% if template != null %}--{{ template | handleize }} {% endif %}">
-
-        {%  include  'logic-access'%}
-        {% case access %}
-        {% when 'full' %}
-        <!-- template {{ template }} -->
-        <!-- access {{ access }} -->
-        <!-- customerAccess {{ customerAccess }} -->
         {{  content_for_layout }}
-        {% when 'SEO' %}
-          <!-- template {{ template }} -->
-          <!-- access {{ access }} -->
-          <!-- customerAccess {{ customerAccess }} -->
-          {{  content_for_layout }}
-        {% when 'inactive' %}
-        <!-- template {{ template }} -->
-        <!-- access {{ access }} -->
-        <!-- customerAccess {{ customerAccess }} -->
-        {% include 'main-content-inactive' %}
-        {% when 'restricted' %}
-        <!-- template {{ template }} -->
-        <!-- access {{ access }} -->
-        <!-- customerAccess {{ customerAccess }} -->
-          {% include 'main-content-restricted' %}
-        {% endcase %}
-
       </div>
     </div>
   </main>
