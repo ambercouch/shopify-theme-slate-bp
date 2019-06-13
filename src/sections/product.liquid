@@ -36,6 +36,27 @@
         {% endif %}
       </div>
 
+      <div class="l-product__icon-list">
+        <div class="c-icon-list--promo">
+          <ul class="c-icon-list__list--l">
+            <li class="c-icon-list__item--l">
+              <span class="c-icon-list__icon--promo">
+                {% assign icon = "free-delivery" %}
+                {% include "svg-icon" %}
+              </span>
+              <span class="c-icon-list__label--promo">Free UK Delivery</span>
+            </li>
+            <li class="c-icon-list__item--l">
+              <span class="c-icon-list__icon--promo">
+                {% assign icon = "warranty" %}
+                {% include "svg-icon" %}
+              </span>
+              <span class="c-icon-list__label--promo">Full one year warranty</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div class="l-product__share-links">
         {% include 'share-links'%}
       </div>

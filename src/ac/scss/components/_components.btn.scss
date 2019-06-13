@@ -54,6 +54,19 @@
       //color: white;
     }
   }
+  &add{
+   @extend .c-btn--more;
+    width: 100%;
+    border: none;
+    justify-content: space-between;
+    &[disabled="disabled"]{
+      filter: saturate(0.2);
+      opacity: 0.3;
+    }
+
+    margin: 0;
+
+  }
   &video{
     @extend .o-btn--s;
     @extend .c-btn--transparent;

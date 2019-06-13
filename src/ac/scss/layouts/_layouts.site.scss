@@ -57,6 +57,9 @@
   }
   &main{
     margin-bottom: $act-unit;
+    @include mq($from:tablet){
+      margin-bottom: $act-unit-l;
+    }
   }
   &nav-main{
     @include mq($from : desktop){

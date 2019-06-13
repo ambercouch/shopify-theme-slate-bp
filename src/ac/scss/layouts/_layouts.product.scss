@@ -4,6 +4,10 @@
 
 .l-product {
   display: block;
+  @include mq($from: desktop){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /*
@@ -31,15 +35,38 @@
 
 .l-product__ {
   &header {
-    display: block
+    @include mq($from: desktop){
+    display: block;
+      margin-bottom: $act-unit;
+    grid-column: 2 / 3;
+      text-align: left;
+      padding-left: $act-unit;
+    }
   }
 
   &heading {
     display: block;
     text-align: center;
     letter-spacing: -1px;
+    margin-bottom: 0;
+    @include mq($from: desktop){
+      text-align: left;
+    }
+    //display: none !important;
   }
-
+  &product-gallery{
+    @include mq($from: desktop){
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+      padding-right: $act-unit;
+    }
+  }
+  &product-info{
+    @include mq($from: desktop){
+      grid-column: 2 / 3;
+      padding-left: $act-unit;
+    }
+  }
   &title {
     display: inline;
   }

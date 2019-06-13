@@ -10,5 +10,6 @@
   }
   &list{
     @extend .o-list-bare;
+    margin-bottom: 0;
   }
 }

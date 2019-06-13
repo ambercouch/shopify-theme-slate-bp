@@ -4,6 +4,8 @@
 
 .c-icon-list {
   display: block;
+  text-align: left;
+
 }
 
 /*
@@ -15,7 +17,16 @@
     display: block
   }
   &small{
-    @include act-font-size($inuit-font-size-h5);
+    @include act-font-size($act-fs-5);
+  }
+  &m{
+    @include act-font-size($act-fs-4);
+  }
+  &l{
+    @include act-font-size($act-fs-3)
+  }
+  &promo{
+    @extend .c-icon-list--l
   }
 }
 
@@ -40,6 +51,7 @@
   }
   &item{
     display: flex;
+    align-items: center;
     margin-bottom: $act-unit-s;
     &:last-child{
       margin-bottom: 0;
@@ -53,6 +65,13 @@
 
   &text {
     display: inline;
+  }
+  &label{
+    flex-shrink: 2;
+  }
+  &title{
+    @extend .c-icon-list__label;
+
   }
 }
 
@@ -76,7 +95,51 @@
 
 .c-icon-list__icon--{
   &left{
-    margin-right: $act-unit-s;
+
     //margin-left: -$act-unit-s;
+  }
+  &promo{
+    @include size($act-unit-h);
+    margin-right: $act-unit;
+  }
+}
+
+[class*=c-icon-list__item--] {
+  @extend .c-icon-list__item;
+}
+
+.c-icon-list__item--{
+  &l{
+    margin-bottom: $act-unit-l;
+  }
+  &promo{
+    @extend .c-icon-list__item--l;
+  }
+}
+
+[class*=c-icon-list__list--] {
+  @extend .c-icon-list__list;
+}
+
+.c-icon-list__list--{
+  &l{
+    margin-bottom: $act-unit-l;
+  }
+  &promo{
+    @extend .c-icon-list__list--l;
+  }
+}
+
+
+[class*=c-icon-list__label--] {
+  @extend .c-icon-list__label;
+}
+
+.c-icon-list__label--{
+  &bold{
+   font-weight: bold;
+  }
+  &promo{
+    @extend .c-icon-list__label--bold;
   }
 }

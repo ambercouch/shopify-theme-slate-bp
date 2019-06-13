@@ -16,9 +16,10 @@
     display: block
   }
   &icm-text-logo{
-    width: 150px;
-    text-align: center;
-    margin: 0 auto;
+    @include size(150px, 24px);
+  }
+  &star{
+    @include size($act-unit)
   }
 }
 
@@ -43,6 +44,7 @@
 
   &title {
     display: inline;
+
   }
 
   &link {

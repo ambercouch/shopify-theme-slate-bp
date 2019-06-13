@@ -93,9 +93,14 @@ gulp.task('serve', ['sass'], function () {
 
     browserSync.init({
         proxy: "https://ambercouchdesign.myshopify.com/",
-        reloadDelay: 8000
+        reloadDelay: 5000
     });
 
+
+    gulp.watch('dist/templates/**/*.liquid').on('change', browserSync.reload);
+    gulp.watch('dist/snippets/**/*.liquid').on('change', browserSync.reload);
+    gulp.watch('dist/sections/**/*.liquid').on('change', browserSync.reload);
+    gulp.watch('dist/layouts/**/*.liquid').on('change', browserSync.reload);
     gulp.watch('src/ac/scss/**/*.scss', ['sass']).on('change', browserSync.reload);
     gulp.watch('src/ac/js/**/*.js', ['scripts']).on('change', browserSync.reload);
     gulp.watch("src/ac/images/svg/**/*.svg", ['svgstore']).on('change', browserSync.reload);

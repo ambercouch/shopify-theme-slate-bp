@@ -42,7 +42,7 @@ $icm-orange : #e39a00;
 
 $col-act-gray-xxlight : blue;
 
-$brand-col-1 : $icm-grey;
+$brand-col-1 : darken($icm-grey, 30%);
 $brand-col-2 : $icm-blue;
 $brand-col-3 : $icm-orange;
 $brand-col-4 :  darken($icm-grey, 25%);

@@ -4,6 +4,7 @@
 
 .c-reviews {
   display: block;
+  @extend .o-wrapper;
 }
 
 /*
@@ -36,12 +37,21 @@
   }
   &item{
     margin-bottom: $act-unit;
+    @include mq($from: wide){
+      padding: $act-unit-s;
+      background: #fafafa;
+    }
   }
   &header {
-    display: block;
+    display: flex;
+    justify-content: center;
     text-align: center;
     margin-bottom: $act-unit-s;
     color: $brand-col-2;
+    @include mq($from: tablet){
+      margin-bottom: $act-unit;
+      justify-content: flex-start;
+    }
   }
 
   &heading {

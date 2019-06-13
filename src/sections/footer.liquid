@@ -7,26 +7,27 @@
 
       </div>
     </div>
-  </div>
-  <div class="c-reviews__content">
-    <ul class="c-reviews__list">
-      <li class="c-reviews__item">
-        <div class="c-reviews__review">
-          <div class="c-review">
-            <div class="c-review__score">5/5</div>
-            <div class="c-review__stars">
-              {% assign icon = 'star' %}
-              {% capture icon-star %}{% include "svg-icon" %}{% endcapture %}
-              {{ icon-star }} {{ icon-star }} {{ icon-star }} {{ icon-star }} {{ icon-star }}
+
+    <div class="c-reviews__content">
+      <ul class="c-reviews__list">
+        <li class="c-reviews__item">
+          <div class="c-reviews__review">
+            <div class="c-review">
+              <div class="c-review__score">5/5</div>
+              <div class="c-review__stars">
+                {% assign icon = 'star' %}
+                {% capture icon-star %}{% include "svg-icon" %}{% endcapture %}
+                {{ icon-star }} {{ icon-star }} {{ icon-star }} {{ icon-star }} {{ icon-star }}
+              </div>
+              <blockquote class="c-review__quote">
+                <p>Etiam sapien arcu, luctus quis luctus id, iaculis eu lacus. Etiam diam ante, sagittis at dapibus quis, suscipit vitae sapien.</p>
+              </blockquote>
+              <cite class="c-review__cite">Louise Blackburn</cite>
             </div>
-            <blockquote class="c-review__quote">
-              <p>Etiam sapien arcu, luctus quis luctus id, iaculis eu lacus. Etiam diam ante, sagittis at dapibus quis, suscipit vitae sapien.</p>
-            </blockquote>
-            <cite class="c-review__cite">Louise Blackburn</cite>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 <footer class="l-site__footer">
@@ -46,13 +47,7 @@
         </div>
       </div>
 
-      <div class="c-footer__block">
-        <div class="info-links">
-          <div class="info-links__content">
-          {% include "info-link-list" %}
-          </div>
-        </div>
-      </div>
+
 
       {% comment %}
       <div class="c-footer__block">
@@ -68,9 +63,16 @@
 
     </div>
 
+
+    <div class="c-footer__info-links">
+      <div class="info-links__content">
+        {% include "info-link-list" %}
+      </div>
+    </div>
+
     <div class="c-footer__site-info">
       <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}</small><br>
-      <small>{{ shop.address.company }}</small><br>
+      <!-- <small>{{ shop.address.company }}</small><br> -->
       <small>Website design and development <a href="//ambercouch.co.uk">AmberCouch</a></small>
     </div>
 

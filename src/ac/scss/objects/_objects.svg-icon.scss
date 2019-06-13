@@ -4,7 +4,7 @@
 
 .o-svg-icon {
   display: block;
-  @include size($act-unit);
+  @include size(100%);
   position: relative;
   max-width: 100%;
 }
@@ -39,8 +39,7 @@
 .o-svg-icon__ {
   &svg {
     display: block;
-    width: 1.5em;
-    height: 1.5em;
+    @include size(100%);
     max-width: 100%;
     max-height: 100%;
     stroke-width: 0;

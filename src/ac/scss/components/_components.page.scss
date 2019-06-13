@@ -66,6 +66,9 @@
   &feature-image{
     margin-bottom: $act-unit;
   }
+  &img{
+    max-width: 100%;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-page--
@@ -88,3 +91,15 @@
   }
 }
 
+
+[class*=c-page__img--] {
+  @extend .c-page__img;
+}
+
+.c-page__img--{
+  &feature{
+   display: block;
+    @include mq($from:tablet){
+    }
+  }
+}

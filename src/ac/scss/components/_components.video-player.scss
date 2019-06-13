@@ -71,12 +71,12 @@
 
   }
   &icon{
+    @include size($act-unit-l  * 2);
     color: $brand-col-3;
     position: absolute;
     top:50%;
     left: 50%;
-    width: $act-unit-l * 1.25;
-    height: $act-unit-l * 1.25;
+    padding: $act-unit;
     border:solid 3px;
     display: flex;
     justify-content: center;

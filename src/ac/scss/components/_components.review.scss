@@ -5,6 +5,11 @@
 .c-review {
   display: block;
   text-align: center;
+  @include mq($from: tablet){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+  }
 }
 
 /*
@@ -32,24 +37,43 @@
     color: $brand-col-3;
     @include act-font-size($act-fs-1);
     margin-bottom: $act-unit-s;
+    @include mq($from: tablet){
+      grid-column: 1;
+      grid-row: 1;
+    }
   }
   &stars{
     display: flex;
     justify-content: center;
     color: $brand-col-3;
     margin-bottom: $act-unit-s;
+    @include mq($from: tablet){
+      grid-column: 1;
+      grid-row: 2;
+      justify-content: flex-start;
+    }
   }
   &quote{
     @extend .o-box;
     @extend .o-box--small;
     margin-bottom: 0;
+    @include mq($from: tablet){
+      grid-column: 2;
+      grid-row: 1 / 3;
+      padding-top: 0;
+      padding-left: 0;
+    }
   }
   &cite{
     @include act-font-size($act-fs-5);
     font-style: normal;
+    @include mq($from: tablet){
+      grid-column: 2;
+      grid-row: 3;
+    }
   }
   &header {
-    display: block
+    display: block;
   }
 
   &heading {

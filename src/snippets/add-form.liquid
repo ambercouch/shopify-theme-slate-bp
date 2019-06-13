@@ -4,22 +4,6 @@
   <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
 
   <form class="c-add-form__form shapp_qb_prod" action="/cart/add" method="post" enctype="multipart/form-data">
-
-    <div class="c-add-form__qty">
-      <label class="c-add-form__label" for="Quantity">{{ 'products.product.quantity' | t }}</label>
-
-      {%- assign low_price = settings.low_price_product | times: 1  -%}
-
-      {%- if current_variant.price >  low_price -%}
-        {%- assign minQty = 1 -%}
-        <!--  price : {{ current_variant.price }} > low_price : {{ low_price }} > -->
-      {%- else -%}
-        {%- assign minQty = settings.low_cost_minimum_qty -%}
-        <!--  price : {{ current_variant.price }} < low_price : {{ low_price }} > -->
-      {%- endif -%}
-
-      <input class="c-add-form__qty-input" type="number" id="Quantity" name="quantity" value="{{ minQty }}" min="{{ minQty }}">
-    </div>
     <div class="c-add-form__price-wrapper">
       <div data-price-wrapper>
         <span class="c-add-form__price" data-product-price>
@@ -36,6 +20,44 @@
         {% endif %}
       </div>
     </div>
+    <div class="c-add-form__qty">
+      <label class="c-add-form__label" for="Quantity">{{ 'products.product.quantity' | t }}</label>
+
+      {%- assign low_price = settings.low_price_product | times: 1  -%}
+
+      {%- if current_variant.price >  low_price -%}
+        {%- assign minQty = 1 -%}
+        <!--  price : {{ current_variant.price }} > low_price : {{ low_price }} > -->
+      {%- else -%}
+        {%- assign minQty = settings.low_cost_minimum_qty -%}
+        <!--  price : {{ current_variant.price }} < low_price : {{ low_price }} > -->
+      {%- endif -%}
+
+      <input class="c-add-form__qty-input" type="number" id="Quantity" name="quantity" value="{{ minQty }}" min="{{ minQty }}">
+    </div>
+    <div class="c-add-form__submit-wrapper">
+      <div class="c-add-form__submit-btn" >
+      <button class="c-btn--add"
+              type="submit"
+              name="add"
+              data-add-to-cart
+              {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+
+          <span data-add-to-cart-text class="c-btn__label">
+            {% if current_variant.available %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+              {{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </span>
+        <span  class="c-btn__icon" > > </span>
+
+      </button>
+      </div>
+      <div class="c-add-form__reminder-btn" id="ISR_button">In Stock Reminder</div>
+
+    </div>
+
 
     <div class="c-add-form__variants">
       {% include 'bold-variant' with variant, hide_action: 'skip' %}
@@ -80,25 +102,7 @@
       {% include 'continue-shopping-helper' %}
     </div>
 
-    <div class="c-add-form__submit-wrapper">
-      <button class="c-add-form__submit-btn"
-              type="submit"
-              name="add"
-              data-add-to-cart
-              {% unless current_variant.available %}disabled="disabled"{% endunless %}>
 
-          <span data-add-to-cart-text >
-            {% if current_variant.available %}
-              {{ 'products.product.add_to_cart' | t }}
-            {% else %}
-              {{ 'products.product.sold_out' | t }}
-            {% endif %}
-          </span>
-
-      </button>
-      <div class="c-add-form__reminder-btn" id="ISR_button">In Stock Reminder</div>
-
-    </div>
     <div id="smartwishlist" data-product="{{ product.id }}" data-variant="{{ product.variants.first.id }}"></div>
 
 

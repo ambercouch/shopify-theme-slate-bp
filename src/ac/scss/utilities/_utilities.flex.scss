@@ -1,0 +1,26 @@
+.u-flex{
+  @include mq($from:desktop){
+    display:flex;
+  }
+}
+
+.u-fdc{
+  flex-direction: column;
+}
+
+.u-fdr{
+  flex-direction: row;
+}
+
+.u-jcc{
+  justify-content: center;
+}
+
+.u-jce{
+  justify-content: end;
+}
+
+.u-jcs{
+  justify-content: flex-start;
+}
+
