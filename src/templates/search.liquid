@@ -1,12 +1,12 @@
-{% paginate search.results by 8 %}
+{% paginate search.results by 48 %}
 <div class="search-results">
   <header class="search-results__header" role="banner">
     <h1 class="search-results__heading">
       {% if search.performed %}
         {% if search.results_count == 0 %}
-          {{ 'general.search.no_results_html' | t: terms: search.terms }}
+          {{ 'general.search.no_results_html' | t: terms: search.terms | replace : '*', ' ' | strip }}
         {% else %}
-          {{ 'general.search.results_for_html' | t: terms: search.terms }}
+          {{ 'general.search.results_for_html' | t: terms: search.terms | replace : '*', ' ' | strip }}
         {% endif %}
       {% else %}
         {{ 'general.search.title' | t }}

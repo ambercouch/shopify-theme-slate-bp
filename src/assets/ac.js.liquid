@@ -4767,7 +4767,7 @@ ACSHOPIFY = {
 
             'use strict';
             //uncomment to debug
-            console.log('common customer data 123');
+                console.log('common customer data search 5');
 
             var customerTags = $('body').data('customer-tags');
             console.log(customerTags);
@@ -4780,10 +4780,37 @@ ACSHOPIFY = {
             }
 
 
-
             //add js class
 
             $('body').addClass('js');
+
+            // set sear
+            var searchVal = $('#Search').val();
+            var searchValWild = '';
+            var searchForm = $("#siteSearchForm");
+
+            //When input val changes update the searchVal var
+            $(document).on('change','#Search', function () {
+                searchVal = $(this).val();
+            })
+
+            // when clicking the submit but on..
+            $(document).on('click' , 'button#searchSubmit' , function (e) {
+
+                //prevent submit
+                e.preventDefault();
+                //set the search val with wild cards
+                searchValWild = '*';
+                searchValWild = searchValWild.concat(searchVal.replace(/\ /g, '* ').concat('*'));
+
+                //update the form input value
+                document.getElementById("Search").value =  searchValWild ;
+
+                //submit the form
+                searchForm.submit();
+            })
+
+
 
             //Flickity
             $('.hero__carousel').flickity({
@@ -4936,7 +4963,7 @@ ACSHOPIFY = {
 
                         'subject': 'Tempest Design New Signup',
                         'title': 'A new customer account request has been received'
-                        
+
                     }
                     $.ajax({
                         type: "POST",
