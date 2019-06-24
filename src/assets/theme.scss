@@ -375,7 +375,7 @@ $z-index-announcement-bar: 10;
 $z-index-skip-to-content: 10000; // really high to be safe of app markup
 
 /*================ SVG ================*/
-$svg-select-icon: #{'//cdn.shopify.com/s/files/1/2704/5506/t/10/assets/ico-select.svg?2540'};
+$svg-select-icon: #{'//cdn.shopify.com/s/files/1/2704/5506/t/12/assets/ico-select.svg?40347'};
 
 /*================ Drawers ================*/
 $transition-drawer: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
@@ -452,7 +452,7 @@ $slick-opacity-not-active: 0.25;
 
 // Only called once so make sure proper file is grabbed
 @function slick-image-url($url) {
-  @return url(//cdn.shopify.com/s/files/1/2704/5506/t/10/assets/ajax-loader.gif?2540);
+  @return url(//cdn.shopify.com/s/files/1/2704/5506/t/12/assets/ajax-loader.gif?40347);
 }
 
 // Unused intentionally
@@ -5924,7 +5924,7 @@ padding-left:25px;}
 @media only screen and (min-width:767px) and (max-width:1024px) {
   body {
     .banner-mobile {
-      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/10/assets/banner_ipad.jpg?2540) !important;
+      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/12/assets/banner_ipad.jpg?40347) !important;
       width:100%  !important;
     }
   }
@@ -5948,7 +5948,7 @@ padding-left:25px;}
     
     .hero{display: block;/*background-size: contain;*/}
     .banner-mobile {
-      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/10/assets/new-1280.jpg?2540) !important;
+      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/12/assets/new-1280.jpg?40347) !important;
       width:100%  !important;
     }
     .hero__inner p{margin-right: -210px;
@@ -5973,7 +5973,7 @@ padding-left:25px;}
     
     .hero{display: block;/*background-size: contain;*/}
     .banner-mobile {
-      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/10/assets/new-1280.jpg?2540) !important;
+      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/12/assets/new-1280.jpg?40347) !important;
       width:100%  !important;
     }
     .hero__inner p{margin-right: -210px;
@@ -6000,7 +6000,7 @@ padding-left:25px;}
     
     .hero{display: block;/*background-size: contain;*/}
     .banner-mobile {
-      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/10/assets/new-360.jpg?2540) !important;
+      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/12/assets/new-360.jpg?40347) !important;
       width:100%  !important;
     }
     .hero__inner p{margin-right: -110px;margin-top: -76px;
@@ -6036,7 +6036,7 @@ padding-left:25px;}
     
     .hero{display: block;/*background-size: contain;*/}
     .banner-mobile {
-      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/10/assets/new-360.jpg?2540) !important;
+      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/12/assets/new-360.jpg?40347) !important;
       width:100%  !important;
     }
     .hero__inner p{margin-right: -110px;margin-top: -76px;
@@ -6071,7 +6071,7 @@ padding-left:25px;}
     
     .hero{display: block;/*background-size: contain;*/}
     .banner-mobile {
-      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/10/assets/new-360.jpg?2540) !important;
+      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/12/assets/new-360.jpg?40347) !important;
       width:100%  !important;
     }
     .hero__inner p{margin-right: -110px;margin-top: -76px;
@@ -6106,7 +6106,7 @@ padding-left:25px;}
     
     .hero{display: block;/*background-size: contain;*/}
     .banner-mobile {
-      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/10/assets/new-360.jpg?2540) !important;
+      background-image: url(//cdn.shopify.com/s/files/1/2704/5506/t/12/assets/new-360.jpg?40347) !important;
       width:100%  !important;
     }
     .hero__inner p{margin-right: -110px;margin-top: -76px;
