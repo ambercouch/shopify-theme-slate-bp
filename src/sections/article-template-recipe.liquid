@@ -1,0 +1,109 @@
+{% assign hImage = page.metafields.global.hero_image %}
+<div class="c-recipe">
+  {% if fImage != null %}
+  <div class="c-page__header--f-image">
+    <h1 class="c-page__heading--f-image" >{{ page.title }}</h1>
+    <img class="c-page__feature-image--f-image"  src="{{ page.metafields.global.feature_image | file_url }}" alt="{{ page.title }}" >
+  </div>
+  {% endif %}
+  <div class="c-recipe__flex-wrapper--recipe-intro">
+    <div class="c-recipe__flex-item--feature-image">
+      <div class="c-feature-image">
+        <img src="{{ article.image.src | img_url: '500x' }}" alt="{{  article.image.alt }}" class="c-feature-img">
+      </div>
+    </div>
+    <div class="c-recipe__flex-item--recipe-info">
+      <header class="c-recipe__header">
+        <h1 class="c-recipe__heading">
+          <span class="c-recipe__title">{{ article.title }}</span>
+        </h1>
+        <div class="c-recipe__meta">
+          {% if section.settings.blog_show_author %}
+            <span class="c-recipe__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+          {% endif %}
+          {% if section.settings.blog_show_date %}
+            <span class="c-recipe__date">
+              {{ article.published_at | time_tag: format: 'month_day_year' }}
+            </span>
+          {% endif %}
+        </div>
+      </header>
+      <div class="c-recipe__body">
+        <div class="rte" itemprop="articleBody">
+          {{ article.excerpt }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="c-recipe__extra-content">
+    <div class="rte" itemprop="articleBody">
+      {{ article.content }}
+    </div>
+  </div>
+  <div class="c-recipe__flex-wrapper--recipe">
+    <div class="c-recipe__flex-item--ingredients">
+      <div class="c-ingredients-list">
+        <ul class="c-ingredients-list__list">
+          <li class="ingredients-list__item">1 Cup Oats</li>
+          <li class="ingredients-list__item">2 Bananas</li>
+          <li class="ingredients-list__item">4 tbsp Milk of your Choice</li>
+          <li class="ingredients-list__item">1 tsp Ground All Spice</li>
+          <li class="ingredients-list__item">1 tsp Cinnamon </li>
+          <li class="ingredients-list__item">1 grated Carrot</li>
+          <li class="ingredients-list__item">Handful Raisins</li>
+        </ul>
+      </div>
+    </div>
+    <div class="c-recipe__flex-item--method">
+      <div class="c-method-list">
+        <ol class="c-method-list__list">
+          <li class="c-method-list__item">Mash the bananas in a bowl, then mix in the milk.</li>
+          <li class="c-method-list__item">Add the Oats, all spice, cinnamon, carrot & raisins then mix until everything is combined.</li>
+          <li class="c-method-list__item">Place dollops of the mix onto a greased baking tray, leaving about 2inch between each one.</li>
+          <li class="c-method-list__item">Shape each dollop into a cookie shape, then place in the oven on 180c for 15mins.</li>
+          <li class="c-method-list__item">Place each cookie on a wire rack until cool.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="c-recipe__gallery">
+      <div class="c-recipe__gallery-item"><img src="{{ '92F6DE0D-F7E1-4C7C-AC2D-AA0034AE3E45.jpeg' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img"></div>
+    <div class="c-recipe__gallery-item"><img src="{{ '9020C9E8-8BC7-40D2-BB30-EC34478E618D.jpeg' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img"></div>
+    <div class="c-recipe__gallery-item"><img src="{{ 'panjam3.png' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img"></div>
+    <div class="c-recipe__gallery-item"><img src="{{ '0421A59F-303D-465D-ACC7-B590E8FC8F55.jpeg' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img"></div>
+  </div>
+  <div class="c-recipe__footer-info">
+    <p><small>Hope you liked the recipe!</small></p>
+  </div>
+
+</div>
+{% if section.settings.show_share_buttons %}
+  {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+{% endif %}
+{% include 'relatedblogs' %}
+
+{% schema %}
+  {
+    "name": "Posts",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

@@ -31,13 +31,11 @@
 
 
 
-<article class="page-width" itemscope itemtype="http://schema.org/Article">
-  
-  <div class="grid">
-    <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
-      {% section 'article-template' %}
-    </div>
-  </div>
+<article class="l-site__article--recipe" itemscope itemtype="http://schema.org/Article">
+<div class="l-site__container--recipe">
+  {% section 'article-template-recipe' %}
+</div>
+
 </article>
 
 {% if blog.comments_enabled? %}
@@ -142,7 +140,7 @@
   <a href="{{ blog.url }}" class="btn btn--secondary btn--has-icon-before return-link">
     {% include 'icon-arrow-left' %}
     {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
-    
+
   </a>
 </div>
 
