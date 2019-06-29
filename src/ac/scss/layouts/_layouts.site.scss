@@ -32,7 +32,9 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: $act-unit-s;
+    padding-top: 0 !important;
     @include mq($from: desktop){
+
       padding:$act-unit-l;
     }
   }

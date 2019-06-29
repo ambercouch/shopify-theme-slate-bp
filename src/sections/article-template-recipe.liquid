@@ -1,19 +1,27 @@
-{% assign hImage = page.metafields.global.hero_image %}
+{% assign hImage = article.metafields.global.hero_image %}
 <div class="c-recipe">
-  {% if fImage != null %}
-  <div class="c-page__header--f-image">
-    <h1 class="c-page__heading--f-image" >{{ page.title }}</h1>
-    <img class="c-page__feature-image--f-image"  src="{{ page.metafields.global.feature_image | file_url }}" alt="{{ page.title }}" >
+  {% if hImage != null %}
+  <div class="c-recipe__hero-title">
+    <div class="c-hero-title">
+      <header class="c-hero-title__header">
+        <h1 class="c-hero-title__heading" >{{article.title }}</h1>
+      </header>
+      <div class="c-hero-title__img">
+        <img class="c-hero-title__img"  src="{{ article.metafields.global.hero_image | file_url }}" alt="{{ article.title }}" >
+      </div>
+    </div>
+
   </div>
   {% endif %}
   <div class="c-recipe__flex-wrapper--recipe-intro">
     <div class="c-recipe__flex-item--feature-image">
       <div class="c-feature-image">
-        <img src="{{ article.image.src | img_url: '500x' }}" alt="{{  article.image.alt }}" class="c-feature-img">
+        <img src="{{ article.image.src | img_url: '500x' }}" alt="{{  article.image.alt }}" class="c-feature-image__img">
       </div>
     </div>
     <div class="c-recipe__flex-item--recipe-info">
-      <header class="c-recipe__header">
+      <div class="c-recipe__content">
+       <header class="c-recipe__header">
         <h1 class="c-recipe__heading">
           <span class="c-recipe__title">{{ article.title }}</span>
         </h1>
@@ -28,34 +36,39 @@
           {% endif %}
         </div>
       </header>
-      <div class="c-recipe__body">
+       <div class="c-recipe__body">
         <div class="rte" itemprop="articleBody">
-          {{ article.excerpt }}
+          {{ article.content }}
         </div>
+      </div>
       </div>
     </div>
   </div>
   <div class="c-recipe__extra-content">
     <div class="rte" itemprop="articleBody">
-      {{ article.content }}
+      {{ article.excerpt }}
     </div>
   </div>
   <div class="c-recipe__flex-wrapper--recipe">
+
     <div class="c-recipe__flex-item--ingredients">
+      <h4 class="c-recipe__heading--ingredients">Ingredients</h4>
       <div class="c-ingredients-list">
         <ul class="c-ingredients-list__list">
-          <li class="ingredients-list__item">1 Cup Oats</li>
-          <li class="ingredients-list__item">2 Bananas</li>
-          <li class="ingredients-list__item">4 tbsp Milk of your Choice</li>
-          <li class="ingredients-list__item">1 tsp Ground All Spice</li>
-          <li class="ingredients-list__item">1 tsp Cinnamon </li>
-          <li class="ingredients-list__item">1 grated Carrot</li>
-          <li class="ingredients-list__item">Handful Raisins</li>
+          <li class="c-ingredients-list__item">1 Cup Oats</li>
+          <li class="c-ingredients-list__item">2 Bananas</li>
+          <li class="c-ingredients-list__item">4 tbsp Milk of your Choice</li>
+          <li class="c-ingredients-list__item">1 tsp Ground All Spice</li>
+          <li class="c-ingredients-list__item">1 tsp Cinnamon </li>
+          <li class="c-ingredients-list__item">1 grated Carrot</li>
+          <li class="c-ingredients-list__item">Handful Raisins</li>
         </ul>
       </div>
     </div>
     <div class="c-recipe__flex-item--method">
+
       <div class="c-method-list">
+        <h4 class="c-recipe__heading--method">Method</h4>
         <ol class="c-method-list__list">
           <li class="c-method-list__item">Mash the bananas in a bowl, then mix in the milk.</li>
           <li class="c-method-list__item">Add the Oats, all spice, cinnamon, carrot & raisins then mix until everything is combined.</li>
@@ -67,10 +80,26 @@
     </div>
   </div>
   <div class="c-recipe__gallery">
-      <div class="c-recipe__gallery-item"><img src="{{ '92F6DE0D-F7E1-4C7C-AC2D-AA0034AE3E45.jpeg' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img"></div>
-    <div class="c-recipe__gallery-item"><img src="{{ '9020C9E8-8BC7-40D2-BB30-EC34478E618D.jpeg' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img"></div>
-    <div class="c-recipe__gallery-item"><img src="{{ 'panjam3.png' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img"></div>
-    <div class="c-recipe__gallery-item"><img src="{{ '0421A59F-303D-465D-ACC7-B590E8FC8F55.jpeg' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img"></div>
+      <div class="c-recipe__gallery-item">
+        <div class="c-recipe__gallery-image">
+        <img src="{{ '92F6DE0D-F7E1-4C7C-AC2D-AA0034AE3E45.jpeg' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img">
+        </div>
+      </div>
+    <div class="c-recipe__gallery-item">
+      <div class="c-recipe__gallery-image">
+      <img src="{{ '9020C9E8-8BC7-40D2-BB30-EC34478E618D.jpeg' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img">
+      </div>
+    </div>
+    <div class="c-recipe__gallery-item">
+      <div class="c-recipe__gallery-image">
+      <img src="{{ 'panjam3.png' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img">
+      </div>
+    </div>
+    <div class="c-recipe__gallery-item">
+      <div class="c-recipe__gallery-image">
+      <img src="{{ '0421A59F-303D-465D-ACC7-B590E8FC8F55.jpeg' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img">
+      </div>
+    </div>
   </div>
   <div class="c-recipe__footer-info">
     <p><small>Hope you liked the recipe!</small></p>

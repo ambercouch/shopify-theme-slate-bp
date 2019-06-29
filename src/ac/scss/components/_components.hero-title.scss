@@ -1,0 +1,85 @@
+/*
+  BEM BLOCK .c-hero-title
+ */
+
+.c-hero-title {
+  display: block;
+  margin-bottom: $act-unit;
+  position: relative;
+  @include mq($from : desktop){
+    margin-bottom: $act-unit-l;
+  }
+}
+
+/*
+  BEM BLOCK MODIFIER .c-hero-title--
+ */
+
+.c-hero-title-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-hero-title--
+
+[class*=c-hero-title--] {
+  @extend .c-hero-title;
+}
+
+/*
+  BEM ELEMENTS .c-hero-title__
+ */
+
+.c-hero-title__ {
+  &header {
+    display: block;
+    position: absolute;
+    top:75%;
+    transform: translate(0, -50%);
+    padding-left: $act-unit;
+    @include mq($from : desktop){
+      padding-left: $act-unit-l;
+    }
+  }
+
+  &heading {
+    display: block;
+    color:white;
+    font-weight: bold;
+    line-height: 1;
+    @include mq($from : desktop){
+      @include act-font-size($act-fs-m)
+    }
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &img{
+    height: 200px;
+   object-fit: cover;
+    @include mq($from : desktop){
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-hero-title--
+
+[class*=c-hero-title__header--] {
+  @extend .c-hero-title__header;
+}

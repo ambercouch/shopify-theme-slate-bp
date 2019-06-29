@@ -1,0 +1,161 @@
+/*
+  BEM BLOCK .
+ */
+
+.c-recipe{
+
+display: block;
+  margin-bottom: $act-unit-l;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-recipe--
+ */
+
+.c-recipe--{
+  &type {
+    display: block;
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-recipe--
+
+[class*=c-recipe--] {
+  @extend .c-recipe;
+}
+
+/*
+  BEM ELEMENTS .__
+ */
+
+.c-recipe__ {
+  &flex-wrapper{
+    @include mq($from : desktop){
+      margin-bottom: $act-unit-l;
+    display: flex;
+    }
+  }
+  &flex-item{
+    display: block;
+  }
+  &header {
+    display: block;
+    margin-bottom: $act-unit;
+
+  }
+
+  &heading {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block;
+    @include mq($from : desktop){
+      padding-left: $act-unit-l;
+    }
+  }
+
+  &footer {
+    display: block
+  }
+  &body{
+    padding-bottom: $act-unit;
+    @include mq($from : desktop){
+      border-bottom: solid 1px #eee;
+    }
+  }
+  &extra-content{
+    padding-top: $act-unit;
+    padding-bottom: $act-unit;
+    margin-bottom: $act-unit-l;
+    border-bottom: solid 1px #eee;
+    border-top: solid 1px #eee;
+    text-align: center;
+    @include act-font-size($inuit-font-size-h3)
+  }
+  &gallery{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: $act-unit-l ;
+  }
+  &gallery-item{
+    width: 100%;
+    @include mq($from: desktop){
+      width: 50%;
+    }
+
+  }
+  &gallery-img{
+    width: 100%;
+    height: auto;
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__header--
+
+[class*=c-recipe__header--] {
+  @extend .c-recipe__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__header--
+
+[class*=c-recipe__heading--] {
+  @extend .c-recipe__heading;
+}
+.c-recipe__heading--{
+  &ingredients{
+    margin-bottom: $act-unit-t;
+  }
+  &method{
+    margin-bottom: $act-unit-t;
+  }
+}
+
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__flex-wrapper--
+
+[class*=c-recipe__flex-wrapper--] {
+  @extend .c-recipe__flex-wrapper;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-recipe__flex-item--
+
+[class*=c-recipe__flex-item--] {
+  @extend .c-recipe__flex-item;
+}
+
+.c-recipe__flex-item--{
+  &recipe-info{
+    @include mq($from: desktop){
+      width: 70%;
+    }
+  }
+  &ingredients{
+    @include mq($from : desktop){
+      border-right: solid 1px #eee;
+      padding-right: $act-unit-l;
+    }
+  }
+  &method{
+    @include mq($from: desktop){
+      padding-left: $act-unit-l;
+    }
+  }
+  &feature-image{
+    margin-bottom: $act-unit;
+    @include mq($from : desktop){
+      width: 30%;
+      margin-bottom: 0;
+    }
+  }
+}
