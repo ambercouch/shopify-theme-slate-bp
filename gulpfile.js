@@ -1,4 +1,6 @@
 
+var previewThemeid = '33925005355'
+var previewThemeUrl = 'https://bibado.co.uk/?preview_theme_id=' + previewThemeid;
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var uglify = require('gulp-uglify');
@@ -91,13 +93,17 @@ gulp.task('sass', function (cb) {
 gulp.task('serve', ['sass'], function () {
 
     browserSync.init({
-        proxy: "https://tempestdesigns.myshopify.com/"
+        proxy: previewThemeUrl,
+        reloadDelay: 5000
     });
 
-    gulp.watch("src/ac/scss/**/*.scss", ['sass']);
-    // gulp.watch("assets/images/svg/**/*.svg", ['svgstore']).on('change', browserSync.reload);
-    // gulp.watch("craft/templates/**/*.html").on('change', browserSync.reload);
-    // gulp.watch("assets/js/**/*.js",['scripts']).on('change', browserSync.reload);
+    gulp.watch('dist/templates/**/*.liquid').on('change', browserSync.reload);
+    gulp.watch('dist/snippets/**/*.liquid').on('change', browserSync.reload);
+    gulp.watch('dist/sections/**/*.liquid').on('change', browserSync.reload);
+    gulp.watch('dist/layouts/**/*.liquid').on('change', browserSync.reload);
+    gulp.watch('src/ac/scss/**/*.scss', ['sass']).on('change', browserSync.reload);
+    gulp.watch('src/ac/js/**/*.js', ['scripts']).on('change', browserSync.reload);
+    gulp.watch("src/ac/images/svg/**/*.svg", ['svgstore']).on('change', browserSync.reload);
 });
 
 gulp.task('svgstore', function () {
