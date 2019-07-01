@@ -55,13 +55,15 @@
       <h4 class="c-recipe__heading--ingredients">Ingredients</h4>
       <div class="c-ingredients-list">
         <ul class="c-ingredients-list__list">
-          <li class="c-ingredients-list__item">1 Cup Oats</li>
-          <li class="c-ingredients-list__item">2 Bananas</li>
-          <li class="c-ingredients-list__item">4 tbsp Milk of your Choice</li>
-          <li class="c-ingredients-list__item">1 tsp Ground All Spice</li>
-          <li class="c-ingredients-list__item">1 tsp Cinnamon </li>
-          <li class="c-ingredients-list__item">1 grated Carrot</li>
-          <li class="c-ingredients-list__item">Handful Raisins</li>
+          {%  for i in (1..50) %}
+            {% assign ingredientId = 'ingredient_' | append : i %}
+            {% assign ingredient = article.metafields.global[ingredientId] %}
+
+            {% if ingredient != null %}
+          <li class="c-ingredients-list__item">{{ingredient}}</li>
+            {% endif %}
+          {% endfor %}
+
         </ul>
       </div>
     </div>
@@ -70,16 +72,27 @@
       <div class="c-method-list">
         <h4 class="c-recipe__heading--method">Method</h4>
         <ol class="c-method-list__list">
-          <li class="c-method-list__item">Mash the bananas in a bowl, then mix in the milk.</li>
-          <li class="c-method-list__item">Add the Oats, all spice, cinnamon, carrot & raisins then mix until everything is combined.</li>
-          <li class="c-method-list__item">Place dollops of the mix onto a greased baking tray, leaving about 2inch between each one.</li>
-          <li class="c-method-list__item">Shape each dollop into a cookie shape, then place in the oven on 180c for 15mins.</li>
-          <li class="c-method-list__item">Place each cookie on a wire rack until cool.</li>
+          {%  for i in (1..50) %}
+            {% assign methodId = 'method_' | append : i %}
+            {% assign method = article.metafields.global[methodId] %}
+
+            {% if method != null %}
+              <li class="c-method-list__item">{{method}}</li>
+            {% endif %}
+          {% endfor %}
         </ol>
       </div>
     </div>
   </div>
   <div class="c-recipe__gallery">
+    {%  for i in (1..4) %}
+        {% assign galleryId = 'gallery_' | append : i %}
+      {% assign gallery = article.metafields.global[methodId] %}
+
+      {% if method != null %}
+        <li class="c-method-list__item">{{method}}</li>
+      {% endif %}
+    {% endfor %}
       <div class="c-recipe__gallery-item">
         <div class="c-recipe__gallery-image">
         <img src="{{ '92F6DE0D-F7E1-4C7C-AC2D-AA0034AE3E45.jpeg' | file_img_url: '500x' }}" alt="" class="c-recipe__gallery-img">
