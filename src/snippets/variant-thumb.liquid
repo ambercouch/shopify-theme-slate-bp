@@ -1,6 +1,6 @@
 <!-- variant-thumb.liquid -->
 <!-- product {%  if product.available %} available {% else %} out of stock {% endif %} -->
-<div class="product-thumb{{ PTClassModifier }} {%  if product.available %} is-available {% else %} is-available-sold-out {% endif %} ">
+<div class="product-thumb{{ PTClassModifier }}  {%  if product.available %} is-available {% else %} is-available-sold-out {% endif %} ">
   <h5 class="product-thumb__sku{{ PTClassModifier }}">{{ variant.sku }}</h5>
   <a class="product-thumb__link--image" href="{{ variant.url | within: collection }}">
     {%-  unless product.available -%}
@@ -52,5 +52,17 @@
   {% else %}
     <!-- Not Admin -->
   {% endif %}
-
+  <div class="product-thumb__quick-cart">
+    <div class="c-quick-cart">
+      <div class="c-quick-cart__controls">
+        <a  href="{{ variant.url | within: collection }}" class="c-quick-cart__control--more-info">More Info</a>
+        <a href="#modalQuickCart{{ variant.id }}" class="c-quick-cart__control--quick-cart">Add to Cart</a>
+      </div>
+      <div class="remodal" data-remodal-id="modalQuickCart{{ variant.id }}">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        {% assign prodClassModifier = "--q-cart" %}
+        {%  include "product" %}
+      </div>
+    </div>
+  </div>
 </div>
