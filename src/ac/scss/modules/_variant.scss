@@ -1,7 +1,8 @@
 .variant{
   background: $brand-col-2;
-  padding: $inuit-global-spacing-unit-tiny;
+  padding: $inuit-global-spacing-unit-small;
   margin-bottom:$inuit-global-spacing-unit-tiny;
+  line-height: 1;
   &:nth-last-child(2){
     margin-bottom:0;
   }

@@ -1,0 +1,52 @@
+{% include 'bold-product' with product, hide_action: 'break' %}{% if bold_hidden_product %}{% break %}{%endif %}
+<div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true" itemscope itemtype="http://schema.org/Product">
+
+  {%- assign current_variant = bold_selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  <meta itemprop="name" content="{{ product.title }}{% unless current_variant.title == 'Default Title' %} - {{ current_variant.title }}{% endunless %}">
+  <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
+  <meta itemprop="brand" content="{{ product.vendor }}">
+  <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
+  <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+
+  <div class="product{{ prodClassModifier }}">
+    {% if template == 'product' or useBreadcrumbs == true %}
+    <div class="product__breadcrumbs">
+      {% assign BCClassModifier = "--product"  %}
+      {%  include "breadcrumbs" %}
+    </div>
+    {% endif %}
+    <div class="product__flex{{ prodClassModifier }}">
+      <div class="product__header{{ prodClassModifier }}">
+        <h1 class="product__heading{{ prodClassModifier }}" >{{ product.title }}</h1>
+        <span class="product__sku">{{ bold_selected_or_first_available_variant.sku }}</span>
+      </div>
+      <div class="product__product-gallery{{ prodClassModifier }}">
+        {% include 'product-gallery' %}
+      </div>
+      <div class="product__product-info{{ prodClassModifier }}">
+        <div class="product__add-form">
+          {% if template == 'product.voucher' %}
+            {% include 'add-form-voucher' %}
+            {% else %}
+              {%  assign afClassModifier =  prodClassModifier %}
+            {% include 'add-form' %}
+          {% endif %}
+        </div>
+
+        <div class="product__share-links">
+          {% include 'share-links'%}
+        </div>
+
+      </div>
+      {% include 'logic-admin' %}
+      {% if adminUser %}
+        <!-- Admin user -->
+        <a style="color: #ddd" href="/admin/products/{{ product.id }}"><small>Edit this product</small></a>
+      {% else %}
+        <!-- Not Admin -->
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -9,14 +9,14 @@
 //FidVids - uses custom selector because the youtube vid is lazy loaded so does not exist until modal is opened
 //$("[data-fitvid]").fitVids({ customSelector: "iframe[data-youtube-iframe]"});
 
-console.log('ACSHOPIFY2');
+console.log('ACSHOPIFY2 3');
 ACSHOPIFY = {
     common: {
         init: function () {
 
             'use strict';
             //uncomment to debug
-                console.log('common customer data search 5');
+                console.log('common customer data search 5 6');
 
             var customerTags = $('body').data('customer-tags');
             console.log(customerTags);
