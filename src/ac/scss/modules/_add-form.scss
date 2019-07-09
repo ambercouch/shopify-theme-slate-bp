@@ -3,6 +3,9 @@
 }
 
 .add-form__{
+  &label{
+    display: block;
+  }
   &form{
     display: flex;
     flex-wrap: wrap;
@@ -156,3 +159,95 @@
     width: 100%;
   }
 }
+
+
+//BEM ELEMENT MODIFIER FALLBACK .add-form__qty--
+
+[class*=add-form__qty--] {
+  @extend .add-form__qty;
+}
+
+.add-form__qty--{
+  &q-cart{
+    width: 50%;
+  }
+}
+
+
+//BEM ELEMENT MODIFIER FALLBACK .add-form__lable--
+
+[class*=add-form__label--] {
+  @extend .add-form__label;
+}
+
+.add-form__label--{
+  &q-cart{
+    @include inuit-font-size($inuit-font-size-h6, 1);
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .add-form__price-wrapper--
+
+[class*=add-form__price-wrapper--] {
+  @extend .add-form__price-wrapper;
+}
+
+.add-form__price-wrapper--{
+  &q-cart{
+    width: 50%;
+    padding: $inuit-global-spacing-unit-small *1.5;
+  }
+}
+
+
+//BEM ELEMENT MODIFIER FALLBACK .add-form__price--
+
+[class*=add-form__price--] {
+  @extend .add-form__price;
+}
+
+.add-form__price--{
+  &q-cart{
+    font-size: 1rem;
+    line-height: 1;
+    background: #c4c7c7;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .add-form__submit-btn--
+
+[class*=add-form__submit-btn--] {
+  @extend .add-form__submit-btn;
+}
+
+.add-form__submit-btn--{
+  &q-cart{
+    width: 100%;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .add-form__reminder-btn--
+
+[class*=add-form__reminder-btn--] {
+  @extend .add-form__reminder-btn;
+}
+
+.add-form__reminder-btn--{
+  &q-cart{
+    display: none;
+  }
+}
+
+
+//BEM ELEMENT MODIFIER FALLBACK .add-form__variants--
+
+[class*=add-form__variants--] {
+  @extend .add-form__variants;
+}
+
+.add-form__variants--{
+  &q-cart{
+    margin-left: auto;
+  }
+}
+

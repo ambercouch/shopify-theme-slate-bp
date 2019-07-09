@@ -1,0 +1,89 @@
+/*
+  BEM BLOCK .c-quick-cart
+ */
+
+.c-quick-cart {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-quick-cart--
+ */
+
+.c-quick-cart-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-quick-cart--
+
+[class*=c-quick-cart--] {
+  @extend .c-quick-cart;
+}
+
+/*
+  BEM ELEMENTS .c-quick-cart__
+ */
+
+.c-quick-cart__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &controls{
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+  &control{
+    display: block;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-quick-cart--
+
+[class*=c-quick-cart__header--] {
+  @extend .c-quick-cart__header;
+}
+
+.c-quick-cart__controls{
+  .product-thumb:hover &{
+    opacity: 1 !important;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-quick-cart__control--
+
+[class*=c-quick-cart__control--] {
+  @extend .c-quick-cart__control;
+}
+
+.c-quick-cart__control--{
+  &more-info{
+    display: none;
+  }
+  &quick-cart{
+    @extend .o-btn--sub;
+    background: #00adbb;
+    color: white;
+  }
+}

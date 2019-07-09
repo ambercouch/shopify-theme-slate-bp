@@ -31,7 +31,8 @@ var jsVendorScripts = [
     // 'jquery/dist/jquery.slim.js',
     // 'fitvids/.jquery.fitvids.js',
     'flickity/dist/flickity.pkgd.js',
-    'js-cookie/src/js.cookie.js'
+    'js-cookie/src/js.cookie.js',
+    'remodal/dist/remodal.js'
 ];
 
 for (var i = 0; i < jsVendorScripts.length; i++) {
