@@ -31,7 +31,7 @@ var jsCustomScripts = [
 var jsVendorScripts = [
     //All ready deprecated with browserify
     // 'jquery/dist/jquery.slim.js',
-    // 'fitvids/.jquery.fitvids.js',
+    'fitvids/jquery.fitvids.js',
     'flickity/dist/flickity.pkgd.js',
     'js-cookie/src/js.cookie.js'
 ];

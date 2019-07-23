@@ -1,4 +1,9 @@
 {% assign hImage = article.metafields.global.hero_image %}
+{% if article.metafields.global.feature_image == null %}
+  {% assign fImage =  article.image.src | img_url: '500x' %}
+{% else %}
+  {% assign fImage =  article.metafields.global.feature_image | file_img_url: '500x' %}
+{% endif %}
 <div class="c-recipe">
   {% if hImage != null %}
   <div class="c-recipe__hero-title">
@@ -16,7 +21,7 @@
   <div class="c-recipe__flex-wrapper--recipe-intro">
     <div class="c-recipe__flex-item--feature-image">
       <div class="c-feature-image">
-        <img src="{{ article.image.src | img_url: '500x' }}" alt="{{  article.image.alt }}" class="c-feature-image__img">
+        <img src="{{ fImage }}" alt="{{  article.image.alt }}" class="c-feature-image__img">
       </div>
     </div>
     <div class="c-recipe__flex-item--recipe-info">
