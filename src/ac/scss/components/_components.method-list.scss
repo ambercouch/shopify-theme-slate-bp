@@ -1,0 +1,67 @@
+/*
+  BEM BLOCK .c-method-list
+ */
+
+.c-method-list {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-method-list--
+ */
+
+.c-method-list-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-method-list--
+
+[class*=c-method-list--] {
+  @extend .c-method-list;
+}
+
+/*
+  BEM ELEMENTS .c-method-list__
+ */
+
+.c-method-list__ {
+  &list{
+    margin-left: $act-unit  ;
+
+  }
+  &item{
+    margin-bottom: $act-unit-t;
+    list-style: decimal;
+  }
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-method-list--
+
+[class*=c-method-list__header--] {
+  @extend .c-method-list__header;
+}

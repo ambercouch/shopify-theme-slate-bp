@@ -1,0 +1,65 @@
+/*
+  BEM BLOCK .c-ingredients-list
+ */
+
+.c-ingredients-list {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-ingredients-list--
+ */
+
+.c-ingredients-list-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-ingredients-list--
+
+[class*=c-ingredients-list--] {
+  @extend .c-ingredients-list;
+}
+
+/*
+  BEM ELEMENTS .c-ingredients-list__
+ */
+
+.c-ingredients-list__ {
+  &list{
+    margin-left: 0;
+  }
+  &item{
+    margin-bottom: $act-unit-t;
+  }
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-ingredients-list--
+
+[class*=c-ingredients-list__header--] {
+  @extend .c-ingredients-list__header;
+}

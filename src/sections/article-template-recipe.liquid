@@ -1,0 +1,145 @@
+{% assign hImage = article.metafields.global.hero_image %}
+{% if article.metafields.global.feature_image == null %}
+  {% assign fImage =  article.image.src | img_url: '500x' %}
+{% else %}
+  {% assign fImage =  article.metafields.global.feature_image | file_img_url: '500x' %}
+{% endif %}
+<div class="c-recipe">
+  {% if hImage != null %}
+  <div class="c-recipe__hero-title">
+    <div class="c-hero-title">
+      <header class="c-hero-title__header">
+        <h1 class="c-hero-title__heading" >{{article.title }}</h1>
+      </header>
+      <div class="c-hero-title__img">
+        <img class="c-hero-title__img"  src="{{ article.metafields.global.hero_image | file_url }}" alt="{{ article.title }}" >
+      </div>
+    </div>
+
+  </div>
+  {% endif %}
+  <div class="c-recipe__flex-wrapper--recipe-intro">
+    <div class="c-recipe__flex-item--feature-image">
+      <div class="c-feature-image">
+        <img src="{{ fImage }}" alt="{{  article.image.alt }}" class="c-feature-image__img">
+      </div>
+    </div>
+    <div class="c-recipe__flex-item--recipe-info">
+      <div class="c-recipe__content">
+       <header class="c-recipe__header">
+        <h1 class="c-recipe__heading">
+          <span class="c-recipe__title">{{ article.title }}</span>
+        </h1>
+        <div class="c-recipe__meta">
+          {% if section.settings.blog_show_author %}
+            <span class="c-recipe__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+          {% endif %}
+          {% if section.settings.blog_show_date %}
+            <span class="c-recipe__date">
+              {{ article.published_at | time_tag: format: 'month_day_year' }}
+            </span>
+          {% endif %}
+        </div>
+      </header>
+       <div class="c-recipe__body">
+        <div class="rte" itemprop="articleBody">
+          {{ article.content }}
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="c-recipe__extra-content">
+    <div class="rte" itemprop="articleBody">
+      {{ article.excerpt }}
+    </div>
+  </div>
+  <div class="c-recipe__flex-wrapper--recipe">
+    {% if  article.metafields.global['ingredient_1'] %}
+    <div class="c-recipe__flex-item--ingredients">
+      <h4 class="c-recipe__heading--ingredients">Ingredients</h4>
+      <div class="c-ingredients-list">
+        <ul class="c-ingredients-list__list">
+          {%  for i in (1..50) %}
+            {% assign ingredientId = 'ingredient_' | append : i %}
+            {% assign ingredient = article.metafields.global[ingredientId] %}
+
+            {% if ingredient != null %}
+          <li class="c-ingredients-list__item">{{ingredient}}</li>
+            {% endif %}
+          {% endfor %}
+
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+    {% if article.metafields.global['method_1'] %}
+    <div class="c-recipe__flex-item--method">
+      <div class="c-method-list">
+        <h4 class="c-recipe__heading--method">Method</h4>
+        <ol class="c-method-list__list">
+          {%  for i in (1..50) %}
+            {% assign methodId = 'method_' | append : i %}
+            {% assign method = article.metafields.global[methodId] %}
+
+            {% if method != null %}
+              <li class="c-method-list__item">{{method}}</li>
+            {% endif %}
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  <div class="c-recipe__gallery">
+    {%  for i in (1..4) %}
+        {% assign galleryId = 'gallery_' | append : i %}
+      {% assign gallery = article.metafields.global[galleryId] %}
+
+      {% if gallery != null %}
+        <div class="c-recipe__gallery-item">
+          <div class="c-recipe__gallery-image">
+            <img src="{{ article.metafields.global[galleryId] | file_img_url: '500x' }}" alt="article.metafields.global[galleryId]" class="c-recipe__gallery-img">
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+  </div>
+  {% if article.metafields.global.footer_text %}
+  <div class="c-recipe__footer-info">
+    {{ article.metafields.global.footer_text }}
+  </div>
+  {% endif %}
+
+</div>
+{% if section.settings.show_share_buttons %}
+  {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+{% endif %}
+{% include 'relatedblogs' %}
+
+{% schema %}
+  {
+    "name": "Posts",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

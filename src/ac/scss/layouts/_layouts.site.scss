@@ -1,0 +1,74 @@
+/*
+  BEM BLOCK .l-site
+ */
+
+.l-site {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .l-site--
+ */
+
+.l-site-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .l-site--
+
+[class*=l-site--] {
+  @extend .l-site;
+}
+
+/*
+  BEM ELEMENTS .l-site__
+ */
+
+.l-site__ {
+  &container{
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $act-unit-s;
+    padding-top: 0 !important;
+    @include mq($from: desktop){
+
+      padding:$act-unit-l;
+    }
+  }
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-site--
+
+[class*=l-site__header--] {
+  @extend .l-site__header;
+}
+
+[class*=l-site__container--] {
+  @extend .l-site__container;
+}

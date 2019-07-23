@@ -9,17 +9,18 @@
 //FidVids - uses custom selector because the youtube vid is lazy loaded so does not exist until modal is opened
 //$("[data-fitvid]").fitVids({ customSelector: "iframe[data-youtube-iframe]"});
 
-console.log('ACTIMBER BBD');
+console.log('ACTIMBER BBD FIT VID');
 ACTIMBER = {
     common: {
         init: function () {
 
             'use strict';
             //uncomment to debug
-            console.log('common customer data 123 blog 1234567890');
+            console.log('common FIT VID 2');
 
 
             $('body').addClass('js');
+            $("[data-fitvid]").fitVids();
 
             $('[data-control]').each(function () {
                 var dataValue = $(this).attr('data-control');
