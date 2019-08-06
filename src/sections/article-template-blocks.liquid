@@ -1,0 +1,150 @@
+{% assign hImage = article.metafields.global.hero_image %}
+
+{% if article.metafields.global.feature_image == null %}
+  {% assign fImage =  article.image.src | img_url: '500x' %}
+{% else %}
+  {% assign fImage =  article.metafields.global.feature_image | file_img_url: '500x' %}
+{% endif %}
+
+<div class="c-article some-class-test">
+  {% if hImage != null %}
+  <div class="c-article__hero-title">
+    <div class="c-hero-title">
+      <header class="c-hero-title__header">
+        <h1 class="c-hero-title__heading" >{{article.title }}</h1>
+      </header>
+      <div class="c-hero-title__img">
+        <img class="c-hero-title__img"  src="{{ article.metafields.global.hero_image | file_url }}" alt="{{ article.title }}" >
+      </div>
+    </div>
+
+  </div>
+  {% endif %}
+
+  <div class="c-article__flex-wrapper--recipe-intro">
+
+    <div class="c-article__flex-item--block-intro">
+      <div class="c-article__content">
+       <header class="c-article__header">
+         {% if hImage == null %}
+        <h1 class="c-article__heading">
+          <span class="c-article__title">{{ article.title }}</span>
+        </h1>
+         {% endif %}
+
+        <div class="c-article__meta">
+          {% if section.settings.blog_show_author %}
+            <span class="c-article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+          {% endif %}
+          {% if section.settings.blog_show_date %}
+            <span class="c-article__date">
+              {{ article.published_at | time_tag: format: 'month_day_year' }}
+            </span>
+          {% endif %}
+        </div>
+      </header>
+       <div class="c-article__body">
+        <div class="rte" itemprop="articleBody">
+          {{ article.content }}
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+ {% for i in (1..10) %}
+   {% capture namespace %}block{{ i }}{% endcapture %}
+
+   {% case article.metafields[namespace]['layout_image']  %}
+     {% when 'center' %}
+     {% assign classImagePos = "is-image-center" %}
+     {% when 'right' %}
+     {% assign classImagePos = "is-image-right" %}
+      {% when 'left' %}
+      {% assign classImagePos = "is-image-left" %}
+     {% when'none' %}
+      {% assign classImagePos = "is-image-none" %}
+     {% else %}
+    {% assign classImagePos = '' %}
+     {% endcase %}
+
+   {% case article.metafields[namespace]['size_image']  %}
+   {% when '50' %}
+   {% assign classImageSize = "is-image-size-50" %}
+   {% when '30' %}
+   {% assign classImageSize = "is-image-size-30" %}
+
+     {% else %}
+   {% assign classImageSize = "is-image-size-none" %}
+   {% endcase %}
+
+   {% if  article.metafields[namespace]['text'] %}
+   {% assign blockText = article.metafields[namespace]['text'] %}
+     {% else %}
+     {% assign blockText = null %}
+ {% endif %}
+   {% if  article.metafields[namespace]['image'] %}
+     {% assign blockImage = article.metafields[namespace]['image'] %}
+     {% assign blockImageUrl = blockImage | file_img_url: '500x' %}
+     {% else %}
+     {% assign blockImage = null %}
+     {% assign blockImageUrl = null %}
+   {% endif %}
+
+   {% if article.metafields[namespace]['image'] or article.metafields[namespace]['text'] %}
+  <div class="c-article__flex-wrapper--block {{ classImagePos }} {{  classImageSize }}">
+    {% if blockImage %}
+      <div class="c-article__flex-item--image">
+        <img src="{{ blockImageUrl }}" alt="{{ blockImage }}" class="c-article__img">
+      </div>
+    {% endif %}
+    {% if blockText %}
+    <div class="c-article__flex-item--text">
+      <div class="rte" >
+        {{blockText }}
+      </div>
+    </div>
+      {% endif %}
+  </div>
+   {% endif %}
+
+  {% endfor %}
+
+
+  {% if article.metafields.global.footer_text %}
+  <div class="c-article__footer-info">
+    {{ article.metafields.global.footer_text }}
+  </div>
+  {% endif %}
+
+</div>
+{% if section.settings.show_share_buttons %}
+  {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+{% endif %}
+{% include 'relatedblogs' %}
+
+{% schema %}
+  {
+    "name": "Posts",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

@@ -37,6 +37,9 @@
 
       padding:$act-unit-l;
     }
+    &:after{
+      @extend .u-clearfix;
+    }
   }
   &header {
     display: block

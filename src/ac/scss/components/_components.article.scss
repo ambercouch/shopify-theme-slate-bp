@@ -1,0 +1,211 @@
+/*
+  BEM BLOCK .
+ */
+
+.c-article{
+
+display: block;
+  margin-bottom: $act-unit-l;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-article--
+ */
+
+.c-article--{
+  &type {
+    display: block;
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-article--
+
+[class*=c-article--] {
+  @extend .c-article;
+}
+
+/*
+  BEM ELEMENTS .__
+ */
+
+.c-article__ {
+  &flex-wrapper{
+    @include mq($from : desktop){
+      margin-bottom: $act-unit-l;
+    display: flex;
+    }
+  }
+  &flex-item{
+    display: block;
+  }
+  &header {
+    display: block;
+    margin-bottom: $act-unit;
+
+  }
+
+  &heading {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block;
+    @include mq($from : desktop){
+      //padding-left: $act-unit-l;
+    }
+  }
+
+  &footer {
+    display: block
+  }
+  &body{
+    padding-bottom: $act-unit;
+    @include mq($from : desktop){
+      border-bottom: solid 1px #eee;
+    }
+  }
+  &extra-content{
+    padding-top: $act-unit;
+    padding-bottom: $act-unit;
+    margin-bottom: $act-unit-l;
+    border-bottom: solid 1px #eee;
+    border-top: solid 1px #eee;
+    text-align: center;
+    @include act-font-size($inuit-font-size-h3)
+  }
+  &gallery{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: $act-unit-l ;
+  }
+  &gallery-item{
+    width: 100%;
+    @include mq($from: desktop){
+      width: 50%;
+    }
+
+  }
+  &gallery-img{
+    width: 100%;
+    height: auto;
+
+  }
+  &img{
+    width: 100%
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-article__header--
+
+[class*=c-article__header--] {
+  @extend .c-article__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-article__header--
+
+[class*=c-article__heading--] {
+  @extend .c-article__heading;
+}
+.c-article__heading--{
+  &ingredients{
+    margin-bottom: $act-unit-t;
+  }
+  &method{
+    margin-bottom: $act-unit-t;
+  }
+}
+
+
+//BEM ELEMENT MODIFIER FALLBACK .c-article__flex-wrapper--
+
+[class*=c-article__flex-wrapper--] {
+  @extend .c-article__flex-wrapper;
+}
+
+.c-article__flex-wrapper--{
+  &block{
+    margin-bottom: $act-unit-l;
+  }
+}
+
+.c-article__flex-wrapper{
+  &.is-image-right{
+    flex-direction: row-reverse;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-article__flex-item--
+
+[class*=c-article__flex-item--] {
+  @extend .c-article__flex-item;
+}
+
+.c-article__flex-item--{
+  &recipe-info{
+    @include mq($from: desktop){
+      width: 70%;
+    }
+  }
+  &ingredients{
+    @include mq($from : desktop){
+      border-right: solid 1px #eee;
+      padding-right: $act-unit-l;
+    }
+  }
+  &method{
+    @include mq($from: desktop){
+      padding-left: $act-unit-l;
+    }
+  }
+  &image{
+    margin-bottom: $act-unit;
+    @include mq($from : desktop){
+      width: 30%;
+      margin-bottom: 0;
+      .is-image-size-50 &{
+        width: 50%;
+      }
+    }
+  }
+  &text{
+    @include mq($from: desktop){
+      width: 100%;
+      padding-left: 0;
+
+      .is-image-right &{
+        padding-left: 0 !important;
+        padding-right: $act-unit-l;
+        width: 70%;
+      }
+      .is-image-left &{
+        padding-left: $act-unit-l !important;
+        width: 70%;
+      }
+      .is-image-size-50 &{
+        width: 50%;
+      }
+
+    }
+
+  }
+}
+
+
+.c-article__flex-item{
+  .is-image-none &{
+    width: 100%;
+    padding-left: 0 !important;
+    @include act-font-size($act-fs-3);
+    text-align: center;
+  }
+
+}
