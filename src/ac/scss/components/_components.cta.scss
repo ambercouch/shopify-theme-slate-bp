@@ -61,6 +61,12 @@
   &footer {
     display: block
   }
+  &btn{
+    margin-bottom: $act-unit-l;
+    @include mq($from: tablet){
+      margin-bottom: 0;
+    }
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-cta--
@@ -76,7 +82,11 @@
 
 .c-cta__btn-wrapper--{
   &2btn-flex{
-    display: flex;
-    justify-content: space-around;
+    display: block;
+    @include mq($from: tablet){
+      display: flex;
+      justify-content: space-around;
+    }
+
   }
 }

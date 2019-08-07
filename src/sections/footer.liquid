@@ -1,18 +1,20 @@
 
 <footer class="l-site__footer">
   <div class="c-footer">
+
+    <div class="c-footer__info-links">
+      <div class="c-nav-menu--info-links">
+        {%- assign navLinkList = section.settings.footer_linklist -%}
+        {% include "nav-menu" %}
+      </div>
+    </div>
+
+    <div class="c-footer__site-info--copyright">
+      <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}</small><br>
+    </div>
+
     <div class="c-footer__footer-content">
 
-      <div class="c-footer__info-links">
-        <div class="c-nav-menu--info-links">
-          {%- assign navLinkList = section.settings.footer_linklist -%}
-          {% include "nav-menu" %}
-        </div>
-      </div>
-
-      <div class="c-footer__site-info">
-        <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}</small><br>
-      </div>
 
       <div class="c-footer__block u-mtm">
         <div class="c-footer__logo">
@@ -43,7 +45,7 @@
 
     </div>
 
-    <div class="c-footer__site-info">
+    <div class="c-footer__site-info--ac">
       <small>Website design and development <a href="//ambercouch.co.uk">AmberCouch</a></small>
     </div>
 

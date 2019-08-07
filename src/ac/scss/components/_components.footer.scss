@@ -92,3 +92,24 @@
 [class*=c-footer__header--] {
   @extend .c-footer__header;
 }
+
+//BEM ELEMENT MODIFIER FALLBACK .c-footer--
+
+[class*=c-footer__site-info--] {
+  @extend .c-footer__site-info;
+}
+
+.c-footer__site-info--{
+  &copyright{
+    @include mq($from: tablet){
+      grid-row: 2;
+      grid-column: 1;
+    }
+  }
+  &ac{
+    @include mq($from: tablet){
+      grid-row: 3;
+      grid-column: 1;
+    }
+  }
+}

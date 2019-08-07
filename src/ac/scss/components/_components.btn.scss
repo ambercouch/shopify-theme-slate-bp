@@ -62,8 +62,9 @@
   }
   &more{
     @extend .o-btn--s;
-    @extend .c-btn--bg-3;
+    @extend .c-btn--green;
     @extend .c-btn--pill;
+    text-transform: uppercase;
     &:focus{
       //color: white;
     }
@@ -116,6 +117,20 @@
     color: white;
     &:hover, &:focus,  &:active{
       background: darken($brand-col-3, 10%);
+      color: white;
+    }
+    a:hover, a:focus, a:active{
+      color: white;
+    }
+  }
+
+  &green{
+    @extend .c-btn;
+    background: $icm-green;
+    border-color:$icm-green;
+    color: white;
+    &:hover, &:focus,  &:active{
+      background: darken($icm-green, 10%);
       color: white;
     }
     a:hover, a:focus, a:active{
