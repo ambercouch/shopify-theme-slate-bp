@@ -1,9 +1,10 @@
 <div class="c-page--feature">
   <div class="c-page__header--feature">
+    <h3 class="c-page__heading--feature" ><span class="c-page__title">{{ feature.title }}</span></h3>
     <div class="c-page__feature-image">
           <img class="c-page__img--feature" src="{{ feature.metafields.global.feature_image  | file_url }}" alt="{{ page.title }}" >
     </div>
-    <h3 class="c-page__heading--feature" ><span class="c-page__title">{{ feature.title }}</span></h3>
+
   </div>
   {% if feature.content != '' %}
   <div class="c-page__content--feature">

@@ -1136,11 +1136,11 @@ table {
  * Note: Declaring the item class might not be necessary everywhere,
  * but is for example in <dl> lists for the <dd> children.
  */
-.o-list-bare, .site-control__list, .nav-main__list, .mega-menu__list, .collection__list, [class*=collection__list--], .featured-collection__list, .collection-list__list, .search-results__list, .content-list__list, .banner-list__list, .info-links__list, .product-gallery__list, .breadcrumbs__list, [class*=breadcrumbs__list--], .blog__list, .article__meta-list, .blog-cats__list, .c-nav-menu__list, [class*='c-nav-menu__list--'], .c-nav-menu__list--main {
+.o-list-bare, .site-control__list, .nav-main__list, .mega-menu__list, .collection__list, [class*=collection__list--], .featured-collection__list, .collection-list__list, .search-results__list, .content-list__list, .banner-list__list, .info-links__list, .product-gallery__list, .breadcrumbs__list, [class*=breadcrumbs__list--], .blog__list, .article__meta-list, .blog-cats__list, .c-nav-menu__list, [class*='c-nav-menu__list--'], .c-nav-menu__list--main, .c-title-list__list {
   list-style: none;
   margin-left: 0; }
 
-.o-list-bare__item {
+.o-list-bare__item, .o-list-bare > li, .site-control__list > li, .nav-main__list > li, .mega-menu__list > li, .collection__list > li, [class*=collection__list--] > li, .featured-collection__list > li, .collection-list__list > li, .search-results__list > li, .content-list__list > li, .banner-list__list > li, .info-links__list > li, .product-gallery__list > li, .breadcrumbs__list > li, [class*=breadcrumbs__list--] > li, .blog__list > li, .article__meta-list > li, .blog-cats__list > li, .c-nav-menu__list > li, [class*='c-nav-menu__list--'] > li, .c-nav-menu__list--main > li, .c-title-list__list > li {
   margin-left: 0; }
 
 /* ==========================================================================
@@ -3210,6 +3210,9 @@ p {
  * Note: Declaring the item-class might not be necessary everywhere but
  * is for example in <dl> lists for the <dd> childs.
  */
+.o-list-bare > li, .site-control__list > li, .nav-main__list > li, .mega-menu__list > li, .collection__list > li, [class*=collection__list--] > li, .featured-collection__list > li, .collection-list__list > li, .search-results__list > li, .content-list__list > li, .banner-list__list > li, .info-links__list > li, .product-gallery__list > li, .breadcrumbs__list > li, [class*=breadcrumbs__list--] > li, .blog__list > li, .article__meta-list > li, .blog-cats__list > li, .c-nav-menu__list > li, [class*='c-nav-menu__list--'] > li, .c-nav-menu__list--main > li, .c-title-list__list > li {
+  list-style: none; }
+
 /* ==========================================================================
    #LIST-INLINE
    ========================================================================== */
@@ -7030,7 +7033,7 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 60%; }
+  object-position: 50% 95%; }
   @media (min-width: 61.25em) {
     .c-hero__img {
       filter: brightness(50%); } }
@@ -7431,6 +7434,10 @@ p {
 
 .c-icon-list__list--l, .c-icon-list__list--promo {
   margin-bottom: 48px; }
+
+@media (min-width: 46.25em) {
+  .c-icon-list__list--col2 {
+    column-count: 2; } }
 
 .c-icon-list__label--bold, .c-icon-list__label--promo {
   font-weight: bold; }
@@ -8174,6 +8181,58 @@ p {
   font-size: 16.50969px;
   font-size: 0.82548rem;
   line-height: 1.45369; }
+
+/*
+  BEM BLOCK .c-title-list
+ */
+.c-title-list, [class*=c-title-list--] {
+  display: block;
+  margin-bottom: 48px; }
+
+/*
+  BEM BLOCK MODIFIER .c-title-list--
+ */
+.c-title-list--type {
+  display: block; }
+
+/*
+  BEM ELEMENTS .c-title-list__
+ */
+.c-title-list__header, [class*=c-title-list__header--] {
+  display: block; }
+
+.c-title-list__heading {
+  display: block; }
+
+.c-title-list__title, [class*=c-title-list__title--] {
+  display: inline; }
+
+.c-title-list__link {
+  display: inline; }
+
+.c-title-list__content {
+  display: block;
+  font-size: 16.50969px;
+  font-size: 0.82548rem;
+  line-height: 1.45369;
+  font-weight: 700; }
+
+.c-title-list__footer {
+  display: block; }
+
+.c-title-list__list {
+  margin: 0 !important; }
+
+.c-title-list__item {
+  margin-bottom: 12px; }
+
+.c-title-list__title, [class*=c-title-list__title--] {
+  color: #202e6f;
+  font-weight: 700;
+  display: block; }
+
+.c-title-list__title--green {
+  color: #00B016; }
 
 /*
  UTILITIES

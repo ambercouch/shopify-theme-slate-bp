@@ -12,7 +12,7 @@
 
 .o-list-bare {
   > li{
-    //@extend .o-list-bare__item
-
+    @extend .o-list-bare__item;
+    list-style: none;
   }
 }

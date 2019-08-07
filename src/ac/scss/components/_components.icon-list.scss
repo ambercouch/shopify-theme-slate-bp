@@ -130,6 +130,11 @@
   &promo{
     @extend .c-icon-list__list--l;
   }
+  &col2{
+    @include mq($from: tablet){
+      column-count: 2;
+    }
+  }
 }
 
 
