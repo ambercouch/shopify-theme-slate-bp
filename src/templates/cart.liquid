@@ -1,23 +1,29 @@
 <div class="c-shopping-cart">
 
-  <div class="shopping-cart__header">
-    <h1 class="shopping-cart__heading" >{{ 'cart.general.title' | t }}</h1>
+  <div class="c-shopping-cart__header">
+    <h1 class="c-shopping-cart__heading" >{{ 'cart.general.title' | t }}</h1>
   </div>
 {% if cart.item_count > 0 %}
 
-  <form class="shopping-cart__form" action="/cart" method="post" novalidate>
+  <form class="c-shopping-cart__form" action="/cart" method="post" novalidate>
   <div class="shopping-cart__cart-table">
+    {% comment %}
     {% if customer.tags contains "platinum" %}
     <!-- Bold: Quantity Breaks - Cart Savings Banner -->
     <div id="shappify-qty-cart-msg"></div>
     <!-- // end Bold code -->
     {% endif %}
+    {% endcomment %}
+
     {% include 'cart-table' %}
-    <div class="shopping-cart__cart-promo">
+
+    {% comment %}
+    <div class="c-shopping-cart__cart-promo">
     {% include 'cart-promo' %}
     </div>
+    {% endcomment %}
   </div>
-    <div class="shopping-cart__cart-checkout">
+    <div class="c-shopping-cart__cart-checkout">
      {% include "cart-checkout" %}
     </div>
 
@@ -26,7 +32,9 @@
 
   </form>
 {% else %}
+  <div class="c-shopping-cart__notice--empty">
   {% include 'cart-empty' %}
+  </div>
 {% endif %}
 </div>
 <div id="cbb-also-bought-box"></div>

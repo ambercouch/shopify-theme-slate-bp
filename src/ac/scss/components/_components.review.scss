@@ -8,6 +8,7 @@
   @include mq($from: tablet){
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3em 1fr;
     text-align: left;
   }
 }

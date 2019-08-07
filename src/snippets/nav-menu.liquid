@@ -1,0 +1,34 @@
+
+<nav role="navigation" class="c-nav-menu--{{  navLinkList }}"  >
+  <div  style="display:none" class="c-nav-menu__controls">
+    <span class="c-nav-menu__control-close" data-control="mobileNav" data-state="off">
+    {% include 'icon-close' %}
+  </span>
+  </div>
+
+  <ul class="c-nav-menu__list--{{  navLinkList }}">
+    {% for link in linklists[ navLinkList].links %}
+      {%- assign child_list_handle = link.title | handleize -%}
+      {%- assign mega = '' -%}
+      {%- capture  megaLinks -%}
+      {%- for list in linklists -%}
+        {%- if list.handle contains child_list_handle -%}
+         {{ list.handle }},
+        {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- assign megaLinks = megaLinks | split: ','  | size -%}
+      <!-- megaLinks {{megaLinks | size }} -->
+      {% if megaLinks  > 0 %}
+        <!-- inc megaLinks -->
+        {% include "nav-main-mega" %}
+        {%  elsif menus[child_list_handle].links != blank %}
+        <!-- inc drop -->
+        {% include "nav-main-dropdown" %}
+      {% else %}
+        <!-- inc  -->
+        {% include "nav-single" %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>

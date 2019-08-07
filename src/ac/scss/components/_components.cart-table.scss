@@ -1,0 +1,131 @@
+/*
+  BEM BLOCK .c-cart-table
+ */
+
+.c-cart-table {
+  display: block;
+  padding-bottom: $act-unit;
+  border-bottom: solid 1px $brand-col-6;
+  margin-bottom: $act-unit;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-cart-table--
+ */
+
+.c-cart-table-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-cart-table--
+
+[class*=c-cart-table--] {
+  @extend .c-cart-table;
+}
+
+/*
+  BEM ELEMENTS .c-cart-table__
+ */
+
+.c-cart-table__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &product-title {
+    display: block;
+    margin-bottom: $act-unit-t;
+  }
+  &product-title-link {
+    text-decoration: none;
+  }
+  &remove{
+    @include act-font-size($inuit-font-size-h6);
+    color: $brand-col-3;
+    text-decoration: none;
+  }
+  &qty-input-submit{
+    background-color: transparent;
+    @include act-font-size($inuit-font-size-h6);
+    color: $brand-col-3;
+    text-decoration: none;
+    border:none;
+    padding: 0;
+  }
+
+  &link {
+    display: inline;
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &table{
+    @include act-font-size($inuit-font-size-h5);
+    margin-bottom: 0;
+
+  }
+  &table-row{
+    display: grid !important;
+    grid-template-columns: 120px minmax(0, 1fr) 4em;
+    @include mq($from : desktop){
+      grid-template-columns: 2fr 2fr 1fr;
+
+    }
+  }
+
+  &cell{
+    //width: 100%;
+    line-height: 1;
+  }
+  &qty-input{
+    border: solid 1px $brand-col-3;
+    padding: $act-unit-t $act-unit-t $act-unit-t $act-unit-s;
+    border-radius: 1em;
+    margin-bottom: $act-unit-s;
+    @include act-font-size($inuit-font-size-h6);
+    width: 4em;
+    display: block;
+    line-height: 1;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-cart-table--
+
+[class*=c-cart-table__header--] {
+  @extend .c-cart-table__header;
+}
+
+[class*=c-cart-table__cell--] {
+  @extend .c-cart-table__cell;
+}
+
+.c-cart-table__cell--{
+  &qty{
+    grid-column: 2 / 3;
+    padding-left: $act-unit-s;
+  }
+  &image{
+    grid-row: 1 / 3;
+  }
+  &product-price{
+    text-align: right;
+  }
+  &line-price{
+    text-align: right;
+  }
+  &info{
+    margin-bottom: $act-unit-s;
+    padding-left: $act-unit-s;
+  }
+}

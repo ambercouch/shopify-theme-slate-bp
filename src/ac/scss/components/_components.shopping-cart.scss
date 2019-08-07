@@ -28,7 +28,9 @@
 
 .c-shopping-cart__ {
   &header {
-    display: block
+    display: block;
+    border-bottom: solid 1px $brand-col-6;
+    margin-bottom: $act-unit;
   }
 
   &heading {
@@ -50,10 +52,18 @@
   &footer {
     display: block
   }
+  &notice{
+    margin-bottom: $act-unit-h;
+    border-bottom: 1px solid $brand-col-6;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-shopping-cart--
 
 [class*=c-shopping-cart__header--] {
   @extend .c-shopping-cart__header;
+}
+
+[class*=c-shopping-cart__notice--] {
+  @extend .c-shopping-cart__notice;
 }

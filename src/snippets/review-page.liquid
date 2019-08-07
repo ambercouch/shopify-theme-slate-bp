@@ -1,0 +1,32 @@
+<div class="c-reviews">
+  <div class="c-reviews__header">
+    <div class="c-reviews__logo">
+      {% assign icon = 'icm-text-logo' %}
+      {% include 'svg-icon'%}
+
+    </div>
+  </div>
+
+  <div class="c-reviews__content">
+    <ul class="c-reviews__list">
+      <li class="c-reviews__item">
+        <div class="c-reviews__review">
+          <div class="c-review">
+            <div class="c-review__score">5/5</div>
+            <div class="c-review__stars">
+              {% assign icon = 'star' %}
+              {% capture icon-star %}{% include "svg-icon" %}{% endcapture %}
+              {{ icon-star }} {{ icon-star }} {{ icon-star }} {{ icon-star }} {{ icon-star }}
+            </div>
+            <blockquote class="c-review__quote">
+              <p><strong>She Absolutely Loves it!</strong></p>
+              <p>I purchased an iClean mini for my daughter Lorraine, as I felt it would be a healthier cleaning option. She absolutely loves using the mini, because it’s so simple to use. Lorraine said she sprays and cleans everywhere and anywhere, even the dog!!!</p>
+              <p>She is really happy with it because it’s saving her money, and she’s buying less cleaning products. Lorraine also feels it’s helping with her breathing, as she is asthmatic. Previously when she used chemical cleaners, she would find her chest becoming tight. The iClean mini is a real success story.</p>
+            </blockquote>
+            <cite class="c-review__cite">Julie McGuinness- Hampshire</cite>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

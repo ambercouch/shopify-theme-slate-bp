@@ -4,6 +4,7 @@
 
 .c-btn {
  @extend .o-btn;
+  flex-wrap: nowrap;
 }
 
 /*
@@ -14,8 +15,11 @@
   &primary{
     @extend .c-btn;
   }
-  &type {
-    display: block
+  &block {
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
   }
   &sub{
     @extend .c-btn;
@@ -40,6 +44,16 @@
     padding: $inuit-global-spacing-unit-tiny  $inuit-global-spacing-unit-small;
     @include act-font-size($act-fs-4, 1);
     text-transform: none;
+  }
+  &s{
+    @extend .c-btn;
+    padding: $act-unit-s;
+    @include act-font-size($act-fs-5, 1);
+  }
+  &t{
+    @extend .c-btn;
+    padding: $act-unit-t;
+    @include act-font-size($act-fs-6, 1);
   }
   &cta1{
     @extend .c-btn--video;
@@ -117,6 +131,12 @@
     a:hover{
       color: darken($brand-col-3, 5);
     }
+  }
+  &checkout-submit{
+    @extend .c-btn--s;
+    @extend .c-btn--block;
+    @extend .c-btn--pill;
+    @extend .c-btn--bg-3;
   }
 }
 

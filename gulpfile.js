@@ -92,7 +92,7 @@ gulp.task('sass', function (cb) {
 gulp.task('serve', ['sass'], function () {
 
     browserSync.init({
-        proxy: "https://ambercouchdesign.myshopify.com/",
+        proxy: "https://qer1frrdtctcwyeu-2958622818.shopifypreview.com",
         reloadDelay: 5000
     });
 

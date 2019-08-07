@@ -1,0 +1,80 @@
+/*
+  BEM BLOCK .c-cart-count
+ */
+
+.c-cart-count {
+  display: block;
+  position: relative;
+  top: -8px;
+  left: -8px;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-cart-count--
+ */
+
+.c-cart-count-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-cart-count--
+
+[class*=c-cart-count--] {
+  @extend .c-cart-count;
+}
+
+/*
+  BEM ELEMENTS .c-cart-count__
+ */
+
+.c-cart-count__ {
+  &wrapper{
+    @include size($act-unit-s * 1.5);
+    position: relative;
+    display: block;
+    line-height: 1;
+    color: white;
+    background: $brand-col-3;
+    border-radius: 50%;
+    @include act-font-size($inuit-font-size-h6);
+  }
+  &label{
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-cart-count--
+
+[class*=c-cart-count__header--] {
+  @extend .c-cart-count__header;
+}

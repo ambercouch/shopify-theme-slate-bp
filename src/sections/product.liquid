@@ -41,17 +41,34 @@
           <ul class="c-icon-list__list--l">
             <li class="c-icon-list__item--l">
               <span class="c-icon-list__icon--promo">
+                {% comment %}
                 {% assign icon = "free-delivery" %}
                 {% include "svg-icon" %}
+                {% endcomment %}
+                       <img  src="{{ 'free-delivery.jpg' | asset_url }}"  width="96px">
+
               </span>
               <span class="c-icon-list__label--promo">Free UK Delivery</span>
             </li>
             <li class="c-icon-list__item--l">
               <span class="c-icon-list__icon--promo">
+                {% comment %}
                 {% assign icon = "warranty" %}
                 {% include "svg-icon" %}
+                {% endcomment %}
+                <img  src="{{ 'warrenty.jpg' | asset_url }}"  width="96px">
               </span>
               <span class="c-icon-list__label--promo">Full one year warranty</span>
+            </li>
+            <li class="c-icon-list__item--l">
+              <span class="c-icon-list__icon--promo">
+                {% comment %}
+                {% assign icon = "warranty" %}
+                {% include "svg-icon" %}
+                {% endcomment %}
+                <img  src="{{ 'money-back.jpg' | asset_url }}"  width="96px">
+              </span>
+              <span class="c-icon-list__label--promo">30 day money back guarantee </span>
             </li>
           </ul>
         </div>

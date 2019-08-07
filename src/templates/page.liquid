@@ -1,9 +1,16 @@
-<div class="page">
-  <div class="page__header">
-    <h1 class="page__heading" >{{ page.title }}</h1>
-    <img src="{{ page.metafields.global.feature_image | file_url }}" alt="{{ page.title }}" >
+  {% assign fImage = page.metafields.global.feature_image %}
+<div class="c-page">
+  {% if fImage == null %}
+  <div class="c-page__header">
+    <h1 class="c-page__heading" >{{ page.title }}</h1>
   </div>
-  <div class="page__content">
+  {% else %}
+  <div class="c-page__header--f-image">
+    <h1 class="c-page__heading--f-image" >{{ page.title }}</h1>
+    <img class="c-page__feature-image--f-image"  src="{{ page.metafields.global.feature_image | file_url }}" alt="{{ page.title }}" >
+  </div>
+  {% endif %}
+  <div class="c-page__content">
     <div class="rte">
       {{ page.content }}
     </div>

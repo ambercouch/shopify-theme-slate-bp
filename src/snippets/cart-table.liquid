@@ -1,13 +1,15 @@
-<div class="cart-table">
-  <table class="cart-table__table responsive-table">
-    <thead class="cart-table__table-head small--hide">
+<div class="c-cart-table">
+  <table class="c-cart-table__table">
+    {%  comment %}
+    <thead class="c-cart-table__table-head small--hide">
     <tr>
-      <th colspan="2" class="cart-table__table-heading" >{{ 'cart.label.product' | t }}</th>
-      <th class="cart-table__table-heading">{{ 'cart.label.price' | t }}</th>
-      <th class="cart-table__table-heading">{{ 'cart.label.quantity' | t }}</th>
-      <th class="cart-table__table-heading">{{ 'cart.label.total' | t }}</th>
+      <th colspan="2" class="c-cart-table__table-heading" >{{ 'cart.label.product' | t }}</th>
+      <th class="c-cart-table__table-heading">{{ 'cart.label.price' | t }}</th>
+      <th class="c-cart-table__table-heading">{{ 'cart.label.quantity' | t }}</th>
+      <th class="c-cart-table__table-heading">{{ 'cart.label.total' | t }}</th>
     </tr>
     </thead>
+    {% endcomment %}
     <tbody>
 
     {% for item in cart.items %}
@@ -37,20 +39,20 @@
       helpers used for responsive-table labels
       {% endcomment %}
 
-      <tr class="cart-table__table-row responsive-table-row">
-        <td class="cart-table__image" data-label="{{ 'customer.order.product' | t }}">
-          <a class="cart-table__link-image" href="{{ item.url | within: collections.all }}">
-            <img class="cart-table__link-img" src="{{ item | img_url: '150x150' }}" alt="{{ item.title | escape }}">
+      <tr class="c-cart-table__table-row ">
+        <td class="c-cart-table__cell--image" data-label="{{ 'customer.order.product' | t }}">
+          <a class="c-cart-table__link-image" href="{{ item.url | within: collections.all }}">
+            <img class="c-cart-table__link-img" src="{{ item | img_url: '150x150' }}" alt="{{ item.title | escape }}">
           </a>
         </td>
-        <td class="cart-table__info" >
-          <div class="cart-table__product-title">
-            <a class="cart-table__link-product-title" href="{{ item.url }}">{{ item.product.title }}</a>
+        <td class="c-cart-table__cell--info" >
+          <div class="c-cart-table__product-title">
+            <a class="c-cart-table__product-title-link" href="{{ item.url }}">{{ item.product.title }}</a>
 
             {% unless item.variant.title contains 'Default' %}
-            <small class="cart-table__product-type" >{{ item.variant.title }}</small>
+            <small class="c-cart-table__product-type" >{{ item.variant.title }}</small>
             {% endunless %}
-            <small class="cart-table__product-type" >{{ item.variant.sku }}</small>
+            <small class="c-cart-table__product-type" >{{ item.variant.sku }}</small>
           </div>
 
           {%- assign property_size = item.properties | size -%}
@@ -72,42 +74,44 @@
             </small>
           {% endif %}
 
-          <a class="cart-table__remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
-            <small class="cart-table__remove-label">{{ 'cart.general.remove' | t }}</small>
+          <a class="c-cart-table__remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+            <span class="c-cart-table__remove-label">{{ 'cart.general.remove' | t }}</span>
           </a>
 
         </td>
-        <td class="cart-table__product-price" data-label="{{ 'cart.label.price' | t }}">
+        <td class="c-cart-table__cell--product-price" data-label="{{ 'cart.label.price' | t }}">
           {% if item.original_line_price != item.line_price %}
             <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
-            <span class="cart-table__product-price-text" >{{ bold_price | money }}</span>
+            <span class="c-cart-table__product-price-text" >{{ bold_price | money_without_trailing_zeros }}</span>
             <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
-            <span class="cart-table__product-price-text--original"  >{{ item.original_price | money }}</span>
+            <span class="c-cart-table__product-price-text--original"  >{{ item.original_price | money_without_trailing_zeros }}</span>
           {% else %}
-           <!-- <span class="cart-table__product-price-text" >{{ bold_price | money }}</span> -->
-            <span class="cart-table__product-price-text" >{{ item.line_price | money }}</span>
+           <!-- <span class="c-cart-table__product-price-text" >{{ bold_price | money_without_trailing_zeros }}</span> -->
+            <span class="c-cart-table__product-price-text" >{{ item.line_price | money_without_trailing_zeros }}</span>
           {% endif %}
         </td>
-        <td class="cart-table__qty" data-label="{{ 'cart.label.quantity' | t }}">
-          <input class="cart-table__qty-input"
+        <td class="c-cart-table__cell--qty" data-label="{{ 'cart.label.quantity' | t }}">
+          <input class="c-cart-table__qty-input"
                  type="number"
                  name="updates[]"
                  id="updates_{{ item.key }}"
                  value="{{ currentQty }}"
                  min="{{ minQty }}"
-                 size="4"
-                 aria-label="{{ 'cart.general.item_quantity' | t }}">
-          <input class="cart-table__qty-input-submit" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
+                 size="aria-label="{{ 'cart.general.item_quantity' | t }}">
+          <input class="c-cart-table__qty-input-submit" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
         </td>
-        <td class="cart-table__line-price" data-label="{{ 'cart.label.total' | t }}">
-          <span class="cart-table__line-price-text">{{ item.line_price | money }}</span>
+        <td class="c-cart-table__cell--line-price" data-label="{{ 'cart.label.total' | t }}">
+          <span class="c-cart-table__line-price-text">{{ item.line_price | money_without_trailing_zeros }}</span>
         </td>
       </tr>
 
       {% endfor %}
     </tbody>
   </table>
-  <div class="cart-table__continue">
-    <p>Check out now or <a data-continue-path href="/collections/all">continue shopping</a></p>
-  </div>
+
 </div>
+<!--
+<div class="c-cart-table__continue">
+  <p>Check out now or <a data-continue-path href="/collections/all">continue shopping</a></p>
+</div>
+-->

@@ -60,6 +60,7 @@
   &icon{
     display: block;
     width: $act-unit-s;
+    height: $act-unit-s;
     color: $brand-col-2;
   }
 
@@ -68,6 +69,7 @@
   }
   &label{
     flex-shrink: 2;
+    line-height: 1;
   }
   &title{
     @extend .c-icon-list__label;
@@ -96,7 +98,7 @@
 .c-icon-list__icon--{
   &left{
 
-    //margin-left: -$act-unit-s;
+    margin-right: $act-unit-s;
   }
   &promo{
     @include size($act-unit-h);

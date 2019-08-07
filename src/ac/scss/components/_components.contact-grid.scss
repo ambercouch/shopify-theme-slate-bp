@@ -1,0 +1,97 @@
+/*
+  BEM BLOCK .c-contact-grid
+ */
+
+.c-contact-grid {
+  display: flex;
+  text-align: left;
+  padding-bottom: $act-unit;
+  border-bottom: solid 1px $brand-col-6;
+  margin-bottom: $act-unit;
+  align-items: center;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-contact-grid--
+ */
+
+.c-contact-grid-- {
+  &type {
+    display: block
+  }
+  &address{
+    border-top: solid 1px $brand-col-6;
+    padding-top: $act-unit;
+    margin-top: $act-unit-l;
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-contact-grid--
+
+[class*=c-contact-grid--] {
+  @extend .c-contact-grid;
+}
+
+/*
+  BEM ELEMENTS .c-contact-grid__
+ */
+
+.c-contact-grid__ {
+  &deets{
+
+  }
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline;
+    font-weight: 700;
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &line{
+    display: block;
+  }
+  &icon{
+    @include size($act-unit-l * 1.5);
+    margin-right: $act-unit;
+
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-contact-grid--
+
+[class*=c-contact-grid__header--] {
+  @extend .c-contact-grid__header;
+}
+
+[class*=c-contact-grid__line--] {
+  @extend .c-contact-grid__line;
+}
+.c-contact-grid__line--{
+  &1{
+    font-weight: 700;
+  }
+  &3{
+    @include act-font-size($inuit-font-size-h5);
+  }
+}
+
+[class*=c-contact-grid__icon--] {
+  @extend .c-contact-grid__icon;
+}

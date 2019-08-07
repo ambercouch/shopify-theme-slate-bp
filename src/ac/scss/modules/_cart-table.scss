@@ -3,7 +3,16 @@
 }
 .cart-table__{
   &table-row{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr;
+    @include mq($from : desktop){
+      display:table-row !important;
+    }
+
+  }
+  &table{
     border-bottom: solid 1px $brand-col-3;
+
   }
   &image{
     vertical-align: top;
@@ -12,6 +21,9 @@
     @include mq($from : desktop){
       padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit-tiny;
       padding-left: $inuit-global-spacing-unit-small;
+    }
+    &:before{
+      display: none !important;
     }
   }
   &link-image{

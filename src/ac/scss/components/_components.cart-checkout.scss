@@ -1,0 +1,99 @@
+/*
+  BEM BLOCK .c-cart-checkout
+ */
+
+.c-cart-checkout {
+  display: block;
+  @include mq($from: desktop){
+    width: 40%;
+    margin-left: auto;
+  }
+}
+
+/*
+  BEM BLOCK MODIFIER .c-cart-checkout--
+ */
+
+.c-cart-checkout-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-cart-checkout--
+
+[class*=cart-checkout--] {
+  @extend .c-cart-checkout;
+}
+
+/*
+  BEM ELEMENTS .c-cart-checkout__
+ */
+
+.c-cart-checkout__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &subtotal{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $act-unit;
+    @include mq($from: desktop){
+      justify-content: flex-end;
+    }
+  }
+  &subtotal-money{
+    font-weight: 700;
+    @include mq($from: desktop){
+     width: 50%;
+      display: block;
+      text-align: right;
+    }
+  }
+  &subtotal-label{
+    @include mq($from: desktop){
+      width: 50%;
+    }
+  }
+  &btn{
+    margin-bottom: $act-unit;
+  }
+  &notes{
+    text-align: center;
+    margin-bottom: $act-unit;
+  }
+  &notes-label{
+    display: block;
+    margin-bottom: $act-unit-s;
+  }
+  &notes-text-input{
+    text-align: left;
+    width: 100%;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-cart-checkout--
+
+[class*=cart-checkout__header--] {
+  @extend .c-cart-checkout__header;
+}

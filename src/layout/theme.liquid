@@ -10,45 +10,51 @@
   {{ content_for_header }}
 
 </head>
-
+<!-- template = {{ template }} -->
 {% include 'body-tag' %}
 <div style="display: none;">
 {% include "defs.svg" %}
 </div>
-<div id="page" class="site">
+<div id="page" class="site ide-test2">
 
   <div class="l-site__accessibility">
     <a class="accessibility__link in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
   </div>
 
   {% section 'header' %}
-{% if template == "index" %}
-  <div class="l-site__hero">
-  {% section 'hero' %}
-  </div>
+
+  {% if template == "index" %}
+    <div class="l-site__hero">
+      {% section 'hero' %}
+    </div>
   {% endif %}
 
   <main role="main" id="MainContent" class="l-site__main">
-    <div class="l-main">
+    <div class="l-main{% if template != null %}--{{ template | handleize }} {% endif %}">
       <div class="l-main__content{% if template != null %}--{{ template | handleize }} {% endif %}">
         {{  content_for_layout }}
       </div>
     </div>
   </main>
+  <div class="l-site__subsidiary">
+    {% assign inSub = page.metafields.global.custom_subsidiary %}
+      {% assign incTemplate = incSub | default : template %}
+    {% assign incPart = "subsidiary" %}
+    {% include 'include-logic' %}
+  </div>
 
-  {% if template != null %}
-    {% assign templateId =   template | handleize | prepend : "-"%}
-    {% assign subsidiarySnippet = 'subsidiary' | append : templateId %}
-    {% capture subsidiaryInc =  %}{% include subsidiarySnippet %}{% endcapture %}
-    {% unless subsidiaryInc contains "Liquid error" %}
-      <div class="l-site__subsidiary">
-         {{ subsidiaryInc}}
-      </div>
+  <div class="l-site__reviews">
 
-    {% endunless %}
-  {% endif %}
+    <div class="l-site__reviews">
+      {% assign incQuote = page.metafields.global.custom_quote %}
 
+      {% assign incTemplate =  incQuote  | default : template%}
 
+      {% assign incPart = "review" %}
+      {% include 'include-logic' %}
+    </div>
+
+  </div>
 
   {% section 'footer' %}
 </div>

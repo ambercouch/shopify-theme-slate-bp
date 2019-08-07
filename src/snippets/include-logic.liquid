@@ -1,0 +1,18 @@
+{% if incPart %}
+  <!-- incPart = {{ incPart }} -->
+{% if incTemplate != null %}
+  <!-- incTemplate = {{ incTemplate }} -->
+  {% assign templateId =    incTemplate  | handleize | prepend : "-"%}
+  {% assign incSnippet = incPart | append : templateId %}
+  {% capture incInc =  %}{% include incSnippet %}{% endcapture %}
+  {% unless incInc contains "Liquid error" %}
+    <!-- incSnippet = {{ incSnippet }} -->
+    {{ incInc}}
+  {% endunless %}
+{% else %}
+  {% capture incInc =  %}{% include incPart %}{% endcapture %}
+  {% unless incInc contains "Liquid error" %}
+    {{ incInc}}
+  {% endunless %}
+{% endif %}
+{% endif %}

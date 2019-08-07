@@ -16,7 +16,11 @@
     display: block
   }
   &index{
-    display: none;
+    //display: none;
+  }
+  &page{
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -60,4 +64,11 @@
 
 [class*=l-main__header--] {
   @extend .l-main__header;
+}
+
+[class*=l-main__content--] {
+  @extend .l-main__content;
+}
+.l-main__content--cart{
+  padding-top: $act-unit-l;
 }

@@ -3,45 +3,54 @@
 {%- else -%}
   {% assign min_spend = 0 %}
 {%- endif -%}
-<div class="cart-checkout">
+<div class="c-cart-checkout">
 
-  <div class="cart-checkout__subtotal">
-    <div class="cart-checkout__heading">{{ 'cart.general.subtotal' | t }}</div>
+  <div class="c-cart-checkout__subtotal">
+    <span class="c-cart-checkout__subtotal-label">
+      {{ 'cart.general.subtotal' | t }}
+    </span>
+    <span class="c-cart-checkout__subtotal-money">
+      {{ cart.total_price | money }}
+    </span>
 
-    <div class="cart-checkout__subtotal-content">
-      <div class="cart-checkout__buttons">
+  </div>
+
+  <div class="c-cart-checkout__btn">
         {% if cart.total_price >= min_spend %}
-          <span class="cart-checkout__subtotal-text">{{ cart.total_price | money }}</span>
-          {% if cart.total_discounts > 0 %}
-            <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
-          {% endif %}
-          <input type="submit" name="checkout" class="cart-checkout__submit" value="{{ 'cart.general.checkout' | t }}">
-        {% else %}
-          <span class="cart-checkout__subtotal-text">{{ cart.total_price | money }}</span>
-          {% if cart.total_discounts > 0 %}
-            <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
-          {% endif %}
-          <input type="submit" disabled class="cart-checkout__submit" value="{{ 'cart.general.checkout' | t }}">
 
-          <div class="cart-checkout__notes-min">
+          {% if cart.total_discounts > 0 %}
+            <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
+          {% endif %}
+          <input type="submit" name="checkout" class="c-btn--checkout-submit" value="{{ 'cart.general.checkout' | t }}">
+        {% else %}
+          <span class="c-cart-checkout__subtotal-text">{{ cart.total_price | money }}</span>
+          {% if cart.total_discounts > 0 %}
+            <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
+          {% endif %}
+          <input type="submit" disabled class="c-cart-checkout__submit" value="{{ 'cart.general.checkout' | t }}">
+{% comment %}
+          <div class="c-cart-checkout__notes-min">
             <p>The value of your cart must be at least {{ min_spend | money }} to checkout.<br>
               You need to spend an extra<strong> {{ min_spend  | minus :  cart.total_price | money}}</strong></p>
-            <p><a data-continue-path class="cart-checkout__notes-min-link" href="/collections/all">Add more items to continue</a></p>
-            <p><span class="cart-checkout_shipping-text">{{ 'cart.general.shipping_at_checkout' | t }}</span></p>
+            <p><a data-continue-path class="c-cart-checkout__notes-min-link" href="/collections/all">Add more items to continue</a></p>
+            <p><span class="c-cart-checkout_shipping-text">{{ 'cart.general.shipping_at_checkout' | t }}</span></p>
           </div>
+{% endcomment %}
         {% endif %}
       </div>
 
 
-    </div>
-  </div>
+
+
 
   {% if settings.cart_notes_enable %}
-    <div class="cart-checkout__notes">
-      <label class="cart-checkout__notes-label" for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
-      <textarea class="cart-checkout__notes-text" name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+    <div class="c-cart-checkout__notes">
+      <label class="c-cart-checkout__notes-label" for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+      <textarea class="c-cart-checkout__notes-text-input name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
     </div>
   {% endif %}
+
+  {% include 'promo-list' %}
 
 
 

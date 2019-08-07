@@ -40,7 +40,9 @@
       <a href="/cart" class="c-nav-menu__link--cart" >
         <span class="c-nav-menu__label--cart">{{ 'layout.cart.title' | t }}</span>
         {% include 'icon-cart' %}
-        <span data-cart-count class="c-nav-menu__cart-count">({{ cart.item_count }})</span>
+        <span data-cart-count class="c-nav-menu__cart-count">
+          <span class="c-cart-count"><span class="c-cart-count__wrapper"><span class="c-cart-count__label">{{ cart.item_count }}</span></span></span>
+        </span>
       </a>
     </li>
   </ul><!-- /.c-nav-menu__list -->
