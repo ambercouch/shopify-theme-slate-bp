@@ -95,6 +95,18 @@
     height: auto;
     transform: translate(0, -50%);
   }
+  &text{
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    top: 75%;
+    left: 0;
+    @include mq($from: tablet){
+      top: 60%;
+      @include act-font-size($act-fs-2);
+    }
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-video-player--

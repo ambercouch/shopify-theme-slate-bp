@@ -1,19 +1,13 @@
+
 {%-  if settings.cart_min_spend -%}
   {%- assign min_spend = settings.cart_min_spend | times: 1  -%}
 {%- else -%}
   {% assign min_spend = 0 %}
 {%- endif -%}
+
 <div class="c-cart-checkout">
 
-  <div class="c-cart-checkout__subtotal">
-    <span class="c-cart-checkout__subtotal-label">
-      {{ 'cart.general.subtotal' | t }}
-    </span>
-    <span class="c-cart-checkout__subtotal-money">
-      {{ cart.total_price | money }}
-    </span>
 
-  </div>
 
   <div class="c-cart-checkout__btn">
     {% if cart.total_price >= min_spend %}
@@ -40,13 +34,5 @@
   </div>
 
 
-  {% if settings.cart_notes_enable %}
-    <div class="c-cart-checkout__notes">
-      <label class="c-cart-checkout__notes-label" for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
-      <textarea class="c-cart-checkout__notes-text-input name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
-    </div>
-  {% endif %}
-
-  {% include 'promo-list' %}
 
 </div>

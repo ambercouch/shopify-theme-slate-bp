@@ -7539,6 +7539,20 @@ p {
   height: auto;
   transform: translate(0, -50%); }
 
+.c-video-player__text {
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  top: 75%;
+  left: 0; }
+  @media (min-width: 46.25em) {
+    .c-video-player__text {
+      top: 60%;
+      font-size: 29.35028px;
+      font-size: 1.46751rem;
+      line-height: 1.22656; } }
+
 .c-video-player__cover[data-state=on] {
   opacity: 0;
   pointer-events: none; }
@@ -7903,7 +7917,6 @@ p {
  */
 .c-shopping-cart__header, [class*=c-shopping-cart__header--] {
   display: block;
-  border-bottom: solid 1px #E0E0E0;
   margin-bottom: 24px; }
 
 .c-shopping-cart__heading {
@@ -7930,9 +7943,10 @@ p {
  */
 .c-cart-table, [class*=c-cart-table--] {
   display: block;
-  padding-bottom: 24px;
+  padding: 24px 0;
   border-bottom: solid 1px #E0E0E0;
-  margin-bottom: 24px; }
+  margin: 24px 0;
+  border-top: solid 1px #E0E0E0; }
 
 /*
   BEM BLOCK MODIFIER .c-cart-table--

@@ -6,6 +6,11 @@
 {% if cart.item_count > 0 %}
 
   <form class="c-shopping-cart__form" action="/cart" method="post" novalidate>
+
+    <div class="c-shopping-cart__cart-checkout">
+      {% include "cart-checkout-btn" %}
+    </div>
+
   <div class="shopping-cart__cart-table">
     {% comment %}
     {% if customer.tags contains "platinum" %}

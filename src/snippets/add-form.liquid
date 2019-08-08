@@ -9,6 +9,7 @@
         <span class="c-add-form__price" data-product-price>
           {{ current_variant.price | money }}
         </span>
+        <div><small>INC VAT</small></div>
 
         {% if bold_compare_at_price_max > bold_price %}
           <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>

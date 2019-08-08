@@ -1,6 +1,11 @@
 <div class="product-gallery">
   <a href="{{ featured_image | img_url: '900x900' }}" data-product-featured-link ><img class="product-gallery__featured" src="{{ featured_image | img_url: '700x700' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image></a>
+  {% comment %}
+    {% comment %}
+      070819 removed product gallery after meeting
+      {% endcomment  %}
   {% if product.images.size > 1 %}
+
     <ul class="product-gallery__list">
         {% for image in product.images %}
         <li class="product-gallery__item">
@@ -10,4 +15,5 @@
       {% endfor %}
     </ul>
   {% endif %}
+  {% endcomment %}
 </div>
