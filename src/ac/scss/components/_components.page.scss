@@ -1,0 +1,68 @@
+/*
+  BEM BLOCK .c-page
+ */
+
+.c-page {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-page--
+ */
+
+.c-page-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-page--
+
+[class*=c-page--] {
+  @extend .c-page;
+}
+
+/*
+  BEM ELEMENTS .c-page__
+ */
+
+.c-page__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-page--
+
+[class*=c-page__header--] {
+  @extend .c-page__header;
+}
+
+.c-page{
+&.is-page-width-1600{
+    max-width: 1600px !important;
+    width: 100%;
+  }
+
+}
+

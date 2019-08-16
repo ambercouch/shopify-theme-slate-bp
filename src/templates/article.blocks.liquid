@@ -32,7 +32,7 @@
 
 
 <article class="l-site__article--blocks" itemscope itemtype="http://schema.org/Article">
-<div class="l-site__container--blocks>
+<div class="l-site__container--blocks" >
   {% section 'article-template-blocks' %}
 </div>
 
@@ -42,7 +42,7 @@
   {% if number_of_comments > 0 %}
     <hr>
 
-    <div class="page-width">
+    <div class="page-width c-page">
       <div class="grid">
         <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
           <h2 class="h3">{{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}</h2>

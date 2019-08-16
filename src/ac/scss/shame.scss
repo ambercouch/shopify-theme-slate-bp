@@ -78,3 +78,40 @@ div.product-single__meta > div:nth-child(2) {
   margin-top: 0 !important;
 }
 
+.wprevpro_t1_DIV_1{
+
+}
+
+
+
+.wprev_preview_tcolor1_T1 {
+
+  overflow-x: hidden;
+
+}
+@media only screen and (min-width: 900px){
+
+  .wprev_preview_tcolor1_T1 {
+
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+  }
+
+  .wprevpro_t1_DIV_1 {
+    margin-bottom: 60px !important;
+
+  }
+
+}
+
+.w3_wprs-col.m4 {
+   width: 100% !important;
+}
+@media only screen and (min-width: 900px){
+  .w3_wprs-col.m4 {
+    width: 33.33333% !important;
+  }
+
+}
