@@ -23,4 +23,8 @@
     padding: $act-unit-t;
     @include act-font-size($inuit-font-size-h6,1);
   }
+  &block{
+    width: 100%;
+    display: block;
+  }
 }

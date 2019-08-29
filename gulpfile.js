@@ -1,5 +1,5 @@
 
-var previewThemeid = '33925005355'
+var previewThemeid = '34119319595'
 var previewThemeUrl = 'https://bibado.co.uk/?preview_theme_id=' + previewThemeid;
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -31,6 +31,7 @@ var jsCustomScripts = [
 var jsVendorScripts = [
     //All ready deprecated with browserify
     // 'jquery/dist/jquery.slim.js',
+    'remodal/dist/remodal.min.js',
     'fitvids/jquery.fitvids.js',
     'flickity/dist/flickity.pkgd.js',
     'js-cookie/src/js.cookie.js'

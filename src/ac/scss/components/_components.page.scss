@@ -14,6 +14,7 @@
   &type {
     display: block
   }
+
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-page--
@@ -32,7 +33,7 @@
   }
 
   &heading {
-    display: block
+    display: block;
   }
 
   &title {
@@ -50,16 +51,105 @@
   &footer {
     display: block
   }
+  &feature-list{
+    margin-bottom: $act-unit-l !important;
+    margin-left: $act-unit-s * 1.5 !important;
+    font-weight: bold;
+  }
+  &cta{
+    text-align: center;
+    @include mq($from: tablet){
+      width: 50%;
+      margin-left: auto;
+      display: none;
+    }
+  }
+  &section-image{
+    margin-bottom: $act-unit-l;
+    @include mq($from: tablet){
+      width: 50%;
+    }
+  }
+  &input{
+    width: 600px;
+    max-width: 100%;
+    margin-bottom: $act-unit;
+  }
+  &signup-info{
+    text-align: center;
+    margin-bottom: $act-unit;
+  }
+  &form{
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  &field-group{
+    text-align: left;
+  }
+  &img{
+    display: block;
+    margin: 0 auto;
+  }
+  &section-grid{
+    @include mq($from: tablet){
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: $act-unit-l;
+    }
+    @include mq($from: desktop){
+      margin-bottom: $act-unit-h;
+    }
+    &:nth-child(even){
+      flex-direction: row-reverse;
+    }
+  }
+  &page-content{
+    @include mq($from: tablet){
+      width: 50%;
+      padding: 0 $act-unit;
+    }
+  }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .c-page--
+//BEM ELEMENT MODIFIER FALLBACK .c-page__header--
 
 [class*=c-page__header--] {
   @extend .c-page__header;
 }
 
+//BEM ELEMENT MODIFIER FALLBACK .c-page__heading--
+
+[class*=c-page__heading--] {
+  @extend .c-page__heading;
+}
+
+.c-page__heading--{
+  &landing{
+    @include act-font-size($act-fs-3);
+    font-weight:700;
+    font-family: "ubuntu";
+  }
+  &sub{
+    @include act-font-size($act-fs-3);
+    font-weight: 500;
+    margin-bottom: 0 !important;
+    color: #162950
+  }
+
+}
+
+.c-page__cta--{
+  &tablet{
+    display: none;
+    @include mq($from:tablet){
+      display: block;
+    }
+  }
+}
+
 .c-page{
-&.is-page-width-1600{
+  &.is-page-width-1600{
     max-width: 1600px !important;
     width: 100%;
   }

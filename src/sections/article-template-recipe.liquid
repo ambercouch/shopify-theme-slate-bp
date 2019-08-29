@@ -4,7 +4,12 @@
 {% else %}
   {% assign fImage =  article.metafields.global.feature_image | file_img_url: '500x' %}
 {% endif %}
-<div class="c-recipe some-class-test">
+{% if article.metafields.global.author == null %}
+  {% assign aAuthor =  article.metafields.global.author %}
+{% else %}
+  {% assign aAuthor =  article.author  %}
+{% endif %}
+<div class="c-recipe author-test">
   {% if hImage != null %}
   <div class="c-recipe__hero-title">
     <div class="c-hero-title">
@@ -32,7 +37,7 @@
         </h1>
         <div class="c-recipe__meta">
           {% if section.settings.blog_show_author %}
-            <span class="c-recipe__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+            <span class="c-recipe__author">{{ 'blogs.article.by_author' | t: author: aAuthor }}</span>
           {% endif %}
           {% if section.settings.blog_show_date %}
             <span class="c-recipe__date">
