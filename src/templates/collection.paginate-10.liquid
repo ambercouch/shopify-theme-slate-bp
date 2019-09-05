@@ -1,0 +1,166 @@
+<!-- collection.liquid -->
+{%  include  'logic-access'%}
+{%  include  'logic-customer'%}
+{% paginate collection.products by 10 %}
+<div class="collection">
+  <div class="collection__breadcrumbs">
+    {% assign BCClassModifier = "--collection"  %}
+    {%  include "breadcrumbs" %}
+  </div>
+  <div class="collection__flex">
+  <div class="collection__sidebar">
+    <div class="collection__filters">
+      <div class="filter-menu__wrapper">
+        <h3 id="filterButtonOpen" data-state="off" class="filter-menu__title" >Filters</h3>
+      </div>
+      <div class="filter-menu__container" id="filterContainer">
+      {% include 'filter-menu' %}
+      </div>
+    </div>
+  </div>
+    <!-- Test theme -->
+    <!-- collection handle {{ collection.handle }} -->
+    <!-- blogs  -->
+    {% assign headers_handel = 'collection-restricted-headers' %}
+    {% assign headers_handel_path = headers_handel | append : '/' %}
+    {% assign headers = blogs[headers_handel] %}
+    {% assign custom_header = false %}
+    {% for header in headers.articles %}
+      {% assign header_handle = header.handle | remove : headers_handel_path %}
+      <!-- headers_handel_path {{ headers_handel_path }}  -->
+      <!-- header.handle  {{ header.handle }} -->
+      <!-- header_handle  {{ header_handle }} -->
+      {% if header_handle == collection.handle %}
+        <!-- blog matches {{ header_handle }} -->
+        <!-- image url {{ header.image  }} -->
+        {% if  header.image %}
+            {% assign custom_header = true %}
+            {% assign custom_header_image = header.image %}
+
+          {% else %}
+
+          {% endif %}
+      {% else %}
+      {% endif %}
+    {% endfor %}
+
+  <div class="collection__main">
+    {% if custom_header == false %}
+  <header class="collection__header" role="banner">
+    <h1 class="collection__heading">{% if current_tags contains 'sarah-tempest' %}<!-- Sarah Tempest -->Sarah Tempest {% else %}<!-- NOT Sarah Tempest -->{% endif %}{{ collection.title }}</h1>
+  </header>
+      {% else %}
+        <header class="collection__header--custom" role="banner">
+          <img  class="collection__img" src="{{ custom_header_image | img_url : 'original'}}" />
+          <h1 class="collection__heading--custom">
+            {% if current_tags contains 'sarah-tempest' %}
+              <!-- Sarah Tempest -->
+              Sarah Tempest
+              {% else %}
+                <!-- NOT Sarah Tempest -->
+            {% endif %}
+            {{ collection.title }}
+          </h1>
+        </header>
+    {% endif %}
+
+  <div class="collection__content">
+    <!-- .collection__content -->
+    {% if customerAccess == 'restricted' %}
+    {% if collection.description != blank %}
+      <div class="rte collection__description">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+    {% endif %}
+
+
+    {% unless customerAccess == 'restricted' %}
+    <ul class="collection__list customerAccess-{{ customerAccess }}">
+    {% for product in collection.products %}
+      {% for variant in product.variants %}
+      {% include 'bold-product' with product, hide_action: 'skip' %}
+        {% if variant.available %}
+          <li class="collection__item--layout4">
+            {%  comment %}
+              {% include 'product-thumb' %}
+            {% endcomment %}
+            {% include 'variant-thumb' %}
+          </li>
+        {% endif %}
+
+    {% else %}
+      {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+        {% for i in (1..8) %}
+          <a href="#">
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+          </a>
+
+          <p>
+            <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+          </p>
+
+          <p>
+            {{ 1999 | money }}
+          </p>
+        {% endfor %}
+      {% else %}
+        <p>{{ 'collections.general.no_matches' | t }}</p>
+      {% endif %}
+      {% endfor %}
+    {% endfor %}
+    </ul>
+      {% else %}
+      <!-- Restricted Access -->
+      <ul class="collection__list customerAccess-{{ customerAccess }} ">
+        {% for product in collection.products | limit: 3 %}
+          {% include 'bold-product' with product, hide_action: 'skip' %}
+          <li class="collection__item--layout3">
+            {% include 'product-thumb-restricted' %}
+          </li>
+
+        {% else %}
+          {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+            {% for i in (1..8) %}
+              <a href="#">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+              </a>
+
+              <p>
+                <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+              </p>
+
+              <p>
+                {{ 1999 | money }}
+              </p>
+            {% endfor %}
+          {% else %}
+            <p>{{ 'collections.general.no_matches' | t }}</p>
+          {% endif %}
+
+        {% endfor %}
+      </ul>
+      <footer class="collection__footer">
+        <div class="collection__wholesale-info">
+          <p>To you want to buy wholesale jewellery? Sign in or <a href="/account/register">sign up</a> for an account now.</p>
+        </div>
+
+      {% include 'customer-login-form-login' %}
+      {% include 'customer-login-form-recover' %}
+      </footer>
+    {% endunless %}
+
+  </div>
+    {% unless customerAccess == 'restricted' %}
+  <footer class="collection__footer">
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+  </footer>
+  </div>
+    {% endunless %}
+</div>
+</div>
+{% endpaginate %}
