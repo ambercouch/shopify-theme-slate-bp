@@ -42,7 +42,9 @@
   {% endif %}
   <div class="page-width list-view-items">
     {% for item in search.results %}
-      <a href="{{ item.url }}" class="list-view-item">
+      {% assign unSearchable = item.metafields.setting.unsearchable %}
+      {% unless unSearchable == 'true' %}
+      <a href="{{ item.url }}" class="list-view-item c-search-logic__item">
         {% if item.object_type == 'product' %}
           {% include 'product-card-list', product: item %}
         {% else %}
@@ -63,6 +65,7 @@
           </div>
         {% endif %}
       </a>
+      {% endunless %}
     {% endfor %}
   </div>
 
