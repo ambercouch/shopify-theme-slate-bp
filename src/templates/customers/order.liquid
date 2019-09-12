@@ -53,42 +53,42 @@
               {% endif %}
             </td>
             <td data-label="{{ 'customer.order.sku' | t }}">{{ line_item.sku }}</td>
-            <td data-label="{{ 'customer.order.price' | t }}">{{ line_item.price | money }}</td>
+            <td data-label="{{ 'customer.order.price' | t }}">{%- assign geolizr_price = line_item.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ line_item.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</td>
             <td data-label="{{ 'customer.order.quantity' | t }}">{{ line_item.quantity }}</td>
-            <td data-label="{{ 'customer.order.total' | t }}">{{ line_item.quantity | times: line_item.price | money }}</td>
+            <td data-label="{{ 'customer.order.total' | t }}">{%- assign geolizr_price = line_item.quantity | times: line_item.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ line_item.quantity | times: line_item.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</td>
           </tr>
           {% endfor %}
         </tbody>
         <tfoot>
           <tr class="responsive-table__row">
             <td colspan="4" class="small--hide">{{ 'customer.order.subtotal' | t }}</td>
-            <td data-label="{{ 'customer.order.subtotal' | t }}">{{ order.subtotal_price | money }}</td>
+            <td data-label="{{ 'customer.order.subtotal' | t }}">{%- assign geolizr_price = order.subtotal_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ order.subtotal_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</td>
           </tr>
 
           {% for discount in order.discounts %}
             <tr class="order_summary discount">
               <td colspan="4" class="small--hide">{{ discount.code }} {{ 'customer.order.discount' | t }}</td>
-              <td data-label="{{ 'customer.order.discount' | t }}">{{ discount.savings | money }}</td>
+              <td data-label="{{ 'customer.order.discount' | t }}">{%- assign geolizr_price = discount.savings -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ discount.savings | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</td>
             </tr>
           {% endfor %}
 
           {% for shipping_method in order.shipping_methods %}
             <tr>
               <td colspan="4" class="small--hide">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</td>
-              <td data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})">{{ shipping_method.price | money }}</td>
+              <td data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})">{%- assign geolizr_price = shipping_method.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ shipping_method.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</td>
             </tr>
           {% endfor %}
 
           {% for tax_line in order.tax_lines %}
             <tr>
               <td colspan="4" class="small--hide">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</td>
-              <td data-label="{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)">{{ tax_line.price | money }}</td>
+              <td data-label="{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)">{%- assign geolizr_price = tax_line.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ tax_line.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</td>
             </tr>
           {% endfor %}
 
           <tr>
             <td colspan="4" class="small--hide"><strong>{{ 'customer.order.total' | t }}</strong></td>
-            <td data-label="{{ 'customer.order.total' | t }}"><strong>{{ order.total_price | money }} {{ order.currency }}</strong></td>
+            <td data-label="{{ 'customer.order.total' | t }}"><strong>{%- assign geolizr_price = order.total_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ order.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} {{ order.currency }}</strong></td>
           </tr>
         </tfoot>
       </table>

@@ -46,7 +46,7 @@
           </p>
 
           <p>
-            {{ 1999 | money }}
+            {%- assign geolizr_price = 1999 -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ 1999 | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
           </p>
         {% endfor %}
       {% else %}

@@ -30,7 +30,7 @@
                   <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
                   <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
                   <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
-                  <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                  <td data-label="{{ 'customer.orders.total' | t }}">{%- assign geolizr_price = order.total_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ order.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</td>
                 </tr>
               {% endfor %}
             </tbody>
