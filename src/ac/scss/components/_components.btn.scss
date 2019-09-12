@@ -15,4 +15,12 @@
     @extend .c-btn;
     background: $brand-col-2;
   }
+  &bbd{
+    background: #8bc981 !important;
+    &:hover{
+      background: #8bc981 !important;
+      opacity: 0.6;
+    }
+
+  }
 }
