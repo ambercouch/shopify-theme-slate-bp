@@ -11,21 +11,21 @@
     <div class="cart-checkout__subtotal-content">
       <div class="cart-checkout__buttons">
         {% if cart.total_price >= min_spend %}
-          <span class="cart-checkout__subtotal-text">{{ cart.total_price | money }}</span>
+          <span class="cart-checkout__subtotal-text">{%- assign geolizr_price = cart.total_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
           {% if cart.total_discounts > 0 %}
-            <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
+            <p>{{ 'cart.general.savings' | t }} {%- assign geolizr_price = cart.total_discounts -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ cart.total_discounts | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</p>
           {% endif %}
           <input type="submit" name="checkout" class="cart-checkout__submit" value="{{ 'cart.general.checkout' | t }}">
         {% else %}
-          <span class="cart-checkout__subtotal-text">{{ cart.total_price | money }}</span>
+          <span class="cart-checkout__subtotal-text">{%- assign geolizr_price = cart.total_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
           {% if cart.total_discounts > 0 %}
-            <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
+            <p>{{ 'cart.general.savings' | t }} {%- assign geolizr_price = cart.total_discounts -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ cart.total_discounts | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</p>
           {% endif %}
           <input type="submit" disabled class="cart-checkout__submit" value="{{ 'cart.general.checkout' | t }}">
 
           <div class="cart-checkout__notes-min">
-            <p>The value of your cart must be at least {{ min_spend | money }} to checkout.<br>
-              You need to spend an extra<strong> {{ min_spend  | minus :  cart.total_price | money}}</strong></p>
+            <p>The value of your cart must be at least {%- assign geolizr_price = min_spend -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ min_spend | money | prepend: geolizr_prepend_code | append: geolizr_append_code }} to checkout.<br>
+              You need to spend an extra<strong> {%- assign geolizr_price = min_spend  | minus :  cart.total_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ min_spend  | minus :  cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code}}</strong></p>
             <p><a data-continue-path class="cart-checkout__notes-min-link" href="/collections/all">Add more items to continue</a></p>
             <p><span class="cart-checkout_shipping-text">{{ 'cart.general.shipping_at_checkout' | t }}</span></p>
           </div>

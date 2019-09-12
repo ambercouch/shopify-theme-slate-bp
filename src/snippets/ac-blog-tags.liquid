@@ -1,10 +1,36 @@
-<div id="BlogTagFilter" class="c-blog-filters">
-  <h5 class="c-blog-filters__headings">Post Filters</h5>
-  <ul class="c-blog-filters__list">
-    {% for tag in blog.all_tags %}
-    <li class="c-blog-filters__item">
-      <a href="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" class="c-blog-filters__link {% if current_tags contains tag %}is-selected{% endif %} ">{{ tag }}</a>
-    </li>
-    {% endfor %}
-  </ul>
-</div>
+<div id="BlogTagFilter" class="c-blog-filters c-drawer">
+  <div class="c-blog-filters__container">
+  <h5 class="c-blog-filters__heading c-drawer__control"  data-control="blogFilter" data-state="off">
+    <span class="c-blog-filters__title">Post Filters</span>
+    <span class="c-blog-filters__control--open c-drawer__control-icon--open">+</span>
+    <span class="c-blog-filters__control--close c-drawer__control-icon--close">-</span>
+  </h5>
+  <div class="c-blog-filters__filter-lists c-drawer__container "  data-container="blogFilter" data-state="off" >
+    <ul class="c-blog-filters__list ">
+      {% for tag in blog.all_tags %}
+        {% unless current_tags contains tag  %}
+      <li class="c-blog-filters__item" >
+        <a  title="Add selected filter" href="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" data-tag={{ tag | handleize }} class="c-blog-filters__link {% if current_tags contains tag %}is-selected{% endif %} ">{{ tag }}</a>
+      </li>
+      {% endunless %}
+      {% endfor %}
+    </ul>
+  </div>
+  </div>
+  {% if current_tags %}
+  <div class="c-blog-filters__container">
+  <h5 class="c-blog-filters__heading c-drawer__control" >
+  <span class="c-blog-filters__title">Selected Filters</span>
+  </h5>
+  <div class="c-blog-filters__filter-lists c-drawer__container"  >
+    <ul class="c-blog-filters__list ">
+      {% for tag in current_tags %}
+        <li class="c-blog-filters__item" >
+          <a title="Remove selected filter" href="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" data-tag={{ tag | handleize }} class="c-blog-filters__link {% if current_tags contains tag %}is-selected{% endif %} ">{{ tag }}  | x  </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  </div>
+  {% endif %}
+  </div>

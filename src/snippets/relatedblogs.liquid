@@ -1,203 +1,313 @@
        
         
-        {% assign timestamp = 'now' | date : "%s" %}
+        {%- assign timestamp = 'now' | date : "%s" -%}
         
         
-        {% assign ex_ids = ""%}
-                    {% assign ex_frmpool_id = article.id | append: '"' | prepend: '"' %}
+        {%- assign ex_ids = ""-%}
+                    {%- assign ex_frmpool_id = article.id | append: '"' | prepend: '"' -%}
         
-        {% assign ex_tags = "" | split: "," %}
-        {% assign no_post_display = 3 %}
+        {%- assign ex_tags = "" | split: "," -%}
+        {%- assign no_post_display = 3 -%}
 
-        {% assign b_id = blog.id  %}
+        {%- assign b_id = blog.id  -%}
 
-                    {% assign blog_ids = "17616011307,13257408555,21918384171,18115231787,21918351403,21918318635"  %}
+                    {%- assign blog_ids = "17616011307,13257408555,21918384171,18115231787,21918318635"  -%}
         
-                                {% assign blog_handle_arr = blog.handle %}
+                                {%- assign blog_handle_arr = blog.handle -%}
                     
-        {% assign blog_flag = "false" %}
+        {%- assign blog_flag = "false" -%}
         
-        {% unless blog_ids contains b_id %}
-        {% assign blog_flag = "true" %}
-        {% endunless %}
+        {%- unless blog_ids contains b_id -%}
+        {%- assign blog_flag = "true" -%}
+        {%- endunless -%}
         
-        {% unless ex_ids contains article.id %}
+        {%- unless ex_ids contains article.id -%}
 
-        {% if blog_flag == "false" %}  
+        {%- if blog_flag == "false" -%}  
 
-        {% assign article_temp = article.id %}
+        {%- assign article_temp = article.id -%}
 
-        {% assign related_posts = "" %}
-        {% assign curr_blog = blog.handle %}
+        {%- assign related_posts = "" -%}
+        {%- assign curr_blog = blog.handle -%}
 
-        {% for article in blogs[curr_blog].articles %}
-        {% if article.id == article_temp %} 
-        {% assign current_post_tags = article.tags %}
-        {% assign article_author = article.author %}
-        {% assign article_title = article.title %}
-        {% assign article_title_arr = article_title | remove : " " | split: "" %}
-        {% endif %}
-        {% endfor %}
+        {%- for article in blogs[curr_blog].articles -%}
+        {%- if article.id == article_temp -%} 
+        {%- assign current_post_tags = article.tags -%}
+        {%- assign article_author = article.author -%}
+        {%- assign article_title = article.title -%}
+        {%- assign article_title_arr = article_title | remove : " " | split: "" -%}
+        {%- endif -%}
+        {%- endfor -%}
 
-        {% assign main_flag = "true" %}
-        {% for tag in ex_tags %}
-        {% assign ex_tags_temp = tag | strip %}
-        {% if current_post_tags contains ex_tags_temp %}
-        {% assign main_flag = "false" %}
-        {% endif %}
-        {% endfor %}
+        {%- assign main_flag = "true" -%}
+        {%- for tag in ex_tags -%}
+        {%- assign ex_tags_temp = tag | strip -%}
+        {%- if current_post_tags contains ex_tags_temp -%}
+        {%- assign main_flag = "false" -%}
+        {%- endif -%}
+        {%- endfor -%}
 
-        {% if main_flag == "true" %}
+        {%- if main_flag == "true" -%}
 		
 				
 		<div id="relatedblogs">
 	
 
-				{% for blog in blog_handle_arr %}
+				{%- for blog in blog_handle_arr -%}
 
-				{% assign blog_temp = blog %}   
+				{%- assign blog_temp = blog -%}   
 
-				{% for article in blogs[blog_temp].articles %}
-				{% unless ex_frmpool_id contains article.id %}
+				{%- for article in blogs[blog_temp].articles -%}
+				{%- unless ex_frmpool_id contains article.id -%}
 
 				
-					{% assign atitle_temp = article.title | remove : " " | split: "" %}
-					{% assign flag = "false" %}
-					{% for word in atitle_temp %}
-					{% if article_title_arr contains word %}
-					{% assign flag = "true" %}
-					{% break %}
-					{% endif %}
-					{% endfor %}                
+					{%- assign atitle_temp = article.title | remove : " " | split: "" -%}
+					{%- assign flag = "false" -%}
+					{%- for word in atitle_temp -%}
+					{%- if article_title_arr contains word -%}
+					{%- assign flag = "true" -%}
+					{%- break -%}
+					{%- endif -%}
+					{%- endfor -%}                
 
-					{% assign t_flag = "false" %}
-					{% for tag in current_post_tags %}
-					{% if article.tags contains tag %}
-					{% assign t_flag = "true" %}
-					{% break %}
-					{% endif %}
-					{% endfor %}
+					{%- assign t_flag = "false" -%}
+					{%- for tag in current_post_tags -%}
+					{%- if article.tags contains tag -%}
+					{%- assign t_flag = "true" -%}
+					{%- break -%}
+					{%- endif -%}
+					{%- endfor -%}
 
-					{% if t_flag == "true"  or article_author ==  article.author or flag == "true" %} 
-					{% assign related_posts = related_posts | append:article.id | append : ","%}
-					{% endif %}   
+					{%- if t_flag == "true"  or article_author ==  article.author or flag == "true" -%} 
+					{%- assign related_posts = related_posts | append:article.id | append : ","-%}
+					{%- endif -%}   
 				
-				{% endunless %}
-				{% endfor %}
+				{%- endunless -%}
+				{%- endfor -%}
 
 
-				{% endfor %}
+				{%- endfor -%}
 				
-				{% if related_posts.size > 0 %}
+				{%- if related_posts.size > 0 -%}
 				
-				{% assign tsl = timestamp | slice : -1,1 | times:1 %}
+				{%- assign tsl = timestamp | slice : -1,1 | times:1 -%}
 				
-				{% assign rids = related_posts | split: ',' %}
+				{%- assign rids = related_posts | split: ',' -%}
 
 			   
-				{% assign rindex = tsl %}
+				{%- assign rindex = tsl -%}
 
-				{% if tsl > rids.size or tsl < 0 %}
-						{% assign time_arr = timestamp | split: '' %}
-						{% for t in time_arr reversed %}
-						{% assign ti = t | times:1 %}
-						{% if ti < rids.size %}
-								{% assign rindex = forloop.index %}
-								{% break %}
-						{% endif %}
-						{% endfor %}
-				{% endif %}
+				{%- if tsl > rids.size or tsl < 0 -%}
+						{%- assign time_arr = timestamp | split: '' -%}
+						{%- for t in time_arr reversed -%}
+						{%- assign ti = t | times:1 -%}
+						{%- if ti < rids.size -%}
+								{%- assign rindex = forloop.index -%}
+								{%- break -%}
+						{%- endif -%}
+						{%- endfor -%}
+				{%- endif -%}
 
-				{% if rindex == rids.size %}
-						{% assign rindex = rindex | minus : 1%}
-				{% endif %}
+				{%- if rindex == rids.size -%}
+						{%- assign rindex = rindex | minus : 1-%}
+				{%- endif -%}
 
-				{% assign articleids = '' %}
-				{% for rid in rids offset:rindex %}
-						{% assign articleids = articleids | append:rid | append : "," %}
-				{% endfor %}
+				{%- assign articleids = '' -%}
+				{%- for rid in rids offset:rindex -%}
+						{%- assign articleids = articleids | append:rid | append : "," -%}
+				{%- endfor -%}
 			  
-				{% assign rsize = articleids | split:","  %}
+				{%- assign rsize = articleids | split:","  -%}
 			 
-				{% if rsize.size < no_post_display %}          		
-					{% for rid in rids %}
-					{% unless articleids contains rid %}
-					{% assign articleids = articleids | append:rid | append : "," %}
-					{% endunless %}
-					{% endfor %}
-				{% endif %}
+				{%- if rsize.size < no_post_display -%}          		
+					{%- for rid in rids -%}
+					{%- unless articleids contains rid -%}
+					{%- assign articleids = articleids | append:rid | append : "," -%}
+					{%- endunless -%}
+					{%- endfor -%}
+				{%- endif -%}
 			  
-				{% assign rsize = articleids | size | minus:1 %}
-				{% assign articleids = articleids | slice: 0, rsize | split:"," %}
-				{% assign article_ids = articleids | uniq %}
+				{%- assign rsize = articleids | size | minus:1 -%}
+				{%- assign articleids = articleids | slice: 0, rsize | split:"," -%}
+				{%- assign article_ids = articleids | uniq -%}
 				
 				<div class="row"> 
 					<h3>Related Posts</h3>			
-				{% assign count = 0 %}
-				{% for aid in article_ids %}
-					{% assign rflag = "false" %}
-					{% for blog in blog_handle_arr %}
-						{% assign blog_temp = blog %}  
+				{%- assign count = 0 -%}
+				{%- for aid in article_ids -%}
+					{%- assign rflag = "false" -%}
+					{%- for blog in blog_handle_arr -%}
+						{%- assign blog_temp = blog -%}  
 
-						{% for article in blogs[blog_temp].articles %}
-							{% if count == no_post_display %}
-							{% break %}
-							{% endif %}
-							{% if aid contains article.id %}
+						{%- for article in blogs[blog_temp].articles -%}
+							{%- if count == no_post_display -%}
+							{%- break -%}
+							{%- endif -%}
+							{%- if aid contains article.id -%}
 							
-								{% assign ex_frmpool_tags = "" | split: "," %}
-								{% assign ex_frmpool_main_flag = "true" %}
-								{% for tag in ex_frmpool_tags %}
-								{% assign ex_frmpool_ex_tags_temp = tag | strip %}
-								{% if article.tags contains ex_frmpool_ex_tags_temp %}
-								{% assign ex_frmpool_main_flag = "false" %}
-								{% endif %}
-								{% endfor %}	
+								{%- assign ex_frmpool_tags = "" | split: "," -%}
+								{%- assign ex_frmpool_main_flag = "true" -%}
+								{%- for tag in ex_frmpool_tags -%}
+								{%- assign ex_frmpool_ex_tags_temp = tag | strip -%}
+								{%- if article.tags contains ex_frmpool_ex_tags_temp -%}
+								{%- assign ex_frmpool_main_flag = "false" -%}
+								{%- endif -%}
+								{%- endfor -%}	
 								
-									{% if ex_frmpool_main_flag == "true" %}
+									{%- if ex_frmpool_main_flag == "true" -%}
 
 										<div class="rb_blog-grid">  
-
-																							{% if article.image %}
-												
+																							{%- if article.image -%}
 													<a href="{{ article.url }}"><img src="{{ article.image.src | img_url: 'medium' }}" alt="{{ article.title }}"/></a>
-												
-												{% else %}
+												{%- else -%}
 													<div class="rb_no_image"></div>
-												{% endif %}
+												{%- endif -%}
 																						
 											<h5 class="rb_title"> 
 												<a href='{{ article.url }}'>{{ article.title }}</a>
 											</h5>
 											
-											
-																							{% if article.excerpt != "" %}
+																							{%- if article.excerpt != "" -%}
 													<div class="rb_contents">
 														<span>{{ article.excerpt | strip_html | strip | truncate: 0, "" }}</span>
 													</div>
 													<a href="{{ article.url }}" class="rb_continue_button">Read More</a>
-												{% endif %}
+												{%- endif -%}
 																					  
 										</div> 
-									{% endif %}
+									{%- endif -%}
 									
-								{% assign rflag = "true" %}
-								{% assign count = count | plus:1 %}
-								{% break %}
-							{% endif %}
-						{% endfor %}
-						{% if rflag == "true" %}
-							{% break %}
-						{% endif %}
-					{% endfor %}
-				{% endfor %}
+								{%- assign rflag = "true" -%}
+								{%- assign count = count | plus:1 -%}
+								{%- break -%}
+							{%- endif -%}
+						{%- endfor -%}
+						{%- if rflag == "true" -%}
+							{%- break -%}
+						{%- endif -%}
+					{%- endfor -%}
+				{%- endfor -%}
 				</div>
-				{% else %}
+				{%- else -%}
+
+								
+					{%- assign all_articleids = "" -%}
+			  
+					{%- for blog in blog_handle_arr -%}
+					  {%- assign blog_temp = blog -%}   
+					  {%- for article in blogs[blog_temp].articles -%}
+										{%- unless article.id == article_temp -%} 
+										{%- assign all_articleids = all_articleids | append:article.id | append : "," -%}
+										{%- endunless -%}
+					  {%- endfor -%}
+					{%- endfor -%}
+
+					{%- assign tsl = timestamp | slice : -1,1 | times:1 -%}
+
+					{%- assign rids = all_articleids | split: ',' -%}
+
+
+					{%- assign rindex = tsl -%}
+
+					{%- if tsl > rids.size or tsl < 0 -%}
+							{%- assign time_arr = timestamp | split: '' -%}
+							{%- for t in time_arr reversed -%}
+							{%- assign ti = t | times:1 -%}
+							{%- if ti < rids.size -%}
+									{%- assign rindex = forloop.index -%}
+												{%- break -%}
+							{%- endif -%}
+							{%- endfor -%}
+					{%- endif -%}
+
+					{%- if rindex == rids.size -%}
+							{%- assign rindex = rindex | minus : 1-%}
+					{%- endif -%}
+
+					{%- assign articleids = '' -%}
+					{%- for rid in rids offset:rindex -%}
+							{%- assign articleids = articleids | append:rid | append : "," -%}
+					{%- endfor -%}
+
+								{%- assign rsize = articleids | split:","  -%}
+
+					{%- if rsize.size < no_post_display -%}          		
+						{%- for rid in rids -%}
+						{%- unless articleids contains rid -%}
+						{%- assign articleids = articleids | append:rid | append : "," -%}
+						{%- endunless -%}
+						{%- endfor -%}
+					{%- endif -%}
+
+					{%- assign rsize = articleids | size | minus:1 -%}
+					{%- assign articleids = articleids | slice: 0, rsize | split:"," -%}
+					
+					<div class="row"> 
+						<h3>Related Posts</h3>					
+					{%- assign count = 0 -%}  
+					{%- for aid in articleids -%}
+						{%- assign rflag = "false" -%}
+						{%- for blog in blog_handle_arr -%}
+							{%- assign blog_temp = blog -%}   
+
+							{%- for article in blogs[blog_temp].articles -%}
+								{%- if count == no_post_display -%}
+								{%- break -%}
+								{%- endif -%}
+								
+								{%- if aid contains article.id -%}
+									
+									{%- assign ex_frmpool_tags = "" | split: "," -%}
+									{%- assign ex_frmpool_main_flag = "true" -%}
+									{%- for tag in ex_frmpool_tags -%}
+									{%- assign ex_frmpool_ex_tags_temp = tag | strip -%}
+									{%- if article.tags contains ex_frmpool_ex_tags_temp -%}
+									{%- assign ex_frmpool_main_flag = "false" -%}
+									{%- endif -%}
+									{%- endfor -%}	
+									
+										{%- if ex_frmpool_main_flag == "true" -%}
+									
+											<div class="rb_blog-grid">  
+
+																									{%- if article.image -%}
+													
+														<a href="{{ article.url }}"><img src="{{ article.image.src | img_url: 'medium' }}" alt="{{ article.title }}" /></a>
+													
+													{%- else -%}
+														<div class="rb_no_image"></div>
+													{%- endif -%}
+																								
+												<h5 class="rb_title"> 
+													<a href='{{ article.url }}'>{{ article.title }}</a>
+												</h5>
+												
+																								{%- if article.excerpt != "" -%}
+													<div class="rb_contents">
+														<span>{{ article.excerpt | strip_html | strip | truncate: 0, "" }}</span>
+													</div>
+													<a href="{{ article.url }}" class="rb_continue_button">Read More</a>
+												{%- endif -%}
+																								
+											</div>  
+										{%- endif -%}	
+											
+									{%- assign rflag = "true" -%}
+									{%- assign count = count | plus:1 -%}
+									{%- break -%}
+								{%- endif -%}
+								
+							{%- endfor -%}                  
+							{%- if rflag == "true" -%}
+								{%- break -%}
+							{%- endif -%}
+						{%- endfor -%}
+					{%- endfor -%}
+					</div>
 
 				
-				{% endif %}
+				{%- endif -%}
 
-				
 					<style>
 					.rb_blog-grid{
 						float: left;
@@ -246,7 +356,6 @@
 						height: 40px;
 						line-height: 1.2;
 						vertical-align: top;
-						font-family: Roboto;
 						font-weight: bold;
 						font-size: 15px;
 						display: inline-flex;
@@ -264,17 +373,13 @@
 						.rb_blog-grid{width:100%;
 						marign-right:0px;}
 					}
-			</style>
-			
-			
-		</div>
-		
-				<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-		
-		
-        {% endif %}
-        {% endif %}
+			</style>		
+      
+		</div>		
+				
+        {%- endif -%}
+        {%- endif -%}
 
-        {% endunless %}
+        {%- endunless -%}
 
         

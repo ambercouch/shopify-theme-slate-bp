@@ -92,7 +92,7 @@
             {% for variant in product.variants -%}{
                 "@type" : "Offer" ,
                 "priceCurrency" : "{{ shop.currency }}" ,
-                "price" : "{{ variant.price | money_without_currency | split: "" | reverse | join: "" | remove_first: "00." | split: "" | reverse | join: "" | replace: ",", "" }}" ,
+                "price" : "{%- assign geolizr_price = variant.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ variant.price | money_without_currency | prepend: geolizr_prepend_code | append: geolizr_append_code | split: "" | reverse | join: "" | remove_first: "00." | split: "" | reverse | join: "" | replace: ",", "" }}" ,
                 "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}" ,
                 "itemCondition": "http://schema.org/NewCondition",
             {%- if variant.sku != blank %}

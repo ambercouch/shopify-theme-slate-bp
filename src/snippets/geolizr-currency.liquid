@@ -1,0 +1,1 @@
+{% if shop.metafields.geolizr.currency_widget_enabled == 'true' %}{% assign geolizr_prepend_code = '<span class="geolizr-currency" data-geolizr-price="' | append: geolizr-currency | append: '">' %}{% assign geolizr_append_code = '</span>' %}{%  else %}{% assign geolizr_prepend_code = '' %}{% assign geolizr_append_code = '' %}{% endif %}

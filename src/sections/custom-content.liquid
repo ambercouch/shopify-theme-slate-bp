@@ -98,7 +98,7 @@
                     </div>
                     <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
                     <div class="grid-view-item__meta">
-                      {{ 1999 | money }}
+                      {%- assign geolizr_price = 1999 -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ 1999 | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
                     </div>
                   </a>
                 </div>

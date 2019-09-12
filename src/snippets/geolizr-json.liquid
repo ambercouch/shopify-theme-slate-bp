@@ -1,0 +1,15 @@
+{% assign used_json = json | replace: '{', '' | replace: '}', '' | replace: '"', '' %}
+{% assign used_json = used_json | split: ',' %}
+
+{% assign json_value = '' %}
+
+{% for each in used_json %}
+  {% assign each_key = each | split: ':' | first %}
+  {% if each_key == key %}
+    {% assign json_value = each | split: ':' | last %}
+  {% endif %}
+{% endfor %}
+
+{% if json_value == '' %}
+{% assign json_value = default %}
+{% endif %}

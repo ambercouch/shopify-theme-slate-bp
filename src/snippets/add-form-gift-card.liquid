@@ -12,7 +12,7 @@
     <div class="add-form__price-wrapper {% if customer.tags contains 'little gems' %} little-gems {% endif %}">
       <div data-price-wrapper>
         <span class="add-form__price" data-product-price>
-          {{ current_variant.price | money }}
+          {%- assign geolizr_price = current_variant.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
         </span>
 
         {% if customer.tags contains 'little gems' %}
@@ -29,7 +29,7 @@
           <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
           <span data-compare-price>
             {% if current_variant.compare_at_price > current_variant.price %}
-              {{ current_variant.compare_at_price | money }}
+              {%- assign geolizr_price = current_variant.compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
             {% endif %}
           </span>
         {% endif %}

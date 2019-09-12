@@ -1,0 +1,14 @@
+{% if shop.metafields.geolizr.notification_widget_enabled == 'true' %}
+<script>
+    Geolizr.addSystemEventListener('geolizr.init.notification', function(e) {
+        var $ = e.jquery;
+        Geolizr.getGeoData(function(geoData) {
+        Geolizr.notifications = {{ shop.metafields.geolizr.notifications }};
+        Geolizr.regionToNotification = {{ shop.metafields.geolizr.country_to_notification }};
+        var notification = Geolizr.getNotification();
+        Geolizr.notificationShadowUrl = '{{ 'geolizr-notification-shadow.png' | asset_url }}';
+        Geolizr.notification(notification, geoData, Geolizr.notificationShadowUrl);
+    });
+  });
+</script>
+{% endif %}

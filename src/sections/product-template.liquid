@@ -1,3 +1,14 @@
+ <div class="grid" itemscope itemtype="http://schema.org/Product">
+<meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+<meta itemprop="image" content="https:\{{ product.featured_image.src | img_url: 'grande' }}">
+<meta itemprop="name" content="{{ product.title }}">
+<meta  itemprop="description" content="{{ product.description | strip_html | truncatewords: 15}}">
+ {% for field in product.metafields.areviews %}  {{ field | last }}  {% endfor %} 
+<meta itemprop="brand" content="{{ product.vendor }}"><div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+<meta itemprop="priceCurrency" content="{{ shop.currency }}">
+<meta itemprop="price" content="{{ variant.price | divided_by: 100.00 }}">
+</div></div>
+
 <div class="product-template__container page-width" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
   {% comment %}
     Get first variant, or deep linked one
@@ -109,19 +120,19 @@
           <p class="product-single__price product-single__price-{{ section.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
             {% if current_variant.compare_at_price > current_variant.price %}
                 <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-                <s id="ComparePrice-{{ section.id }}">{{ current_variant.compare_at_price | money }}</s>
+                <s id="ComparePrice-{{ section.id }}">{%- assign geolizr_price = current_variant.compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
                 <span class="product-price__price product-price__price-{{ section.id }} product-price__sale product-price__sale--single">
                   <span id="ProductPrice-{{ section.id }}">
-                    {{ current_variant.price | money }}
+                    {%- assign geolizr_price = current_variant.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
                   </span>
                   <span class="product-price__sale-label product-price__sale-label-{{ section.id }}">{{ 'products.product.on_sale' | t }}</span>
                 </span>
             {% else %}
               <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-              <s id="ComparePrice-{{ section.id }}" class="hide">{{ current_variant.compare_at_price | money }}</s>
+              <s id="ComparePrice-{{ section.id }}" class="hide">{%- assign geolizr_price = current_variant.compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
               <span class="product-price__price product-price__price-{{ section.id }}">
                 <span id="ProductPrice-{{ section.id }}">
-                  {{ current_variant.price | money }}
+                  {%- assign geolizr_price = current_variant.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
                 </span>
                 <span class="product-price__sale-label product-price__sale-label-{{ section.id }} hide">{{ 'products.product.on_sale' | t }}</span>
               </span>

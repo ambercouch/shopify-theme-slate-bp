@@ -72,7 +72,7 @@
                 </p>
               </td>
               <td class="cart__price-wrapper cart-flex-item">
-                {{ item.price | money }}
+                {%- assign geolizr_price = item.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ item.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
 
                 {% for discount in item.discounts %}
                   <div class="cart-item__discount medium-up--hide">{{ discount.title }}</div>
@@ -95,11 +95,11 @@
               </td>
               <td class="text-right small--hide">
                 {% if item.original_line_price != item.line_price %}
-                  <div class="cart-item__original-price"><s>{{ item.original_line_price | money }}</s></div>
+                  <div class="cart-item__original-price"><s>{%- assign geolizr_price = item.original_line_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ item.original_line_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s></div>
                 {% endif %}
 
                 <div>
-                  {{ item.line_price | money }}
+                  {%- assign geolizr_price = item.line_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ item.line_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
                 </div>
 
                 {% for discount in item.discounts %}
@@ -122,12 +122,12 @@
           <div class="grid__item text-right small--text-center{% if section.settings.cart_notes_enable %} medium-up--one-half{% endif %}">
             <div>
               <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
-              <span class="cart__subtotal"><span id="bk-cart-subtotal-price">{{ cart.total_price | money }}</span></span>
+              <span class="cart__subtotal"><span id="bk-cart-subtotal-price">{%- assign geolizr_price = cart.total_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ cart.total_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span></span>
             </div>
             {% if cart.total_discounts > 0 %}
               <div class="cart__savings">
                 {{ 'cart.general.savings' | t }}
-                <span class="cart__savings-amount">{{ cart.total_discounts | money }}</span>
+                <span class="cart__savings-amount">{%- assign geolizr_price = cart.total_discounts -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ cart.total_discounts | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
               </div>
             {% endif %}
             <div class="cart__shipping">{{ 'cart.general.shipping_at_checkout' | t }}</div>
