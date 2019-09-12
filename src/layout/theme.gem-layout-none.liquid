@@ -9,6 +9,7 @@
 <!--[if IE 9]> <html class="ie9 no-js" lang="{{ shop.locale }}"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{ shop.locale }}"> <!--<![endif]-->
 <head>
+{% include 'geolizr-init' %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -90,5 +91,5 @@
 <!--Gem_Page_Footer_Script-->
 {% include 'gem-app-footer-scripts' %}
 <!--End_Gem_Page_Footer_Script-->
-{% include 'upsellapp-theme' %}</body>
+{% include 'upsellapp-theme' %}{% include 'geolizr-currency-converter' %}</body>
 </html>
