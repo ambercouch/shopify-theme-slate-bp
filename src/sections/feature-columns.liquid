@@ -36,8 +36,8 @@
             <div id="{{ wrapper_id }}" class="feature-row__image-wrapper js">
               <div style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;">
                 <img id="{{ img_id }}"
-                     class="feature-row__image lazyload"
-                     src="{{ block.settings.image | img_url: '300x300' }}"
+                     class="feature-row__image lazyload rmSrc"
+
                      data-src="{{ img_url }}"
                      data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
                      data-aspectratio="{{ block.settings.image.aspect_ratio }}"
