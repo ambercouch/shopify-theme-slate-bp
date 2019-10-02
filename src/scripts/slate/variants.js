@@ -97,7 +97,30 @@ slate.Variants = (function() {
      * Event handler for when a variant input changes.
      */
     _onSelectChange: function() {
+
       var variant = this._getVariantFromOptions();
+      console.log('variant.id');
+      console.log('Quantity' + variant.id );
+      var qtyEl = document.getElementById('Quantity');
+      var minQty = qtyEl.dataset.minQty;
+
+      if (minQty > 1){
+        console.log(variant);
+        var remaining = variant.inventory_remaining;
+        console.log('remaining');
+        console.log(remaining);
+        if (remaining < minQty){
+          console.log('reset min');
+          qtyEl.setAttribute('min' , 1);
+          qtyEl.setAttribute('value' , 1);
+        }else {
+          console.log('Dont reset min qty');
+          qtyEl.setAttribute('min' , minQty);
+          qtyEl.setAttribute('value' , minQty);
+        }
+      }
+
+
 
       this.$container.trigger({
         type: 'variantChange',

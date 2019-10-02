@@ -66,6 +66,18 @@ theme.Product = (function() {
       };
 
       this.variants = new slate.Variants(options);
+      var variant = this.variants._getVariantFromOptions();
+
+      var qtyEl = document.getElementById('Quantity')
+      var minQty = qtyEl.dataset.minQty;
+
+      var remaining = variant.inventory_remaining
+
+      //om product load if the remaining qty is less than the minQty reset the minQty to 1
+      if (remaining < minQty){
+        qtyEl.setAttribute('min' , 1);
+        qtyEl.setAttribute('value' , 1);
+      }
 
       this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
       this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));

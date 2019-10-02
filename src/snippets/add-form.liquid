@@ -9,15 +9,61 @@
       <label class="add-form__label{{ afClassModifier }}" for="Quantity">{{ 'products.product.quantity' | t }}</label>
 
       {%- assign low_price = settings.low_price_product | times: 1  -%}
+      {%- assign pTypeMinimums = 'Clothing' -%}
+      {%- assign pTypeMinQty = 2 -%}
+      {%- assign pType = product.type -%}
+      {%- assign varInvQty = current_variant.inventory_quantity | times : 1 -%}
+
+      {%- if current_variant.inventory_management == "shopify" and current_variant.inventory_policy != "continue" -%}
+        <!-- We have {{ current_variant.inventory_quantity }} in stock. -->
+      {%- else -%}
+       <!-- This product is available. -->
+      {%- endif -%}
+
+
       {%- if current_variant.price >  low_price -%}
         {%- assign minQty = 1 -%}
+        {%- assign minLowPriceQty = 1 -%}
         <!-- price > 200 {{ current_variant.price }} -->
       {%- else -%}
-        {%- assign minQty = settings.low_cost_minimum_qty -%}
+        {%- assign minQty = settings.low_cost_minimum_qty | times: 1 -%}
+        {%- assign minLowPriceQty = settings.low_cost_minimum_qty -%}
+        {%- assign qty = settings.low_cost_minimum_qty -%}
+
         <!--  price less than 200 {{ current_variant.price }} -->
       {%- endif -%}
 
-      <input class="add-form__qty-input" type="number" id="Quantity" name="quantity" value="{{ minQty }}" min="{{ minQty }}">
+      {%- if minLowPriceQty == 1 -%}
+        <!-- pType = {{ pType }} -->
+        {%- if pTypeMinimums contains pType -%}
+          {%- assign minQty =  pTypeMinQty | times: 1 %}
+          {%- assign pTypeMinQty =  1 %}
+          <!-- pTypeMinQty assigned {{ pType }} - {{ pTypeMinimums }} - {{ minQty }} -->
+        {%- else -%}
+          {%- assign minQty =  pTypeMinQty | times: 1 %}
+          <!-- pTypeMinQty NOT Assigned {{ pType }} - {{ pTypeMinimums }}-->
+        {%- endif -%}
+      {% endif %}
+
+      <!-- testing -->
+      <!-- {{ current_variant.inventory_quantity }} -->
+      {%- if  varInvQty < minQty  -%}
+        {%- assign qty = 1 -%}
+        <!-- reset minQty -->
+        <!--  varInvQty {{  varInvQty }} -->
+      {%- else -%}
+        <!-- DONT reset minQty -->
+        <!--  varInvQty {{  varInvQty }} -->
+      {% endif %}
+      {% if template contains 'product' %}
+        <!-- This is a product -->
+        {% assign qtyId = 'Quantity' %}
+        {% else %}
+        <!-- this is not a product -->
+          {% assign qtyId = 'Quantity' %}
+      {% endif %}
+
+      <input class="add-form__qty-input" data-type-min="{{ pTypeMinQty }}" data-low-price-min="{{  minLowPriceQty }}" data-min-qty="{{ minQty }}" type="number" data-qty-id="Quantity" data-var-id="{{ current_variant.id }}" id="{{ qtyId }}" name="quantity" value="{{ minQty }}" min="{{ minQty }}">
     </div>
     <div class="add-form__price-wrapper{{ afClassModifier }}">
       <div data-price-wrapper>
