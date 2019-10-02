@@ -21,6 +21,8 @@
   <ul class="collection__list">
     {% for product in search.results %}
     {% for variant in product.variants %}
+      <!-- inc bold-product -->
+      {% include 'bold-product' with product, hide_action: 'skip' %}
     {% if variant.available %}
       <li class="collection__item--layout4">
         {%  comment %}
