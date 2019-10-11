@@ -57,11 +57,14 @@ div.product-single__meta > div:nth-child(2) {
  // max-width: 400px;
 }
 #SingleOptionSelector-0{
-  width:auto;
+  width:100%;
 }
 
 .product-form__item{
-  max-width: 40%;
+  max-width: 49%;
+}
+.product-form__item span{
+  white-space: nowrap;
 }
 #AddToCart-product-template{
   padding : 10px
@@ -540,5 +543,25 @@ html.remodal-is-locked {
   display: none !important;
 }
 
+.shopify-cleanslate ._1mqqPYZtCQtz5_i0b-po4l{
+  justify-content: flex-end;
+}
 
+.single-option-selector{
+  line-height: 1.9;
+  font-size: 0.8em;
+}
+
+@include mq($from:tablet){
+  .single-option-selector{
+    line-height: 1.15;
+    font-size: 1em;
+  }
+}
+
+
+.grid--view-items {
+  overflow: inherit;
+  margin-bottom: 0;
+}
 

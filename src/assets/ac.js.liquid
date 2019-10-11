@@ -4966,6 +4966,24 @@ ACTIMBER = {
 
         }//end collection.init
     },
+    collectionbundles:{
+        init: function(){
+            console.log('collection bundles');
+
+            let bundledProducts = [];
+            $('.product-form').submit(function (e) {
+                e.preventDefault();
+
+                let variant_id = $
+                let product = {
+                    id : "123456",
+                    price : "100"
+                }
+                bundledProducts.push(product);
+                console.log(bundledProducts);
+            });
+        },
+},
     product: {
         init: function () {
             //uncomment to debug

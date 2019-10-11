@@ -1,0 +1,85 @@
+/*
+  BEM BLOCK .l-bundle-notes
+ */
+
+.l-bundle-notes {
+  display: block;
+  text-align: center;
+  background: #8bc981;
+  margin-bottom: 48px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/*
+  BEM BLOCK MODIFIER .l-bundle-notes--
+ */
+
+.l-bundle-notes-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .l-bundle-notes--
+
+[class*=l-bundle-notes--] {
+  @extend .l-bundle-notes;
+}
+
+/*
+  BEM ELEMENTS .l-bundle-notes__
+ */
+
+.l-bundle-notes__ {
+  &header {
+    display: block;
+    padding: 3px;
+  }
+
+  &heading {
+    display: block;
+    margin-bottom: 0;
+    color: white;
+    font-size: 1rem;
+    @include mq($from : tablet){
+      font-size: 1.3rem;
+    }
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &content{
+    padding: 12px;
+    background: white;
+  ;
+  };
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-bundle-notes--
+
+[class*=l-bundle-notes__header--] {
+  @extend .l-bundle-notes__header;
+}
+
+.c-discount-code{
+  border: solid 1px #57af48;
+  padding: 3px 6px;
+  background: #8BC981;
+  color: white;
+  border-radius: 2px;
+  letter-spacing: 2px;
+}

@@ -1,6 +1,55 @@
 <div class="page-width" data-section-id="{{ section.id }}" data-section-type="cart-template">
 
   {% if cart.item_count > 0 %}
+
+    {% assign discCode = 'no Code' %}
+    {% assign autoDiscount = false %}
+    {% assign discText = '' %}
+    {% assign discTextExtra = ''  %}
+    {% if cart.item_count == 1 %}
+      {% assign discText = '' %}
+    {% endif %}
+    {% if cart.item_count == 2 %}
+      {% assign discText = '' %}
+    {% endif %}
+    {% if cart.item_count == 3 %}
+      {% assign autoDiscount = true %}
+      {% assign discCode = '3BIB20' %}
+      {% assign discText = 'You have 3 items in your cart. Enter code <span class="c-discount-code" ><strong>3BIB20</strong></span> at checkout to get <strong>20%</strong> off your order' %}
+      {% assign discTextExtra = 'or add 1 more product to qualify for a <strong>25%</strong> discount' %}
+
+    {% endif %}
+    {% if cart.item_count == 4 %}
+      {% assign autoDiscount = true %}
+      {% assign discCode = '4BIB25' %}
+      {% assign discText = 'You have 4 items in your cart. Enter code <span class="c-discount-code" > <strong>4BIB25</strong></span> at checkout to get <strong>25%</strong> off your order' %}
+      {% assign discTextExtra = 'or add 2 more products to qualify for a <strong>30%</strong> discount' %}
+    {% endif %}
+
+    {% if cart.item_count == 5 %}
+      {% assign autoDiscount = true %}
+      {% assign discCode = '4BIB25' %}
+      {% assign discTextExtra = 'or add 1 more product to qualify for a <strong>30%</strong> discount' %}
+    {% endif %}
+
+    {% if cart.item_count >= 6 %}
+      {% assign autoDiscount = true %}
+      {% assign discCode = '6BIB30' %}
+      {% assign discText = 'You have 6+ items in your cart. Enter code <span class="c-discount-code" > <strong>6BIB30</strong></span> at checkout to get <strong>25%</strong> off your order' %}
+    {% endif %}
+{% unless discText == '' %}
+    <div class="l-bundle-notes">
+      <div class="l-bundle-notes__header">
+        <h2 class="l-bundle-notes__heading">Bibado Bundle Discounts</h2>
+      </div>
+      <div class="l-bundle-notes__content">
+        <p>{{  discText }} <br>
+          {{  discTextExtra }}</p>
+      </div>
+    </div>
+    {% endunless %}
+
+    <!-- discount {{ discCode }} count {{ cart.item_count }}-->
     <div class="section-header text-center">
       <h1>{{ 'cart.general.title' | t }}</h1>
     </div>
@@ -135,15 +184,17 @@
             <input type="submit" name="update" class="btn btn--secondary cart__update cart__update--large small--hide" value="{{ 'cart.general.update' | t }}">
             <input type="submit" name="checkout" class="btn btn--small-wide bold-validate-chk" value="{{ 'cart.general.checkout' | t }}" disabled="disabled">
             {% if additional_checkout_buttons %}
-            <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}<br>
-            
-            
+            <div class="additional-checkout-buttons">
+              <p>or pay with</p>
+              {{ content_for_additional_checkout_buttons }}<br>
+
+
             <div style="float: left;"><img src="https://cdn.shopify.com/s/files/1/2704/5506/files/Noahs-Ark.jpg?15307468636380988301" /></div>
 <p><b>£1 from every order is donated to Noah's Ark Children's Hospital Charity to help them support families who are having a difficult start to their journeys. Thank you for enabling us to support such a fantastic cause!</b></p>
-            
-            
-            
-            
+
+
+
+
             </div>
             {% endif %}
           </div>
