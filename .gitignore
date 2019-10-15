@@ -2,3 +2,7 @@
 /dist/
 /node_modules/
 /deploy.log
+
+config.yml
+
+gulpfile.js

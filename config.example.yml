@@ -14,13 +14,13 @@
 ---
 
 development:
-  password: 779b2a8f76e47c5e028ad47df03bfdd7
-  theme_id: 73225994301
-  store: tempestdesigns.myshopify.com
+  password: xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  theme_id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  store: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   ignore_files:
 
 production:
-  password: 779b2a8f76e47c5e028ad47df03bfdd7
+  password: xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   theme_id: "live"
-  store: tempestdesigns.myshopify.com
+  store: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   ignore_files:
