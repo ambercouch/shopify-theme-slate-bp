@@ -1,3 +1,5 @@
+var previewThemeid = '73225994301'
+var previewThemeUrl = 'https://tempestdesigns.myshopify.com/?preview_theme_id=' + previewThemeid;
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
@@ -92,10 +94,12 @@ gulp.task('sass', function (cb) {
 gulp.task('serve', ['sass'], function () {
 
     browserSync.init({
-        proxy: "https://tempestdesigns.myshopify.com/"
+        proxy: previewThemeUrl,
+        reloadDelay: 5000
     });
 
-    gulp.watch("src/ac/scss/**/*.scss", ['sass']);
+    gulp.watch('src/ac/scss/**/*.scss', ['sass']);
+    gulp.watch('src/ac/js/**/*.js', ['scripts']);
     // gulp.watch("assets/images/svg/**/*.svg", ['svgstore']).on('change', browserSync.reload);
     // gulp.watch("craft/templates/**/*.html").on('change', browserSync.reload);
     // gulp.watch("assets/js/**/*.js",['scripts']).on('change', browserSync.reload);
