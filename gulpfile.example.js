@@ -1,5 +1,6 @@
-var previewThemeid = 'xxxxxxxxxxx'
-var previewThemeUrl = 'https://xxxxxxxxxxxxxxxxx/?preview_theme_id=' + previewThemeid;
+var previewThemeid = 'xxxxxxxxxxx';
+var themeUrl = 'https://xxxxxxxxxxxxxxxxx';
+var previewThemeUrl = themeUrl + '/?preview_theme_id=' + previewThemeid;
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
