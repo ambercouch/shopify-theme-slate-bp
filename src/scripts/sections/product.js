@@ -68,8 +68,11 @@ theme.Product = (function() {
       this.variants = new slate.Variants(options);
       var variant = this.variants._getVariantFromOptions();
 
+
       var qtyEl = document.getElementById('Quantity')
-      var minQty = qtyEl.dataset.minQty;
+      if(qtyEl){
+        var minQty = qtyEl.dataset.minQty;
+      }
 
       var remaining = variant.inventory_remaining
 

@@ -99,26 +99,48 @@ slate.Variants = (function() {
     _onSelectChange: function() {
 
       var variant = this._getVariantFromOptions();
+      var varId = variant.id;
+      var prodId = variant.product_id;
+      var elSelector = '.add-form__qty-input[data-product-id="' + prodId + '"]';
       console.log('variant.id');
-      console.log('Quantity' + variant.id );
-      var qtyEl = document.getElementById('Quantity');
-      var minQty = qtyEl.dataset.minQty;
+      console.log('variant.id');
+      console.log('variant.product');
 
-      if (minQty > 1){
-        console.log(variant);
-        var remaining = variant.inventory_remaining;
-        console.log('remaining');
-        console.log(remaining);
-        if (remaining < minQty){
-          console.log('reset min');
-          qtyEl.setAttribute('min' , 1);
-          qtyEl.setAttribute('value' , 1);
-        }else {
-          console.log('Dont reset min qty');
-          qtyEl.setAttribute('min' , minQty);
-          qtyEl.setAttribute('value' , minQty);
-        }
+      var qtyEl = document.querySelectorAll(elSelector);
+
+
+      if(qtyEl){
+        console.log('we have a qtyEl');
+        console.log(qtyEl);
+        [].forEach.call(qtyEl, function(el) {
+          var minQty = el.dataset.minQty;
+          console.log('for each el');
+         console.log(el);
+          console.log(minQty);
+          if (minQty > 1){
+            console.log(variant);
+            var remaining = variant.inventory_remaining;
+            console.log('remaining');
+            console.log(remaining);
+            if (remaining < minQty){
+              console.log('reset min');
+              el.setAttribute('min' , 1);
+              el.setAttribute('value' , 1);
+            }else {
+              console.log('Dont reset min qty');
+              el.setAttribute('min' , minQty);
+              el.setAttribute('value' , minQty);
+            }
+          }
+        });
+
+
+      }else{
+        console.log('there is no qty element');
+        console.log('elSelector');
+        console.log(elSelector);
       }
+
 
 
 

@@ -9,6 +9,7 @@
       <label class="add-form__label{{ afClassModifier }}" for="Quantity">{{ 'products.product.quantity' | t }}</label>
 
       {%- assign low_price = settings.low_price_product | times: 1  -%}
+      {%- assign low_price_2 = settings.low_price_product_2 | times: 1  -%}
       {%- assign pTypeMinimums = 'Clothing' -%}
       {%- assign pTypeMinQty = 2 -%}
       {%- assign pType = product.type -%}
@@ -25,6 +26,10 @@
         {%- assign minQty = 1 -%}
         {%- assign minLowPriceQty = 1 -%}
         <!-- price > 200 {{ current_variant.price }} -->
+        {% elsif  current_variant.price < low_price_2%}
+        {%- assign minQty = settings.low_cost_minimum_qty_2 | times: 1 -%}
+        {%- assign minLowPriceQty = settings.low_cost_minimum_qty_2 -%}
+        {%- assign qty = settings.low_cost_minimum_qty_2 -%}
       {%- else -%}
         {%- assign minQty = settings.low_cost_minimum_qty | times: 1 -%}
         {%- assign minLowPriceQty = settings.low_cost_minimum_qty -%}
@@ -60,10 +65,10 @@
         {% assign qtyId = 'Quantity' %}
         {% else %}
         <!-- this is not a product -->
-          {% assign qtyId = 'Quantity' %}
+          {% assign qtyId = 'Quantity' | append : variant.id %}
       {% endif %}
 
-      <input class="add-form__qty-input" data-type-min="{{ pTypeMinQty }}" data-low-price-min="{{  minLowPriceQty }}" data-min-qty="{{ minQty }}" type="number" data-qty-id="Quantity" data-var-id="{{ current_variant.id }}" id="{{ qtyId }}" name="quantity" value="{{ minQty }}" min="{{ minQty }}">
+      <input class="add-form__qty-input" data-type-min="{{ pTypeMinQty }}" data-low-price-min="{{  minLowPriceQty }}" data-min-qty="{{ minQty }}" type="number" data-qty-id="Quantity" data-product-id="{{ product.id }}" id="{{ qtyId }}" name="quantity" value="{{ minQty }}" min="{{ minQty }}">
     </div>
     <div class="add-form__price-wrapper{{ afClassModifier }}">
       <div data-price-wrapper>
