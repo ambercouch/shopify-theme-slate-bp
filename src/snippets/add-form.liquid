@@ -23,39 +23,71 @@
 
 
       {%- if current_variant.price >  low_price -%}
+        {% comment %}
+        if the variant price is greater than he low price 600, allow single purchases
+        {% endcomment %}
+
         {%- assign minQty = 1 -%}
         {%- assign minLowPriceQty = 1 -%}
-        <!-- price > 200 {{ current_variant.price }} -->
-        {% elsif  current_variant.price < low_price_2%}
+        <!-- 1 current_variant.price > low_price : {{ current_variant.price }}  > {{ low_price }} -->
+
+        {% elsif  current_variant.price < low_price_2 %}
+
+        {% comment %}
+          if the variant price is less than the VERY low price 300, set the minQty accordingly
+        {% endcomment %}
+
         {%- assign minQty = settings.low_cost_minimum_qty_2 | times: 1 -%}
         {%- assign minLowPriceQty = settings.low_cost_minimum_qty_2 -%}
         {%- assign qty = settings.low_cost_minimum_qty_2 -%}
+        <!-- 2 current_variant.price < low_price_2 : {{ current_variant.price }}  < {{ low_price_2 }} -->
+
       {%- else -%}
+
+        {% comment %}
+          if the variant price is less than the low price 600 and greater the the very low price 300, set the minQty accordingly
+        {% endcomment %}
+
+        <!-- 3 current_variant.price < low_price : {{ current_variant.price }}  < {{ low_price }} -->
+        <!-- 4 current_variant.price > low_price_2 : {{ current_variant.price }}  > {{ low_price_2 }} -->
+
         {%- assign minQty = settings.low_cost_minimum_qty | times: 1 -%}
         {%- assign minLowPriceQty = settings.low_cost_minimum_qty -%}
         {%- assign qty = settings.low_cost_minimum_qty -%}
 
-        <!--  price less than 200 {{ current_variant.price }} -->
       {%- endif -%}
 
       {%- if minLowPriceQty == 1 -%}
+
+        {% comment %}
+          if High price item (min qty 1) check ...
+        {% endcomment %}
+
         <!-- pType = {{ pType }} -->
+
         {%- if pTypeMinimums contains pType -%}
+
           {%- assign minQty =  pTypeMinQty | times: 1 %}
-          {%- assign pTypeMinQty =  1 %}
+
+
           <!-- pTypeMinQty assigned {{ pType }} - {{ pTypeMinimums }} - {{ minQty }} -->
+
         {%- else -%}
-          {%- assign minQty =  pTypeMinQty | times: 1 %}
+          
           <!-- pTypeMinQty NOT Assigned {{ pType }} - {{ pTypeMinimums }}-->
+
         {%- endif -%}
       {% endif %}
 
       <!-- testing -->
       <!-- {{ current_variant.inventory_quantity }} -->
+
       {%- if  varInvQty < minQty  -%}
+
         {%- assign qty = 1 -%}
         <!-- reset minQty -->
         <!--  varInvQty {{  varInvQty }} -->
+
       {%- else -%}
         <!-- DONT reset minQty -->
         <!--  varInvQty {{  varInvQty }} -->
