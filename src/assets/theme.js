@@ -613,7 +613,52 @@ slate.Variants = (function() {
      * Event handler for when a variant input changes.
      */
     _onSelectChange: function() {
+
       var variant = this._getVariantFromOptions();
+      var varId = variant.id;
+      var prodId = variant.product_id;
+      var elSelector = '.add-form__qty-input[data-product-id="' + prodId + '"]';
+      console.log('variant.id');
+      console.log('variant.id');
+      console.log('variant.product');
+
+      var qtyEl = document.querySelectorAll(elSelector);
+
+
+      if(qtyEl){
+        console.log('we have a qtyEl');
+        console.log(qtyEl);
+        [].forEach.call(qtyEl, function(el) {
+          var minQty = el.dataset.minQty;
+          console.log('for each el');
+         console.log(el);
+          console.log(minQty);
+          if (minQty > 1){
+            console.log(variant);
+            var remaining = variant.inventory_remaining;
+            console.log('remaining');
+            console.log(remaining);
+            if (remaining < minQty){
+              console.log('reset min');
+              el.setAttribute('min' , 1);
+              el.setAttribute('value' , 1);
+            }else {
+              console.log('Dont reset min qty');
+              el.setAttribute('min' , minQty);
+              el.setAttribute('value' , minQty);
+            }
+          }
+        });
+
+
+      }else{
+        console.log('there is no qty element');
+        console.log('elSelector');
+        console.log(elSelector);
+      }
+
+
+
 
       this.$container.trigger({
         type: 'variantChange',
@@ -769,6 +814,21 @@ theme.Product = (function() {
       };
 
       this.variants = new slate.Variants(options);
+      var variant = this.variants._getVariantFromOptions();
+
+
+      var qtyEl = document.getElementById('Quantity')
+      if(qtyEl){
+        var minQty = qtyEl.dataset.minQty;
+      }
+
+      var remaining = variant.inventory_remaining
+
+      //om product load if the remaining qty is less than the minQty reset the minQty to 1
+      if (remaining < minQty){
+        qtyEl.setAttribute('min' , 1);
+        qtyEl.setAttribute('value' , 1);
+      }
 
       this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
       this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
