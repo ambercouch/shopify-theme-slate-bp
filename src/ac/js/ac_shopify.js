@@ -120,16 +120,34 @@ ACTIMBER = {
             console.log('collection bundles');
 
             let bundledProducts = [];
+            let elTextQty = document.getElementById('bundleNoticeTextQty');
+            let elTextUnit = document.getElementById('bundleNoticeTextUnitLabel');
+            let textUnitSingle = 'item';
+            let textUnit = 'items';
+
             $('.product-form').submit(function (e) {
                 e.preventDefault();
 
-                let variant_id = $
+
+
+                let variant_id = 12345;
+
                 let product = {
                     id : "123456",
                     price : "100"
                 }
+
                 bundledProducts.push(product);
-                console.log(bundledProducts);
+
+                if(bundledProducts.length == 1){
+                    elTextUnit.textContent = textUnitSingle;
+                } else {
+                    elTextUnit.textContent = textUnit;
+                }
+
+                elTextQty.textContent = bundledProducts.length;
+
+                console.log(bundledProducts.length);
             });
         },
 },
