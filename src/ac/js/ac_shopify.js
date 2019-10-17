@@ -9,14 +9,14 @@
 //FidVids - uses custom selector because the youtube vid is lazy loaded so does not exist until modal is opened
 //$("[data-fitvid]").fitVids({ customSelector: "iframe[data-youtube-iframe]"});
 
-console.log('ACTIMBER BBD remodal1');
+console.log('ACTIMBER BBD remodal1 123');
 ACTIMBER = {
     common: {
         init: function () {
 
             'use strict';
             //uncomment to debug
-            console.log('common FIT VID 2');
+            console.log('common FIT VID 2 1234567');
 
 
             $('body').addClass('js');
@@ -119,14 +119,58 @@ ACTIMBER = {
         init: function(){
             console.log('collection bundles');
 
-            let bundledProducts = [];
+            const bundledProducts = {};
             let elTextQty = document.getElementById('bundleNoticeTextQty');
             let elTextUnit = document.getElementById('bundleNoticeTextUnitLabel');
             let textUnitSingle = 'item';
             let textUnit = 'items';
+            let elBundleList = $('#bundleProductList');
+            let bundleCount = 0;
 
             $('.product-form').submit(function (e) {
                 e.preventDefault();
+
+                bundleCount = 0;
+
+                let productId = $('input[name=productId]',this).val();
+                let productTitle = $('input[name=productTitle]',this).val();
+                let variantId = $('option:selected',this).val();
+                let variantTitle = $('option:selected',this).text().trim();
+
+                bundledProducts[variantId] =  bundledProducts[variantId] || {};
+                bundledProducts[variantId].variantTitle = variantTitle;
+                bundledProducts[variantId].variantId = variantId;
+                bundledProducts[variantId].productTitle  = productTitle;
+                if (bundledProducts[variantId].hasOwnProperty('qty')){
+                    bundledProducts[variantId].qty  = bundledProducts[variantId].qty + 1;
+                }else{
+                    bundledProducts[variantId].qty  = 1;
+                }
+
+                const entries = Object.entries(bundledProducts);
+                console.log('bundledProducts');
+                console.log(bundledProducts);
+
+                elBundleList.empty();
+
+                for (const [product, obj] of entries) {
+
+                    elBundleList.append('<div id="bundleItem'+ obj.variantId +'" ><p>' + obj.productTitle + '<br><small>'+obj.variantTitle +' </small>' + '</p></div>');
+
+                    $('#bundleItem' + obj.variantId).append('<input data-variant-id="'+ obj.variantId +'" class="bundle-item-qty" type=number value=' + obj.qty + '>')
+
+                    bundleCount = bundleCount + obj.qty
+                }
+
+                $(document).on('change', '.bundle-item-qty', function(e){
+                    let varId = $(this).attr('data-variant-id');
+                    let varQty = $(this).val();
+                    bundledProducts[varId].qty = varQty;
+                    console.log('bundledProducts[varId].qty');
+                    console.log(bundledProducts[varId].qty);
+
+                })
+
 
 
 
@@ -137,15 +181,15 @@ ACTIMBER = {
                     price : "100"
                 }
 
-                bundledProducts.push(product);
 
-                if(bundledProducts.length == 1){
+
+                if(bundleCount == 1){
                     elTextUnit.textContent = textUnitSingle;
                 } else {
                     elTextUnit.textContent = textUnit;
                 }
 
-                elTextQty.textContent = bundledProducts.length;
+                elTextQty.textContent = bundleCount;
 
                 console.log(bundledProducts.length);
             });

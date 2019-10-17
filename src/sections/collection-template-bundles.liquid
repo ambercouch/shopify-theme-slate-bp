@@ -62,7 +62,7 @@
 
       <div class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %}">
         {% for product in collection.products %}
-          <div class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
+          <div id="gridProductId{{ product.id }}" data-product-id="{{ product.id }}" class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
             {% include 'product-card-bundle', max_height: max_height %}
 
             {% include 'add-form-bundle'%}
@@ -77,6 +77,9 @@
         <div class="bundle-cart__qty">
 
           <p>here's your bundle</p>
+          <div id="bundleProductList" class="bundle-cart__product-list">
+
+          </div>
           <div class="c-bundle-notice">
           <p><span>You have</span> <span id="bundleNoticeTextQty" class="c-bundle-notice__qty">no</span> <span id="bundleNoticeTextUnitLabel">items</span> <span>in your bundle.</span><br>
             <span id="bundleNoticeTextCurrentDiscount" class="c-bundle-notice__text--current-discount" >You don't have enough product in your bundle to get our bundle discount </span><br>
