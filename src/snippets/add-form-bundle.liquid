@@ -3,7 +3,8 @@
 {%- endcapture %}
 
             {% form 'product', product, class:form_classes %}
-
+              <input type="hidden" name="productId" value="{{ product.id }}" >
+              <input type="hidden" name="productTitle" value="{{ product.title }}" >
 
               <select name="id" id="ProductSelect-{{ product.id }}" class="">
                 {% for variant in product.variants %}
@@ -16,6 +17,7 @@
                   {% endif %}
                 {% endfor %}
               </select>
+
 
 
               <div class="sometestac product-form__item product-form__item--submit{% if section.settings.enable_payment_button %} product-form__item--payment-button{% endif %}{% if product.has_only_default_variant %} product-form__item--no-variants{% endif %}">
