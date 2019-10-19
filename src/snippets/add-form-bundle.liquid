@@ -6,10 +6,16 @@
               <input type="hidden" name="productId" value="{{ product.id }}" >
               <input type="hidden" name="productTitle" value="{{ product.title }}" >
 
+
+
               <select name="id" id="ProductSelect-{{ product.id }}" class="">
                 {% for variant in product.variants %}
                   {% if variant.available %}
-                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                    <option
+                        {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                        value="{{ variant.id }}"
+                        data-variant-price="{{ variant.price }}"
+                    >
                       {{ variant.title }}
                     </option>
                   {% else %}
