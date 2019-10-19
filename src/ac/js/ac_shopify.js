@@ -120,69 +120,34 @@ ACTIMBER = {
             console.log('collection bundles');
 
             const bundledProducts = {};
+
+
+            let elBundlenNoticeCurrentDiscount = document.getElementById('bundleNoticeTextCurrentDiscount');
+            let elBundlenNoticeNextDiscount = document.getElementById('bundleNoticeTextNextDiscount');
+
+            let bundleNoticeTextCurrentDiscount = elBundlenNoticeCurrentDiscount.textContent;
+            let bundleNoticeTextNextDiscount = elBundlenNoticeNextDiscount.textContent;
+            let bundleNoticeNoDiscount = "You don't have enough product in your bundle to get our bundle discount";
+            let bundleNotice20Percent = "Add your bundle to the cart and get 20% off when you checkout";
+            let bundleNotice25Percent = "Add your bundle to the cart and get 25% off when you checkout";
+            let bundleNotice30Percent = "Add your bundle to the cart and get 30% off when you checkout";
+
+
             let elTextQty = document.getElementById('bundleNoticeTextQty');
             let elTextUnit = document.getElementById('bundleNoticeTextUnitLabel');
             let textUnitSingle = 'item';
             let textUnit = 'items';
             let elBundleList = $('#bundleProductList');
             let bundleCount = 0;
-
-            $('.product-form').submit(function (e) {
-                e.preventDefault();
-
-                bundleCount = 0;
-
-                let productId = $('input[name=productId]',this).val();
-                let productTitle = $('input[name=productTitle]',this).val();
-                let variantId = $('option:selected',this).val();
-                let variantTitle = $('option:selected',this).text().trim();
-
-                bundledProducts[variantId] =  bundledProducts[variantId] || {};
-                bundledProducts[variantId].variantTitle = variantTitle;
-                bundledProducts[variantId].variantId = variantId;
-                bundledProducts[variantId].productTitle  = productTitle;
-                if (bundledProducts[variantId].hasOwnProperty('qty')){
-                    bundledProducts[variantId].qty  = bundledProducts[variantId].qty + 1;
-                }else{
-                    bundledProducts[variantId].qty  = 1;
-                }
-
-                const entries = Object.entries(bundledProducts);
-                console.log('bundledProducts');
-                console.log(bundledProducts);
-
-                elBundleList.empty();
-
-                for (const [product, obj] of entries) {
-
-                    elBundleList.append('<div id="bundleItem'+ obj.variantId +'" ><p>' + obj.productTitle + '<br><small>'+obj.variantTitle +' </small>' + '</p></div>');
-
-                    $('#bundleItem' + obj.variantId).append('<input data-variant-id="'+ obj.variantId +'" class="bundle-item-qty" type=number value=' + obj.qty + '>')
-
-                    bundleCount = bundleCount + obj.qty
-                }
-
-                $(document).on('change', '.bundle-item-qty', function(e){
-                    let varId = $(this).attr('data-variant-id');
-                    let varQty = $(this).val();
-                    bundledProducts[varId].qty = varQty;
-                    console.log('bundledProducts[varId].qty');
-                    console.log(bundledProducts[varId].qty);
-
-                })
+            let bundleTotal = 0;
+            let bundleDiscount = 0;
+            let bundleDiscountPercent = 0;
 
 
 
 
-                let variant_id = 12345;
-
-                let product = {
-                    id : "123456",
-                    price : "100"
-                }
-
-
-
+            //update item text
+            function updateItemtext(){
                 if(bundleCount == 1){
                     elTextUnit.textContent = textUnitSingle;
                 } else {
@@ -190,9 +155,112 @@ ACTIMBER = {
                 }
 
                 elTextQty.textContent = bundleCount;
+            }
+            //update bundle notice text
+            function updateBundleText(text, el) {
+                el.textContent = text;
+            }
+            function updateBundleNotice() {
+                if(bundleCount < 3){
+                    elBundlenNoticeCurrentDiscount.textContent = bundleNoticeNoDiscount
+                }else if(bundleCount == 3){
+                    elBundlenNoticeCurrentDiscount.textContent = bundleNotice20Percent
+                }else if(bundleCount > 3 && bundleCount <= 5){
+                    elBundlenNoticeCurrentDiscount.textContent = bundleNotice25Percent
+                }else{
+                    elBundlenNoticeCurrentDiscount.textContent = bundleNotice30Percent
+                }
+            }
+            //update bundle list
+            function updateBundleList(entries) {
+                elBundleList.empty();
 
-                console.log(bundledProducts.length);
+                for (const [product, obj] of entries) {
+
+                    elBundleList.append('<div id="bundleItem'+ obj.variantId +'" ><p>' + obj.productTitle + '<br><small>'+obj.variantTitle +' </small>' + '</p></div>');
+
+                    $('#bundleItem' + obj.variantId).append('<input data-variant-id="'+ obj.variantId +'" class="bundle-item-qty" type=number min="0" value=' + obj.qty + '>')
+
+                    bundleCountAdd(obj.qty);
+                    bundleTotalAdd(obj.variantPrice * obj.qty);
+                }
+
+                updateBundleNotice();
+                console.log('bundleTotal');
+                console.log(bundleTotal);
+            }
+            //update bundle qty
+            function bundleCountAdd(qty){
+                bundleCount = parseInt(bundleCount) + parseInt(qty);
+            }
+
+            //update bundle Total
+            function bundleTotalAdd(price) {
+                bundleTotal = parseInt(bundleTotal) + parseInt(price);
+            }
+            //add item to bundle
+            function bundleAddItem(variantId, variantTitle, variantPrice, productTitle ){
+                bundledProducts[variantId] =  bundledProducts[variantId] || {};
+                bundledProducts[variantId].variantTitle = variantTitle;
+                bundledProducts[variantId].variantId = variantId;
+                bundledProducts[variantId].productTitle  = productTitle;
+                bundledProducts[variantId].variantPrice  = variantPrice;
+                if (bundledProducts[variantId].hasOwnProperty('qty')){
+                    bundledProducts[variantId].qty  = bundledProducts[variantId].qty + 1;
+                }else{
+                    bundledProducts[variantId].qty  = 1;
+                }
+
+                //return bundledProducts
+            }
+
+
+            // Add a new item to the bundle
+            $('.product-form').submit(function (e) {
+                e.preventDefault();
+
+                bundleCount = 0;
+                bundleTotal = 0;
+
+                let productId = $('input[name=productId]',this).val();
+                let productTitle = $('input[name=productTitle]',this).val();
+                let variantId = $('option:selected',this).val();
+                let variantTitle = $('option:selected',this).text().trim();
+                let variantPrice = $('option:selected', this).attr('data-variant-price');
+
+                console.log('variantPrice')
+                console.log(variantPrice)
+
+                bundleAddItem(variantId, variantTitle, variantPrice, productTitle )
+
+                const entries = Object.entries(bundledProducts);
+
+                updateBundleList(entries);
+
+                updateItemtext();
+
+
             });
+
+            //on update bundle item quantity
+            $(document).on('change', '.bundle-item-qty', function(e){
+
+                bundleCount = 0;
+
+                let varId = $(this).attr('data-variant-id');
+                let varQty = parseInt($(this).val());
+                bundledProducts[varId].qty = varQty;
+                // console.log('bundledProducts[varId].qty');
+                // console.log(bundledProducts[varId].qty);
+
+                const entries = Object.entries(bundledProducts);
+                for (const [product, obj] of entries) {
+                    bundleCountAdd(obj.qty);
+                }
+
+                updateItemtext();
+
+            })
         },
 },
     product: {
