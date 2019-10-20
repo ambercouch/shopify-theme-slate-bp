@@ -124,13 +124,35 @@ ACTIMBER = {
 
             let elBundlenNoticeCurrentDiscount = document.getElementById('bundleNoticeTextCurrentDiscount');
             let elBundlenNoticeNextDiscount = document.getElementById('bundleNoticeTextNextDiscount');
+            let elBundleNoticeTextCurrentSaving = $('#bundleNoticeTextCurrentSaving');
+            let elBundleSaving = document.getElementById('bundleSaving');
+            let elBundleDiscountCode = document.getElementById('bundleDiscountCode');
+            let elBundlePrice =  document.getElementById('bundlePrice');
 
             let bundleNoticeTextCurrentDiscount = elBundlenNoticeCurrentDiscount.textContent;
             let bundleNoticeTextNextDiscount = elBundlenNoticeNextDiscount.textContent;
+
             let bundleNoticeNoDiscount = "You don't have enough product in your bundle to get our bundle discount";
             let bundleNotice20Percent = "Add your bundle to the cart and get 20% off when you checkout";
             let bundleNotice25Percent = "Add your bundle to the cart and get 25% off when you checkout";
             let bundleNotice30Percent = "Add your bundle to the cart and get 30% off when you checkout";
+
+            let bundlenNoticeNext0 = "Add 3 items to get our 20% bundle discount.";
+            let bundlenNoticeNext1 = "Add 2 more items to get our 20% bundle discount.";
+            let bundlenNoticeNext2 = "Add 1 more item to get our 20% bundle discount.";
+            let bundlenNoticeNext3 = "Add 2 more items to get our 25% bundle discount.";
+            let bundlenNoticeNext4 = "Add 1 more items to get our 25% bundle discount.";
+            let bundlenNoticeNext5 = "Add 1 items to get our 30% bundle discount.";
+            let bundlenNoticeNext6 = "";
+
+            let bundleNoticeSaving1 = 'You will save ';
+            let bundleNoticeSaving2 = 'when you use discount code';
+            let bundleNoticeSaving3 = 'at checkout.';
+            let discountCode1 = '3BIB20';
+            let discountCode2 = '4BIB25';
+            let discountCode3 = '6BIB30';
+
+
 
 
             let elTextQty = document.getElementById('bundleNoticeTextQty');
@@ -142,8 +164,49 @@ ACTIMBER = {
             let bundleTotal = 0;
             let bundleDiscount = 0;
             let bundleDiscountPercent = 0;
+            let bundleSaving = 0;
+            let bundleSavingMoney = 0;
+
+            // Create our number formatter.
+            let formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'GBP',
+            });
+
+            function bundleFormatSaving(){
+                bundleSavingMoney = formatter.format(bundleSaving / 100);
+            }
 
 
+            function updateElBundleSaving() {
+                elBundleSaving.textContent = bundleSavingMoney;
+            }
+
+            function updateElBundlePrice() {
+                elBundlePrice.textContent = formatter.format(bundleTotal / 100);
+            }
+
+            function updateElBundleDiscountCode() {
+                if(bundleCount == 3 ){
+                    elBundleDiscountCode.textContent = discountCode1;
+                }else if(bundleCount >3 && bundleCount <= 5){
+                    elBundleDiscountCode.textContent = discountCode2;
+                }else {
+                    elBundleDiscountCode.textContent = discountCode3;
+                }
+
+            }
+
+
+
+
+            function updateBundleNoticeSavingDisplay() {
+                if (bundleCount >= 3){
+                    elBundleNoticeTextCurrentSaving.show();
+                }else{
+                    elBundleNoticeTextCurrentSaving.hide()
+                }
+            }
 
 
             //update item text
@@ -156,10 +219,12 @@ ACTIMBER = {
 
                 elTextQty.textContent = bundleCount;
             }
+
             //update bundle notice text
             function updateBundleText(text, el) {
                 el.textContent = text;
             }
+
             function updateBundleNotice() {
                 if(bundleCount < 3){
                     elBundlenNoticeCurrentDiscount.textContent = bundleNoticeNoDiscount
@@ -171,6 +236,26 @@ ACTIMBER = {
                     elBundlenNoticeCurrentDiscount.textContent = bundleNotice30Percent
                 }
             }
+
+            function updateBundleNoticeNext() {
+                if(bundleCount == 0){
+                    elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext0;
+                }else if(bundleCount == 1){
+                    elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext1;
+                }else if(bundleCount == 2){
+                    elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext2;
+                }else if(bundleCount == 3){
+                    elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext3;
+                }else if(bundleCount == 4){
+                    elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext4;
+                }else if(bundleCount == 5){
+                    elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext5;
+                }else if(bundleCount == 6){
+                    elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext6;
+                }
+
+            }
+
             //update bundle list
             function updateBundleList(entries) {
                 elBundleList.empty();
@@ -185,10 +270,25 @@ ACTIMBER = {
                     bundleTotalAdd(obj.variantPrice * obj.qty);
                 }
 
-                updateBundleNotice();
-                console.log('bundleTotal');
-                console.log(bundleTotal);
             }
+
+            function setBundleDiscountPercent() {
+                if (bundleCount < 3){
+                    bundleDiscountPercent = 0
+                } else if (bundleCount == 3){
+                    bundleDiscountPercent = 20;
+                }else if (bundleCount > 3 && bundleCount <= 50){
+                    bundleDiscountPercent = 25;
+                }else{
+                    bundleDiscountPercent = 30;
+                }
+
+            }
+
+            function updateBundleSaving() {
+                bundleSaving = (bundleTotal / 100) * bundleDiscountPercent;
+            }
+
             //update bundle qty
             function bundleCountAdd(qty){
                 bundleCount = parseInt(bundleCount) + parseInt(qty);
@@ -221,6 +321,7 @@ ACTIMBER = {
 
                 bundleCount = 0;
                 bundleTotal = 0;
+                bundleDiscountPercent = 0;
 
                 let productId = $('input[name=productId]',this).val();
                 let productTitle = $('input[name=productTitle]',this).val();
@@ -228,8 +329,7 @@ ACTIMBER = {
                 let variantTitle = $('option:selected',this).text().trim();
                 let variantPrice = $('option:selected', this).attr('data-variant-price');
 
-                console.log('variantPrice')
-                console.log(variantPrice)
+
 
                 bundleAddItem(variantId, variantTitle, variantPrice, productTitle )
 
@@ -238,6 +338,19 @@ ACTIMBER = {
                 updateBundleList(entries);
 
                 updateItemtext();
+
+                setBundleDiscountPercent();
+
+                updateBundleSaving()
+
+                bundleFormatSaving();
+
+                updateBundleNotice();
+                updateBundleNoticeNext()
+                updateBundleNoticeSavingDisplay();
+                updateElBundleSaving();
+                updateElBundleDiscountCode();
+                updateElBundlePrice()
 
 
             });
