@@ -1,7 +1,14 @@
 <!-- collection.liquid -->
 {%  include  'logic-access'%}
 {%  include  'logic-customer'%}
-{% paginate collection.products by 40 %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var endlessScroll = new Ajaxinate();
+    $('.pagination').hide();
+});
+</script>
+{% paginate collection.products by 16 %}
 <div class="collection">
   <div class="collection__breadcrumbs">
     {% assign BCClassModifier = "--collection"  %}
@@ -76,7 +83,7 @@
 
 
     {% unless customerAccess == 'restricted' %}
-    <ul class="collection__list customerAccess-{{ customerAccess }}">
+    <ul  id="AjaxinateLoop" class="collection__list customerAccess-{{ customerAccess }}">
     {% for product in collection.products %}
       {% for variant in product.variants %}
       {% include 'bold-product' with product, hide_action: 'skip' %}
@@ -155,6 +162,11 @@
   </div>
     {% unless customerAccess == 'restricted' %}
   <footer class="collection__footer">
+     <div id="AjaxinatePagination">
+      {% if paginate.next %}
+        <a href="{{ paginate.next.url }}">Loading More</a>
+      {% endif %}
+    </div>
   {% if paginate.pages > 1 %}
     {% include 'pagination' %}
   {% endif %}

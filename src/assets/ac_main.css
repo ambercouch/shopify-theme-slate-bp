@@ -6977,3 +6977,7 @@ figure img {
   box-shadow: 0 0 50px 3px rgba(69, 79, 91, 0.2);
   display: block;
   margin: 35px auto 70px; }
+
+  #AjaxinatePagination{
+    text-align: center;
+  }
