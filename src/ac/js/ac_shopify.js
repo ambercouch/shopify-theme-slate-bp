@@ -117,7 +117,7 @@ ACTIMBER = {
     },
     collectionbundles:{
         init: function(){
-            console.log('collection bundles');
+            console.log('collection bundles LLH');
 
             const bundledProducts = {};
 
@@ -183,7 +183,21 @@ ACTIMBER = {
             }
 
             function updateElBundlePrice() {
-                elBundlePrice.textContent = formatter.format(bundleTotal / 100);
+                elBundlePrice.textContent = formatter.format((bundleTotal / 100) - (bundleDiscount / 100) );
+
+                console.log("bundleTotal");
+                console.log(bundleTotal);
+                console.log('bundleDiscount');
+                console.log(bundleDiscount);
+                console.log('formatter.format((bundleTotal / 100) - (bundleDiscount / 100) )');
+                console.log(formatter.format((bundleTotal / 100) - (bundleDiscount / 100) ));
+                console.log('bundleDiscount ');
+                console.log(bundleDiscount );
+            }
+
+            function setBundleDiscount() {
+
+                bundleDiscount = ((bundleTotal / 100) * bundleDiscountPercent);
             }
 
             function updateElBundleDiscountCode() {
@@ -262,7 +276,7 @@ ACTIMBER = {
 
                 for (const [product, obj] of entries) {
 
-                    elBundleList.append('<div id="bundleItem'+ obj.variantId +'" ><p>' + obj.productTitle + '<br><small>'+obj.variantTitle +' </small>' + '</p></div>');
+                    elBundleList.append('<div class="bundle-cart__item" id="bundleItem'+ obj.variantId +'" ><p>' + obj.productTitle + '<br><small>'+obj.variantTitle +' </small>' + '</p></div>');
 
                     $('#bundleItem' + obj.variantId).append('<input data-variant-id="'+ obj.variantId +'" class="bundle-item-qty" type=number min="0" value=' + obj.qty + '>')
 
@@ -329,6 +343,12 @@ ACTIMBER = {
                 let variantTitle = $('option:selected',this).text().trim();
                 let variantPrice = $('option:selected', this).attr('data-variant-price');
 
+                console.log('variantPrice');
+                console.log(variantPrice);
+
+
+
+
 
 
                 bundleAddItem(variantId, variantTitle, variantPrice, productTitle )
@@ -350,6 +370,7 @@ ACTIMBER = {
                 updateBundleNoticeSavingDisplay();
                 updateElBundleSaving();
                 updateElBundleDiscountCode();
+                setBundleDiscount();
                 updateElBundlePrice()
 
 

@@ -8,6 +8,7 @@
 
 
 
+
               <select name="id" id="ProductSelect-{{ product.id }}" class="">
                 {% for variant in product.variants %}
                   {% if variant.available %}
@@ -26,7 +27,7 @@
 
 
 
-              <div class="sometestac product-form__item product-form__item--submit{% if section.settings.enable_payment_button %} product-form__item--payment-button{% endif %}{% if product.has_only_default_variant %} product-form__item--no-variants{% endif %}">
+              <div class="sometestac product-form__item--bundle product-form__item--submit{% if section.settings.enable_payment_button %} product-form__item--payment-button{% endif %}{% if product.has_only_default_variant %} product-form__item--no-variants{% endif %}">
                 <button type="submit" name="add" id="AddToCart-{{ section.id }}"  class="btn product-form__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
                 <span id="AddToCartText-{{ section.id }}">
                  Add to bundle

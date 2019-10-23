@@ -60,7 +60,7 @@
 
       {%- assign grid_item_width = 'medium-up--one-half' -%}
 
-      <div class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %}">
+      <div class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %} collection--bundles">
         {% for product in collection.products %}
           <div id="gridProductId{{ product.id }}" data-product-id="{{ product.id }}" class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
             {% include 'product-card-bundle', max_height: max_height %}
@@ -74,30 +74,35 @@
     <div class="grid grid--uniform grid--view-items ">
       <div class="grid__item grid__item 'medium-up--one-whole'">
       <div class="bundle-cart">
+        <button name="add" id="AddBundleToCart"  class="btn bundle-cart__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                 Add to Cart
+                </span>
+        </button>
         <div class="bundle-cart__qty">
 
           <p>here's your bundle</p>
 
-          <div class="c-bundle-notice">
-            <div>
+          <ul class="c-bundle-notice">
+            <li>
               <span>You have</span> <span id="bundleNoticeTextQty" class="c-bundle-notice__qty">no</span> <span id="bundleNoticeTextUnitLabel">items</span> <span>in your bundle.</span>
-            </div>
-            <div>
+            </li>
+            <li>
               <span id="bundleNoticeTextCurrentDiscount" class="c-bundle-notice__text--current-discount" >You don't have enough product in your bundle to get our bundle discount </span>
-            </div>
-            <div id="bundleNoticeTextCurrentSaving"  class="c-bundle-notice__text---next-saving" style="display:none;" >
-              <span>Your bundle discount </span>
-              <span id="bundlePrice" class="c-bundle-notice__text--bundle-pric">£100 </span>
-              <span>You will save </span>
+            </li>
+            <li id="bundleNoticeTextCurrentSaving"  class="c-bundle-notice__text---next-saving" style="display:none;" >
+              <span>Your bundle price </span>
+              <span id="bundlePrice" class="c-bundle-notice__text--bundle-pric">£100 </span>.
+              <span>You have saved </span>
               <span id="bundleSaving" class="c-bundle-notice__text--next-discount">£100 </span>
-              <span>when you use discount code </span>
+              <span>if you use discount code </span>
               <span id="bundleDiscountCode" class="c-bundle-notice__text--discount-code">12345</span>
               <span> at checkout</span>
-            </div>
-            <div>
+            </li>
+            <li>
               <span id="bundleNoticeTextNextDiscount" class="c-bundle-notice__text--next-discount">Add 3 items to get our 20% bundle discount.</span>
-            </div>
-          </div>
+            </li>
+          </ul>
 
         </div>
         <div id="bundleProductList" class="bundle-cart__product-list">
