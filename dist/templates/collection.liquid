@@ -2,7 +2,17 @@
 {%  include  'logic-access'%}
 {%  include  'logic-customer'%}
 
-{% paginate collection.products by 24 %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+
+    var endlessScroll = new Ajaxinate({
+    loadingText: '<i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>  <span class="sr-only">Refreshing...</span>',
+    offset:   window.innerHeight/2
+  });
+    $('.pagination').hide();
+});
+</script>
+{% paginate collection.products by 32 %}
 <div class="collection">
   <div class="collection__breadcrumbs">
     {% assign BCClassModifier = "--collection"  %}
@@ -159,8 +169,6 @@
      <div id="AjaxinatePagination">
       {% if paginate.next %}
         <a href="{{ paginate.next.url }}">Loading More</a>
-        <br />
-        ...Loading More
       {% endif %}
     </div>
   {% if paginate.pages > 1 %}
