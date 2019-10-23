@@ -1,0 +1,128 @@
+/*
+  BEM BLOCK .c-instruction-list
+ */
+
+.c-instruction-list {
+  display: flex;
+  text-align: left;
+  justify-content: center;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-instruction-list--
+ */
+
+.c-instruction-list-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-instruction-list--
+
+[class*=c-instruction-list--] {
+  @extend .c-instruction-list;
+}
+
+/*
+  BEM ELEMENTS .c-instruction-list__
+ */
+
+.c-instruction-list__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &list{
+    @extend .o-box;
+    @extend .o-box--flush;
+    padding-left: 1em;
+    margin-left: 0em;
+    padding-right: 1em;
+    margin-bottom: 0;
+    counter-reset: instruction-counter;
+  }
+  &item{
+    display: list-item;
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+    padding-bottom: 0.75em;
+    border-bottom: dashed 1px #ccc;
+    list-style: disc;
+  }
+  &text{
+    display: block;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-instruction-list__header--
+
+[class*=c-instruction-list__header--] {
+  @extend .c-instruction-list__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-instruction-list__item--
+
+[class*=c-instruction-list__item--] {
+  @extend .c-instruction-list__item;
+}
+
+.c-instruction-list__item--{
+  &number{
+
+    list-style: none;
+    counter-increment: instruction-counter;
+    display: flex;
+    align-items: center;
+
+    &::before{
+      content: counter(instruction-counter);
+      background: #CB9362;
+      color: white;
+      width: 1.5em;
+      display: inline-block;
+      height: 1.5em;
+      text-align: center;
+      margin-right: 1em;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+  }
+  &bul{
+
+    list-style: none;
+    display: flex;
+    align-items: center;
+    &::before{
+      content: '';
+      background: #CB9362;
+      color: white;
+      width: .5em;
+      display: inline-block;
+      height: .5em;
+      text-align: center;
+      margin-right: 0.75em;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+  }
+}

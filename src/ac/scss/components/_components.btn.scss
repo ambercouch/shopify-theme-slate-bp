@@ -21,6 +21,9 @@
       background: #8bc981 !important;
       opacity: 0.6;
     }
-
+  }
+  &buy-bundle{
+    @extend .o-btn--block;
+    background: #CB9362;
   }
 }

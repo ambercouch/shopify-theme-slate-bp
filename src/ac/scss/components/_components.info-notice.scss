@@ -1,0 +1,72 @@
+/*
+  BEM BLOCK .c-info-notice
+ */
+
+.c-info-notice {
+  display: block;
+  text-align: center;
+
+  margin-bottom: 48px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/*
+  BEM BLOCK MODIFIER .c-info-notice--
+ */
+
+.c-info-notice-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-info-notice--
+
+[class*=c-info-notice--] {
+  @extend .c-info-notice;
+}
+
+/*
+  BEM ELEMENTS .c-info-notice__
+ */
+
+.c-info-notice__ {
+  &header {
+    display: block;
+    margin-bottom: 0;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    background: #8bc981;
+  }
+
+  &heading {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block;
+    background: #fff;
+    @extend .o-box;
+  }
+
+  &footer {
+    display: block
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-info-notice--
+
+[class*=c-info-notice__header--] {
+  @extend .c-info-notice__header;
+}

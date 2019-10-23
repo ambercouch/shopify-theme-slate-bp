@@ -1,0 +1,81 @@
+/*
+  BEM BLOCK .l-off-page
+ */
+
+.l-off-page {
+  position: fixed;
+  z-index: 10;
+  background: #eee;
+  padding: 1em;
+  top:0;
+  right: 0;
+  height: 100vh;
+  width: 400px;
+  max-width: 90%;
+  transition: transform 0.3s ease-in-out 3s;
+  transform: translate(98%,0);
+  &:hover{
+    transition: transform 0.3s ease-in-out 0s;
+    transform: translate(0,0);
+  }
+}
+
+/*
+  BEM BLOCK MODIFIER .l-off-page--
+ */
+
+.l-off-page-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .l-off-page--
+
+[class*=l-off-page--] {
+  @extend .l-off-page;
+}
+
+/*
+  BEM ELEMENTS .l-off-page__
+ */
+
+.l-off-page__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &tab{
+    @include size(30px, 60px);
+    background: #eee;
+    display: block;
+    position: absolute;
+    left: -30px;
+    border-radius: 8px 0 0 8px;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-off-page--
+
+[class*=l-off-page__header--] {
+  @extend .l-off-page__header;
+}
