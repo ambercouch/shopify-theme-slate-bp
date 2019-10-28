@@ -1,4 +1,4 @@
-<div class="cart-table">
+<div class="cart-table some-qty-test">
   <table class="cart-table__table responsive-table">
     <thead class="cart-table__table-head small--hide">
     <tr>
@@ -13,21 +13,114 @@
     {% for item in cart.items %}
 
     {%- assign low_price = settings.low_price_product | times: 1  -%}
-    {%- if item.line_price >  low_price -%}
-      <!-- line price hi {{ item.line_price }}-->
-      {%- assign minQty = 1 -%}
+    {%- assign low_price_2 = settings.low_price_product_2 | times: 1  -%}
+    {%- assign pTypeMinimums = 'Clothing' -%}
+    {%- assign pTypeMinQty = 2 -%}
+    {%- assign pTypeMinimums2 = 'Handbags' -%}
+    {%- assign pTypeMinQty2 = 1 -%}
+    {%- assign pType = item.product.type -%}
+    {%- assign varInvQty = item.variant.inventory_quantity | times : 1 -%}
+
+    {%- if current_variant.inventory_management == "shopify" and current_variant.inventory_policy != "continue" -%}
+      <!-- We have {{ current_variant.inventory_quantity }} in stock. -->
     {%- else -%}
-      <!-- line price low {{ item.line_price }}-->
-      {%- assign minQty = settings.low_cost_minimum_qty | times: 1-%}
+      <!-- This product is available. -->
     {%- endif -%}
+
+
+    {%- if item.variant.price >  low_price -%}
+      {% comment %}
+        if the variant price is greater than he low price 600, allow single purchases
+      {% endcomment %}
+
+      {%- assign minQty = 1 -%}
+      {%- assign minLowPriceQty = 1 -%}
+      <!-- 1 current_variant.price > low_price : {{ current_variant.price }}  > {{ low_price }} -->
+
+      {% elsif item.variant.price < low_price_2 %}
+
+      {% comment %}
+        if the variant price is less than the VERY low price 300, set the minQty accordingly
+      {% endcomment %}
+
+      {%- assign minQty = settings.low_cost_minimum_qty_2 | times: 1 -%}
+      {%- assign minLowPriceQty = settings.low_cost_minimum_qty_2 -%}
+      {%- assign qty = settings.low_cost_minimum_qty_2 -%}
+      <!-- 2 current_variant.price < low_price_2 : {{ current_variant.price }}  < {{ low_price_2 }} -->
+
+    {%- else -%}
+
+      {% comment %}
+        if the variant price is less than the low price 600 and greater the the very low price 300, set the minQty accordingly
+      {% endcomment %}
+
+      <!-- 3 item.variant.price < low_price : {{ item.variant.price }}  < {{ low_price }} -->
+      <!-- 4 item.variant.price > low_price_2 : {{ item.variant.price }}  > {{ low_price_2 }} -->
+
+      {%- assign minQty = settings.low_cost_minimum_qty | times: 1 -%}
+      {%- assign minLowPriceQty = settings.low_cost_minimum_qty -%}
+      {%- assign qty = settings.low_cost_minimum_qty -%}
+
+    {%- endif -%}
+
+    {%- if minLowPriceQty == 1 -%}
+
+      {% comment %}
+        if High price item (min qty 1) check ...
+      {% endcomment %}
+
+      <!-- pType = {{ pType }} -->
+
+      {%- if pTypeMinimums contains pType -%}
+        {%- if  item.variant.price < 1000 -%}
+          {%- assign minQty =  pTypeMinQty | times: 1 %}
+
+
+          <!-- pTypeMinQty assigned {{ pType }} - {{ pTypeMinimums }} - {{ minQty }} -->
+        {%- endif -%}
+      {%- else -%}
+
+        <!-- pTypeMinQty NOT Assigned {{ pType }} - {{ pTypeMinimums }}-->
+
+      {%- endif -%}
+    {% endif %}
+
+    <!-- testing -->
+    <!-- ' current_variant.inventory_quantity' -->
+    <!-- {{ current_variant.inventory_quantity }} -->
+    <!-- varInvQty -->
+    <!-- {{ varInvQty  }} -->
+
+    {%- if  varInvQty < minQty  -%}
+
+      {%- assign minQty = 1 -%}
+      <!-- reset minQty -->
+      <!--  varInvQty {{  varInvQty }} -->
+
+    {%- else -%}
+      <!-- DONT reset minQty -->
+      <!--  varInvQty {{  varInvQty }} -->
+    {% endif %}
+    {% if template contains 'product' %}
+      <!-- This is a product -->
+      {% assign qtyId = 'Quantity' %}
+    {% else %}
+      <!-- this is not a product -->
+      {% assign qtyId = 'Quantity' | append : variant.id %}
+    {% endif %}
 
     {%- assign currentQty = item.quantity -%}
 
     {% if currentQty < minQty %}
       <!-- low quatity {{ currentQty }}-->
-    {% assign currentQty = minQty %}
+      {% assign currentQty = minQty %}
     {% endif %}
 
+
+    {% if currentQty > varInvQty %}
+      <!-- low quatity {{ currentQty }}-->
+      {% assign currentQty = varInvQty %}
+    {% endif %}
 
     {% comment %}
 
@@ -85,7 +178,7 @@
             <span class="cart-table__product-price-text--original"  >{{ item.original_price | money }}</span>
           {% else %}
            <!-- <span class="cart-table__product-price-text" >{{ bold_price | money }}</span> -->
-            <span class="cart-table__product-price-text" >{{ item.line_price | money }}</span>
+            <span class="cart-table__product-price-text vprice" >{{ item.variant.price | money }}</span>
           {% endif %}
         </td>
         <td class="cart-table__qty" data-label="{{ 'cart.label.quantity' | t }}">
@@ -95,6 +188,7 @@
                  id="updates_{{ item.key }}"
                  value="{{ currentQty }}"
                  min="{{ minQty }}"
+                 max="{{  varInvQty }}"
                  size="4"
                  aria-label="{{ 'cart.general.item_quantity' | t }}">
           <input class="cart-table__qty-input-submit" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
