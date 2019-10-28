@@ -68,14 +68,14 @@
         <!-- pType = {{ pType }} -->
 
         {%- if pTypeMinimums contains pType -%}
-
+          {%- if  current_variant.price < 1000 -%}
           {%- assign minQty =  pTypeMinQty | times: 1 %}
 
 
           <!-- pTypeMinQty assigned {{ pType }} - {{ pTypeMinimums }} - {{ minQty }} -->
-
+            {%- endif -%}
         {%- else -%}
-          
+
           <!-- pTypeMinQty NOT Assigned {{ pType }} - {{ pTypeMinimums }}-->
 
         {%- endif -%}
