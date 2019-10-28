@@ -71,7 +71,7 @@
           <ol class="c-instruction-list__list">
             <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Select the items you want and add them to your bundle</span></li>
             <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">See how much you can save and add more items to your bundle to save more</span></li>
-            <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Click the "Buy My Bundle" button to add you bundle to your cart</span></li>
+            <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Click the orange "Buy My Bundle" button to add you bundle to your cart</span></li>
             <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Use your bundle discount code when you check out to get your discount</span></li>
           </ol>
           </div>
@@ -96,7 +96,7 @@
 
       <div class="c-bundle-cart">
         <header class="c-bundle-cart__header">
-          <button name="add" id="AddBundleToCartHeader"  class="btn c-bundle-cart__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+          <button name="add" id="AddBundleToCartHeader"  disabled  class="btn c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
                 <span id="AddToCartText-{{ section.id }}">
                  Buy Your Bundle
                 </span>
@@ -109,7 +109,7 @@
         </div>
 
         <footer class="c-bundle-cart__footer">
-          <button name="add" id="AddBundleToCartHeader"  class="btn c-bundle-cart__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+          <button name="add" id="AddBundleToCartFooter" disabled  class="btn c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
                 <span id="AddToCartText-{{ section.id }}">
                  Buy Your Bundle
                 </span>
@@ -119,10 +119,11 @@
       </div>
     </div>
 </div>
-<div class="l-off-page">
-  <div class="l-off-page__tab">
-
-  </div>
+<div id="offPageBundleNotice" class="l-off-page is-open">
+  <header class="l-off-page__header">
+  <div class="l-off-page__close">X</div>
+  </header>
+  <div class="l-off-page__tab"></div>
   <div class="c-info-notice">
     <header class="c-info-notice__header">
       <h3 class="c-info-notice__heading">
@@ -154,7 +155,7 @@
                   <span> at checkout</span>
                   </span>
           </li>
-          <li  class="c-instruction-list__item--bul" >
+          <li id="bundleNoticeTextNextDiscountItem" class="c-instruction-list__item--bul" >
                   <span class="c-instruction-list__text">
                   <span id="bundleNoticeTextNextDiscount" class="c-bundle-notice__text--next-discount">Add 3 items to get our 20% bundle discount.</span>
                   </span>
@@ -165,7 +166,7 @@
 
 
   </div>
-  <button name="add" id="offPageAddBundleToCart"  class="btn c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+  <button name="add" id="AddBundleToCartOffPage" disabled class="btn c-btn--buy-bundle o-btn--block {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
                 <span id="AddToCartText-{{ section.id }}">
                  Buy Your Bundle
                 </span>

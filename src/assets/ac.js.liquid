@@ -4956,20 +4956,24 @@ ACTIMBER = {
     },
     collectionbundles:{
         init: function(){
-            console.log('collection bundles LLH');
+            console.log('collection bundles timer');
 
             const bundledProducts = {};
 
 
             let elBundlenNoticeCurrentDiscount = document.getElementById('bundleNoticeTextCurrentDiscount');
             let elBundlenNoticeNextDiscount = document.getElementById('bundleNoticeTextNextDiscount');
+            let elBundlenNoticeNextDiscountItem = document.getElementById('bundleNoticeTextNextDiscountItem');
             let elBundleNoticeTextCurrentSaving = $('#bundleNoticeTextCurrentSaving');
             let elBundleSaving = document.getElementById('bundleSaving');
             let elBundleDiscountCode = document.getElementById('bundleDiscountCode');
             let elBundlePrice =  document.getElementById('bundlePrice');
+            let elOffPageBundleNoticeb = document.getElementById('offPageBundleNotice');
+            let elCartBtn =$('.c-btn--buy-bundle');
 
             let bundleNoticeTextCurrentDiscount = elBundlenNoticeCurrentDiscount.textContent;
             let bundleNoticeTextNextDiscount = elBundlenNoticeNextDiscount.textContent;
+
 
             let bundleNoticeNoDiscount = "You don't have enough product in your bundle to get our bundle discount";
             let bundleNotice20Percent = "Add your bundle to the cart and get 20% off when you checkout";
@@ -5024,14 +5028,6 @@ ACTIMBER = {
             function updateElBundlePrice() {
                 elBundlePrice.textContent = formatter.format((bundleTotal / 100) - (bundleDiscount / 100) );
 
-                console.log("bundleTotal");
-                console.log(bundleTotal);
-                console.log('bundleDiscount');
-                console.log(bundleDiscount);
-                console.log('formatter.format((bundleTotal / 100) - (bundleDiscount / 100) )');
-                console.log(formatter.format((bundleTotal / 100) - (bundleDiscount / 100) ));
-                console.log('bundleDiscount ');
-                console.log(bundleDiscount );
             }
 
             function setBundleDiscount() {
@@ -5091,23 +5087,42 @@ ACTIMBER = {
             }
 
             function updateBundleNoticeNext() {
+                let el = elBundlenNoticeNextDiscountItem;
                 if(bundleCount == 0){
+                    showElement(el);
+
                     elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext0;
                 }else if(bundleCount == 1){
+                    showElement(el);
+
                     elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext1;
                 }else if(bundleCount == 2){
+                    showElement(el);
+
                     elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext2;
                 }else if(bundleCount == 3){
+                    showElement(el);
+
                     elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext3;
                 }else if(bundleCount == 4){
+                    showElement(el);
+
                     elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext4;
                 }else if(bundleCount == 5){
+                    showElement(el);
+
                     elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext5;
                 }else if(bundleCount == 6){
+
+                    hideElement(el)
                     elBundlenNoticeNextDiscount.textContent = bundlenNoticeNext6;
+                }else{
+
+                    hideElement(el)
                 }
 
             }
+
 
             //update bundle list
             function updateBundleList(entries) {
@@ -5166,11 +5181,61 @@ ACTIMBER = {
 
                 //return bundledProducts
             }
+            function closeDrawer(){
+                window.setTimeout(function () {
+                    elOffPageBundleNoticeb.classList.remove('is-open');
+                }, 1000);
+            }
 
+            closeDrawer();
+
+            function toggleElementState(el, hideClass = 'is-hidden'){
+                if (el.classList.contains(hideClass)) {
+                    el.classList.remove(hideClass)
+                }else{
+                    el.classList.add(hideClass);
+                }
+            }
+
+            function hideElement(el, hideClass = 'is-hidden'){
+
+                    el.classList.add(hideClass);
+
+            }
+
+            function showElement(el, hideClass = 'is-hidden'){
+
+                el.classList.remove(hideClass);
+
+            }
+
+            function updateElCartBtn(){
+                if(bundleCount > 2){
+                    $(elCartBtn).prop("disabled", false)
+                }else{
+                    $(elCartBtn).prop("disabled", true)
+                }
+            }
+
+
+
+            $(document).on('click', '.l-off-page__tab', function(){
+                console.log('tab clicked class added')
+                elOffPageBundleNoticeb.classList.add('is-open');
+            });
+
+            $(document).on('click', '.l-off-page__close', function(){
+                console.log('tab clicked class added')
+                elOffPageBundleNoticeb.classList.remove('is-open');
+                elOffPageBundleNoticeb.classList.add('is-close-quick');
+            });
 
             // Add a new item to the bundle
             $('.product-form').submit(function (e) {
                 e.preventDefault();
+                elOffPageBundleNoticeb.classList.remove('is-close-quick');
+                elOffPageBundleNoticeb.classList.add('is-open');
+                closeDrawer();
 
                 bundleCount = 0;
                 bundleTotal = 0;
@@ -5184,11 +5249,6 @@ ACTIMBER = {
 
                 console.log('variantPrice');
                 console.log(variantPrice);
-
-
-
-
-
 
                 bundleAddItem(variantId, variantTitle, variantPrice, productTitle )
 
@@ -5212,11 +5272,42 @@ ACTIMBER = {
                 setBundleDiscount();
                 updateElBundlePrice()
 
+                updateElCartBtn();
+
 
             });
 
+
+
+            $(document).on('click', '#AddBundleToCartHeader, #AddBundleToCartFooter, #AddBundleToCartOffPage', function () {
+                let entries = Object.entries(bundledProducts);
+                let values = {};
+
+                console.log('#AddBundleToCartHeader jQuery post updates')
+
+                for (const [product, obj] of entries) {
+                    values[obj.variantId] = obj.qty;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '/cart/update.js',
+                    data: {updates: values},
+                    dataType: 'json',
+                    success: function () {
+                        window.location.href = "https://bibado.co.uk/cart";
+                    },
+                    error: function () {
+                      console.log('we have and error');
+                    }
+                });
+
+            })
+
             //on update bundle item quantity
             $(document).on('change', '.bundle-item-qty', function(e){
+
+
 
                 bundleCount = 0;
 
@@ -5232,6 +5323,22 @@ ACTIMBER = {
                 }
 
                 updateItemtext();
+
+                setBundleDiscountPercent();
+
+                updateBundleSaving()
+
+                bundleFormatSaving();
+
+                updateBundleNotice();
+                updateBundleNoticeNext()
+                updateBundleNoticeSavingDisplay();
+                updateElBundleSaving();
+                updateElBundleDiscountCode();
+                setBundleDiscount();
+                updateElBundlePrice();
+
+                updateElCartBtn();
 
             })
         },

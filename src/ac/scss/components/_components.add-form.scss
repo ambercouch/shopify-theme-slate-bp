@@ -1,0 +1,65 @@
+/*
+  BEM BLOCK .c-add-form
+ */
+
+.c-add-form {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-add-form--
+ */
+
+.c-add-form-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-add-form--
+
+[class*=c-add-form--] {
+  @extend .c-add-form;
+}
+
+/*
+  BEM ELEMENTS .c-add-form__
+ */
+
+.c-add-form__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &select{
+    max-width: 45%;
+  }
+  &submit{
+    max-width: 45%;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-add-form--
+
+[class*=c-add-form__header--] {
+  @extend .c-add-form__header;
+}

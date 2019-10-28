@@ -12,11 +12,20 @@
   height: 100vh;
   width: 400px;
   max-width: 90%;
+  transform: translate(0);
   transition: transform 0.3s ease-in-out 3s;
   transform: translate(98%,0);
   &:hover{
+     transition: transform 0.3s ease-in-out 0s;
+     transform: translate(0,0);
+   }
+  &.is-open{
     transition: transform 0.3s ease-in-out 0s;
     transform: translate(0,0);
+  }
+  &.is-close-quick{
+    transition: transform 0.3s ease-in-out 0s;
+    //display: none;
   }
 }
 
@@ -42,7 +51,9 @@
 
 .l-off-page__ {
   &header {
-    display: block
+    display: flex;
+    margin-bottom: $act-unit;
+    justify-content: flex-end;
   }
 
   &heading {
@@ -71,6 +82,17 @@
     position: absolute;
     left: -30px;
     border-radius: 8px 0 0 8px;
+  }
+  &close{
+    display: block;
+    background: #ccc;
+    color: white;
+    font-weight: bold;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    cursor: pointer;
   }
 }
 

@@ -30,7 +30,10 @@
   &header {
     display: flex;
     @extend .o-box;
-    justify-content: flex-end;
+    justify-content: center;
+    @include mq($from: tablet){
+      justify-content: flex-end;
+    }
   }
   &heading {
     display: block
@@ -51,7 +54,18 @@
   &footer {
     display: flex;
     @extend .o-box;
-    justify-content: flex-end;
+    justify-content: center;
+    @include mq($from: tablet){
+      justify-content: flex-end;
+
+    }
+  }
+
+  &cart-submit{
+    background: #CB9362;
+    &[disabled]{
+      display: none;
+    }
   }
 }
 

@@ -587,10 +587,11 @@ html.remodal-is-locked {
   border-bottom: solid 1px #eee;
 }
 
-.c-bundle-cart__cart-submit{
-  background: #CB9362;
-}
+
 
 [data-template="collectionbundles"] .page-container {
   transform: none !important;
+}
+.is-hidden{
+  display: none !important;
 }

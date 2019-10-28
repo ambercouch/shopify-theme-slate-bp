@@ -23,7 +23,10 @@
     }
   }
   &buy-bundle{
-    @extend .o-btn--block;
     background: #CB9362;
+    &[disabled]{
+      background: #ccc;
+
+    }
   }
 }
