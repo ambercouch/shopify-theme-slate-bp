@@ -5181,13 +5181,13 @@ ACTIMBER = {
 
                 //return bundledProducts
             }
-            function closeDrawer(){
+            function closeDrawer(timer = 1000){
                 window.setTimeout(function () {
                     elOffPageBundleNoticeb.classList.remove('is-open');
-                }, 1000);
+                }, timer);
             }
 
-            closeDrawer();
+            closeDrawer(0);
 
             function toggleElementState(el, hideClass = 'is-hidden'){
                 if (el.classList.contains(hideClass)) {
@@ -5224,18 +5224,33 @@ ACTIMBER = {
                 elOffPageBundleNoticeb.classList.add('is-open');
             });
 
+            $(document).on('click', '.is-open .l-off-page__tab', function(){
+                console.log('tab clicked class added')
+                elOffPageBundleNoticeb.classList.remove('is-open');
+            });
+
             $(document).on('click', '.l-off-page__close', function(){
                 console.log('tab clicked class added')
                 elOffPageBundleNoticeb.classList.remove('is-open');
-                elOffPageBundleNoticeb.classList.add('is-close-quick');
+                //elOffPageBundleNoticeb.classList.add('is-close-quick');
             });
+
+            // $(document).on('mouseover', '.l-off-page__tab', function(){
+            //     console.log('tab hovered')
+            //     elOffPageBundleNoticeb.classList.add('is-open');
+            //     //elOffPageBundleNoticeb.classList.remove('is-close-quick');
+            // });
+
+
+
+
 
             // Add a new item to the bundle
             $('.product-form').submit(function (e) {
                 e.preventDefault();
                 elOffPageBundleNoticeb.classList.remove('is-close-quick');
                 elOffPageBundleNoticeb.classList.add('is-open');
-                closeDrawer();
+                closeDrawer(4000);
 
                 bundleCount = 0;
                 bundleTotal = 0;

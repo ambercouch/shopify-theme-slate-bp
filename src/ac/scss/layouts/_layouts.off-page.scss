@@ -13,11 +13,15 @@
   width: 400px;
   max-width: 90%;
   transform: translate(0);
-  transition: transform 0.3s ease-in-out 3s;
+  transition: transform 0.3s ease-in-out 0s;
   transform: translate(98%,0);
+  border-left: solid #8bc981 5px;
   &:hover{
-     transition: transform 0.3s ease-in-out 0s;
-     transform: translate(0,0);
+    @include mq($from : desktop){
+      //transition: transform 0.3s ease-in-out 0s;
+      //transform: translate(0,0);
+    }
+
    }
   &.is-open{
     transition: transform 0.3s ease-in-out 0s;
@@ -77,11 +81,16 @@
   }
   &tab{
     @include size(30px, 60px);
-    background: #eee;
+    background: #8bc981;
     display: block;
     position: absolute;
     left: -30px;
     border-radius: 8px 0 0 8px;
+    text-align: center;
+    line-height: 55px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
   }
   &close{
     display: block;
@@ -94,10 +103,34 @@
     text-align: center;
     cursor: pointer;
   }
+  &tab-text{
+    display: none;
+    pointer-events: none;
+    cursor: pointer;
+  }
 }
 
-//BEM ELEMENT MODIFIER FALLBACK .l-off-page--
+//BEM ELEMENT MODIFIER FALLBACK .l-off-page__header--
 
 [class*=l-off-page__header--] {
   @extend .l-off-page__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-off-page__tab-text--
+
+[class*=l-off-page__tab-text--] {
+  @extend .l-off-page__tab-text;
+}
+.l-off-page__tab-text--{
+  &open{
+    display: inline-block;
+    .is-open &{
+      display: none;
+    }
+  }
+  &close{
+    .is-open &{
+      display: inline-block;
+    }
+  }
 }
