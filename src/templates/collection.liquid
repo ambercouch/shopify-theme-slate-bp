@@ -3,12 +3,17 @@
 {%  include  'logic-customer'%}
 
 <script>
+  console.log('some testing on collections offest 1000')
   document.addEventListener("DOMContentLoaded", function() {
-    var endlessScroll = new Ajaxinate();
+    var endlessScroll = new Ajaxinate({
+        loadingText: '<i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>  <span class="sr-only">Refreshing...</span>',
+        offset: 1000
+    });
     $('.pagination').hide();
 });
 </script>
-{% paginate collection.products by 16 %}
+{% paginate collection.products by 8 %}
+
 <div class="collection">
   <div class="collection__breadcrumbs">
     {% assign BCClassModifier = "--collection"  %}
