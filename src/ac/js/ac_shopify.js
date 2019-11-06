@@ -34,6 +34,10 @@ ACTIMBER = {
 
         }
     },
+    pageacreviews:{
+      init: function () {
+          console.log('page.ac-reviews');
+    },
     page: {
         init: function () {
             //uncomment to debug

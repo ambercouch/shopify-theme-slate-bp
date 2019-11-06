@@ -8,6 +8,6 @@
 <!-- current tags {{ current_tags }} -->
 
 <body class="ac-body-tag template-{{ template | split: '.' | first }} {{ classCustomer }} "
-      data-template="{{ template | handleize }}"
+      data-template="{{ template | handleize |  replace: '-', ''}}"
       data-handle="{{ dataHandle }}"
       data-current-tags="{{ current_tags  | join: '|' | replace: ' ', '-' | downcase }}">
