@@ -13,35 +13,55 @@
       {% assign discText = '' %}
     {% endif %}
     {% if cart.item_count == 3 %}
+      {% assign discountPercent = 0.2 %}
+      {% assign cartTotal = cart.total_price %}
+      {% assign discountSaving = cartTotal | times: discountPercent %}
+      {% assign discountSavingMoney = discountSaving | money %}
       {% assign autoDiscount = true %}
       {% assign discCode = '3BIB20' %}
-      {% assign discText = 'You have 3 items in your cart. Enter code <span class="c-discount-code" ><strong>3BIB20</strong></span> at checkout to get <strong>20%</strong> off your order' %}
+      {% assign discText = 'You have 3 items in your cart. Enter code <span class="c-discount-code" ><strong>3BIB20</strong></span> on the next page at checkout to get <strong>20%</strong> off your order, saving you ' | append :  discountSavingMoney  %}
       {% assign discTextExtra = 'or add 1 more product to qualify for a <strong>25%</strong> discount' %}
 
     {% endif %}
     {% if cart.item_count == 4 %}
+      {% assign discountPercent = 0.25 %}
+      {% assign cartTotal = cart.total_price %}
+      {% assign discountSaving = cartTotal | times: discountPercent %}
+      {% assign discountSavingMoney = discountSaving | money %}
+      {% assign discountPercent = 25 %}
       {% assign autoDiscount = true %}
       {% assign discCode = '4BIB25' %}
-      {% assign discText = 'You have 4 items in your cart. Enter code <span class="c-discount-code" > <strong>4BIB25</strong></span> at checkout to get <strong>25%</strong> off your order' %}
+      {% assign discText = 'You have 4 items in your cart. Enter code <span class="c-discount-code" > <strong>4BIB25</strong></span> on the next page at checkout to get <strong>25%</strong> off your order, saving you ' | append :  discountSavingMoney %}
       {% assign discTextExtra = 'or add 2 more products to qualify for a <strong>30%</strong> discount' %}
+
     {% endif %}
 
     {% if cart.item_count == 5 %}
+      {% assign discountPercent = 0.25 %}
+      {% assign cartTotal = cart.total_price %}
+      {% assign discountSaving = cartTotal | times: discountPercent %}
+      {% assign discountSavingMoney = discountSaving | money %}
+      {% assign discountPercent = 25 %}
       {% assign autoDiscount = true %}
       {% assign discCode = '4BIB25' %}
-      {% assign discText = 'You have 5 items in your cart. Enter code <span class="c-discount-code" > <strong>4BIB25</strong></span> at checkout to get <strong>25%</strong> off your order' %}
+      {% assign discText = 'You have 5 items in your cart. Enter code <span class="c-discount-code" > <strong>4BIB25</strong></span> on the next page at checkout to get <strong>25%</strong> off your order, saving you ' | append :  discountSavingMoney %}
       {% assign discTextExtra = 'or add 1 more product to qualify for a <strong>30%</strong> discount' %}
     {% endif %}
 
     {% if cart.item_count >= 6 %}
+      {% assign discountPercent = 0.3 %}
+      {% assign cartTotal = cart.total_price %}
+      {% assign discountSaving = cartTotal | times: discountPercent %}
+      {% assign discountSavingMoney = discountSaving | money %}
+      {% assign discountPercent = 30 %}
       {% assign autoDiscount = true %}
       {% assign discCode = '6BIB30' %}
-      {% assign discText = 'You have 6+ items in your cart. Enter code <span class="c-discount-code" > <strong>6BIB30</strong></span> at checkout to get <strong>25%</strong> off your order' %}
+      {% assign discText = 'You have 6+ items in your cart. Enter code <span class="c-discount-code" > <strong>6BIB30</strong></span> on the next page at checkout to get <strong>30%</strong> off your order, saving you ' | append :  discountSavingMoney %}
     {% endif %}
 {% unless discText == '' %}
     <div class="l-bundle-notes">
       <div class="l-bundle-notes__header">
-        <h2 class="l-bundle-notes__heading">Bibado Bundle Discounts</h2>
+        <h2 class="l-bundle-notes__heading">BIBaDO Bundle Discounts</h2>
       </div>
       <div class="l-bundle-notes__content">
         <p>{{  discText }} <br>

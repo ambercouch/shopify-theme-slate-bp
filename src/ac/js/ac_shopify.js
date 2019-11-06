@@ -144,8 +144,8 @@ ACTIMBER = {
             let bundlenNoticeNext0 = "Add 3 items to get our 20% bundle discount.";
             let bundlenNoticeNext1 = "Add 2 more items to get our 20% bundle discount.";
             let bundlenNoticeNext2 = "Add 1 more item to get our 20% bundle discount.";
-            let bundlenNoticeNext3 = "Add 2 more items to get our 25% bundle discount.";
-            let bundlenNoticeNext4 = "Add 1 more items to get our 25% bundle discount.";
+            let bundlenNoticeNext3 = "Add 1 more items to get our 25% bundle discount.";
+            let bundlenNoticeNext4 = "Add 2 more items to get our 30% bundle discount.";
             let bundlenNoticeNext5 = "Add 1 items to get our 30% bundle discount.";
             let bundlenNoticeNext6 = "";
 
