@@ -19,6 +19,8 @@
         Geolizr.version = 20181108;
     }
 
+    // save geolizr-lib.js url to the sessionStorage
+    sessionStorage.setItem('geolizr_lib_url', "{{ geolizr-lib-js-url }}");
     if(typeof Geolizr.events === "undefined") Geolizr.events = {};
     if(typeof Geolizr.geolizrEvents === "undefined") Geolizr.geolizrEvents = [];
 
@@ -38,6 +40,10 @@
     Geolizr.activateDbIpProvider = function(accessKey) { Geolizr.presetService = { name: 'dbIpProvider', accessKey: accessKey }; };
     Geolizr.activateIpStackProvider = function(accessKey) { Geolizr.presetService = { name: 'ipStackProvider', accessKey: accessKey }; };
     Geolizr.activateGeolizrIPApiProvider = function(accessKey) { Geolizr.presetService = { name: 'geolizrIpApiProvider', accessKey: accessKey }; };
+
+    {% if geolizr-jquery-url %}
+        Geolizr.jqueryUri = "{{ geolizr-jquery-url }}";
+    {% endif %}
 
     /* Service Aliase */
     Geolizr.activateFreegeoip = Geolizr.activateIpStackProvider;
@@ -128,7 +134,7 @@
             if(Geolizr.currency_widget_enabled === true) {
 
                 /* watch from https://gist.github.com/eligrey/384583 */
-                Object.prototype.geolizrWatch||Object.defineProperty(Object.prototype,"geolizrWatch",{enumerable:!1,configurable:!0,writable:!1,value:function(e,t){var r=this[e],n=r,c=function(){return n},i=function(c){return r=n,n=t.call(this,e,r,c)};delete this[e]&&Object.defineProperty(this,e,{get:c,set:i,enumerable:!0,configurable:!0})}}),Object.prototype.geolizrUnWatch||Object.defineProperty(Object.prototype,"geolizrUnWatch",{enumerable:!1,configurable:!0,writable:!1,value:function(e){var t=this[e];delete this[e],this[e]=t}});
+                Object.prototype.geolizrWatch||Object.defineProperty(Object.prototype,"geolizrWatch",{enumerable:!1,configurable:!0,writable:1,value:function(e,t){var r=this[e],n=r,c=function(){return n},i=function(c){return r=n,n=t.call(this,e,r,c)};delete this[e]&&Object.defineProperty(this,e,{get:c,set:i,enumerable:!0,configurable:!0})}}),Object.prototype.geolizrUnWatch||Object.defineProperty(Object.prototype,"geolizrUnWatch",{enumerable:!1,configurable:!0,writable:1,value:function(e){var t=this[e];delete this[e],this[e]=t}});
 
                 var watcher = function(id, oldMethod, newMethod) {
                     Geolizr.currency_widget_enabled = true; // sometimes the disabled this in this context, but it's true

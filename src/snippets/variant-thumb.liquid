@@ -26,20 +26,20 @@
       <div class="product-thumb__price">
       {% if bold_compare_at_price > bold_price %}
         {% if bold_price_varies %}
-          {%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign sale_price = bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code -%}
+          {%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign sale_price = bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code -%}
           {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
         {% else %}
           {{ 'products.product.on_sale' | t }}
-          {%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+          {%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
         {% endif %}
         </div>
       {% else %}
         <div class="product-thumb__price">
           {% if bold_price_varies %}
-            {%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign price = bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code -%}
+            {%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign price = bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code -%}
             {{ 'products.product.from_text_html' | t: price: price }}
           {% else %}
-            {%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+            {%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
           {% endif %}
         </div>
       {% endif %}

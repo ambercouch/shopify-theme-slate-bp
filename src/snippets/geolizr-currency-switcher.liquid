@@ -93,7 +93,7 @@
 {% endunless %}
 {% capture wrapperId %}geolizr-currency-switch-wrapper{% if idAppender %}-{{idAppender}}{% endif %}{% endcapture %}
 
-<div class="geolizr-currency-switch-wrapper {{ position }}" id="{{ wrapperId }}">
+<div class="geolizr-currency-switch-wrapper {{ position }}">
     <a class="geolizr-currency-switcher geolizr-currency-link" href="#" data-no-instant>
         {% if geolizr_currency_switcher_show_flags == 'true' %}
             {% include 'geolizr-json' json:shop.metafields.geolizr.currencies_to_language_codes key:shop.currency default:'eu' %}
@@ -139,30 +139,7 @@
 </div>
 
 <script>
-    Geolizr.addSystemEventListener('geolizr.init.currency.switcher', function(e) {
-        var $ = e.jquery;
-		var wrapperId = "#{{wrapperId}}";
-        var wrapper = $(wrapperId);
-        wrapper.find('.geolizr-currency-switcher').click(function(e) {
-            e.preventDefault();
-            wrapper.find('.geolizr-currency-list').toggle();
-        });
-
-        wrapper.find('.geolizr-currency-list-link').click(function(e) {
-            e.preventDefault();
-            wrapper.find('.geolizr-currency-list').hide();
-            Geolizr.setCurrency($(this).attr('geolizr-currency-data'));
-        });
-
-      Geolizr.addEventListener('currency.change', function(currency) {
-        wrapper.find(".geolizr-currency-switcher").find('> i').replaceWith($('<i class="famfamfam-flag-' + Geolizr.usedLanguageCode + '"></i>'));
-        wrapper.find(".geolizr-currency-switcher-value").text(currency);
-      });
-      
-      Geolizr.addEventListener('currency.api', function() {
-        Geolizr.displayAutoCurrency(wrapper);
-      });
+    Geolizr.addEventListener('currency.api', function(e) {
+        Geolizr.initWrappers();
     });
 </script>
-
-{% assign idAppender = false %}

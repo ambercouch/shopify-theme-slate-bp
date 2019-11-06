@@ -11,31 +11,31 @@
   {%- assign available = true -%}
 {% endif %}
 
-{%- assign geolizr_price = price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign money | prepend: geolizr_prepend_code | append: geolizr_append_code_price = price | money | prepend: geolizr_prepend_code | append: geolizr_append_code -%}
+{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign money | prepend: geolizr_prepend_code | append: geolizr_append_code _price = price | money | prepend: geolizr_prepend_code | append: geolizr_append_code -%}
 
 {% if compare_at_price > price %}
   {% if price_varies %}
     <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-    <s class="product-price__price">{%- assign geolizr_price = compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
+    <s class="product-price__price">{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
     <span class="product-price__price product-price__sale">
-      {%- assign geolizr_price = price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+      {%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
       <span class="product-price__sale-label">{{ 'products.product.on_sale' | t }}</span>
     </span>
   {% else %}
     <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-    <s class="product-price__price">{%- assign geolizr_price = compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
+    <s class="product-price__price">{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
     <span class="product-price__price product-price__sale">
-      {%- assign geolizr_price = price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+      {%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
       <span class="product-price__sale-label">{{ 'products.product.on_sale' | t }}</span>
     </span>
   {% endif %}
 {% else %}
 
   {% if price_varies %}
-    <span class="product-price__price">{%- assign geolizr_price = price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
+    <span class="product-price__price">{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
   {% else %}
     <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-    <span class="product-price__price">{%- assign geolizr_price = price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
+    <span class="product-price__price">{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
   {% endif %}
 {% endif %}
 

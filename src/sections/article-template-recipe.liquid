@@ -7,7 +7,7 @@
 
 {% if article.metafields.global.author != null %}
   {% assign aAuthor =  article.metafields.global.author %}
-{% else
+{% else %}
   {% assign aAuthor =  article.author  %}
 {% endif %}
 
@@ -39,15 +39,13 @@
         </h1>
         <div class="c-recipe__meta">
           {% if section.settings.blog_show_author %}
-            <span class="c-recipe__author testAutor">{{ 'blogs.article.by_author' | t: author: aAuthor }}</span>
+            <span class="c-recipe__author">{{ 'blogs.article.by_author' | t: author: aAuthor }}</span>
           {% endif %}
-          {% comment %}
           {% if section.settings.blog_show_date %}
             <span class="c-recipe__date">
               {{ article.published_at | time_tag: format: 'month_day_year' }}
             </span>
           {% endif %}
-          {% endcomment %}
         </div>
       </header>
        <div class="c-recipe__body">

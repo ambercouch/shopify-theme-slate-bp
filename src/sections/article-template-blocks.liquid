@@ -8,7 +8,7 @@
 
 {% if article.metafields.global.author != null %}
   {% assign aAuthor =  article.metafields.global.author %}
-{% else
+{% else %}
   {% assign aAuthor =  article.author  %}
 {% endif %}
 
@@ -39,8 +39,8 @@
          {% endif %}
 
         <div class="c-article__meta">
-          {% if section.settings.blog_show_author %}
-            <span class="c-article__author">{{ 'blogs.article.by_author' | t: author: aAuthor }}</span>
+          {% if section.settings.blog_show_author %}  
+          <span class="c-article__author">{{ 'blogs.article.by_author' | t: author: aAuthor }}</span>
           {% endif %}
           {% if section.settings.blog_show_date %}
             <span class="c-article__date">

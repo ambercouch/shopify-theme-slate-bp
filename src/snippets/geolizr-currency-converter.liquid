@@ -43,12 +43,16 @@
                         }
                     }
 
+                    // save to sessionStorage
+                    Currency.moneyFormats = Geolizr.moneyFormats;
+                    sessionStorage.setItem('geolizr_currency', JSON.stringify(Currency));
+
                     if(typeof window.Currency.shopCurrency === "undefined")
                         window.Currency.shopCurrency = Geolizr.shopCurrency;
 
                     if(typeof window.Currency.moneyFormats === "undefined")
                         window.Currency.moneyFormats = Geolizr.moneyFormats;
-                        
+
                     Geolizr.currencyConverterInit();
                 });
             });

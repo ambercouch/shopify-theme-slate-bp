@@ -80,12 +80,12 @@
         <td class="cart-table__product-price" data-label="{{ 'cart.label.price' | t }}">
           {% if item.original_line_price != item.line_price %}
             <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
-            <span class="cart-table__product-price-text" >{%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
+            <span class="cart-table__product-price-text" >{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
             <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
-            <span class="cart-table__product-price-text--original"  >{%- assign geolizr_price = item.original_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ item.original_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
+            <span class="cart-table__product-price-text--original"  >{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = item.original_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ item.original_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
           {% else %}
-           <!-- <span class="cart-table__product-price-text" >{%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span> -->
-            <span class="cart-table__product-price-text" >{%- assign geolizr_price = item.line_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ item.line_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
+           <!-- <span class="cart-table__product-price-text" >{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = bold_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ bold_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span> -->
+            <span class="cart-table__product-price-text" >{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = item.line_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ item.line_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
           {% endif %}
         </td>
         <td class="cart-table__qty" data-label="{{ 'cart.label.quantity' | t }}">
@@ -100,7 +100,7 @@
           <input class="cart-table__qty-input-submit" type="submit" name="update" value="{{ 'cart.general.update' | t }}">
         </td>
         <td class="cart-table__line-price" data-label="{{ 'cart.label.total' | t }}">
-          <span class="cart-table__line-price-text">{%- assign geolizr_price = item.line_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ item.line_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
+          <span class="cart-table__line-price-text">{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = item.line_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ item.line_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</span>
         </td>
       </tr>
 

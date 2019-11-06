@@ -117,7 +117,7 @@
 	{%- endfor -%}
 	{%- assign mtags = mtags | remove_first : ', ' -%}
 
-    {%- assign geolizr_price = product.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign pro_price = product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code -%}
+    {%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = product.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign pro_price = product.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code -%}
     {%- assign title = title_template | replace : "${title}", [obj].title -%}
     {%- assign title = title | replace : "${description}", [obj].description -%}
     {%- assign title = title | replace : "${price}", pro_price -%}
@@ -290,7 +290,7 @@
 	{%- endif -%}
 	"offers": {
 		"@type": "Offer",
-		"price": "{%- assign geolizr_price = product.selected_or_first_available_variant.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ product.selected_or_first_available_variant.price | money_without_currency | prepend: geolizr_prepend_code | append: geolizr_append_code | replace : ',', '' }}",
+		"price": "{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = product.selected_or_first_available_variant.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ product.selected_or_first_available_variant.price | money_without_currency | prepend: geolizr_prepend_code | append: geolizr_append_code | replace : ',', '' }}",
 		"priceCurrency": "{{ shop.currency }}",
 		"availability": "{%- if product.selected_or_first_available_variant.available -%}InStock{%- else -%}OutOfStock{%- endif -%}"
 	}

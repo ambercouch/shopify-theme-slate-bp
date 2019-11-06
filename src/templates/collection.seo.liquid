@@ -46,7 +46,7 @@
           </p>
 
           <p>
-            {%- assign geolizr_price = 1999 -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ 1999 | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+            {%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = 1999 -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ 1999 | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
           </p>
         {% endfor %}
       {% else %}

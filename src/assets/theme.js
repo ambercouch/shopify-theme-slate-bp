@@ -1,5 +1,5 @@
 window.theme = window.theme || {};
-console.log('slate theme.js');
+
 /* ================ SLATE ================ */
 window.theme = window.theme || {};
 

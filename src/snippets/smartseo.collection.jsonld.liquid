@@ -21,7 +21,7 @@
             "url" : "{{ shop.url | append: '/products/' | append: product.handle }}",
             "offers" : {
                 "@type" : "Offer",
-                "price" : "{%- assign geolizr_price = product.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ product.price | money_without_currency | prepend: geolizr_prepend_code | append: geolizr_append_code | split: "" | reverse | join: "" | remove_first: "00." | split: "" | reverse | join: "" | replace: ",", "" }}",
+                "price" : "{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = product.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ product.price | money_without_currency | prepend: geolizr_prepend_code | append: geolizr_append_code | split: "" | reverse | join: "" | remove_first: "00." | split: "" | reverse | join: "" | replace: ",", "" }}",
                 "priceCurrency" : "{{ shop.currency }}",
                 "itemCondition": "http://schema.org/NewCondition"
             }
