@@ -24,7 +24,7 @@ var watch = require('gulp-watch');
  */
 var jsScripts;
 var jsPath = 'src/ac/js/'
-var jsVendorPath = 'src/vendor/'
+var jsVendorPath = 'node_modules/'
 var jsCustomScripts = [
     'ac_shopify.js'
     // 'custom.js',
