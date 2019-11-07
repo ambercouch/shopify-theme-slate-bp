@@ -9,7 +9,7 @@
 //FidVids - uses custom selector because the youtube vid is lazy loaded so does not exist until modal is opened
 //$("[data-fitvid]").fitVids({ customSelector: "iframe[data-youtube-iframe]"});
 
-console.log('ACTIMBER BBD remodal1 123');
+console.log('ACTIMBER BBD remodal1 new 1234');
 ACTIMBER = {
     common: {
         init: function () {
