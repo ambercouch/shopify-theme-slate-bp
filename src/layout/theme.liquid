@@ -961,33 +961,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!--End_Gem_Page_Footer_Script-->
 
 
-<script type="text/javascript">
-  $(document).ready(function(){
-  $('a[href^="#"]').on('click',function (e) {
-    e.preventDefault();
-	    var target = this.hash;
-	    var $target = $(target);
-	    $('html, body').stop().animate({
-	        'scrollTop': $target.offset().top
-	    }, 900, 'swing', function () {
-	        window.location.hash = target;
-	    });
-  });
-  });
-  jQuery.ajax( {
-  url: '//freegeoip.net/json/',
-  type: 'POST',
-  dataType: 'jsonp',
-  success: function(location) {
-    // If the visitor is browsing from Canada.
-    if (location.country_code === 'CA') {
-      // Redirect him to the Canadian store.
-      window.top.location.href = 'https://bibado.ca/';
-    }
-  }
-} );
 
-</script>
 
 <input type="hidden" id="656565115116111114101" data-customer-id="{{ customer.id }}" data-customer-email="{{ customer.email }}" data-customer-name="{{ customer.first_name }} {{ customer.last_name }}"/>
 {% comment %}
