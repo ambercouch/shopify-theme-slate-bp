@@ -24,7 +24,7 @@ var watch = require('gulp-watch');
  */
 var jsScripts;
 var jsPath = 'src/ac/js/'
-var jsVendorPath = 'src/vendor/'
+var jsVendorPath = 'node_modules/'
 var jsCustomScripts = [
     'ac_shopify.js'
     // 'custom.js',
@@ -32,10 +32,10 @@ var jsCustomScripts = [
 var jsVendorScripts = [
     //All ready deprecated with browserify
     // 'jquery/dist/jquery.slim.js',
-    // 'fitvids/.jquery.fitvids.js',
+    'remodal/dist/remodal.min.js',
+    'fitvids/jquery.fitvids.js',
     'flickity/dist/flickity.pkgd.js',
-    'js-cookie/src/js.cookie.js',
-    'remodal/dist/remodal.js'
+    'js-cookie/src/js.cookie.js'
 ];
 
 for (var i = 0; i < jsVendorScripts.length; i++) {
