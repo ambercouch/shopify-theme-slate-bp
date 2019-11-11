@@ -4,3 +4,5 @@
 /deploy.log
 
 config\.yml
+
+src/assets/ac.js.liquid
