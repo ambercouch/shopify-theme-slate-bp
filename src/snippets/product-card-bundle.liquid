@@ -1,5 +1,5 @@
 <div class="grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}">
-  <a class="grid-view-item__link grid-view-item__image-container" href="#modal">
+  <a class="grid-view-item__link grid-view-item__image-container" href="#modal{{ product.id }}">
     {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %}
     {% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %}
     {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
@@ -36,13 +36,8 @@
   </a>
 </div>
 
-<div class="remodal" data-remodal-id="modal">
+<div class="remodal" data-remodal-id="modal{{ product.id }}">
   <button data-remodal-action="close" class="remodal-close"></button>
-  <h1>Remodal</h1>
-  <p>
-    Responsive, lightweight, fast, synchronized with CSS animations, fully customizable modal window plugin with declarative configuration and hash tracking.
-  </p>
-  <br>
-  <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-  <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+  {% include 'ac-product-template-bundle' %}
+
 </div>

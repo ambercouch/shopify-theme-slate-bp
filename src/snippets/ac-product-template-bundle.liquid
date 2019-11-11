@@ -1,0 +1,68 @@
+<div class="grid c-product-single product-single{% if section.settings.enable_payment_button %} product-single--{{ section.settings.image_size }}-image{% endif %}">
+  <div class="grid__item product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
+
+        <div   class="c-product-single__photo--popup" >
+          <img
+               class="feature-row__image {{ img_class }} lazyload{% unless featured_image == image %} lazypreload{% endunless %}"
+               src="{{ product.featured_image }}"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ image.aspect_ratio }}"
+               data-sizes="auto"
+               alt="{{ image.alt | escape }}">
+        </div>
+
+  </div>
+
+  <div class="grid__item {{ product_description_width }}">
+    <div class="product-single__meta">
+
+      <h1 class="product-single__title">{{ product.title }}</h1>
+
+      {% if section.settings.show_vendor %}
+        <p class="product-single__vendor">{{ product.vendor }}</p>
+      {% endif %}
+
+      <div>
+        <p class="product-single__price product-single__price-{{ section.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
+          {% if current_variant.compare_at_price > current_variant.price %}
+            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+            <s id="ComparePrice-{{ section.id }}">{%- assign geolizr_price = current_variant.compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
+            <span class="product-price__price product-price__price-{{ section.id }} product-price__sale product-price__sale--single">
+                  <span id="ProductPrice-{{ section.id }}">
+                    {%- assign geolizr_price = current_variant.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+                  </span>
+                  <span class="product-price__sale-label product-price__sale-label-{{ section.id }}">{{ 'products.product.on_sale' | t }}</span>
+                </span>
+          {% else %}
+            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+            <s id="ComparePrice-{{ section.id }}" class="hide">{%- assign geolizr_price = current_variant.compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
+            <span class="product-price__price product-price__price-{{ section.id }}">
+                <span id="ProductPrice-{{ section.id }}">
+                  {%- assign geolizr_price = current_variant.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+                </span>
+                <span class="product-price__sale-label product-price__sale-label-{{ section.id }} hide">{{ 'products.product.on_sale' | t }}</span>
+              </span>
+          {% endif %}
+        </p>
+
+        {% capture "form_classes" -%}
+          product-form product-form-{{ section.id }}{% unless section.settings.show_variant_labels %} product-form--hide-variant-labels{% endunless %}{% if section.settings.enable_payment_button and product.has_only_default_variant%} product-form--payment-button-no-variants{% endif %}
+        {%- endcapture %}
+
+        {% include 'add-form-bundle'%}
+      </div>
+
+      <div class="product-single__description rte">
+        {{ product.description }}
+
+        <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+
+      </div>
+
+      {% if section.settings.show_share_buttons %}
+        {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+      {% endif %}
+    </div>
+  </div>
+</div>
