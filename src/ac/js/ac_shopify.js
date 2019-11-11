@@ -412,6 +412,7 @@ ACTIMBER = {
                 elOffPageBundleNoticeb.classList.remove('is-close-quick');
                 elOffPageBundleNoticeb.classList.add('is-open');
                 closeDrawer(4000);
+                $('[data-remodal-action=close]').trigger("click");
 
                 bundleCount = 0;
                 bundleTotal = 0;
