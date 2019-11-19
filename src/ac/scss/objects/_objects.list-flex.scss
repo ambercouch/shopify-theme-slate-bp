@@ -2,7 +2,10 @@
   display: flex;
 
   > *{
-    margin: 0 $act-unit-s;
+    margin: 0 $act-unit-t;
+    @include mq($from: tablet){
+      margin: 0 $act-unit-s;
+    }
 
     &:first-child{
       margin-left: 0;
