@@ -4,6 +4,9 @@
 
 .c-cta {
   display: block;
+  p{
+    margin-bottom: $act-unit;
+  }
 }
 
 /*
@@ -41,7 +44,9 @@
 
   &link {
     display: inline;
-    @extend .o-btn
+    @extend .o-btn;
+    background: #8bc981;
+    color: white;
   }
 
   &content {
