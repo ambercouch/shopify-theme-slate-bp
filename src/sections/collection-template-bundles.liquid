@@ -60,7 +60,7 @@
     <div class="page-width" id="Collection">
       {% if section.settings.layout == 'grid' %}
 
-        {%- assign grid_item_width = 'medium-up--one-half' -%}
+        {%- assign grid_item_width = 'medium-up--one-third' -%}
 
         <div class="l-bundle-notes">
           <div class="l-bundle-notes__header">
@@ -69,10 +69,9 @@
           <div class="l-bundle-notes__content">
             <div class="c-instruction-list">
               <ol class="c-instruction-list__list">
-                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Select the items you want and add them to your bundle</span></li>
-                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">See how much you can save and add more items to your bundle to save more</span></li>
-                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Click the orange "Buy My Bundle" button to add you bundle to your cart</span></li>
-                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Use your bundle discount code when you check out to get your discount</span></li>
+                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Select your items and add them to your bundle</span></li>
+                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Click the "Buy My Bundle" button</span></li>
+                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text"> Use your bundle discount code at checkout</span></li>
               </ol>
             </div>
           </div>
@@ -86,6 +85,14 @@
                 {% include 'add-form-bundle'%}
 
               </div>
+              <div class="c-product-card__remodal" >
+                <div class="remodal" data-remodal-id="modal{{ product.id }}">
+                  <button data-remodal-action="close" class="remodal-close"></button>
+                  {% include 'ac-product-card-remodal' %}
+
+                </div>
+              </div>
+
 
             {% endfor %}
           </div>
@@ -150,7 +157,7 @@
                   <li id="bundleNoticeTextCurrentSaving"  class="c-instruction-list__item--bul" style="display:none;" >
                   <span class="c-instruction-list__text">
                   <span>Your bundle price </span>
-                  <span id="bundlePrice" class="c-bundle-notice__text--bundle-pric">£100 </span>.
+                  <span id="bundlePrice" class="c-bundle-notice__text--bundle-price">£100 </span>.
                   <span>You have saved </span>
                   <span id="bundleSaving" class="c-bundle-notice__text--next-discount">£100 </span>
                   <span>if you use discount code </span>

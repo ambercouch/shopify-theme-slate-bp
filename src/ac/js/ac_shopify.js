@@ -208,7 +208,9 @@ ACTIMBER = {
     },
     collectionbundles:{
         init: function(){
-            console.log('collection bundles timer');
+            console.log('collection bundles timer confirm exit');
+
+
 
             const bundledProducts = {};
 
@@ -261,6 +263,20 @@ ACTIMBER = {
             let bundleDiscountPercent = 0;
             let bundleSaving = 0;
             let bundleSavingMoney = 0;
+
+            window.onbeforeunload = confirmExit;
+
+            function confirmExit()
+            {
+
+                if(bundleCount > 0){
+
+                    return true;
+                }else {
+
+                    return;
+                }
+            }
 
             // Create our number formatter.
             let formatter = new Intl.NumberFormat('en-US', {
@@ -550,6 +566,8 @@ ACTIMBER = {
             $(document).on('click', '#AddBundleToCartHeader, #AddBundleToCartFooter, #AddBundleToCartOffPage', function () {
                 let entries = Object.entries(bundledProducts);
                 let values = {};
+
+                window.onbeforeunload = true;
 
                 console.log('#AddBundleToCartHeader jQuery post updates')
 

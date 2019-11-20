@@ -14,6 +14,13 @@
   &type {
     display: block
   }
+  &remodal{
+    .p-des{
+      float:none;
+      width: 100%;
+      margin: 0;
+    }
+  }
 }
 
 //BEM BLOCK MODIFIER FALLBACK .c-product-single--
@@ -53,6 +60,9 @@
   &photo{
     display: block;
   }
+  &add-form{
+    padding-top: $act-unit;
+  }
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-product-single__header--
@@ -68,7 +78,7 @@
 }
 
 .c-product-single__photo--{
-  &popup{
+  &remodal{
     margin-bottom: $act-unit-l;
   }
 }

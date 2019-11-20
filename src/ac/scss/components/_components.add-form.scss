@@ -51,10 +51,16 @@
     display: block
   }
   &select{
-    max-width: 45%;
+    width: 45%;
+    max-width:  45%;
   }
   &submit{
-    max-width: 45%;
+    width: 45%;
+    max-width:  45%;
+    flex-basis: 45% !important;
+  }
+  &select{
+    @include act-font-size($act-fs-6, $line-height : 1.6, $important : true);
   }
 }
 
