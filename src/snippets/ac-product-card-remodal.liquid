@@ -1,5 +1,5 @@
 <div class="grid c-product-single product-single{% if section.settings.enable_payment_button %} product-single--{{ section.settings.image_size }}-image{% endif %}">
-  <div class="grid__item product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
+  <div class="grid__item c-product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
 
         <div   class="c-product-single__photo--popup" >
           <img
@@ -15,12 +15,12 @@
   </div>
 
   <div class="grid__item {{ product_description_width }}">
-    <div class="product-single__meta">
+    <div class="c-product-single__meta">
 
-      <h1 class="product-single__title">{{ product.title }}</h1>
+      <h1 class="c-product-single__heading">{{ product.title }}</h1>
 
       {% if section.settings.show_vendor %}
-        <p class="product-single__vendor">{{ product.vendor }}</p>
+        <p class="c-product-single__vendor">{{ product.vendor }}</p>
       {% endif %}
 
       <div>
@@ -53,7 +53,7 @@
         {% include 'add-form-bundle'%}
       </div>
 
-      <div class="product-single__description rte">
+      <div class="c-product-single__description rte">
         {{ product.description }}
 
         <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
