@@ -8,11 +8,16 @@
       <div class="rte">
         {{ page.content }}
       </div>
-        <div class="srs_slider" id="srs_template_2656"></div>
+        <div class="srs_slider" id="srs_template_2656">
+          
+        </div>
         
-        <div class="c-cta--reviews">
+        <div class="c-cta--reviews hide">
           <div class="c-cta__content">
             <div class="c-cta__intro-text">
+
+
+             
               <p>{{ page.metafields.global.cta_text }}</p>
             </div>
               <div class="c-cta__action">
@@ -25,3 +30,12 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('document').ready(function(){
+
+    setTimeout(function(){  
+      $('.c-cta--reviews').removeClass('hide').appendTo('.w3_wprs-col'); 
+    }, 3000);
+  })
+
+</script>
