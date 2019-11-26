@@ -53,9 +53,16 @@
   &content {
     display: block;
     @extend .o-box;
-    text-align: center;
+     @include mq($from: mobile){
+         text-align: center;
     border: solid 3px;
     margin-top: 5px;
+     
+    }
+    @include mq($from: tablet){
+        border: 0;
+    }
+  
   }
 
   &footer {
