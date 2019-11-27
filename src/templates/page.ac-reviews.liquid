@@ -34,9 +34,9 @@
   $('document').ready(function(){
     setTimeout(function(){ 
       if ($(window).width() > 899){
-           $('.c-cta--reviews').removeClass('hide').appendTo('.w3_wprs-col:nth-child(2)'); 
+            $('.wprevpro_t1_outer_div:nth-child(3n)').append($('.c-cta--reviews').removeClass('hide'));
       }else{
-           $('.c-cta--reviews').removeClass('hide').appendTo('.w3_wprs-col'); 
+           $('.c-cta--reviews').removeClass('hide').appendTo('.w3_wprs-col:nth-child(3n)'); 
       }
     
     }, 3000);

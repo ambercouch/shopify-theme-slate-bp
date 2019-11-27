@@ -45,24 +45,24 @@
     display: inline-block;
     @extend .o-btn;
        margin-top: 10px;
-     background-color: #8bc981;
+     background-color: #4CAF50;
      color: #ffffff;
-
   }
 
   &content {
     display: block;
     @extend .o-box;
+
      @include mq($from: mobile){
-         text-align: center;
-    border: solid 3px;
-    margin-top: 5px;
-     
+      text-align: center;
+      border: solid 3px;
+      margin-top: 5px;
+      clear: both;
     }
     @include mq($from: tablet){
         border: 0;
     }
-  
+    
   }
 
   &footer {
@@ -71,7 +71,10 @@
 }
 
 //BEM ELEMENT MODIFIER FALLBACK .c-cta--
-
+  .c-btn--bbd:hover{
+      background: #8bc981 !important;
+      opacity: 1 !important;
+    }
 [class*=c-cta__header--] {
   @extend .c-cta__header;
 }
