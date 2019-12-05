@@ -1,5 +1,4 @@
 <div class="page-width" data-section-id="{{ section.id }}" data-section-type="cart-template">
-
   {% if cart.item_count > 0 %}
     <div class="section-header text-center">
       <h1>{{ 'cart.general.title' | t }}</h1>
@@ -136,20 +135,20 @@
             <input type="submit" name="update" class="btn btn--secondary cart__update cart__update--large small--hide" value="{{ 'cart.general.update' | t }}">
             <input type="submit" name="checkout" class="btn btn--small-wide bold-validate-chk" value="{{ 'cart.general.checkout' | t }}" disabled="disabled">
             <!-- content for additional checkout buttons commented -->
-        
+
             {% if additional_checkout_buttons %}
             <div class="additional-checkout-buttons">
               <p>or pay with</p>
               {{ content_for_additional_checkout_buttons }}<br>
               </div>
             {% endif %}
-               
-           
+
+
             </div>
                     <div class="o-media">
             <div class="o-media__img"><img src="https://cdn.shopify.com/s/files/1/2704/5506/files/Noahs-Ark.jpg?15307468636380988301" /></div>
              <div class="o-media__body"> <p><b>£1 from every order is donated to Noah's Ark Children's Hospital Charity to help them support families who are having a difficult start to their journeys. Thank you for enabling us to support such a fantastic cause!</b></p></div>
-            </div>    
+            </div>
           </div>
         </div>
       </footer>
