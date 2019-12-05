@@ -1,3 +1,4 @@
+console.log('ac slate');
 window.slate = window.slate || {};
 window.theme = window.theme || {};
 

@@ -1,3 +1,4 @@
+console.log('ac slate rte')
 /**
  * Rich Text Editor
  * -----------------------------------------------------------------------------
@@ -18,7 +19,7 @@ slate.rte = {
 
     $iframeVideo.each(function() {
       // Add wrapper to make video responsive
-      $(this).wrap('<div class="rte__video-wrapper"></div>');
+      $(this).wrap('<div data-fitvid class="rte__video-wrapper ac-test"></div>');
     });
 
     $iframeReset.each(function() {

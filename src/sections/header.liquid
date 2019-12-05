@@ -162,7 +162,7 @@
         {%- assign logo_classes = 'medium-up--one-quarter logo-align--left' -%}
       {% endif %}
 
-      <div class="grid__item small--one-half {{ logo_classes }}">
+      <div class="grid__item small--one-third {{ logo_classes }}">
         {% comment %}
           Use the uploaded logo from theme settings if enabled.
           Site name gets precedence with H1 tag on homepage, div on other pages.
@@ -215,8 +215,25 @@
           {% include 'site-nav' %}
         </nav>
       {% endif %}
+      <div class=" grid__item small--one-third {% if section.settings.align_logo == 'left' %}medium-up--one-quarter{% else %}medium-up--one-quarter{% endif %}">
 
-      <div class="grid__item small--one-half {% if section.settings.align_logo == 'left' %}medium-up--one-quarter{% else %}medium-up--one-third{% endif %} text-right site-header__icons{% if shop.customer_accounts_enabled %} site-header__icons--plus{% endif %}">
+      <nav class="c-nav-menu--social" role="navigation">
+        <h5  class="c-nav-menu__heading small--hide" >Join the BIBaDO tribe</h5>
+        <ul class="c-nav-menu__list">
+          {% for link in linklists['social'].links %}
+            {% assign linkHandle = link.title | downcase %}
+            {% assign incIcon = linkHandle | prepend : 'icon-' %}
+            <li class="c-nav-menu__item">
+              <a href="{{ link.url }}">
+                <span class="c-nav-menu__icon--{{ linkHandle }}">{% include incIcon %}</span>
+                <span class="c-nav-menu__label">{{ link.title }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+      <div class="grid__item small--two-twelfths {% if section.settings.align_logo == 'left' %}medium-up--one-twelfth{% else %}medium-up--one-twelfth{% endif %} text-right site-header__icons{% if shop.customer_accounts_enabled %} site-header__icons--plus{% endif %}">
         <div class="site-header__icons-wrapper">
           {% if section.settings.align_logo == 'left' %}
             <div class="site-header__search small--hide">
