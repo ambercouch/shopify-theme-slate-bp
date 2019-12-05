@@ -565,3 +565,39 @@ html.remodal-is-locked {
   margin-bottom: 0;
 }
 
+
+
+.hero{
+  background-color: #fffbf2 !important;
+}
+.mega-subtitle{
+  color:#DB4940;
+  margin-bottom: 0;
+}
+
+.custm_hero .hero.hero.hero{
+  //display: none !important;
+  background-position: center bottom !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  //height: 400px !important;
+}
+.custm_hero p {
+  width: 100% !important;
+  margin-bottom: 6px !important;
+}
+@include mq($from: tablet){
+  .custm_hero .hero.hero.hero {
+    background-size: contain;
+  }
+  .custm_hero p {
+    margin-bottom: 24px!important;
+  }
+}
+
+@include mq($from: desktop){
+  .custm_hero p {
+    width: 70% !important;
+  }
+}
+
