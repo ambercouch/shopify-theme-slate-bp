@@ -466,7 +466,9 @@ ACTIMBER = {
                 //return bundledProducts
             }
             function closeDrawer(timer = 1000){
-                window.setTimeout(function () {
+
+                clearTimeout(window.acTimer);
+                window.acTimer = setTimeout(function () {
                     elOffPageBundleNoticeb.classList.remove('is-open');
                 }, timer);
             }
