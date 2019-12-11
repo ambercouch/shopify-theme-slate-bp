@@ -611,12 +611,16 @@ ACTIMBER = {
             //on update bundle item quantity
             $(document).on('change', '.bundle-item-qty', function(e){
 
-
+                elOffPageBundleNoticeb.classList.remove('is-close-quick');
+                elOffPageBundleNoticeb.classList.add('is-open');
+                closeDrawer(4000);
+                $('[data-remodal-action=close]').trigger("click");
 
                 bundleCount = 0;
 
                 let varId = $(this).attr('data-variant-id');
                 let varQty = parseInt($(this).val());
+
                 bundledProducts[varId].qty = varQty;
                 // console.log('bundledProducts[varId].qty');
                 // console.log(bundledProducts[varId].qty);
