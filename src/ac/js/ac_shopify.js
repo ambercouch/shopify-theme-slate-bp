@@ -406,6 +406,16 @@ ACTIMBER = {
 
                     $('#bundleItem' + obj.variantId).append('<input data-variant-id="'+ obj.variantId +'" class="bundle-item-qty" type=number min="0" value=' + obj.qty + '>')
 
+
+                }
+
+            }
+
+            //update bundle list
+            function updateBundleQty(entries) {
+
+                for (const [product, obj] of entries) {
+
                     bundleCountAdd(obj.qty);
                     bundleTotalAdd(obj.variantPrice * obj.qty);
                 }
@@ -558,6 +568,7 @@ ACTIMBER = {
                 const entries = Object.entries(bundledProducts);
 
                 updateBundleList(entries);
+                updateBundleQty(entries)
 
                 updateItemtext();
 
@@ -612,13 +623,17 @@ ACTIMBER = {
 
             //on update bundle item quantity
             $(document).on('change', '.bundle-item-qty', function(e){
-
+                e.preventDefault();
                 elOffPageBundleNoticeb.classList.remove('is-close-quick');
                 elOffPageBundleNoticeb.classList.add('is-open');
                 closeDrawer(4000);
                 $('[data-remodal-action=close]').trigger("click");
 
                 bundleCount = 0;
+                bundleTotal = 0;
+                bundleDiscountPercent = 0;
+
+
 
                 let varId = $(this).attr('data-variant-id');
                 let varQty = parseInt($(this).val());
@@ -627,10 +642,17 @@ ACTIMBER = {
                 // console.log('bundledProducts[varId].qty');
                 // console.log(bundledProducts[varId].qty);
 
+                bundleAddQty(varId);
+
                 const entries = Object.entries(bundledProducts);
                 for (const [product, obj] of entries) {
                     bundleCountAdd(obj.qty);
                 }
+
+                
+                updateBundleQty(entries)
+
+
 
                 updateItemtext();
 
@@ -646,8 +668,7 @@ ACTIMBER = {
                 updateElBundleSaving();
                 updateElBundleDiscountCode();
                 setBundleDiscount();
-                updateElBundlePrice();
-
+                updateElBundlePrice()
                 updateElFullPrice()
 
                 updateElCartBtn();

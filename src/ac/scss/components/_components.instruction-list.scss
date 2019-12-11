@@ -69,8 +69,18 @@
     border-bottom: dashed 1px #ccc;
     list-style: disc;
   }
+  &text-wrapper{
+    display: block;
+    text-align: center !important;
+    width: 100%;
+  }
+  &text-line{
+    display: block !important;
+    margin-bottom: $act-unit-s;
+  }
   &text{
     display: block;
+    @include act-font-size($act-fs-6, 1.2);
   }
 }
 
@@ -118,11 +128,37 @@
       color: white;
       width: .5em;
       display: inline-block;
+      display: none;
       height: .5em;
       text-align: center;
       margin-right: 0.75em;
       border-radius: 50%;
       flex-shrink: 0;
     }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-instruction-list__text--
+
+[class*=c-instruction-list__text--] {
+  @extend .c-instruction-list__text;
+}
+
+.c-instruction-list__text--{
+  &full-price{
+    text-decoration: line-through;
+  }
+  &bundle-price{
+    @include act-font-size($act-fs-2);
+    font-weight: bold;
+  }
+  &save-price{
+    @include act-font-size($act-fs-3);
+    font-weight: bold;
+    color: red;
+  }
+  &discount-code{
+    display: block;
+    margin: $act-unit-t 0;
   }
 }
