@@ -126,62 +126,8 @@
             </div>
           </div>
         </div>
-        <div id="offPageBundleNotice" class="l-off-page">
-          <header class="l-off-page__header">
-            <div class="l-off-page__close">X</div>
-          </header>
-          <div class="l-off-page__tab">
-            <span class="l-off-page__tab-text--open" >&lt;</span>
-            <span class="l-off-page__tab-text--close" >&gt;</span>
-          </div>
-          <div class="c-info-notice">
-            <header class="c-info-notice__header">
-              <h3 class="c-info-notice__heading">
-                <span class="c-info-notice__title">Your bundle</span>
-              </h3>
-            </header>
-            <div class="c-info-notice__content">
-              <div class="c-instruction-list">
+        {% include 'ac-bundels-off-page-notice' %}
 
-                <ul class="c-instruction-list__list">
-                  <li class="c-instruction-list__item--bul" >
-                  <span class="c-instruction-list__text">
-                  <span>You have</span> <span id="bundleNoticeTextQty" class="c-bundle-notice__qty">no</span> <span id="bundleNoticeTextUnitLabel">items</span> <span>in your bundle.</span>
-                  </span>
-                  </li>
-                  <li class="c-instruction-list__item--bul">
-                  <span class="c-instruction-list__text">
-                  <span id="bundleNoticeTextCurrentDiscount" class="c-bundle-notice__text--current-discount" >You don't have enough product in your bundle to get our bundle discount </span>
-                  </span>
-                  </li>
-                  <li id="bundleNoticeTextCurrentSaving"  class="c-instruction-list__item--bul" style="display:none;" >
-                  <span class="c-instruction-list__text">
-                  <span>Your bundle price </span>
-                  <span id="bundlePrice" class="c-bundle-notice__text--bundle-price">£100 </span>.
-                  <span>You have saved </span>
-                  <span id="bundleSaving" class="c-bundle-notice__text--next-discount">£100 </span>
-                  <span>if you use discount code </span>
-                  <span id="bundleDiscountCode" class="c-bundle-notice__text--discount-code">12345</span>
-                  <span> at checkout</span>
-                  </span>
-                  </li>
-                  <li id="bundleNoticeTextNextDiscountItem" class="c-instruction-list__item--bul" >
-                  <span class="c-instruction-list__text">
-                  <span id="bundleNoticeTextNextDiscount" class="c-bundle-notice__text--next-discount">Add 3 items to get our 20% bundle discount.</span>
-                  </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-
-          </div>
-          <button name="add" id="AddBundleToCartOffPage" disabled class="btn c-btn--buy-bundle o-btn--block {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
-                <span id="AddToCartText-{{ section.id }}">
-                 Buy Your Bundle
-                </span>
-          </button>
-        </div>
 
 
       {% endif %}

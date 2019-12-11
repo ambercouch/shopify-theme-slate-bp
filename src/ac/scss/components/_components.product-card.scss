@@ -1,0 +1,73 @@
+/*
+  BEM BLOCK .c-product-card
+ */
+
+.c-product-card {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-product-card--
+ */
+
+.c-product-card-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-product-card--
+
+[class*=c-product-card--] {
+  @extend .c-product-card;
+}
+
+/*
+  BEM ELEMENTS .c-product-card__
+ */
+
+.c-product-card__ {
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &title{
+    display: none;
+    @include mq($from:tablet){
+      display: block;
+    }
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-card--
+
+[class*=c-product-card__header--] {
+  @extend .c-product-card__header;
+}
+
+.c-product-card__title--{
+  &short-name{
+    @include mq($from:tablet){
+      display: none;
+    }
+  }
+}

@@ -587,6 +587,19 @@ html.remodal-is-locked {
   border-bottom: solid 1px #eee;
 }
 
+.bundle-cart__title--shortName{
+  display: block;
+  @include mq($from: tablet){
+    display:none;
+  }
+}
+.bundle-cart__title{
+  display: none;
+  @include mq($from: tablet){
+    display:block;
+  }
+}
+
 
 
 [data-template="collectionbundles"] .page-container {
