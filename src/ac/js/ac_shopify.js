@@ -221,6 +221,7 @@ ACTIMBER = {
             let elBundleNoticeTextCurrentSaving = $('#bundleNoticeTextCurrentSaving');
             let elBundleSaving = document.getElementById('bundleSaving');
             let elBundleDiscountCode = document.getElementById('bundleDiscountCode');
+            let elFullPrice =  document.getElementById('fullPrice');
             let elBundlePrice =  document.getElementById('bundlePrice');
             let elOffPageBundleNoticeb = document.getElementById('offPageBundleNotice');
             let elCartBtn =$('.c-btn--buy-bundle');
@@ -295,7 +296,10 @@ ACTIMBER = {
 
             function updateElBundlePrice() {
                 elBundlePrice.textContent = formatter.format((bundleTotal / 100) - (bundleDiscount / 100) );
+            }
 
+            function updateElFullPrice() {
+                elFullPrice.textContent = formatter.format(bundleTotal / 100    );
             }
 
             function setBundleDiscount() {
@@ -398,7 +402,7 @@ ACTIMBER = {
 
                 for (const [product, obj] of entries) {
 
-                    elBundleList.append('<div class="bundle-cart__item" id="bundleItem'+ obj.variantId +'" ><p>' + obj.productTitle + '<br><small>'+obj.variantTitle +' </small>' + '</p></div>');
+                    elBundleList.append('<div class="bundle-cart__item" id="bundleItem'+ obj.variantId +'" ><p><span class="bundle-cart__title--shortName">' + obj.productShortName + '</span><span class="bundle-cart__title">' + obj.productTitle + '</span><br><small>'+obj.variantTitle +' </small>' + '</p></div>');
 
                     $('#bundleItem' + obj.variantId).append('<input data-variant-id="'+ obj.variantId +'" class="bundle-item-qty" type=number min="0" value=' + obj.qty + '>')
 
@@ -435,12 +439,24 @@ ACTIMBER = {
                 bundleTotal = parseInt(bundleTotal) + parseInt(price);
             }
             //add item to bundle
-            function bundleAddItem(variantId, variantTitle, variantPrice, productTitle ){
+            function bundleAddItem(variantId, variantTitle, variantPrice, productTitle, productShortName ){
                 bundledProducts[variantId] =  bundledProducts[variantId] || {};
                 bundledProducts[variantId].variantTitle = variantTitle;
                 bundledProducts[variantId].variantId = variantId;
                 bundledProducts[variantId].productTitle  = productTitle;
                 bundledProducts[variantId].variantPrice  = variantPrice;
+                bundledProducts[variantId].productShortName  = productShortName;
+                if (bundledProducts[variantId].hasOwnProperty('qty')){
+                    bundledProducts[variantId].qty  = bundledProducts[variantId].qty + 1;
+                }else{
+                    bundledProducts[variantId].qty  = 1;
+                }
+
+                //return bundledProducts
+            }
+
+            function bundleAddQty(variantId){
+
                 if (bundledProducts[variantId].hasOwnProperty('qty')){
                     bundledProducts[variantId].qty  = bundledProducts[variantId].qty + 1;
                 }else{
@@ -530,11 +546,12 @@ ACTIMBER = {
                 let variantId = $('option:selected',this).val();
                 let variantTitle = $('option:selected',this).text().trim();
                 let variantPrice = $('option:selected', this).attr('data-variant-price');
+                let productShortName = $('input[name=productShortName]',this).val();
 
                 console.log('variantPrice');
                 console.log(variantPrice);
 
-                bundleAddItem(variantId, variantTitle, variantPrice, productTitle )
+                bundleAddItem(variantId, variantTitle, variantPrice, productTitle, productShortName )
 
                 const entries = Object.entries(bundledProducts);
 
@@ -555,6 +572,7 @@ ACTIMBER = {
                 updateElBundleDiscountCode();
                 setBundleDiscount();
                 updateElBundlePrice()
+                updateElFullPrice()
 
                 updateElCartBtn();
 
@@ -562,7 +580,7 @@ ACTIMBER = {
             });
 
 
-
+            //add bundle to cart
             $(document).on('click', '#AddBundleToCartHeader, #AddBundleToCartFooter, #AddBundleToCartOffPage', function () {
                 let entries = Object.entries(bundledProducts);
                 let values = {};
@@ -623,6 +641,8 @@ ACTIMBER = {
                 updateElBundleDiscountCode();
                 setBundleDiscount();
                 updateElBundlePrice();
+
+                updateElFullPrice()
 
                 updateElCartBtn();
 
