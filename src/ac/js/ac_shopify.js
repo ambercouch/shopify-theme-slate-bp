@@ -430,7 +430,7 @@ ACTIMBER = {
                     bundleDiscountPercent = 0
                 } else if (bundleCount == 3){
                     bundleDiscountPercent = 20;
-                }else if (bundleCount > 3 && bundleCount <= 50){
+                }else if (bundleCount > 3 && bundleCount < 6){
                     bundleDiscountPercent = 25;
                 }else{
                     bundleDiscountPercent = 30;
@@ -649,7 +649,7 @@ ACTIMBER = {
 
                 const entries = Object.entries(bundledProducts);
                 for (const [product, obj] of entries) {
-                   // bundleCountAdd(obj.qty);
+                   //  bundleCountAdd(obj.qty);
                 }
 
                 updateBundleQty(entries)
