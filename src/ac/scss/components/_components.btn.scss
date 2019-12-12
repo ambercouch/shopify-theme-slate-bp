@@ -21,6 +21,12 @@
       background: #8bc981 !important;
       opacity: 0.6;
     }
+  }
+  &buy-bundle{
+    background: #CB9362;
+    &[disabled]{
+      background: #ccc;
 
+    }
   }
 }

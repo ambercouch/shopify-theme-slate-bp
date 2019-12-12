@@ -1,12 +1,12 @@
 {% case section.settings.grid %}
-  {% when '2' %}
-    {%- assign max_height = 530 -%}
-  {% when '3' %}
-    {%- assign max_height = 345 -%}
-  {% when '4' %}
-    {%- assign max_height = 250 -%}
-  {% when '5' %}
-    {%- assign max_height = 195 -%}
+{% when '2' %}
+{%- assign max_height = 530 -%}
+{% when '3' %}
+{%- assign max_height = 345 -%}
+{% when '4' %}
+{%- assign max_height = 250 -%}
+{% when '5' %}
+{%- assign max_height = 195 -%}
 {% endcase %}
 
 {% if section.settings.layout == 'grid' %}
@@ -17,188 +17,239 @@
 
 {% paginate collection.products by limit %}
 
-<div data-section-id="{{ section.id }}" data-section-type="collection-template">
-  <header class="collection-header">
+  <div data-section-id="{{ section.id }}" data-section-type="collection-template">
+    <header class="collection-header">
 
-    {% if section.settings.show_collection_image and collection.image %}
-      <div class="collection-hero">
-        <div class="collection-hero__image ratio-container lazyload js"
-             data-bgset="{% include 'bgset', image: collection.image %}"
-             data-sizes="auto"
-             data-parent-fit="cover"
-             style="background-image: url('{{ collection.image | img_url: '300x300' }});"></div>
-        <noscript>
-          <div class="collection-hero__image" style="background-image: url({{ collection.image | img_url: '2048x600', crop: 'top' }});"></div>
-        </noscript>
-        <div class="collection-hero__title-wrapper">
-          <h1 class="collection-hero__title page-width">{{ collection.title }}</h1>
+      {% if section.settings.show_collection_image and collection.image %}
+        <div class="collection-hero">
+          <div class="collection-hero__image ratio-container lazyload js"
+               data-bgset="{% include 'bgset', image: collection.image %}"
+               data-sizes="auto"
+               data-parent-fit="cover"
+               style="background-image: url('{{ collection.image | img_url: '300x300' }});"></div>
+          <noscript>
+            <div class="collection-hero__image" style="background-image: url({{ collection.image | img_url: '2048x600', crop: 'top' }});"></div>
+          </noscript>
+          <div class="collection-hero__title-wrapper">
+            <h1 class="collection-hero__title page-width">{{ collection.title }}</h1>
+          </div>
         </div>
-      </div>
 
-      {% if collection.description != blank %}
-        <div class="rte collection-description page-width">
-          {{ collection.description }}
+        {% if collection.description != blank %}
+          <div class="rte collection-description page-width">
+            {{ collection.description }}
+          </div>
+        {% endif %}
+      {% else %}
+        <div class="page-width">
+          <div class="section-header text-center">
+            <h1>{{ collection.title }}</h1>
+            {% if collection.description != blank %}
+              <div class="rte">
+                {{ collection.description }}
+              </div>
+            {% endif %}
+          </div>
         </div>
       {% endif %}
-    {% else %}
-      <div class="page-width">
-        <div class="section-header text-center">
-          <h1>{{ collection.title }}</h1>
-          {% if collection.description != blank %}
-            <div class="rte">
-              {{ collection.description }}
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    {% endif %}
 
-  </header>
+    </header>
 
-  <div class="page-width" id="Collection">
-    {% if section.settings.layout == 'grid' %}
 
-      {%- assign grid_item_width = 'medium-up--one-half' -%}
 
-      <div class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %}">
-        {% for product in collection.products %}
-          <div class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
-            {% include 'product-card-bundle', max_height: max_height %}
+    <div class="page-width" id="Collection">
+      {% if section.settings.layout == 'grid' %}
 
-            {% include 'add-form-bundle'%}
+        {%- assign grid_item_width = 'medium-up--one-third' -%}
 
+        <div class="l-bundle-notes">
+          <div class="l-bundle-notes__header">
+            <h2 class="l-bundle-notes__heading">How to create your bundle</h2>
           </div>
+          <div class="l-bundle-notes__content">
+            <div class="c-instruction-list">
+              <ol class="c-instruction-list__list">
+                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Select your items and add them to your bundle</span></li>
+                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text">Click the "Buy My Bundle" button</span></li>
+                <li class="c-instruction-list__item--number"><span class="c-instruction-list__text"> Use your bundle discount code at checkout</span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="l-site-section--collection-bundle">
+          <div class="grid grid--uniform{% if collection.products_count > 0 %} grid--view-items{% endif %}">
+            {% for product in collection.products %}
+              <div id="gridProductId{{ product.id }}" data-product-id="{{ product.id }}" class="grid__item grid__item--{{section.id}} {{ grid_item_width }}">
+                {% include 'product-card-bundle', max_height: max_height %}
 
-        {% endfor %}
-      </div>
-    <div class="grid grid--uniform grid--view-items ">
-      <div class="grid__item grid__item 'medium-up--one-whole'">
-      <div class="bundle-cart">
-        <p>here's your bunldle</p>
-      </div>
-      </div>
+                {% include 'add-form-bundle'%}
+
+              </div>
+              <div class="c-product-card__remodal" >
+                <div class="remodal" data-remodal-id="modal{{ product.id }}">
+                  <button data-remodal-action="close" class="remodal-close"></button>
+                  {% include 'ac-product-card-remodal' %}
+
+                </div>
+              </div>
+
+
+            {% endfor %}
+          </div>
+        </div>
+        <div class="l-site-section--collection-bundle">
+          <div class="grid grid--uniform grid--view-items ">
+            <div class="grid__item grid__item 'medium-up--one-whole'">
+
+              <div class="c-bundle-cart">
+                <header class="c-bundle-cart__header">
+                  <button name="add" id="AddBundleToCartHeader"  disabled  class="btn c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                 Buy Your Bundle
+                </span>
+                  </button>
+                </header>
+
+
+                <div id="bundleProductList" class="bundle-cart__product-list">
+
+                </div>
+
+                <footer class="c-bundle-cart__footer">
+                  <button name="add" id="AddBundleToCartFooter" disabled  class="btn c-btn--buy-bundle {% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                 Buy Your Bundle
+                </span>
+                  </button>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% include 'ac-bundels-off-page-notice' %}
+
+
+
+      {% endif %}
+
+      {% if is_empty_collection %}
+        <div class="grid__item small--text-center">
+          <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+      {% endif %}
+
+      {% if paginate.pages > 1 %}
+        {% include 'pagination' %}
+      {% endif %}
     </div>
-
-    {% endif %}
-
-    {% if is_empty_collection %}
-      <div class="grid__item small--text-center">
-        <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
-      </div>
-    {% endif %}
-
-    {% if paginate.pages > 1 %}
-      {% include 'pagination' %}
-    {% endif %}
   </div>
-</div>
 
 {% endpaginate %}
 
 {% schema %}
   {
-    "name": "Collection pages",
-    "settings": [
-      {
-        "type": "select",
-        "id": "layout",
-        "label": "Layout",
-        "default": "grid",
-        "options": [
-          {
-            "value": "grid",
-            "label": "Grid"
-          },
-          {
-            "value": "list",
-            "label": "List"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "grid",
-        "label": "Products per row (grid only)",
-        "default": "4",
-        "options": [
-          {
-            "value": "2",
-            "label": "2"
-          },
-          {
-            "value": "3",
-            "label": "3"
-          },
-          {
-            "value": "4",
-            "label": "4"
-          },
-          {
-            "value": "5",
-            "label": "5"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "rows",
-        "label": "Rows per page (grid only)",
-        "default": "2",
-        "options": [
-          {
-            "value": "2",
-            "label": "2"
-          },
-          {
-            "value": "3",
-            "label": "3"
-          },
-          {
-            "value": "4",
-            "label": "4"
-          },
-          {
-            "value": "5",
-            "label": "5"
-          },
-          {
-            "value": "6",
-            "label": "6"
-          },
-          {
-            "value": "7",
-            "label": "7"
-          },
-          {
-            "value": "8",
-            "label": "8"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "show_collection_image",
-        "label": "Show collection image",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "show_vendor",
-        "label": "Show product vendors",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "sort_enable",
-        "label": "Enable sorting",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "tags_enable",
-        "label": "Enable tag filtering",
-        "default": true
-      }
-    ]
+  "name": "Collection pages",
+  "settings": [
+  {
+  "type": "select",
+  "id": "layout",
+  "label": "Layout",
+  "default": "grid",
+  "options": [
+  {
+  "value": "grid",
+  "label": "Grid"
+  },
+  {
+  "value": "list",
+  "label": "List"
+  }
+  ]
+  },
+  {
+  "type": "select",
+  "id": "grid",
+  "label": "Products per row (grid only)",
+  "default": "4",
+  "options": [
+  {
+  "value": "2",
+  "label": "2"
+  },
+  {
+  "value": "3",
+  "label": "3"
+  },
+  {
+  "value": "4",
+  "label": "4"
+  },
+  {
+  "value": "5",
+  "label": "5"
+  }
+  ]
+  },
+  {
+  "type": "select",
+  "id": "rows",
+  "label": "Rows per page (grid only)",
+  "default": "2",
+  "options": [
+  {
+  "value": "2",
+  "label": "2"
+  },
+  {
+  "value": "3",
+  "label": "3"
+  },
+  {
+  "value": "4",
+  "label": "4"
+  },
+  {
+  "value": "5",
+  "label": "5"
+  },
+  {
+  "value": "6",
+  "label": "6"
+  },
+  {
+  "value": "7",
+  "label": "7"
+  },
+  {
+  "value": "8",
+  "label": "8"
+  }
+  ]
+  },
+  {
+  "type": "checkbox",
+  "id": "show_collection_image",
+  "label": "Show collection image",
+  "default": true
+  },
+  {
+  "type": "checkbox",
+  "id": "show_vendor",
+  "label": "Show product vendors",
+  "default": false
+  },
+  {
+  "type": "checkbox",
+  "id": "sort_enable",
+  "label": "Enable sorting",
+  "default": true
+  },
+  {
+  "type": "checkbox",
+  "id": "tags_enable",
+  "label": "Enable tag filtering",
+  "default": true
+  }
+  ]
   }
 {% endschema %}

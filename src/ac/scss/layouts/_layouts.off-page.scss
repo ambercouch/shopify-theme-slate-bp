@@ -1,0 +1,136 @@
+/*
+  BEM BLOCK .l-off-page
+ */
+
+.l-off-page {
+  position: fixed;
+  z-index: 10;
+  background: #eee;
+  padding: 1em;
+  top:0;
+  right: 0;
+  height: 100vh;
+  width: 400px;
+  max-width: 90%;
+  transform: translate(0);
+  transition: transform 0.3s ease-in-out 0s;
+  transform: translate(98%,0);
+  border-left: solid #8bc981 5px;
+  &:hover{
+    @include mq($from : desktop){
+      //transition: transform 0.3s ease-in-out 0s;
+      //transform: translate(0,0);
+    }
+
+   }
+  &.is-open{
+    transition: transform 0.3s ease-in-out 0s;
+    transform: translate(0,0);
+  }
+  &.is-close-quick{
+    transition: transform 0.3s ease-in-out 0s;
+    //display: none;
+  }
+}
+
+/*
+  BEM BLOCK MODIFIER .l-off-page--
+ */
+
+.l-off-page-- {
+  &type {
+    display: block
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .l-off-page--
+
+[class*=l-off-page--] {
+  @extend .l-off-page;
+}
+
+/*
+  BEM ELEMENTS .l-off-page__
+ */
+
+.l-off-page__ {
+  &header {
+    display: flex;
+    margin-bottom: $act-unit;
+    justify-content: flex-end;
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &tab{
+    @include size(30px, 60px);
+    background: #8bc981;
+    display: block;
+    position: absolute;
+    left: -30px;
+    border-radius: 8px 0 0 8px;
+    text-align: center;
+    line-height: 55px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  &close{
+    display: block;
+    background: #ccc;
+    color: white;
+    font-weight: bold;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    cursor: pointer;
+  }
+  &tab-text{
+    display: none;
+    pointer-events: none;
+    cursor: pointer;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-off-page__header--
+
+[class*=l-off-page__header--] {
+  @extend .l-off-page__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .l-off-page__tab-text--
+
+[class*=l-off-page__tab-text--] {
+  @extend .l-off-page__tab-text;
+}
+.l-off-page__tab-text--{
+  &open{
+    display: inline-block;
+    .is-open &{
+      display: none;
+    }
+  }
+  &close{
+    .is-open &{
+      display: inline-block;
+    }
+  }
+}

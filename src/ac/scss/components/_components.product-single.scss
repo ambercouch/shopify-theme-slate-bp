@@ -1,0 +1,93 @@
+/*
+  BEM BLOCK .c-product-single
+ */
+
+.c-product-single {
+  display: block;
+}
+
+/*
+  BEM BLOCK MODIFIER .c-product-single--
+ */
+
+.c-product-single--{
+  &type {
+    display: block
+  }
+  &remodal{
+    .p-des{
+      float:none;
+      width: 100%;
+      margin: 0;
+    }
+    .grid__item{
+      padding-left: 0;
+    }
+    &.grid{
+      margin-left: 0;
+    }
+  }
+}
+
+//BEM BLOCK MODIFIER FALLBACK .c-product-single--
+
+[class*=c-product-single--] {
+  @extend .c-product-single;
+}
+
+/*
+  BEM ELEMENTS .c-product-single__
+ */
+
+.c-product-single__{
+  &header {
+    display: block
+  }
+
+  &heading {
+    display: block
+  }
+
+  &title {
+    display: inline;
+  }
+
+  &link {
+    display: inline
+  }
+
+  &content {
+    display: block
+  }
+
+  &footer {
+    display: block
+  }
+  &photo{
+    display: block;
+  }
+  &add-form{
+    padding-top: $act-unit;
+  }
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-single__header--
+
+[class*=c-product-single__header--] {
+  @extend .c-product-single__header;
+}
+
+//BEM ELEMENT MODIFIER FALLBACK .c-product-single__photo--
+
+[class*=c-product-single__photo--] {
+  @extend .c-product-single__photo;
+}
+
+.c-product-single__photo--{
+  &remodal{
+    margin-bottom: $act-unit-l;
+  }
+}
+
+
+

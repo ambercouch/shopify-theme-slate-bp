@@ -14,7 +14,24 @@
   <meta name="google-site-verification" content="iTXE7cOkAiA0ucjxS5l99SUD-CRElJ_mNOcCbmnimx8" />
 
   <style>
-    {% include 'ac-ccss-index' %}
+
+    {% assign cssTemplate =  template | replace: '.', '' %}
+    {% assign criticalFileName = cssTemplate | prepend: 'ac-ccss-' %}
+
+    <!-- criticalFileName {{ criticalFileName  }} -->
+
+    {% capture criticalCss %}
+    {% include criticalFileName %}
+    {% endcapture %}
+
+    <!-- critical css -->
+    {% if criticalCss contains 'Liquid error:' %}
+    <!-- no critical css -->
+    {% else %}
+    {{  criticalCss }}
+    {% endif %}
+    <!-- end critical css -->
+
     .o-list-flex--center, .c-blog-filters__list, .c-nav-menu__list {
       flex-direction: row;
       justify-content: center;
@@ -22,6 +39,7 @@
     .o-list-flex, [class*="o-list-flex--"], .c-blog-filters__list, .c-nav-menu__list {
       display: flex;
     }
+
   </style>
 
 <!-- Global site tag (gtag.js) - Google AdWords: 800605528 -->
@@ -113,6 +131,9 @@
 
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
   <!--[if lte IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme-debut.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'theme-debut.js' | asset_url }}"></script><![endif]-->
 
   <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'ac.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
   <!--[if lte IE 9]><script src="{{ 'ac.js' | asset_url }}"></script><![endif]-->

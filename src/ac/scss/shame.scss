@@ -565,6 +565,10 @@ html.remodal-is-locked {
   margin-bottom: 0;
 }
 
+.product-form-collection-template-bundles{
+  justify-content: space-around;
+  margin-bottom: 24px;
+}
 
 
 .hero{
@@ -602,3 +606,42 @@ html.remodal-is-locked {
   }
 }
 
+
+.collection--bundles{
+  margin-bottom: 24px;
+  border-bottom: solid 1px #e4e4e4 ;
+  padding-bottom: 24px;
+}
+
+.bundle-cart__qty{
+  padding-top: 24px;
+  margin-bottom: 24px;
+}
+
+.bundle-cart__item{
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: solid 1px #eee;
+}
+
+.bundle-cart__title--shortName{
+  display: block;
+  @include mq($from: tablet){
+    display:none;
+  }
+}
+.bundle-cart__title{
+  display: none;
+  @include mq($from: tablet){
+    display:block;
+  }
+}
+
+
+
+[data-template="collectionbundles"] .page-container {
+  transform: none !important;
+}
+.is-hidden{
+  display: none !important;
+}
