@@ -8,8 +8,38 @@
       <div class="rte">
         {{ page.content }}
       </div>
-      <div class="srs_slider" id="srs_template_2656"></div>
+        <div class="srs_slider" id="srs_template_2656">
+          
+        </div>
+        
+        <div class="c-cta--reviews hide">
+          <div class="c-cta__content">
+            <div class="c-cta__intro-text">
+
+
+             
+              <p>{{ page.metafields.global.cta_text }}</p>
+            </div>
+              <div class="c-cta__action">
+                <a href="{{ page.metafields.global.cta_url- }}" class="c-cta__link">{{ page.metafields.global.cta_button_text }}</a>
+              </div>
+          </div>
+        </div>
+
 
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('document').ready(function(){
+    setTimeout(function(){ 
+      if ($(window).width() > 899){
+            $('.wprevpro_t1_outer_div:nth-child(3n)').append($('.c-cta--reviews').removeClass('hide'));
+      }else{
+           $('.c-cta--reviews').removeClass('hide').appendTo('.w3_wprs-col:nth-child(3n)'); 
+      }
+    
+    }, 3000);
+  })
+
+</script>
