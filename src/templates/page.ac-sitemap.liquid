@@ -1,27 +1,36 @@
 <div class="page-width">
-  <div class="grid">
+  <div class="grid sitemap">
     <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
 
-      some link test main menu
+      
       <div class="section-header text-center">
         <h1>{{ page.title }}</h1>
       </div>
-
+      {% assign menu = linklists.main-menu %}
       <div class="c-site-map">
-        <section  class="c-site-map__section--pages">
+        <section  class="c-site-map__section--pages w3_wprs-col m4">
+          <h3 class="link-title">{{ linklists.bibado-pages.title }}</h3>
+          <ul class="no-padding">
           {% for link in linklists.bibado-pages.links %}
-            {{ link.title }}
-          {% endfor %}
+              <li> <a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
         </section>
-        <section  class="c-site-map__section--collection">
-          {% for link in linklists.bibado-collection.links %}
-            {{ link.title }}
-          {% endfor %}
+        <section  class="c-site-map__section--collection w3_wprs-col m4">
+          <h3 class="link-title">{{ linklists.bibado-collection.title}}</h3>
+            <ul class="no-padding">
+            {% for link in linklists.bibado-collection.links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
         </section>
-        <section  class="c-site-map__section--product">
-          {% for link in linklists.bibado-product.links %}
-            {{ link.title }}
-          {% endfor %}
+        <section  class="c-site-map__section--product w3_wprs-col m4">
+          <h3 class="link-title">{{ linklists.bibado-product.title }}</h3>
+          <ul class="no-padding">
+            {% for link in linklists.bibado-product.links %}
+              <li>  <a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
         </section>
       </div>
 
