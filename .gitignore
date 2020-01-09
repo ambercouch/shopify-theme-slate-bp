@@ -8,3 +8,5 @@ config\.yml
 src/assets/ac.js.liquid
 
 gulpfile.js
+
+src/assets/ac.js
