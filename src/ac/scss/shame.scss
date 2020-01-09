@@ -640,7 +640,10 @@ html.remodal-is-locked {
 
 
 [data-template="collectionbundles"] .page-container {
-  transform: none !important;
+  @include mq($from : tablet){
+    transform: none !important;
+  }
+
 }
 .is-hidden{
   display: none !important;

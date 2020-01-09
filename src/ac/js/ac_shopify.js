@@ -128,6 +128,7 @@ ACTIMBER = {
     pageacreviews:{
       init: function () {
           console.log('page.ac-reviews');
+      }
     },
     page: {
         init: function () {
@@ -790,21 +791,22 @@ ACTIMBER = {
 
 UTIL = {
     exec: function (template, handle) {
-        var ns = ACTIMBER,
-            handle = (handle === undefined) ? "init" : handle;
+        let ns = ACTIMBER;
+        handle = (handle === undefined) ? "init" : handle;
 
         if (template !== '' && ns[template] && typeof ns[template][handle] === 'function') {
             ns[template][handle]();
         }
     },
     init: function () {
-        var body = document.body,
+        let body = document.body,
             template = body.getAttribute('data-template'),
             handle = body.getAttribute('data-handle');
 
         UTIL.exec('common');
         UTIL.exec(template);
         UTIL.exec(template, handle);
+
     }
 };
 $(window).on('load',UTIL.init);
