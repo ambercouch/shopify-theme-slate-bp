@@ -2850,7 +2850,7 @@ theme.Quotes = (function() {
       var $wrapper = $(this.wrapper, this.$container);
 
       // Remove default Slick aria-live attr until slider is focused
-      $list.removeAttr('aria-live');
+      //$list.removeAttr('aria-live');
 
       // When an element in the slider is focused set aria-live
       $wrapper.on('focusin', function(evt) {
