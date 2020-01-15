@@ -2,7 +2,7 @@
   <div class="grid sitemap">
     <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
 
-      
+
       <div class="section-header text-center">
         <h1>{{ page.title }}</h1>
       </div>
@@ -17,17 +17,17 @@
           </ul>
         </section>
         <section  class="c-site-map__section--collection w3_wprs-col m4">
-          <h3 class="link-title">{{ linklists.bibado-collection.title}}</h3>
+          <h3 class="link-title">{{ linklists.bibado-collections.title}}</h3>
             <ul class="no-padding">
-            {% for link in linklists.bibado-collection.links %}
+            {% for link in linklists.bibado-collections.links %}
               <li><a href="{{ link.url }}">{{ link.title }}</a></li>
             {% endfor %}
           </ul>
         </section>
         <section  class="c-site-map__section--product w3_wprs-col m4">
-          <h3 class="link-title">{{ linklists.bibado-product.title }}</h3>
+          <h3 class="link-title">{{ linklists.bibado-products.title }}</h3>
           <ul class="no-padding">
-            {% for link in linklists.bibado-product.links %}
+            {% for link in linklists.bibado-products.links %}
               <li>  <a href="{{ link.url }}">{{ link.title }}</a></li>
             {% endfor %}
           </ul>
