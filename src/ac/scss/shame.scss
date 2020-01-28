@@ -647,3 +647,29 @@ html.remodal-is-locked {
 .is-hidden{
   display: none !important;
 }
+
+.c-video-embed__iframe--youtube{
+  max-width: 100%;
+}
+
+.c-gallery__feature-image{
+  margin: 0 auto;
+}
+.product-form__cart-submit{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  @include mq($from: tablet){
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+.c-box--noah{
+  background: white;
+}
+.c-box--bundle-link{
+  background: white;
+  text-align: center;
+}
+
+

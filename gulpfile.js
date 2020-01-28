@@ -33,7 +33,7 @@ var jsVendorScripts = [
     //All ready deprecated with browserify
     // 'jquery/dist/jquery.slim.js',
     'remodal/dist/remodal.min.js',
-    'fitvids/jquery.fitvids.js',
+    'fitvids/dist/fitvids.js',
     'flickity/dist/flickity.pkgd.js',
     'js-cookie/src/js.cookie.js'
 ];

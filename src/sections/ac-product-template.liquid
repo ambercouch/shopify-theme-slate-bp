@@ -1,0 +1,278 @@
+<div class="grid" itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="https:\{{ product.featured_image.src | img_url: 'grande' }}">
+  <meta itemprop="name" content="{{ product.title }}">
+  <meta  itemprop="description" content="{{ product.description | strip_html | truncatewords: 15}}">
+  {% for field in product.metafields.areviews %}  {{ field | last }}  {% endfor %}
+  <meta itemprop="brand" content="{{ product.vendor }}"><div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+    <meta itemprop="price" content="{{ variant.price | divided_by: 100.00 }}">
+  </div></div>
+
+<div class="product-template__container page-width" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign product_image_zoom_size = '1024x1024' -%}
+  {%- assign product_image_scale = '2' -%}
+  {%- assign enable_zoom = section.settings.enable_zoom -%}
+
+  {% case section.settings.image_size %}
+  {% when 'small' %}
+  {%- assign product_image_width = 'medium-up--one-third' -%}
+  {%- assign product_description_width = 'medium-up--two-thirds' -%}
+  {%- assign product_thumbnail_width = 'medium-up--one-third' -%}
+  {%- assign height = 345 -%}
+  {% when 'medium' %}
+  {%- assign product_image_width = 'medium-up--one-half' -%}
+  {%- assign product_description_width = 'medium-up--one-half' -%}
+  {%- assign product_thumbnail_width = 'medium-up--one-quarter' -%}
+  {%- assign height = 500 -%}
+  {% when 'large' %}
+  {%- assign product_image_width = 'medium-up--two-thirds' -%}
+  {%- assign product_description_width = 'medium-up--one-third' -%}
+  {%- assign product_thumbnail_width = 'medium-up--one-fifth' -%}
+  {%- assign height = 720 -%}
+  {% when 'full' %}
+  {%- assign product_image_width = '' -%}
+  {%- assign product_description_width = '' -%}
+  {%- assign product_thumbnail_width = 'medium-up--one-eighth' -%}
+  {%- assign height = 1090 -%}
+  {%- assign enable_zoom = false -%}
+  {% endcase %}
+
+  <div class="l-product-single">
+
+    <div class="l-product-single__gallery">
+
+     {% include 'ac-product-gallery' %}
+
+    </div>
+
+    <div class="l-product-single__product-meta">
+      <div class="product-single__meta">
+
+        <h1 class="product-single__title">{{ product.title }}</h1>
+
+        {% if section.settings.show_vendor %}
+          <p class="product-single__vendor">{{ product.vendor }}</p>
+        {% endif %}
+
+        <div>
+          <p class="product-single__price product-single__price-{{ section.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
+            {% if current_variant.compare_at_price > current_variant.price %}
+              <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+              <s id="ComparePrice-{{ section.id }}">{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = current_variant.compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
+              <span class="product-price__price product-price__price-{{ section.id }} product-price__sale product-price__sale--single">
+                  <span id="ProductPrice-{{ section.id }}">
+                    {%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = current_variant.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+                  </span>
+                  <span class="product-price__sale-label product-price__sale-label-{{ section.id }}">{{ 'products.product.on_sale' | t }}</span>
+                </span>
+            {% else %}
+              <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+              <s id="ComparePrice-{{ section.id }}" class="hide">{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = current_variant.compare_at_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.compare_at_price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}</s>
+              <span class="product-price__price product-price__price-{{ section.id }}">
+                <span id="ProductPrice-{{ section.id }}">
+                  {%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- include 'geolizr-currency' with geolizr_price -%}{%- assign geolizr_price = current_variant.price -%}{%- include 'geolizr-currency' with geolizr_price -%}{{ current_variant.price | money | prepend: geolizr_prepend_code | append: geolizr_append_code }}
+                </span>
+                <span class="product-price__sale-label product-price__sale-label-{{ section.id }} hide">{{ 'products.product.on_sale' | t }}</span>
+              </span>
+            {% endif %}
+          </p>
+
+          {% capture "form_classes" -%}
+            product-form product-form-{{ section.id }}{% unless section.settings.show_variant_labels %} product-form--hide-variant-labels{% endunless %}{% if section.settings.enable_payment_button and product.has_only_default_variant%} product-form--payment-button-no-variants{% endif %}
+          {%- endcapture %}
+
+          {% form 'product', product, class:form_classes %}
+            {% unless product.has_only_default_variant %}
+              {% for option in product.options_with_values %}
+                <div class="selector-wrapper js product-form__item">
+                  <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">
+                    {{ option.name }}
+                  </label>
+                  <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+                    {% for value in option.values %}
+                      <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endfor %}
+            {% endunless %}
+
+            <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
+              {% for variant in product.variants %}
+                {% if variant.available %}
+                  <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                    {{ variant.title }}
+                  </option>
+                {% else %}
+                  <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+
+            {% if section.settings.show_quantity_selector %}
+              <div class="product-form__item product-form__item--quantity">
+                <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+                <input type="number" id="Quantity" name="quantity" value="1" min="1" class="product-form__input" pattern="[0-9]*">
+              </div>
+            {% endif %}
+            <div class="product-form__item product-form__item--submit{% if section.settings.enable_payment_button %} product-form__item--payment-button{% endif %}{% if product.has_only_default_variant %} product-form__item--no-variants{% endif %}">
+              <button type="submit" name="add" id="AddToCart-{{ section.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn product-form__cart-submit{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                  {% unless current_variant.available %}
+                    {{ 'products.product.sold_out' | t }}
+                    {% else %}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {% endunless %}
+                </span>
+              </button>
+              {% if section.settings.enable_payment_button %}
+                {{ form | payment_button }}
+              {% endif %}
+            </div>
+          {% endform %}
+        </div>
+      </div>
+      <div class="l-product-single__after-meta o-box c-box--bundle-link">
+        <strong><a href="https://bibado.co.uk/collections/bibado-bundles">Build your own bundle and save up to 30%!<br>Click here to start!</a></strong>
+      </div>
+    </div>
+
+    <div class="l-product-single__content-block--description">
+      <div class="c-content-block--description">
+      {{ product.description }}
+    </div>
+    </div>
+
+    <div class="l-product-single__video-embed">
+      <div class="c-video-embed">
+        <iframe class="c-video-embed__iframe--youtube" width="560" height="315" src="https://www.youtube.com/embed/{{ product.metafields.global.youtube_id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="l-product-single__content-block--extra1">
+      <div class="c-content-block--extra1">
+        {{ product.metafields.global.extra_content_1 }}
+      </div>
+    </div>
+
+    <div class="l-product-single__content-block--extra2 ">
+      <div class="c-content-block--extra2">
+        {{ product.metafields.global.extra_content_2 }}
+      </div>
+    </div>
+
+    <div class="l-product-single__footer">
+
+      {% if section.settings.show_share_buttons %}
+      <div class="l-product-single__social">
+        {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+      </div>
+      {% endif %}
+
+
+      <div class="o-box c-box--noah" >
+        <div class="o-media">
+          <div class="o-media__img"><img src="https://cdn.shopify.com/s/files/1/2704/5506/files/Noahs-Ark.jpg?15307468636380988301"></div>
+          <div class="o-media__body"> <p><b>£1 from every order is donated to Noah's Ark Children's Hospital Charity to help them support families who are having a difficult start to their journeys. Thank you for enabling us to support such a fantastic cause!</b></p></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+</div>
+
+
+
+
+
+{% if collection %}
+  <div class="text-center return-link-wrapper">
+    <a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">
+      {% include 'icon-arrow-left' %}
+      {{ 'products.product.back_to_collection' | t: title: collection.title }}
+    </a>
+  </div>
+{% endif %}
+
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+{% endunless %}
+
+{% schema %}
+  {
+  "name": "Product pages",
+  "settings": [
+  {
+  "type": "select",
+  "id": "image_size",
+  "label": "Image size",
+  "options": [
+  {
+  "value": "small",
+  "label": "Small"
+  },
+  {
+  "value": "medium",
+  "label": "Medium"
+  },
+  {
+  "value": "large",
+  "label": "Large"
+  },
+  {
+  "value": "full",
+  "label": "Full-width"
+  }
+  ],
+  "default": "medium"
+  },
+  {
+  "type": "checkbox",
+  "id": "show_quantity_selector",
+  "label": "Show quantity selector",
+  "default": false
+  },
+  {
+  "type": "checkbox",
+  "id": "show_variant_labels",
+  "label": "Show variant labels",
+  "default": true
+  },
+  {
+  "type": "checkbox",
+  "id": "show_vendor",
+  "label": "Show vendor",
+  "default": false
+  },
+  {
+  "type": "checkbox",
+  "id": "enable_zoom",
+  "label": "Enable image zoom",
+  "default": true
+  },
+  {
+  "type": "checkbox",
+  "id": "enable_payment_button",
+  "label": "Show dynamic checkout button",
+  "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+  "default": false
+  },
+  {
+  "type": "checkbox",
+  "id": "show_share_buttons",
+  "label": "Show social sharing buttons",
+  "default": true
+  }
+
+  ]
+  }
+{% endschema %}

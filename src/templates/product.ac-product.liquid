@@ -1,0 +1,24 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+{% section 'ac-product-template' %}
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  }
+</script>
+
+ <div id='Areviewsapp' class='page-full'>{% include 'aliexpress_reviews' %}</div>
+<!-- DRIP_PRODUCT_TRACKING_V1 -->
+<script text="text/javascript">
+  var _dcq = _dcq || [];
+  _dcq.push(['recordProductView', {{ product|json }}, {{ product.collections|map:'id'|json }}, '{{shop.currency}}', '{{ product.url }}']);
+</script>
+<!-- END_DRIP_PRODUCT_TRACKING_V1 -->
