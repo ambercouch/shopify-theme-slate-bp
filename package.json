@@ -20,7 +20,7 @@
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
     "js-cookie": "^2.2.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "pixrem": "^3.0.2",
     "pump": "^1.0.2",
     "webpack": "^2.2.1"
