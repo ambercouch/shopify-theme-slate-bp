@@ -23,7 +23,7 @@
     "node-sass": "^4.12.0",
     "pixrem": "^3.0.2",
     "pump": "^1.0.2",
-    "webpack": "^2.2.1"
+    "webpack": "^5.74.0"
   },
   "dependencies": {
     "remodal": "^1.1.1"
